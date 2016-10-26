@@ -16,6 +16,7 @@
 // "Send a message using <myApp>"
 
 @interface IntentViewController ()
+@property (weak, nonatomic) IBOutlet UILabel *questionLabel;
 
 @end
 
@@ -23,20 +24,19 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    
 }
 
 #pragma mark - INUIHostedViewControlling
 
 // Prepare your view controller for the interaction to handle.
 - (void)configureWithInteraction:(INInteraction *)interaction context:(INUIHostedViewContext)context completion:(void (^)(CGSize))completion {
-    // Do configuration here, including preparing views and calculating a desired size for presentation.
-    
+    _questionLabel.text = @"hahahha";
     if (completion) {
         completion([self desiredSize]);
     }
