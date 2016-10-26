@@ -35,9 +35,11 @@
 		6E3063AD1DC07650000DBB7D /* XYAddAddressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E3063AC1DC07650000DBB7D /* XYAddAddressViewController.m */; };
 		6E3063B01DC07F58000DBB7D /* XYAddEventViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E3063AF1DC07F58000DBB7D /* XYAddEventViewController.m */; };
 		6E3063B31DC0863D000DBB7D /* HWTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E3063B21DC0863D000DBB7D /* HWTextView.m */; };
+
 		6E3063B61DC08DA3000DBB7D /* XYSettingTimeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E3063B51DC08DA3000DBB7D /* XYSettingTimeViewController.m */; };
 		6E3063B91DC08DD4000DBB7D /* XYSettingOccasionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E3063B81DC08DD4000DBB7D /* XYSettingOccasionViewController.m */; };
 		6E3063BD1DC08FE3000DBB7D /* XYNotifyPropertyChangeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E3063BC1DC08FE3000DBB7D /* XYNotifyPropertyChangeView.m */; };
+
 		82BEA0221DC07EA0001F39F0 /* IntentHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 82BEA0211DC07EA0001F39F0 /* IntentHandler.m */; };
 		82BEA02A1DC07EA1001F39F0 /* IntentsUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82BEA0291DC07EA1001F39F0 /* IntentsUI.framework */; };
 		82BEA02E1DC07EA1001F39F0 /* IntentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82BEA02D1DC07EA1001F39F0 /* IntentViewController.m */; };
@@ -132,12 +134,14 @@
 		6E3063AF1DC07F58000DBB7D /* XYAddEventViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYAddEventViewController.m; sourceTree = "<group>"; };
 		6E3063B11DC0863D000DBB7D /* HWTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HWTextView.h; sourceTree = "<group>"; };
 		6E3063B21DC0863D000DBB7D /* HWTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HWTextView.m; sourceTree = "<group>"; };
+
 		6E3063B41DC08DA3000DBB7D /* XYSettingTimeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYSettingTimeViewController.h; sourceTree = "<group>"; };
 		6E3063B51DC08DA3000DBB7D /* XYSettingTimeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYSettingTimeViewController.m; sourceTree = "<group>"; };
 		6E3063B71DC08DD4000DBB7D /* XYSettingOccasionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYSettingOccasionViewController.h; sourceTree = "<group>"; };
 		6E3063B81DC08DD4000DBB7D /* XYSettingOccasionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYSettingOccasionViewController.m; sourceTree = "<group>"; };
 		6E3063BB1DC08FE3000DBB7D /* XYNotifyPropertyChangeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYNotifyPropertyChangeView.h; sourceTree = "<group>"; };
 		6E3063BC1DC08FE3000DBB7D /* XYNotifyPropertyChangeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYNotifyPropertyChangeView.m; sourceTree = "<group>"; };
+
 		82BEA01E1DC07EA0001F39F0 /* Forget_Siri.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = Forget_Siri.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		82BEA0201DC07EA0001F39F0 /* IntentHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IntentHandler.h; sourceTree = "<group>"; };
 		82BEA0211DC07EA0001F39F0 /* IntentHandler.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IntentHandler.m; sourceTree = "<group>"; };
@@ -760,6 +764,7 @@
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer: zeng xu (55V3SCMT39)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = D2PU2HGB5Q;
 				INFOPLIST_FILE = Forget_Siri/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
@@ -777,6 +782,7 @@
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer: zeng xu (55V3SCMT39)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = D2PU2HGB5Q;
 				INFOPLIST_FILE = Forget_Siri/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
@@ -793,6 +799,7 @@
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer: zeng xu (55V3SCMT39)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = D2PU2HGB5Q;
 				INFOPLIST_FILE = Forget_SiriUI/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
@@ -810,6 +817,7 @@
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer: zeng xu (55V3SCMT39)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = D2PU2HGB5Q;
 				INFOPLIST_FILE = Forget_SiriUI/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
