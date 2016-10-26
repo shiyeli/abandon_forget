@@ -148,11 +148,14 @@
                                     <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="InO-J4-Q20">
                                         <state key="normal" title="提醒场合"/>
                                         <connections>
-                                            <action selector="clickOnView:" destination="dvf-mJ-DOc" eventType="touchUpInside" id="119-WZ-uk4"/>
+                                            <segue destination="DfW-2e-ZOE" kind="show" id="X3R-kV-rKY"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1e1-Im-9ig">
                                         <state key="normal" title="提醒时间"/>
+                                        <connections>
+                                            <segue destination="rnc-gY-Y6c" kind="show" id="Qmt-pn-3ft"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -164,19 +167,71 @@
                                     <constraint firstAttribute="trailing" secondItem="1e1-Im-9ig" secondAttribute="trailing" id="pe5-7i-5v2"/>
                                 </constraints>
                             </view>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="yHK-Qd-7sR" customClass="HWTextView">
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="150" id="Zip-ln-VOX"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="trailing" secondItem="yHK-Qd-7sR" secondAttribute="trailing" constant="16" id="B4h-dX-ZwT"/>
+                            <constraint firstItem="yHK-Qd-7sR" firstAttribute="top" secondItem="SSy-FP-nJw" secondAttribute="bottom" constant="16" id="T9a-Jr-x1b"/>
+                            <constraint firstItem="yHK-Qd-7sR" firstAttribute="leading" secondItem="U9p-dO-FYp" secondAttribute="leading" constant="16" id="sMj-6v-XtV"/>
                             <constraint firstItem="4vQ-6w-acZ" firstAttribute="leading" secondItem="U9p-dO-FYp" secondAttribute="leading" constant="50" id="tvR-0j-FWH"/>
                             <constraint firstItem="zFy-qc-PQn" firstAttribute="top" secondItem="4vQ-6w-acZ" secondAttribute="bottom" constant="50" id="wRF-Mh-hNX"/>
                             <constraint firstAttribute="trailing" secondItem="4vQ-6w-acZ" secondAttribute="trailing" constant="50" id="wey-Xi-ir3"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="添加提醒事件" id="6hX-MP-Y6I"/>
+                    <connections>
+                        <outlet property="notifyContent" destination="yHK-Qd-7sR" id="EAX-4E-QSO"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bZf-jF-wAM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1146" y="-1"/>
+            <point key="canvasLocation" x="1144.8" y="-1.3493253373313345"/>
+        </scene>
+        <!--设置提醒场合-->
+        <scene sceneID="6oi-Le-se4">
+            <objects>
+                <viewController id="DfW-2e-ZOE" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="P6G-mz-paW"/>
+                        <viewControllerLayoutGuide type="bottom" id="BPD-PW-JTZ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="t68-5H-Yn9">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="设置提醒场合" id="p2t-ag-VXe"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7k4-RU-GIa" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2076" y="-448"/>
+        </scene>
+        <!--设置提醒时间-->
+        <scene sceneID="5tj-tl-vDM">
+            <objects>
+                <viewController id="rnc-gY-Y6c" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="brc-n4-HKM"/>
+                        <viewControllerLayoutGuide type="bottom" id="ftD-nn-ihu"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="qvR-1v-i9f">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="设置提醒时间" id="GiL-qb-aLF"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pIk-5m-hd4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2076" y="277"/>
         </scene>
     </scenes>
 </document>

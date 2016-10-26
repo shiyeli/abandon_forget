@@ -7,8 +7,13 @@
 //
 
 #import "XYAddEventViewController.h"
-
+#import "HWTextView.h"
 @interface XYAddEventViewController ()
+
+@property (weak, nonatomic) IBOutlet HWTextView *notifyContent;
+
+
+
 
 @end
 
@@ -16,7 +21,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    self.notifyContent.placeholder=@"请输入提醒时间备注信息";
 }
 
 - (void)didReceiveMemoryWarning {
@@ -25,27 +30,6 @@
 }
 
 
-- (IBAction)clickOnView:(UIButton*)sender {
-    switch (sender.tag) {
-        case 1:{
-            //提醒场合
-            //[self performSegueWithIdentifier:@"XYAddAddressViewController" sender:nil];
-        }
-            break;
-            
-        case 2:{
-            //提醒时间
-            //[self performSegueWithIdentifier:@"XYWillNotifyViewController" sender:nil];
-            
-        }
-            break;
-        default:
-            break;
-    }
-    
-    
-    
-}
 
 
 

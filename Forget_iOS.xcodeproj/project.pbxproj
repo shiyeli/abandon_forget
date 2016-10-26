@@ -35,16 +35,14 @@
 		6E3063A71DC06141000DBB7D /* XYParentModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E3063A61DC06141000DBB7D /* XYParentModel.m */; };
 		6E3063AA1DC0761C000DBB7D /* XYWillNotifyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E3063A91DC0761C000DBB7D /* XYWillNotifyViewController.m */; };
 		6E3063AD1DC07650000DBB7D /* XYAddAddressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E3063AC1DC07650000DBB7D /* XYAddAddressViewController.m */; };
-
 		6E3063B01DC07F58000DBB7D /* XYAddEventViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E3063AF1DC07F58000DBB7D /* XYAddEventViewController.m */; };
-
+		6E3063B31DC0863D000DBB7D /* HWTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E3063B21DC0863D000DBB7D /* HWTextView.m */; };
 		82BEA0221DC07EA0001F39F0 /* IntentHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 82BEA0211DC07EA0001F39F0 /* IntentHandler.m */; };
 		82BEA02A1DC07EA1001F39F0 /* IntentsUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82BEA0291DC07EA1001F39F0 /* IntentsUI.framework */; };
 		82BEA02E1DC07EA1001F39F0 /* IntentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82BEA02D1DC07EA1001F39F0 /* IntentViewController.m */; };
 		82BEA0311DC07EA1001F39F0 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 82BEA02F1DC07EA1001F39F0 /* MainInterface.storyboard */; };
 		82BEA0351DC07EA1001F39F0 /* Forget_SiriUI.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 82BEA0281DC07EA1001F39F0 /* Forget_SiriUI.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		82BEA0381DC07EA1001F39F0 /* Forget_Siri.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 82BEA01E1DC07EA0001F39F0 /* Forget_Siri.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -138,10 +136,10 @@
 		6E3063A91DC0761C000DBB7D /* XYWillNotifyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYWillNotifyViewController.m; sourceTree = "<group>"; };
 		6E3063AB1DC07650000DBB7D /* XYAddAddressViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYAddAddressViewController.h; sourceTree = "<group>"; };
 		6E3063AC1DC07650000DBB7D /* XYAddAddressViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYAddAddressViewController.m; sourceTree = "<group>"; };
-
 		6E3063AE1DC07F58000DBB7D /* XYAddEventViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYAddEventViewController.h; sourceTree = "<group>"; };
 		6E3063AF1DC07F58000DBB7D /* XYAddEventViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYAddEventViewController.m; sourceTree = "<group>"; };
-
+		6E3063B11DC0863D000DBB7D /* HWTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HWTextView.h; sourceTree = "<group>"; };
+		6E3063B21DC0863D000DBB7D /* HWTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HWTextView.m; sourceTree = "<group>"; };
 		82BEA01E1DC07EA0001F39F0 /* Forget_Siri.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = Forget_Siri.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		82BEA0201DC07EA0001F39F0 /* IntentHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IntentHandler.h; sourceTree = "<group>"; };
 		82BEA0211DC07EA0001F39F0 /* IntentHandler.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IntentHandler.m; sourceTree = "<group>"; };
@@ -152,7 +150,6 @@
 		82BEA02D1DC07EA1001F39F0 /* IntentViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IntentViewController.m; sourceTree = "<group>"; };
 		82BEA0301DC07EA1001F39F0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
 		82BEA0321DC07EA1001F39F0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -322,6 +319,8 @@
 		6E3063971DC05F0D000DBB7D /* ParentClass */ = {
 			isa = PBXGroup;
 			children = (
+				6E3063B11DC0863D000DBB7D /* HWTextView.h */,
+				6E3063B21DC0863D000DBB7D /* HWTextView.m */,
 				6E30639F1DC060C4000DBB7D /* XYParentViewController.h */,
 				6E3063A01DC060C4000DBB7D /* XYParentViewController.m */,
 				6E3063A21DC060DD000DBB7D /* XYParentView.h */,
@@ -586,6 +585,7 @@
 				6E3063441DC05171000DBB7D /* main.m in Sources */,
 				6E3063B01DC07F58000DBB7D /* XYAddEventViewController.m in Sources */,
 				6E3063A71DC06141000DBB7D /* XYParentModel.m in Sources */,
+				6E3063B31DC0863D000DBB7D /* HWTextView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -773,7 +773,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Forget_iOS/ThirdLib/AMap",
 				);
-				GCC_PREFIX_HEADER = /Users/yexianyong/Desktop/demo_ios/Forget_iOS/Forget_iOS/XYPrefixHeader.pch;
+				GCC_PREFIX_HEADER = Forget_iOS/XYPrefixHeader.pch;
 				INFOPLIST_FILE = Forget_iOS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "monstar.Forget-iOS";
@@ -790,7 +790,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Forget_iOS/ThirdLib/AMap",
 				);
-				GCC_PREFIX_HEADER = /Users/yexianyong/Desktop/demo_ios/Forget_iOS/Forget_iOS/XYPrefixHeader.pch;
+				GCC_PREFIX_HEADER = Forget_iOS/XYPrefixHeader.pch;
 				INFOPLIST_FILE = Forget_iOS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "monstar.Forget-iOS";
@@ -942,6 +942,7 @@
 				82BEA03C1DC07EA1001F39F0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		82BEA03E1DC07EA1001F39F0 /* Build configuration list for PBXNativeTarget "Forget_Siri" */ = {
 			isa = XCConfigurationList;
@@ -950,6 +951,7 @@
 				82BEA03A1DC07EA1001F39F0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
