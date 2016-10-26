@@ -8,9 +8,19 @@
 
 #import "XYAddAddressViewController.h"
 #import <MAMapKit/MAMapKit.h>
-@interface XYAddAddressViewController ()<MAMapViewDelegate>
+#import "POIAnnotation.h"
+#import <AMapSearchKit/AMapSearchKit.h>
+#import "AMapTipAnnotation.h"
+@interface XYAddAddressViewController ()<MAMapViewDelegate, AMapSearchDelegate, UISearchBarDelegate, UISearchDisplayDelegate, UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, strong) MAMapView *mapView;
+@property (nonatomic, strong) AMapSearchAPI *search;
+
+
+
+
+@property (nonatomic, strong) NSMutableArray *tips;
+@property (nonatomic, strong) NSMutableArray *busLines;
 
 @end
 
@@ -24,20 +34,30 @@
 }
 
 
-- (void)viewDidLoad {
+- (id)init
+{
+    if (self = [super init])
+    {
+        self.tips = [NSMutableArray array];
+    }
+    
+    return self;
+}
+
+- (void)viewDidLoad
+{
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
     
     self.mapView = [[MAMapView alloc] initWithFrame:self.view.bounds];
     self.mapView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     self.mapView.delegate = self;
     [self.view addSubview:self.mapView];
+    
+    self.search = [[AMapSearchAPI alloc] init];
+    self.search.delegate = self;
+    
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 
 /*
 #pragma mark - Navigation

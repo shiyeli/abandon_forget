@@ -44,7 +44,6 @@ static XYUserInfo * _userInfo;
 }
 
 -(void)timerAction:(NSTimer*)timer{
-    NSLog(@"定时器运行中...");
     [_mLocationManager startUpdatingLocation];
 }
 
@@ -80,12 +79,8 @@ static XYUserInfo * _userInfo;
     CLGeocoder * geocoder = [[CLGeocoder alloc] init];
     [geocoder  reverseGeocodeLocation:location completionHandler:^(NSArray *placemarks, NSError *error) {
         CLPlacemark * place = placemarks[0];
-        NSLog(@">>%@ %@ %@ %@ %@ %@,%@",place.country,place.postalCode,place.thoroughfare,place.name,place.locality,place.ocean,place.subLocality);
-        
-        
-        
+        NSLog(@"当前位置: %@",place.name);
     }];
-    
     [_mLocationManager stopUpdatingLocation];
 }
 
