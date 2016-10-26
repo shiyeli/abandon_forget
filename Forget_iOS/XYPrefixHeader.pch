@@ -1,0 +1,25 @@
+//
+//  XYPrefixHeader.pch
+//  Forget_iOS
+//
+//  Created by 叶同学 on 2016/10/26.
+//  Copyright © 2016年 叶同学. All rights reserved.
+//
+
+#ifndef XYPrefixHeader_pch
+#define XYPrefixHeader_pch
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+//宏定义
+#import "ACMacros.h"
+
+
+
+
+
+
+
+
+#endif /* XYPrefixHeader_pch */

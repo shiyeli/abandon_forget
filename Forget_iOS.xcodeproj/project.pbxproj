@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		6E3063441DC05171000DBB7D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E3063431DC05171000DBB7D /* main.m */; };
 		6E3063471DC05171000DBB7D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E3063461DC05171000DBB7D /* AppDelegate.m */; };
-		6E30634A1DC05171000DBB7D /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E3063491DC05171000DBB7D /* ViewController.m */; };
 		6E30634D1DC05171000DBB7D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6E30634B1DC05171000DBB7D /* Main.storyboard */; };
 		6E30634F1DC05171000DBB7D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6E30634E1DC05171000DBB7D /* Assets.xcassets */; };
 		6E3063521DC05171000DBB7D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6E3063501DC05171000DBB7D /* LaunchScreen.storyboard */; };
@@ -30,6 +29,10 @@
 		6E3063921DC05B66000DBB7D /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E3063911DC05B66000DBB7D /* libz.tbd */; };
 		6E3063941DC05B6F000DBB7D /* libstdc++.6.0.9.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E3063931DC05B6F000DBB7D /* libstdc++.6.0.9.tbd */; };
 		6E3063961DC05B77000DBB7D /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E3063951DC05B77000DBB7D /* libc++.tbd */; };
+		6E30639C1DC05F5C000DBB7D /* XYMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E30639B1DC05F5C000DBB7D /* XYMainViewController.m */; };
+		6E3063A11DC060C4000DBB7D /* XYParentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E3063A01DC060C4000DBB7D /* XYParentViewController.m */; };
+		6E3063A41DC060DD000DBB7D /* XYParentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E3063A31DC060DD000DBB7D /* XYParentView.m */; };
+		6E3063A71DC06141000DBB7D /* XYParentModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E3063A61DC06141000DBB7D /* XYParentModel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,8 +57,6 @@
 		6E3063431DC05171000DBB7D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		6E3063451DC05171000DBB7D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		6E3063461DC05171000DBB7D /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		6E3063481DC05171000DBB7D /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		6E3063491DC05171000DBB7D /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		6E30634C1DC05171000DBB7D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		6E30634E1DC05171000DBB7D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6E3063511DC05171000DBB7D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -82,6 +83,16 @@
 		6E3063911DC05B66000DBB7D /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		6E3063931DC05B6F000DBB7D /* libstdc++.6.0.9.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.6.0.9.tbd"; path = "usr/lib/libstdc++.6.0.9.tbd"; sourceTree = SDKROOT; };
 		6E3063951DC05B77000DBB7D /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
+		6E30639A1DC05F5C000DBB7D /* XYMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYMainViewController.h; sourceTree = "<group>"; };
+		6E30639B1DC05F5C000DBB7D /* XYMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYMainViewController.m; sourceTree = "<group>"; };
+		6E30639D1DC05F87000DBB7D /* ACMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ACMacros.h; sourceTree = "<group>"; };
+		6E30639E1DC05FC0000DBB7D /* XYPrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XYPrefixHeader.pch; sourceTree = "<group>"; };
+		6E30639F1DC060C4000DBB7D /* XYParentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYParentViewController.h; sourceTree = "<group>"; };
+		6E3063A01DC060C4000DBB7D /* XYParentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYParentViewController.m; sourceTree = "<group>"; };
+		6E3063A21DC060DD000DBB7D /* XYParentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYParentView.h; sourceTree = "<group>"; };
+		6E3063A31DC060DD000DBB7D /* XYParentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYParentView.m; sourceTree = "<group>"; };
+		6E3063A51DC06141000DBB7D /* XYParentModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYParentModel.h; sourceTree = "<group>"; };
+		6E3063A61DC06141000DBB7D /* XYParentModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYParentModel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,11 +158,12 @@
 		6E3063411DC05171000DBB7D /* Forget_iOS */ = {
 			isa = PBXGroup;
 			children = (
+				6E3063971DC05F0D000DBB7D /* ParentClass */,
+				6E3063981DC05F0D000DBB7D /* Tool */,
+				6E3063991DC05F0D000DBB7D /* ViewControllers */,
 				6E3063751DC05AD9000DBB7D /* ThirdLib */,
 				6E3063451DC05171000DBB7D /* AppDelegate.h */,
 				6E3063461DC05171000DBB7D /* AppDelegate.m */,
-				6E3063481DC05171000DBB7D /* ViewController.h */,
-				6E3063491DC05171000DBB7D /* ViewController.m */,
 				6E30634B1DC05171000DBB7D /* Main.storyboard */,
 				6E30634E1DC05171000DBB7D /* Assets.xcassets */,
 				6E3063501DC05171000DBB7D /* LaunchScreen.storyboard */,
@@ -165,6 +177,8 @@
 			isa = PBXGroup;
 			children = (
 				6E3063431DC05171000DBB7D /* main.m */,
+				6E30639D1DC05F87000DBB7D /* ACMacros.h */,
+				6E30639E1DC05FC0000DBB7D /* XYPrefixHeader.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -223,6 +237,35 @@
 				6E3063811DC05B23000DBB7D /* MapKit.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		6E3063971DC05F0D000DBB7D /* ParentClass */ = {
+			isa = PBXGroup;
+			children = (
+				6E30639F1DC060C4000DBB7D /* XYParentViewController.h */,
+				6E3063A01DC060C4000DBB7D /* XYParentViewController.m */,
+				6E3063A21DC060DD000DBB7D /* XYParentView.h */,
+				6E3063A31DC060DD000DBB7D /* XYParentView.m */,
+				6E3063A51DC06141000DBB7D /* XYParentModel.h */,
+				6E3063A61DC06141000DBB7D /* XYParentModel.m */,
+			);
+			path = ParentClass;
+			sourceTree = "<group>";
+		};
+		6E3063981DC05F0D000DBB7D /* Tool */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Tool;
+			sourceTree = "<group>";
+		};
+		6E3063991DC05F0D000DBB7D /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				6E30639A1DC05F5C000DBB7D /* XYMainViewController.h */,
+				6E30639B1DC05F5C000DBB7D /* XYMainViewController.m */,
+			);
+			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -287,6 +330,7 @@
 		6E3063371DC05171000DBB7D /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				CLASSPREFIX = XY;
 				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = "叶同学";
 				TargetAttributes = {
@@ -361,10 +405,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6E30634A1DC05171000DBB7D /* ViewController.m in Sources */,
 				6E30637F1DC05B03000DBB7D /* POIAnnotation.m in Sources */,
+				6E3063A41DC060DD000DBB7D /* XYParentView.m in Sources */,
 				6E3063471DC05171000DBB7D /* AppDelegate.m in Sources */,
+				6E30639C1DC05F5C000DBB7D /* XYMainViewController.m in Sources */,
+				6E3063A11DC060C4000DBB7D /* XYParentViewController.m in Sources */,
 				6E3063441DC05171000DBB7D /* main.m in Sources */,
+				6E3063A71DC06141000DBB7D /* XYParentModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -518,6 +565,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Forget_iOS/ThirdLib/AMap",
 				);
+				GCC_PREFIX_HEADER = /Users/yexianyong/Desktop/demo_ios/Forget_iOS/Forget_iOS/XYPrefixHeader.pch;
 				INFOPLIST_FILE = Forget_iOS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "monstar.Forget-iOS";
@@ -534,6 +582,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Forget_iOS/ThirdLib/AMap",
 				);
+				GCC_PREFIX_HEADER = /Users/yexianyong/Desktop/demo_ios/Forget_iOS/Forget_iOS/XYPrefixHeader.pch;
 				INFOPLIST_FILE = Forget_iOS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "monstar.Forget-iOS";
