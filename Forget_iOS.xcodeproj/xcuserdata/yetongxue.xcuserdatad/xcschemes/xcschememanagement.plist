@@ -4,6 +4,16 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>Forget_Siri.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
+		<key>Forget_SiriUI.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>2</integer>
+		</dict>
 		<key>Forget_iOS.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -23,6 +33,16 @@
 			<true/>
 		</dict>
 		<key>6E3063621DC05171000DBB7D</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>82BEA01D1DC07EA0001F39F0</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>82BEA0271DC07EA1001F39F0</key>
 		<dict>
 			<key>primary</key>
 			<true/>
