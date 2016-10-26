@@ -186,7 +186,13 @@
                             <constraint firstAttribute="trailing" secondItem="4vQ-6w-acZ" secondAttribute="trailing" constant="50" id="wey-Xi-ir3"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="添加提醒事件" id="6hX-MP-Y6I"/>
+                    <navigationItem key="navigationItem" title="添加提醒事件" id="6hX-MP-Y6I">
+                        <barButtonItem key="rightBarButtonItem" title="完成" id="BYg-68-aBz">
+                            <connections>
+                                <action selector="accomplish:" destination="dvf-mJ-DOc" id="3GO-tF-RfX"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="notifyContent" destination="yHK-Qd-7sR" id="EAX-4E-QSO"/>
                     </connections>
@@ -198,7 +204,7 @@
         <!--设置提醒场合-->
         <scene sceneID="6oi-Le-se4">
             <objects>
-                <viewController id="DfW-2e-ZOE" sceneMemberID="viewController">
+                <viewController id="DfW-2e-ZOE" customClass="XYSettingOccasionViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="P6G-mz-paW"/>
                         <viewControllerLayoutGuide type="bottom" id="BPD-PW-JTZ"/>
@@ -206,18 +212,54 @@
                     <view key="view" contentMode="scaleToFill" id="t68-5H-Yn9">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="cqD-ST-zHL">
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <view key="tableFooterView" contentMode="scaleToFill" id="YIK-O7-Yq2">
+                                    <rect key="frame" x="0.0" y="64" width="375" height="169"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                </view>
+                                <connections>
+                                    <outlet property="dataSource" destination="DfW-2e-ZOE" id="A3T-YC-3eW"/>
+                                    <outlet property="delegate" destination="DfW-2e-ZOE" id="y5V-yX-z1x"/>
+                                </connections>
+                            </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="在以下场合提醒我" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lsi-JZ-cY0">
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="cqD-ST-zHL" firstAttribute="leading" secondItem="t68-5H-Yn9" secondAttribute="leading" id="2Ah-1X-1KF"/>
+                            <constraint firstAttribute="trailing" secondItem="cqD-ST-zHL" secondAttribute="trailing" id="Ggv-fc-x8E"/>
+                            <constraint firstItem="Lsi-JZ-cY0" firstAttribute="leading" secondItem="t68-5H-Yn9" secondAttribute="leading" constant="16" id="Nsd-uB-qVp"/>
+                            <constraint firstItem="cqD-ST-zHL" firstAttribute="top" secondItem="Lsi-JZ-cY0" secondAttribute="bottom" constant="16" id="Oyk-wZ-RQo"/>
+                            <constraint firstItem="Lsi-JZ-cY0" firstAttribute="top" secondItem="P6G-mz-paW" secondAttribute="bottom" constant="14" id="RKh-JS-NkV"/>
+                            <constraint firstItem="BPD-PW-JTZ" firstAttribute="top" secondItem="cqD-ST-zHL" secondAttribute="bottom" id="n9q-up-vSv"/>
+                        </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="设置提醒场合" id="p2t-ag-VXe"/>
+                    <navigationItem key="navigationItem" title="设置提醒场合" id="p2t-ag-VXe">
+                        <barButtonItem key="rightBarButtonItem" title="完成" id="pCT-Yu-kb6">
+                            <connections>
+                                <action selector="accomplish:" destination="DfW-2e-ZOE" id="yLM-KY-CWs"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="myTableView" destination="cqD-ST-zHL" id="cLh-fd-c2X"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7k4-RU-GIa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2076" y="-448"/>
+            <point key="canvasLocation" x="2076" y="-448.42578710644682"/>
         </scene>
         <!--设置提醒时间-->
         <scene sceneID="5tj-tl-vDM">
             <objects>
-                <viewController id="rnc-gY-Y6c" sceneMemberID="viewController">
+                <viewController id="rnc-gY-Y6c" customClass="XYSettingTimeViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="brc-n4-HKM"/>
                         <viewControllerLayoutGuide type="bottom" id="ftD-nn-ihu"/>
@@ -225,13 +267,40 @@
                     <view key="view" contentMode="scaleToFill" id="qvR-1v-i9f">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kv1-K2-Ij4"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tf6-Wy-Zgx" customClass="XYNotifyPropertyChangeView">
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="VjN-K4-vZN"/>
+                                </constraints>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Tf6-Wy-Zgx" firstAttribute="leading" secondItem="qvR-1v-i9f" secondAttribute="leading" id="AVi-rq-GUl"/>
+                            <constraint firstItem="Tf6-Wy-Zgx" firstAttribute="top" secondItem="Kv1-K2-Ij4" secondAttribute="bottom" constant="16" id="Avu-Yt-2ZC"/>
+                            <constraint firstAttribute="trailing" secondItem="Kv1-K2-Ij4" secondAttribute="trailing" id="I87-PL-IAn"/>
+                            <constraint firstAttribute="trailing" secondItem="Tf6-Wy-Zgx" secondAttribute="trailing" id="cdf-z0-Hyd"/>
+                            <constraint firstItem="Kv1-K2-Ij4" firstAttribute="top" secondItem="brc-n4-HKM" secondAttribute="bottom" id="laE-f8-09o"/>
+                            <constraint firstItem="Kv1-K2-Ij4" firstAttribute="leading" secondItem="qvR-1v-i9f" secondAttribute="leading" id="wYT-wV-Bs4"/>
+                        </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="设置提醒时间" id="GiL-qb-aLF"/>
+                    <navigationItem key="navigationItem" title="设置提醒时间" id="GiL-qb-aLF">
+                        <barButtonItem key="rightBarButtonItem" title="完成" id="6RO-eP-lxi">
+                            <connections>
+                                <action selector="accomplish:" destination="rnc-gY-Y6c" id="xi7-Y5-24D"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="myPickerView" destination="Kv1-K2-Ij4" id="jdI-4f-0Xh"/>
+                        <outlet property="notifySettingView" destination="Tf6-Wy-Zgx" id="BL9-mJ-Ikw"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pIk-5m-hd4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2076" y="277"/>
+            <point key="canvasLocation" x="2076" y="276.61169415292358"/>
         </scene>
     </scenes>
 </document>
