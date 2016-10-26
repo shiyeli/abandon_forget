@@ -1,5 +1,5 @@
 //
-//  XYMainViewController.h
+//  XYWillNotifyViewController.h
 //  Forget_iOS
 //
 //  Created by 叶同学 on 2016/10/26.
@@ -8,6 +8,6 @@
 
 #import "XYParentViewController.h"
 
-@interface XYMainViewController : XYParentViewController
+@interface XYWillNotifyViewController : XYParentViewController
 
 @end

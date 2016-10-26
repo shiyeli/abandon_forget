@@ -33,6 +33,8 @@
 		6E3063A11DC060C4000DBB7D /* XYParentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E3063A01DC060C4000DBB7D /* XYParentViewController.m */; };
 		6E3063A41DC060DD000DBB7D /* XYParentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E3063A31DC060DD000DBB7D /* XYParentView.m */; };
 		6E3063A71DC06141000DBB7D /* XYParentModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E3063A61DC06141000DBB7D /* XYParentModel.m */; };
+		6E3063AA1DC0761C000DBB7D /* XYWillNotifyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E3063A91DC0761C000DBB7D /* XYWillNotifyViewController.m */; };
+		6E3063AD1DC07650000DBB7D /* XYAddAddressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E3063AC1DC07650000DBB7D /* XYAddAddressViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -93,6 +95,10 @@
 		6E3063A31DC060DD000DBB7D /* XYParentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYParentView.m; sourceTree = "<group>"; };
 		6E3063A51DC06141000DBB7D /* XYParentModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYParentModel.h; sourceTree = "<group>"; };
 		6E3063A61DC06141000DBB7D /* XYParentModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYParentModel.m; sourceTree = "<group>"; };
+		6E3063A81DC0761C000DBB7D /* XYWillNotifyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYWillNotifyViewController.h; sourceTree = "<group>"; };
+		6E3063A91DC0761C000DBB7D /* XYWillNotifyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYWillNotifyViewController.m; sourceTree = "<group>"; };
+		6E3063AB1DC07650000DBB7D /* XYAddAddressViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYAddAddressViewController.h; sourceTree = "<group>"; };
+		6E3063AC1DC07650000DBB7D /* XYAddAddressViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYAddAddressViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -264,6 +270,10 @@
 			children = (
 				6E30639A1DC05F5C000DBB7D /* XYMainViewController.h */,
 				6E30639B1DC05F5C000DBB7D /* XYMainViewController.m */,
+				6E3063A81DC0761C000DBB7D /* XYWillNotifyViewController.h */,
+				6E3063A91DC0761C000DBB7D /* XYWillNotifyViewController.m */,
+				6E3063AB1DC07650000DBB7D /* XYAddAddressViewController.h */,
+				6E3063AC1DC07650000DBB7D /* XYAddAddressViewController.m */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -405,11 +415,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6E3063AA1DC0761C000DBB7D /* XYWillNotifyViewController.m in Sources */,
 				6E30637F1DC05B03000DBB7D /* POIAnnotation.m in Sources */,
 				6E3063A41DC060DD000DBB7D /* XYParentView.m in Sources */,
 				6E3063471DC05171000DBB7D /* AppDelegate.m in Sources */,
 				6E30639C1DC05F5C000DBB7D /* XYMainViewController.m in Sources */,
 				6E3063A11DC060C4000DBB7D /* XYParentViewController.m in Sources */,
+				6E3063AD1DC07650000DBB7D /* XYAddAddressViewController.m in Sources */,
 				6E3063441DC05171000DBB7D /* main.m in Sources */,
 				6E3063A71DC06141000DBB7D /* XYParentModel.m in Sources */,
 			);
