@@ -7,11 +7,12 @@
 //
 
 #import "XYSettingOccasionViewController.h"
-
+#import "XYNotifyPropertyChangeView.h"
 @interface XYSettingOccasionViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 @property (weak, nonatomic) IBOutlet UITableView *myTableView;
 
+@property (weak, nonatomic) IBOutlet XYNotifyPropertyChangeView *notifyPropretyChangeView;
 
 @end
 
@@ -23,6 +24,15 @@
     
     
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (IBAction)addAddressClick:(id)sender {
+    
+    UIStoryboard* sb=[UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    UIViewController* viewCtl=[sb instantiateViewControllerWithIdentifier:@"XYAddAddressViewController"];
+    [self.navigationController pushViewController:viewCtl animated:YES];
+    
+    
 }
 
 

@@ -7,16 +7,31 @@
 //
 
 #import "XYAddAddressViewController.h"
+#import <MAMapKit/MAMapKit.h>
+@interface XYAddAddressViewController ()<MAMapViewDelegate>
 
-@interface XYAddAddressViewController ()
+@property (nonatomic, strong) MAMapView *mapView;
 
 @end
 
 @implementation XYAddAddressViewController
 
+- (IBAction)accomplish:(id)sender {
+    
+    
+    
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    self.mapView = [[MAMapView alloc] initWithFrame:self.view.bounds];
+    self.mapView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    self.mapView.delegate = self;
+    [self.view addSubview:self.mapView];
 }
 
 - (void)didReceiveMemoryWarning {
