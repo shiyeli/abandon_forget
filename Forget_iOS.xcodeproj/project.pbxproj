@@ -35,6 +35,7 @@
 		6E3063A71DC06141000DBB7D /* XYParentModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E3063A61DC06141000DBB7D /* XYParentModel.m */; };
 		6E3063AA1DC0761C000DBB7D /* XYWillNotifyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E3063A91DC0761C000DBB7D /* XYWillNotifyViewController.m */; };
 		6E3063AD1DC07650000DBB7D /* XYAddAddressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E3063AC1DC07650000DBB7D /* XYAddAddressViewController.m */; };
+		6E3063B01DC07F58000DBB7D /* XYAddEventViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E3063AF1DC07F58000DBB7D /* XYAddEventViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -99,6 +100,8 @@
 		6E3063A91DC0761C000DBB7D /* XYWillNotifyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYWillNotifyViewController.m; sourceTree = "<group>"; };
 		6E3063AB1DC07650000DBB7D /* XYAddAddressViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYAddAddressViewController.h; sourceTree = "<group>"; };
 		6E3063AC1DC07650000DBB7D /* XYAddAddressViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYAddAddressViewController.m; sourceTree = "<group>"; };
+		6E3063AE1DC07F58000DBB7D /* XYAddEventViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYAddEventViewController.h; sourceTree = "<group>"; };
+		6E3063AF1DC07F58000DBB7D /* XYAddEventViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYAddEventViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -274,6 +277,8 @@
 				6E3063A91DC0761C000DBB7D /* XYWillNotifyViewController.m */,
 				6E3063AB1DC07650000DBB7D /* XYAddAddressViewController.h */,
 				6E3063AC1DC07650000DBB7D /* XYAddAddressViewController.m */,
+				6E3063AE1DC07F58000DBB7D /* XYAddEventViewController.h */,
+				6E3063AF1DC07F58000DBB7D /* XYAddEventViewController.m */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -423,6 +428,7 @@
 				6E3063A11DC060C4000DBB7D /* XYParentViewController.m in Sources */,
 				6E3063AD1DC07650000DBB7D /* XYAddAddressViewController.m in Sources */,
 				6E3063441DC05171000DBB7D /* main.m in Sources */,
+				6E3063B01DC07F58000DBB7D /* XYAddEventViewController.m in Sources */,
 				6E3063A71DC06141000DBB7D /* XYParentModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

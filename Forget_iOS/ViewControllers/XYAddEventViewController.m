@@ -1,18 +1,18 @@
 //
-//  XYMainViewController.m
+//  XYAddEventViewController.m
 //  Forget_iOS
 //
 //  Created by 叶同学 on 2016/10/26.
 //  Copyright © 2016年 叶同学. All rights reserved.
 //
 
-#import "XYMainViewController.h"
+#import "XYAddEventViewController.h"
 
-@interface XYMainViewController ()
+@interface XYAddEventViewController ()
 
 @end
 
-@implementation XYMainViewController
+@implementation XYAddEventViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -24,25 +24,21 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)clickOnView:(UIButton *)sender {
+
+- (IBAction)clickOnView:(UIButton*)sender {
     switch (sender.tag) {
         case 1:{
-            //添加常用地址
-            [self performSegueWithIdentifier:@"XYAddAddressViewController" sender:nil];
+            //提醒场合
+            //[self performSegueWithIdentifier:@"XYAddAddressViewController" sender:nil];
         }
             break;
-         
+            
         case 2:{
-            //设置
+            //提醒时间
+            //[self performSegueWithIdentifier:@"XYWillNotifyViewController" sender:nil];
             
         }
             break;
-        case 3:{
-            //提醒事项
-            [self performSegueWithIdentifier:@"XYWillNotifyViewController" sender:nil];
-        }
-            break;
-
         default:
             break;
     }
@@ -50,7 +46,6 @@
     
     
 }
-
 
 
 

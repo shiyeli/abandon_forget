@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -33,12 +34,51 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Tg-qR-iRy">
+                                <state key="normal" title="添加常用地址"/>
+                                <connections>
+                                    <action selector="clickOnView:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Lr6-Ic-tcw"/>
+                                </connections>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="B31-7G-U2e">
+                                <subviews>
+                                    <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dsl-rT-xXn">
+                                        <state key="normal" title="提醒事项"/>
+                                        <connections>
+                                            <action selector="clickOnView:" destination="BYZ-38-t0r" eventType="touchUpInside" id="2Nq-DM-e5v"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AlN-Th-HUg">
+                                        <state key="normal" title="设置"/>
+                                        <connections>
+                                            <action selector="clickOnView:" destination="BYZ-38-t0r" eventType="touchUpInside" id="KKO-79-OhA"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="70" id="73g-7K-eXY"/>
+                                    <constraint firstItem="AlN-Th-HUg" firstAttribute="centerY" secondItem="B31-7G-U2e" secondAttribute="centerY" id="S4s-nC-V8z"/>
+                                    <constraint firstAttribute="trailing" secondItem="dsl-rT-xXn" secondAttribute="trailing" id="XWO-ns-kNS"/>
+                                    <constraint firstItem="dsl-rT-xXn" firstAttribute="centerY" secondItem="B31-7G-U2e" secondAttribute="centerY" id="sLW-lW-hro"/>
+                                    <constraint firstItem="AlN-Th-HUg" firstAttribute="leading" secondItem="B31-7G-U2e" secondAttribute="leading" id="yoz-ZN-0oA"/>
+                                </constraints>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="5Tg-qR-iRy" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="121" id="QvE-KU-MQ4"/>
+                            <constraint firstItem="5Tg-qR-iRy" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="f2a-NG-cMM"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="B31-7G-U2e" secondAttribute="bottom" constant="50" id="gTZ-c9-cgg"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="B31-7G-U2e" secondAttribute="trailing" constant="50" id="iMm-hq-MPK"/>
+                            <constraint firstItem="B31-7G-U2e" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="50" id="wDS-R1-IG9"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="抛弃健忘症" id="hq8-AH-RFi"/>
                     <connections>
-                        <segue destination="iyK-Gw-0EN" kind="show" id="NyH-29-Pce"/>
-                        <segue destination="1Eb-BJ-DmZ" kind="show" id="4Ti-mr-vXA"/>
+                        <segue destination="iyK-Gw-0EN" kind="show" identifier="XYAddAddressViewController" id="NyH-29-Pce"/>
+                        <segue destination="1Eb-BJ-DmZ" kind="show" identifier="XYWillNotifyViewController" id="4Ti-mr-vXA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -58,7 +98,9 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="添加常用地址" id="m5z-Ul-B2G"/>
+                    <navigationItem key="navigationItem" title="添加常用地址" id="m5z-Ul-B2G">
+                        <barButtonItem key="rightBarButtonItem" title="完成" id="zly-zM-WbU"/>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vol-SL-ZVG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -77,11 +119,64 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="提醒事项" id="jY1-sE-F8x"/>
+                    <navigationItem key="navigationItem" title="提醒事项" id="jY1-sE-F8x">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="9uy-Q7-XZs">
+                            <connections>
+                                <segue destination="dvf-mJ-DOc" kind="show" id="l5S-AE-T6L"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Cfz-EM-3oX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="433" y="-1"/>
+        </scene>
+        <!--添加提醒事件-->
+        <scene sceneID="Bt0-BD-E0u">
+            <objects>
+                <viewController id="dvf-mJ-DOc" customClass="XYAddEventViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="SSy-FP-nJw"/>
+                        <viewControllerLayoutGuide type="bottom" id="zFy-qc-PQn"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="U9p-dO-FYp">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4vQ-6w-acZ">
+                                <subviews>
+                                    <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="InO-J4-Q20">
+                                        <state key="normal" title="提醒场合"/>
+                                        <connections>
+                                            <action selector="clickOnView:" destination="dvf-mJ-DOc" eventType="touchUpInside" id="119-WZ-uk4"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1e1-Im-9ig">
+                                        <state key="normal" title="提醒时间"/>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="InO-J4-Q20" firstAttribute="leading" secondItem="4vQ-6w-acZ" secondAttribute="leading" id="AEb-xf-JuT"/>
+                                    <constraint firstItem="1e1-Im-9ig" firstAttribute="centerY" secondItem="4vQ-6w-acZ" secondAttribute="centerY" id="Kzf-Hq-OZH"/>
+                                    <constraint firstAttribute="height" constant="70" id="bj8-RL-5gQ"/>
+                                    <constraint firstItem="InO-J4-Q20" firstAttribute="centerY" secondItem="4vQ-6w-acZ" secondAttribute="centerY" id="foq-zA-LUW"/>
+                                    <constraint firstAttribute="trailing" secondItem="1e1-Im-9ig" secondAttribute="trailing" id="pe5-7i-5v2"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="4vQ-6w-acZ" firstAttribute="leading" secondItem="U9p-dO-FYp" secondAttribute="leading" constant="50" id="tvR-0j-FWH"/>
+                            <constraint firstItem="zFy-qc-PQn" firstAttribute="top" secondItem="4vQ-6w-acZ" secondAttribute="bottom" constant="50" id="wRF-Mh-hNX"/>
+                            <constraint firstAttribute="trailing" secondItem="4vQ-6w-acZ" secondAttribute="trailing" constant="50" id="wey-Xi-ir3"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="添加提醒事件" id="6hX-MP-Y6I"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bZf-jF-wAM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1146" y="-1"/>
         </scene>
     </scenes>
 </document>
