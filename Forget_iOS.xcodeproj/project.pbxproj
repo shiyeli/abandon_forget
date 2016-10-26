@@ -34,16 +34,13 @@
 		6E3063AA1DC0761C000DBB7D /* XYWillNotifyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E3063A91DC0761C000DBB7D /* XYWillNotifyViewController.m */; };
 		6E3063AD1DC07650000DBB7D /* XYAddAddressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E3063AC1DC07650000DBB7D /* XYAddAddressViewController.m */; };
 		6E3063B01DC07F58000DBB7D /* XYAddEventViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E3063AF1DC07F58000DBB7D /* XYAddEventViewController.m */; };
-
 		6E3063B31DC0863D000DBB7D /* HWTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E3063B21DC0863D000DBB7D /* HWTextView.m */; };
-
 		82BEA0221DC07EA0001F39F0 /* IntentHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 82BEA0211DC07EA0001F39F0 /* IntentHandler.m */; };
 		82BEA02A1DC07EA1001F39F0 /* IntentsUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82BEA0291DC07EA1001F39F0 /* IntentsUI.framework */; };
 		82BEA02E1DC07EA1001F39F0 /* IntentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82BEA02D1DC07EA1001F39F0 /* IntentViewController.m */; };
 		82BEA0311DC07EA1001F39F0 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 82BEA02F1DC07EA1001F39F0 /* MainInterface.storyboard */; };
 		82BEA0351DC07EA1001F39F0 /* Forget_SiriUI.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 82BEA0281DC07EA1001F39F0 /* Forget_SiriUI.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		82BEA0381DC07EA1001F39F0 /* Forget_Siri.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 82BEA01E1DC07EA0001F39F0 /* Forget_Siri.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-
 		82BEA0431DC07F6E001F39F0 /* ForgetGroupDB.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 82BEA0411DC07F6E001F39F0 /* ForgetGroupDB.xcdatamodeld */; };
 		82CAFCFE1DC083D0004730DF /* IntentEvent+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 82CAFCFB1DC083D0004730DF /* IntentEvent+CoreDataClass.m */; };
 		82CAFCFF1DC083D0004730DF /* IntentEvent+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 82CAFCFB1DC083D0004730DF /* IntentEvent+CoreDataClass.m */; };
@@ -51,7 +48,6 @@
 		82CAFD011DC083D0004730DF /* IntentEvent+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 82CAFCFD1DC083D0004730DF /* IntentEvent+CoreDataProperties.m */; };
 		82CAFD021DC083D0004730DF /* IntentEvent+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 82CAFCFD1DC083D0004730DF /* IntentEvent+CoreDataProperties.m */; };
 		82CAFD031DC083D0004730DF /* IntentEvent+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 82CAFCFD1DC083D0004730DF /* IntentEvent+CoreDataProperties.m */; };
-
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -131,10 +127,8 @@
 		6E3063AC1DC07650000DBB7D /* XYAddAddressViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYAddAddressViewController.m; sourceTree = "<group>"; };
 		6E3063AE1DC07F58000DBB7D /* XYAddEventViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYAddEventViewController.h; sourceTree = "<group>"; };
 		6E3063AF1DC07F58000DBB7D /* XYAddEventViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYAddEventViewController.m; sourceTree = "<group>"; };
-
 		6E3063B11DC0863D000DBB7D /* HWTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HWTextView.h; sourceTree = "<group>"; };
 		6E3063B21DC0863D000DBB7D /* HWTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HWTextView.m; sourceTree = "<group>"; };
-
 		82BEA01E1DC07EA0001F39F0 /* Forget_Siri.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = Forget_Siri.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		82BEA0201DC07EA0001F39F0 /* IntentHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IntentHandler.h; sourceTree = "<group>"; };
 		82BEA0211DC07EA0001F39F0 /* IntentHandler.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IntentHandler.m; sourceTree = "<group>"; };
@@ -145,14 +139,12 @@
 		82BEA02D1DC07EA1001F39F0 /* IntentViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IntentViewController.m; sourceTree = "<group>"; };
 		82BEA0301DC07EA1001F39F0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
 		82BEA0321DC07EA1001F39F0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-
 		82BEA0421DC07F6E001F39F0 /* ForgetGroupDB.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ForgetGroupDB.xcdatamodel; sourceTree = "<group>"; };
 		82CAFCFA1DC083D0004730DF /* IntentEvent+CoreDataClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "IntentEvent+CoreDataClass.h"; sourceTree = "<group>"; };
 		82CAFCFB1DC083D0004730DF /* IntentEvent+CoreDataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "IntentEvent+CoreDataClass.m"; sourceTree = "<group>"; };
 		82CAFCFC1DC083D0004730DF /* IntentEvent+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "IntentEvent+CoreDataProperties.h"; sourceTree = "<group>"; };
 		82CAFCFD1DC083D0004730DF /* IntentEvent+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "IntentEvent+CoreDataProperties.m"; sourceTree = "<group>"; };
 		82CAFD041DC0872C004730DF /* Forget_iOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Forget_iOS.entitlements; sourceTree = "<group>"; };
-
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
