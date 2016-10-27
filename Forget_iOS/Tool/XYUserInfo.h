@@ -14,6 +14,9 @@
 
 @property(nonatomic,strong)CLLocation* userLocation;
 
+@property(nonatomic,strong)NSString* userCurrentCity;
+
+
 
 + (instancetype)userInfo;
 

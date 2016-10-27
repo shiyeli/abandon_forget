@@ -89,7 +89,7 @@
     
     AMapInputTipsSearchRequest *tips = [[AMapInputTipsSearchRequest alloc] init];
     tips.keywords = key;
-    tips.city     = @"成都";
+    tips.city     = [XYUserInfo userInfo].userCurrentCity;
     tips.cityLimit = YES;// 是否限制城市
     
     [self.search AMapInputTipsSearch:tips];

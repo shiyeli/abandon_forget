@@ -79,7 +79,8 @@ static XYUserInfo * _userInfo;
     CLGeocoder * geocoder = [[CLGeocoder alloc] init];
     [geocoder  reverseGeocodeLocation:location completionHandler:^(NSArray *placemarks, NSError *error) {
         CLPlacemark * place = placemarks[0];
-        NSLog(@"当前位置: %@",place.name);
+        NSLog(@"当前位置: %@ %@",place.name,place.locality );
+        _userCurrentCity=place.locality;
     }];
     _userLocation=location;
     [[NSNotificationCenter defaultCenter]postNotificationName:kUSER_CURRENT_LOCATION object:location];
