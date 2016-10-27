@@ -9,7 +9,6 @@
 #import "XYAddAddressViewController.h"
 #import <AMapFoundationKit/AMapFoundationKit.h>
 #import <MAMapKit/MAMapKit.h>
-#import "POIAnnotation.h"
 #import <AMapSearchKit/AMapSearchKit.h>
 #import "AMapTipAnnotation.h"
 
@@ -51,6 +50,7 @@
     self.mapView = [[MAMapView alloc] initWithFrame:self.myView.bounds];
     self.mapView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     self.mapView.delegate = self;
+    self.mapView.showsUserLocation=YES;
     [self.myView addSubview:self.mapView];
     
     self.search = [[AMapSearchAPI alloc] init];
@@ -112,6 +112,37 @@
 {
     [self.tips setArray:response.tips];
     [self.myTableView reloadData];
+    [self addTipsOnmap:self.tips];
+}
+-(void)addTipsOnmap:(NSArray*)tips{
+    
+    [self.mapView removeAnnotations:self.mapView.annotations];
+    
+    if (tips.count == 0)
+    {
+        return;
+    }
+    
+    NSMutableArray *tipAnnotations = [NSMutableArray arrayWithCapacity:tips.count];
+    
+    [tips enumerateObjectsUsingBlock:^(AMapTip *obj, NSUInteger idx, BOOL *stop) {
+        
+        [tipAnnotations addObject:[[AMapTipAnnotation alloc] initWithMapTip:obj]];
+    }];
+    
+    /* 将结果以annotation的形式加载到地图上. */
+    [self.mapView addAnnotations:tipAnnotations];
+    
+    /* 如果只有一个结果，设置其为中心点. */
+    if (tipAnnotations.count == 1)
+    {
+        [self.mapView setCenterCoordinate:[tipAnnotations[0] coordinate]];
+    }
+    /* 如果有多个结果, 设置地图使所有的annotation都可见. */
+    else
+    {
+        [self.mapView showAnnotations:tipAnnotations animated:NO];
+    }
 }
 
 

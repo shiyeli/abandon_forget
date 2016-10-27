@@ -15,7 +15,6 @@
 		6E30637C1DC05B03000DBB7D /* AMapFoundationKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E3063771DC05B03000DBB7D /* AMapFoundationKit.framework */; };
 		6E30637D1DC05B03000DBB7D /* AMapSearchKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E3063781DC05B03000DBB7D /* AMapSearchKit.framework */; };
 		6E30637E1DC05B03000DBB7D /* MAMapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E3063791DC05B03000DBB7D /* MAMapKit.framework */; };
-		6E30637F1DC05B03000DBB7D /* POIAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E30637B1DC05B03000DBB7D /* POIAnnotation.m */; };
 		6E3063821DC05B23000DBB7D /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E3063811DC05B23000DBB7D /* MapKit.framework */; };
 		6E3063841DC05B2C000DBB7D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E3063831DC05B2C000DBB7D /* CoreGraphics.framework */; };
 		6E3063861DC05B34000DBB7D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E3063851DC05B34000DBB7D /* UIKit.framework */; };
@@ -40,6 +39,7 @@
 		6E3063BD1DC08FE3000DBB7D /* XYNotifyPropertyChangeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E3063BC1DC08FE3000DBB7D /* XYNotifyPropertyChangeView.m */; };
 		6E3063C01DC0A250000DBB7D /* XYUserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E3063BF1DC0A250000DBB7D /* XYUserInfo.m */; };
 		6E3063C41DC0B390000DBB7D /* AMapTipAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E3063C31DC0B390000DBB7D /* AMapTipAnnotation.m */; };
+		6E3063C91DC1DEB1000DBB7D /* AMap.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 6E3063C81DC1DEB1000DBB7D /* AMap.bundle */; };
 		82BEA0221DC07EA0001F39F0 /* IntentHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 82BEA0211DC07EA0001F39F0 /* IntentHandler.m */; };
 		82BEA02A1DC07EA1001F39F0 /* IntentsUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82BEA0291DC07EA1001F39F0 /* IntentsUI.framework */; };
 		82BEA02E1DC07EA1001F39F0 /* IntentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82BEA02D1DC07EA1001F39F0 /* IntentViewController.m */; };
@@ -104,8 +104,6 @@
 		6E3063771DC05B03000DBB7D /* AMapFoundationKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AMapFoundationKit.framework; sourceTree = "<group>"; };
 		6E3063781DC05B03000DBB7D /* AMapSearchKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AMapSearchKit.framework; sourceTree = "<group>"; };
 		6E3063791DC05B03000DBB7D /* MAMapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MAMapKit.framework; sourceTree = "<group>"; };
-		6E30637A1DC05B03000DBB7D /* POIAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = POIAnnotation.h; sourceTree = "<group>"; };
-		6E30637B1DC05B03000DBB7D /* POIAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = POIAnnotation.m; sourceTree = "<group>"; };
 		6E3063811DC05B23000DBB7D /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		6E3063831DC05B2C000DBB7D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		6E3063851DC05B34000DBB7D /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -145,6 +143,7 @@
 		6E3063BF1DC0A250000DBB7D /* XYUserInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYUserInfo.m; sourceTree = "<group>"; };
 		6E3063C21DC0B390000DBB7D /* AMapTipAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMapTipAnnotation.h; sourceTree = "<group>"; };
 		6E3063C31DC0B390000DBB7D /* AMapTipAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMapTipAnnotation.m; sourceTree = "<group>"; };
+		6E3063C81DC1DEB1000DBB7D /* AMap.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = AMap.bundle; sourceTree = "<group>"; };
 		82BEA01E1DC07EA0001F39F0 /* Forget_Siri.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = Forget_Siri.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		82BEA0201DC07EA0001F39F0 /* IntentHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IntentHandler.h; sourceTree = "<group>"; };
 		82BEA0211DC07EA0001F39F0 /* IntentHandler.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IntentHandler.m; sourceTree = "<group>"; };
@@ -288,11 +287,10 @@
 		6E3063761DC05AD9000DBB7D /* AMap */ = {
 			isa = PBXGroup;
 			children = (
+				6E3063C81DC1DEB1000DBB7D /* AMap.bundle */,
 				6E3063771DC05B03000DBB7D /* AMapFoundationKit.framework */,
 				6E3063781DC05B03000DBB7D /* AMapSearchKit.framework */,
 				6E3063791DC05B03000DBB7D /* MAMapKit.framework */,
-				6E30637A1DC05B03000DBB7D /* POIAnnotation.h */,
-				6E30637B1DC05B03000DBB7D /* POIAnnotation.m */,
 			);
 			path = AMap;
 			sourceTree = "<group>";
@@ -530,6 +528,7 @@
 			files = (
 				6E3063521DC05171000DBB7D /* LaunchScreen.storyboard in Resources */,
 				6E30634F1DC05171000DBB7D /* Assets.xcassets in Resources */,
+				6E3063C91DC1DEB1000DBB7D /* AMap.bundle in Resources */,
 				6E30634D1DC05171000DBB7D /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -560,7 +559,6 @@
 				82BEA0431DC07F6E001F39F0 /* ForgetGroupDB.xcdatamodeld in Sources */,
 				6E3063AA1DC0761C000DBB7D /* XYWillNotifyViewController.m in Sources */,
 				6E3063C41DC0B390000DBB7D /* AMapTipAnnotation.m in Sources */,
-				6E30637F1DC05B03000DBB7D /* POIAnnotation.m in Sources */,
 				6E3063A41DC060DD000DBB7D /* XYParentView.m in Sources */,
 				6E3063471DC05171000DBB7D /* AppDelegate.m in Sources */,
 				82CAFCFE1DC083D0004730DF /* IntentEvent+CoreDataClass.m in Sources */,
