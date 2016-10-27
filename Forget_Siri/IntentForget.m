@@ -7,6 +7,8 @@
 //
 
 #import "IntentForget.h"
+@interface IntentForget ()
+@end
 
 @implementation IntentForget
 

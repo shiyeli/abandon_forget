@@ -55,6 +55,7 @@
 		82A42F851DC1EA1000A29058 /* DBManagerContext.h in Headers */ = {isa = PBXBuildFile; fileRef = 82A42F791DC1DF8000A29058 /* DBManagerContext.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		82A42F861DC1EE4600A29058 /* ForgetGroupDB.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 82BEA0411DC07F6E001F39F0 /* ForgetGroupDB.xcdatamodeld */; };
 		82A42F891DC1F6BC00A29058 /* IntentForget.m in Sources */ = {isa = PBXBuildFile; fileRef = 82A42F881DC1F6BC00A29058 /* IntentForget.m */; };
+		82A42F8A1DC1F8DA00A29058 /*  AppIntentVocabulary.plist in Resources */ = {isa = PBXBuildFile; fileRef = 82A42F5E1DC1AD9000A29058 /*  AppIntentVocabulary.plist */; };
 		82BEA0221DC07EA0001F39F0 /* IntentHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 82BEA0211DC07EA0001F39F0 /* IntentHandler.m */; };
 		82BEA02A1DC07EA1001F39F0 /* IntentsUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82BEA0291DC07EA1001F39F0 /* IntentsUI.framework */; };
 		82BEA02E1DC07EA1001F39F0 /* IntentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82BEA02D1DC07EA1001F39F0 /* IntentViewController.m */; };
@@ -641,6 +642,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6E3066CE1DC1F516000DBB7D /* AMap.bundle in Resources */,
+				82A42F8A1DC1F8DA00A29058 /*  AppIntentVocabulary.plist in Resources */,
 				6E3063521DC05171000DBB7D /* LaunchScreen.storyboard in Resources */,
 				6E30634F1DC05171000DBB7D /* Assets.xcassets in Resources */,
 				6E3066CC1DC1F4E2000DBB7D /* locate@2x.png in Resources */,
