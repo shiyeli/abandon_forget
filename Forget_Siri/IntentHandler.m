@@ -26,7 +26,7 @@
 - (id)handlerForIntent:(INIntent *)intent {
     // This is the default implementation.  If you want different objects to handle different intents,
     // you can override this and return the handler you want for that particular intent.
-    
+    NSLog(@"the handler for intent function.....");
     return self;
 }
 
@@ -43,6 +43,7 @@
     NSMutableArray<INPersonResolutionResult *> *resolutionResults = [NSMutableArray array];
     
     for (INPerson *recipient in recipients) {
+        NSLog(@"the recipient personHandle.type:%d,   personHandle.value:%@",recipient.personHandle.type,recipient.personHandle.value);
         NSArray<INPerson *> *matchingContacts = @[recipient]; // Implement your contact matching logic here to create an array of matching contacts
         if (matchingContacts.count > 1) {
             // We need Siri's help to ask user to pick one from the matches.
@@ -50,6 +51,7 @@
 
         } else if (matchingContacts.count == 1) {
             // We have exactly one matching contact
+            
             [resolutionResults addObject:[INPersonResolutionResult successWithResolvedPerson:recipient]];
         } else {
             // We have no contacts matching the description provided
