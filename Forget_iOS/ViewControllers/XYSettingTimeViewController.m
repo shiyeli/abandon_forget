@@ -1,23 +1,21 @@
 //
-//  XYAddEventViewController.m
+//  XYSettingTimeViewController.m
 //  Forget_iOS
 //
 //  Created by 叶同学 on 2016/10/26.
 //  Copyright © 2016年 叶同学. All rights reserved.
 //
 
-#import "XYAddEventViewController.h"
-#import "HWTextView.h"
-@interface XYAddEventViewController ()
+#import "XYSettingTimeViewController.h"
+#import "XYNotifyPropertyChangeView.h"
+@interface XYSettingTimeViewController ()
+@property (weak, nonatomic) IBOutlet UIPickerView *myPickerView;
 
-@property (weak, nonatomic) IBOutlet HWTextView *notifyContent;
-
-
-
+@property (weak, nonatomic) IBOutlet XYNotifyPropertyChangeView *notifySettingView;
 
 @end
 
-@implementation XYAddEventViewController
+@implementation XYSettingTimeViewController
 
 - (IBAction)accomplish:(id)sender {
     
@@ -28,17 +26,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.notifyContent.placeholder=@"请输入提醒时间备注信息";
+    // Do any additional setup after loading the view.
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-
-
-
 
 /*
 #pragma mark - Navigation
