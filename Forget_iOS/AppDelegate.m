@@ -18,10 +18,11 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-    
-    [INPreferences requestSiriAuthorization:^(INSiriAuthorizationStatus status) {
-        NSLog(@"the siri authorization...%d",status);
-    }];
+    if([INPreferences siriAuthorizationStatus] == INSiriAuthorizationStatusNotDetermined){
+        [INPreferences requestSiriAuthorization:^(INSiriAuthorizationStatus status) {
+            NSLog(@"the siri authorization...%d",status);
+        }];
+    }
     
     return YES;
 }
