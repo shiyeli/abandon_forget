@@ -51,6 +51,7 @@
     self.mapView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     self.mapView.delegate = self;
     self.mapView.showsUserLocation=YES;
+    [self.mapView setCenterCoordinate:[XYUserInfo userInfo].userLocation.coordinate animated:NO];
     [self.myView addSubview:self.mapView];
     
     self.search = [[AMapSearchAPI alloc] init];
@@ -64,6 +65,7 @@
     [self.searchHoldView addGestureRecognizer:panGestureRecognizer];
     
 }
+
 #pragma mark - searchBarDelegate
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText{
     [self searchTipsWithKey:searchText];

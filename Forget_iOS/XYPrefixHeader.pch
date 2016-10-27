@@ -14,9 +14,11 @@
 
 //宏定义
 #import "ACMacros.h"
+#import "XYUserInfo.h"
 //高德Apikey
 #define AMapApiKey @"881a46c1030c7f0aaf1dbd1c59fea787"
-
+//用户当前位置通知
+#define kUSER_CURRENT_LOCATION @"kUSER_CURRENT_LOCATION"
 
 
 

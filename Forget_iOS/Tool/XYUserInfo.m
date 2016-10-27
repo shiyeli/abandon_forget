@@ -81,6 +81,8 @@ static XYUserInfo * _userInfo;
         CLPlacemark * place = placemarks[0];
         NSLog(@"当前位置: %@",place.name);
     }];
+    _userLocation=location;
+    [[NSNotificationCenter defaultCenter]postNotificationName:kUSER_CURRENT_LOCATION object:location];
     [_mLocationManager stopUpdatingLocation];
 }
 
