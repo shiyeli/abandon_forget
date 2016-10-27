@@ -8,7 +8,7 @@
 
 #import "AppDelegate.h"
 #import <AMapFoundationKit/AMapFoundationKit.h>
-
+#import <DBManager/DBManager.h>
 @interface AppDelegate ()
 
 @end
@@ -20,7 +20,10 @@
     // Override point for customization after application launch.
     [AMapServices sharedServices].apiKey=AMapApiKey;
     
-    
+    [DBManagerContext intentEvent_insertItem:@"forget ios insert"];
+    [[DBManagerContext intentEvent_allIntentEvent] enumerateObjectsUsingBlock:^(IntentEvent * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        NSLog(@"the title:%@",obj.eventTitle);
+    }];
     return YES;
 }
 

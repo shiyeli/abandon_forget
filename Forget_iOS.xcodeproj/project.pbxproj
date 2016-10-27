@@ -40,23 +40,36 @@
 		6E3063BD1DC08FE3000DBB7D /* XYNotifyPropertyChangeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E3063BC1DC08FE3000DBB7D /* XYNotifyPropertyChangeView.m */; };
 		6E3063C01DC0A250000DBB7D /* XYUserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E3063BF1DC0A250000DBB7D /* XYUserInfo.m */; };
 		6E3063C41DC0B390000DBB7D /* AMapTipAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E3063C31DC0B390000DBB7D /* AMapTipAnnotation.m */; };
+		82A42F6D1DC1DF2800A29058 /* DBManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 82A42F6B1DC1DF2800A29058 /* DBManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		82A42F701DC1DF2800A29058 /* DBManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82A42F691DC1DF2800A29058 /* DBManager.framework */; };
+		82A42F711DC1DF2800A29058 /* DBManager.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 82A42F691DC1DF2800A29058 /* DBManager.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		82A42F761DC1DF4200A29058 /* ForgetGroupDB.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 82BEA0411DC07F6E001F39F0 /* ForgetGroupDB.xcdatamodeld */; };
+		82A42F771DC1DF4600A29058 /* IntentEvent+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 82CAFCFD1DC083D0004730DF /* IntentEvent+CoreDataProperties.m */; };
+		82A42F781DC1DF4E00A29058 /* IntentEvent+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 82CAFCFB1DC083D0004730DF /* IntentEvent+CoreDataClass.m */; };
+		82A42F7C1DC1DF8000A29058 /* DBManagerContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 82A42F7A1DC1DF8000A29058 /* DBManagerContext.m */; };
+		82A42F7D1DC1DFC000A29058 /* DBManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82A42F691DC1DF2800A29058 /* DBManager.framework */; };
+		82A42F7F1DC1E65400A29058 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82A42F7E1DC1E65400A29058 /* CoreData.framework */; };
+		82A42F831DC1EA1000A29058 /* IntentEvent+CoreDataClass.h in Headers */ = {isa = PBXBuildFile; fileRef = 82CAFCFA1DC083D0004730DF /* IntentEvent+CoreDataClass.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		82A42F841DC1EA1000A29058 /* IntentEvent+CoreDataProperties.h in Headers */ = {isa = PBXBuildFile; fileRef = 82CAFCFC1DC083D0004730DF /* IntentEvent+CoreDataProperties.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		82A42F851DC1EA1000A29058 /* DBManagerContext.h in Headers */ = {isa = PBXBuildFile; fileRef = 82A42F791DC1DF8000A29058 /* DBManagerContext.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		82A42F861DC1EE4600A29058 /* ForgetGroupDB.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 82BEA0411DC07F6E001F39F0 /* ForgetGroupDB.xcdatamodeld */; };
 		82BEA0221DC07EA0001F39F0 /* IntentHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 82BEA0211DC07EA0001F39F0 /* IntentHandler.m */; };
 		82BEA02A1DC07EA1001F39F0 /* IntentsUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82BEA0291DC07EA1001F39F0 /* IntentsUI.framework */; };
 		82BEA02E1DC07EA1001F39F0 /* IntentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82BEA02D1DC07EA1001F39F0 /* IntentViewController.m */; };
 		82BEA0311DC07EA1001F39F0 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 82BEA02F1DC07EA1001F39F0 /* MainInterface.storyboard */; };
 		82BEA0351DC07EA1001F39F0 /* Forget_SiriUI.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 82BEA0281DC07EA1001F39F0 /* Forget_SiriUI.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		82BEA0381DC07EA1001F39F0 /* Forget_Siri.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 82BEA01E1DC07EA0001F39F0 /* Forget_Siri.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		82BEA0431DC07F6E001F39F0 /* ForgetGroupDB.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 82BEA0411DC07F6E001F39F0 /* ForgetGroupDB.xcdatamodeld */; };
-		82CAFCFE1DC083D0004730DF /* IntentEvent+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 82CAFCFB1DC083D0004730DF /* IntentEvent+CoreDataClass.m */; };
-		82CAFCFF1DC083D0004730DF /* IntentEvent+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 82CAFCFB1DC083D0004730DF /* IntentEvent+CoreDataClass.m */; };
-		82CAFD001DC083D0004730DF /* IntentEvent+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 82CAFCFB1DC083D0004730DF /* IntentEvent+CoreDataClass.m */; };
-		82CAFD011DC083D0004730DF /* IntentEvent+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 82CAFCFD1DC083D0004730DF /* IntentEvent+CoreDataProperties.m */; };
-		82CAFD021DC083D0004730DF /* IntentEvent+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 82CAFCFD1DC083D0004730DF /* IntentEvent+CoreDataProperties.m */; };
-		82CAFD031DC083D0004730DF /* IntentEvent+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 82CAFCFD1DC083D0004730DF /* IntentEvent+CoreDataProperties.m */; };
 		82CAFD061DC0AC6A004730DF /* 222.png in Resources */ = {isa = PBXBuildFile; fileRef = 82CAFD051DC0AC6A004730DF /* 222.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		82A42F6E1DC1DF2800A29058 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6E3063371DC05171000DBB7D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 82A42F681DC1DF2800A29058;
+			remoteInfo = DBManager;
+		};
 		82BEA0331DC07EA1001F39F0 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 6E3063371DC05171000DBB7D /* Project object */;
@@ -74,6 +87,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		82A42F751DC1DF2800A29058 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				82A42F711DC1DF2800A29058 /* DBManager.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		82BEA03F1DC07EA1001F39F0 /* Embed App Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -145,6 +169,14 @@
 		6E3063BF1DC0A250000DBB7D /* XYUserInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYUserInfo.m; sourceTree = "<group>"; };
 		6E3063C21DC0B390000DBB7D /* AMapTipAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMapTipAnnotation.h; sourceTree = "<group>"; };
 		6E3063C31DC0B390000DBB7D /* AMapTipAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMapTipAnnotation.m; sourceTree = "<group>"; };
+		82A42F5E1DC1AD9000A29058 /*  AppIntentVocabulary.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = " AppIntentVocabulary.plist"; sourceTree = "<group>"; };
+		82A42F631DC1DEC500A29058 /* Forget_Siri.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Forget_Siri.entitlements; sourceTree = "<group>"; };
+		82A42F691DC1DF2800A29058 /* DBManager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DBManager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		82A42F6B1DC1DF2800A29058 /* DBManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DBManager.h; sourceTree = "<group>"; };
+		82A42F6C1DC1DF2800A29058 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		82A42F791DC1DF8000A29058 /* DBManagerContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBManagerContext.h; sourceTree = "<group>"; };
+		82A42F7A1DC1DF8000A29058 /* DBManagerContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBManagerContext.m; sourceTree = "<group>"; };
+		82A42F7E1DC1E65400A29058 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		82BEA01E1DC07EA0001F39F0 /* Forget_Siri.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = Forget_Siri.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		82BEA0201DC07EA0001F39F0 /* IntentHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IntentHandler.h; sourceTree = "<group>"; };
 		82BEA0211DC07EA0001F39F0 /* IntentHandler.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IntentHandler.m; sourceTree = "<group>"; };
@@ -156,10 +188,10 @@
 		82BEA0301DC07EA1001F39F0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
 		82BEA0321DC07EA1001F39F0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		82BEA0421DC07F6E001F39F0 /* ForgetGroupDB.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ForgetGroupDB.xcdatamodel; sourceTree = "<group>"; };
-		82CAFCFA1DC083D0004730DF /* IntentEvent+CoreDataClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "IntentEvent+CoreDataClass.h"; sourceTree = "<group>"; };
-		82CAFCFB1DC083D0004730DF /* IntentEvent+CoreDataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "IntentEvent+CoreDataClass.m"; sourceTree = "<group>"; };
-		82CAFCFC1DC083D0004730DF /* IntentEvent+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "IntentEvent+CoreDataProperties.h"; sourceTree = "<group>"; };
-		82CAFCFD1DC083D0004730DF /* IntentEvent+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "IntentEvent+CoreDataProperties.m"; sourceTree = "<group>"; };
+		82CAFCFA1DC083D0004730DF /* IntentEvent+CoreDataClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "IntentEvent+CoreDataClass.h"; path = "../IntentEvent+CoreDataClass.h"; sourceTree = "<group>"; };
+		82CAFCFB1DC083D0004730DF /* IntentEvent+CoreDataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "IntentEvent+CoreDataClass.m"; path = "../IntentEvent+CoreDataClass.m"; sourceTree = "<group>"; };
+		82CAFCFC1DC083D0004730DF /* IntentEvent+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "IntentEvent+CoreDataProperties.h"; path = "../IntentEvent+CoreDataProperties.h"; sourceTree = "<group>"; };
+		82CAFCFD1DC083D0004730DF /* IntentEvent+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "IntentEvent+CoreDataProperties.m"; path = "../IntentEvent+CoreDataProperties.m"; sourceTree = "<group>"; };
 		82CAFD041DC0872C004730DF /* Forget_iOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Forget_iOS.entitlements; sourceTree = "<group>"; };
 		82CAFD051DC0AC6A004730DF /* 222.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 222.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -181,8 +213,17 @@
 				6E3063841DC05B2C000DBB7D /* CoreGraphics.framework in Frameworks */,
 				6E3063821DC05B23000DBB7D /* MapKit.framework in Frameworks */,
 				6E30637E1DC05B03000DBB7D /* MAMapKit.framework in Frameworks */,
+				82A42F701DC1DF2800A29058 /* DBManager.framework in Frameworks */,
 				6E30637D1DC05B03000DBB7D /* AMapSearchKit.framework in Frameworks */,
 				6E30637C1DC05B03000DBB7D /* AMapFoundationKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		82A42F651DC1DF2800A29058 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				82A42F7F1DC1E65400A29058 /* CoreData.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -190,6 +231,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				82A42F7D1DC1DFC000A29058 /* DBManager.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -207,12 +249,13 @@
 		6E3063361DC05171000DBB7D = {
 			isa = PBXGroup;
 			children = (
-				82BEA0401DC07F39001F39F0 /* GroupDB */,
+				82A42F5E1DC1AD9000A29058 /*  AppIntentVocabulary.plist */,
 				6E3063411DC05171000DBB7D /* Forget_iOS */,
 				6E30635B1DC05171000DBB7D /* Forget_iOSTests */,
 				6E3063661DC05171000DBB7D /* Forget_iOSUITests */,
 				82BEA01F1DC07EA0001F39F0 /* Forget_Siri */,
 				82BEA02B1DC07EA1001F39F0 /* Forget_SiriUI */,
+				82A42F6A1DC1DF2800A29058 /* DBManager */,
 				6E3063401DC05171000DBB7D /* Products */,
 				6E3063801DC05B23000DBB7D /* Frameworks */,
 			);
@@ -224,6 +267,7 @@
 				6E30633F1DC05171000DBB7D /* Forget_iOS.app */,
 				82BEA01E1DC07EA0001F39F0 /* Forget_Siri.appex */,
 				82BEA0281DC07EA1001F39F0 /* Forget_SiriUI.appex */,
+				82A42F691DC1DF2800A29058 /* DBManager.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -300,6 +344,7 @@
 		6E3063801DC05B23000DBB7D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				82A42F7E1DC1E65400A29058 /* CoreData.framework */,
 				6E3063951DC05B77000DBB7D /* libc++.tbd */,
 				6E3063931DC05B6F000DBB7D /* libstdc++.6.0.9.tbd */,
 				6E3063911DC05B66000DBB7D /* libz.tbd */,
@@ -377,9 +422,26 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		82A42F6A1DC1DF2800A29058 /* DBManager */ = {
+			isa = PBXGroup;
+			children = (
+				82CAFCFA1DC083D0004730DF /* IntentEvent+CoreDataClass.h */,
+				82CAFCFB1DC083D0004730DF /* IntentEvent+CoreDataClass.m */,
+				82CAFCFC1DC083D0004730DF /* IntentEvent+CoreDataProperties.h */,
+				82CAFCFD1DC083D0004730DF /* IntentEvent+CoreDataProperties.m */,
+				82BEA0411DC07F6E001F39F0 /* ForgetGroupDB.xcdatamodeld */,
+				82A42F6B1DC1DF2800A29058 /* DBManager.h */,
+				82A42F6C1DC1DF2800A29058 /* Info.plist */,
+				82A42F791DC1DF8000A29058 /* DBManagerContext.h */,
+				82A42F7A1DC1DF8000A29058 /* DBManagerContext.m */,
+			);
+			path = DBManager;
+			sourceTree = "<group>";
+		};
 		82BEA01F1DC07EA0001F39F0 /* Forget_Siri */ = {
 			isa = PBXGroup;
 			children = (
+				82A42F631DC1DEC500A29058 /* Forget_Siri.entitlements */,
 				82BEA0201DC07EA0001F39F0 /* IntentHandler.h */,
 				82BEA0211DC07EA0001F39F0 /* IntentHandler.m */,
 				82BEA0231DC07EA1001F39F0 /* Info.plist */,
@@ -399,19 +461,21 @@
 			path = Forget_SiriUI;
 			sourceTree = "<group>";
 		};
-		82BEA0401DC07F39001F39F0 /* GroupDB */ = {
-			isa = PBXGroup;
-			children = (
-				82CAFCFA1DC083D0004730DF /* IntentEvent+CoreDataClass.h */,
-				82CAFCFB1DC083D0004730DF /* IntentEvent+CoreDataClass.m */,
-				82CAFCFC1DC083D0004730DF /* IntentEvent+CoreDataProperties.h */,
-				82CAFCFD1DC083D0004730DF /* IntentEvent+CoreDataProperties.m */,
-				82BEA0411DC07F6E001F39F0 /* ForgetGroupDB.xcdatamodeld */,
-			);
-			name = GroupDB;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		82A42F661DC1DF2800A29058 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				82A42F6D1DC1DF2800A29058 /* DBManager.h in Headers */,
+				82A42F831DC1EA1000A29058 /* IntentEvent+CoreDataClass.h in Headers */,
+				82A42F841DC1EA1000A29058 /* IntentEvent+CoreDataProperties.h in Headers */,
+				82A42F851DC1EA1000A29058 /* DBManagerContext.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
 		6E30633E1DC05171000DBB7D /* Forget_iOS */ = {
@@ -422,17 +486,37 @@
 				6E30633C1DC05171000DBB7D /* Frameworks */,
 				6E30633D1DC05171000DBB7D /* Resources */,
 				82BEA03F1DC07EA1001F39F0 /* Embed App Extensions */,
+				82A42F751DC1DF2800A29058 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 				82BEA0341DC07EA1001F39F0 /* PBXTargetDependency */,
 				82BEA0371DC07EA1001F39F0 /* PBXTargetDependency */,
+				82A42F6F1DC1DF2800A29058 /* PBXTargetDependency */,
 			);
 			name = Forget_iOS;
 			productName = Forget_iOS;
 			productReference = 6E30633F1DC05171000DBB7D /* Forget_iOS.app */;
 			productType = "com.apple.product-type.application";
+		};
+		82A42F681DC1DF2800A29058 /* DBManager */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 82A42F721DC1DF2800A29058 /* Build configuration list for PBXNativeTarget "DBManager" */;
+			buildPhases = (
+				82A42F641DC1DF2800A29058 /* Sources */,
+				82A42F651DC1DF2800A29058 /* Frameworks */,
+				82A42F661DC1DF2800A29058 /* Headers */,
+				82A42F671DC1DF2800A29058 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DBManager;
+			productName = DBManager;
+			productReference = 82A42F691DC1DF2800A29058 /* DBManager.framework */;
+			productType = "com.apple.product-type.framework";
 		};
 		82BEA01D1DC07EA0001F39F0 /* Forget_Siri */ = {
 			isa = PBXNativeTarget;
@@ -484,16 +568,29 @@
 						LastSwiftMigration = 0800;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
 							com.apple.Siri = {
 								enabled = 1;
 							};
 						};
+					};
+					82A42F681DC1DF2800A29058 = {
+						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = D2PU2HGB5Q;
+						ProvisioningStyle = Automatic;
 					};
 					82BEA01D1DC07EA0001F39F0 = {
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = D2PU2HGB5Q;
 						LastSwiftMigration = 0800;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 					82BEA0271DC07EA1001F39F0 = {
 						CreatedOnToolsVersion = 8.0;
@@ -519,6 +616,7 @@
 				6E30633E1DC05171000DBB7D /* Forget_iOS */,
 				82BEA01D1DC07EA0001F39F0 /* Forget_Siri */,
 				82BEA0271DC07EA1001F39F0 /* Forget_SiriUI */,
+				82A42F681DC1DF2800A29058 /* DBManager */,
 			);
 		};
 /* End PBXProject section */
@@ -531,6 +629,13 @@
 				6E3063521DC05171000DBB7D /* LaunchScreen.storyboard in Resources */,
 				6E30634F1DC05171000DBB7D /* Assets.xcassets in Resources */,
 				6E30634D1DC05171000DBB7D /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		82A42F671DC1DF2800A29058 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -557,17 +662,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				82BEA0431DC07F6E001F39F0 /* ForgetGroupDB.xcdatamodeld in Sources */,
 				6E3063AA1DC0761C000DBB7D /* XYWillNotifyViewController.m in Sources */,
 				6E3063C41DC0B390000DBB7D /* AMapTipAnnotation.m in Sources */,
 				6E30637F1DC05B03000DBB7D /* POIAnnotation.m in Sources */,
 				6E3063A41DC060DD000DBB7D /* XYParentView.m in Sources */,
 				6E3063471DC05171000DBB7D /* AppDelegate.m in Sources */,
-				82CAFCFE1DC083D0004730DF /* IntentEvent+CoreDataClass.m in Sources */,
 				6E30639C1DC05F5C000DBB7D /* XYMainViewController.m in Sources */,
 				6E3063A11DC060C4000DBB7D /* XYParentViewController.m in Sources */,
 				6E3063B61DC08DA3000DBB7D /* XYSettingTimeViewController.m in Sources */,
-				82CAFD011DC083D0004730DF /* IntentEvent+CoreDataProperties.m in Sources */,
 				6E3063AD1DC07650000DBB7D /* XYAddAddressViewController.m in Sources */,
 				6E3063B91DC08DD4000DBB7D /* XYSettingOccasionViewController.m in Sources */,
 				6E3063441DC05171000DBB7D /* main.m in Sources */,
@@ -579,13 +681,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		82A42F641DC1DF2800A29058 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				82A42F771DC1DF4600A29058 /* IntentEvent+CoreDataProperties.m in Sources */,
+				82A42F781DC1DF4E00A29058 /* IntentEvent+CoreDataClass.m in Sources */,
+				82A42F761DC1DF4200A29058 /* ForgetGroupDB.xcdatamodeld in Sources */,
+				82A42F7C1DC1DF8000A29058 /* DBManagerContext.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		82BEA01A1DC07EA0001F39F0 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				82CAFCFF1DC083D0004730DF /* IntentEvent+CoreDataClass.m in Sources */,
+				82A42F861DC1EE4600A29058 /* ForgetGroupDB.xcdatamodeld in Sources */,
 				82BEA0221DC07EA0001F39F0 /* IntentHandler.m in Sources */,
-				82CAFD021DC083D0004730DF /* IntentEvent+CoreDataProperties.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -593,15 +705,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				82CAFD001DC083D0004730DF /* IntentEvent+CoreDataClass.m in Sources */,
 				82BEA02E1DC07EA1001F39F0 /* IntentViewController.m in Sources */,
-				82CAFD031DC083D0004730DF /* IntentEvent+CoreDataProperties.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		82A42F6F1DC1DF2800A29058 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 82A42F681DC1DF2800A29058 /* DBManager */;
+			targetProxy = 82A42F6E1DC1DF2800A29058 /* PBXContainerItemProxy */;
+		};
 		82BEA0341DC07EA1001F39F0 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 82BEA0271DC07EA1001F39F0 /* Forget_SiriUI */;
@@ -781,10 +896,55 @@
 			};
 			name = Release;
 		};
+		82A42F731DC1DF2800A29058 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer: zeng xu (55V3SCMT39)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = D2PU2HGB5Q;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = DBManager/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.bluesea.work.DBManager;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		82A42F741DC1DF2800A29058 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer: zeng xu (55V3SCMT39)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = D2PU2HGB5Q;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = DBManager/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.bluesea.work.DBManager;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
 		82BEA0391DC07EA1001F39F0 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = Forget_Siri/Forget_Siri.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer: zeng xu (55V3SCMT39)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = D2PU2HGB5Q;
@@ -803,6 +963,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = Forget_Siri/Forget_Siri.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer: zeng xu (55V3SCMT39)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = D2PU2HGB5Q;
@@ -872,6 +1033,14 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		82A42F721DC1DF2800A29058 /* Build configuration list for PBXNativeTarget "DBManager" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				82A42F731DC1DF2800A29058 /* Debug */,
+				82A42F741DC1DF2800A29058 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		82BEA03D1DC07EA1001F39F0 /* Build configuration list for PBXNativeTarget "Forget_SiriUI" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -899,7 +1068,8 @@
 				82BEA0421DC07F6E001F39F0 /* ForgetGroupDB.xcdatamodel */,
 			);
 			currentVersion = 82BEA0421DC07F6E001F39F0 /* ForgetGroupDB.xcdatamodel */;
-			path = ForgetGroupDB.xcdatamodeld;
+			name = ForgetGroupDB.xcdatamodeld;
+			path = ../ForgetGroupDB.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

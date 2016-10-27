@@ -17,6 +17,7 @@
 // "<myApp> John saying hello"
 // "Search for messages in <myApp>"
 
+#import <DBManager/DBManager.h>
 @interface IntentHandler () <INSendMessageIntentHandling, INSearchForMessagesIntentHandling, INSetMessageAttributeIntentHandling>
 
 @end
@@ -27,6 +28,10 @@
     // This is the default implementation.  If you want different objects to handle different intents,
     // you can override this and return the handler you want for that particular intent.
     NSLog(@"the handler for intent function.....");
+    [DBManagerContext intentEvent_insertItem:@"siri insert"];
+    [[DBManagerContext intentEvent_allIntentEvent] enumerateObjectsUsingBlock:^(IntentEvent * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        NSLog(@"the title:%@",obj.eventTitle);
+    }];
     return self;
 }
 
