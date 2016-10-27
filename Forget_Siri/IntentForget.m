@@ -11,5 +11,8 @@
 @end
 
 @implementation IntentForget
-
+- (id)handlerForIntent:(INIntent *)intent {
+    
+    return self;
+}
 @end

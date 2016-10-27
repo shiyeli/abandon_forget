@@ -6,7 +6,7 @@
 	<dict>
 		<key>ParameterVocabulary</key>
 		<array>
-			<string>INRequestRideIntent.rideOptionName</string>
+			<string>INSendMessageIntentrideOptionName</string>
 		</array>
 		<key>ParameterNames</key>
 		<array>
