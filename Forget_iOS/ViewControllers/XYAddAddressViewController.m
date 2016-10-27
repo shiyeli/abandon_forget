@@ -137,6 +137,10 @@
     {
         [self.mapView showAnnotations:tipAnnotations animated:NO];
     }
+    
+    //将第一个tip 显示信息
+    [self.mapView selectAnnotation:tipAnnotations[0] animated:YES];
+    
 }
 
 #pragma mark - MAMapViewDelegate
@@ -172,21 +176,6 @@
     
     return nil;
 }
-
-//- (MAOverlayRenderer *)mapView:(MAMapView *)mapView rendererForOverlay:(id<MAOverlay>)overlay
-//{
-//    if ([overlay isKindOfClass:[MAPolyline class]])
-//    {
-//        MAPolylineRenderer *polylineRenderer = [[MAPolylineRenderer alloc] initWithPolyline:overlay];
-//        
-//        polylineRenderer.lineWidth   = 4.f;
-//        polylineRenderer.strokeColor = [UIColor magentaColor];
-//        
-//        return polylineRenderer;
-//    }
-//    
-//    return nil;
-//}
 
 
 //长按地图
