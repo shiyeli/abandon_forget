@@ -25,7 +25,7 @@
 @implementation IntentViewController
 
 - (BOOL)displaysMessage{
-    return NO;
+    return YES;
 }
 
 - (void)viewDidLoad {
@@ -61,7 +61,7 @@
 }
 
 - (CGSize)desiredSize {
-    return CGSizeMake(320, 150);
+//    return CGSizeMake(320, 150);
     return [self extensionContext].hostedViewMaximumAllowedSize;
 }
 

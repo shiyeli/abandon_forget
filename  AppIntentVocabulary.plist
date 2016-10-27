@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>ParameterVocabularies</key>
+	<dict>
+		<key>ParameterVocabulary</key>
+		<array>
+			<string>INRequestRideIntent.rideOptionName</string>
+		</array>
+		<key>ParameterNames</key>
+		<array>
+			<dict>
+				<key>VocabularyItemSynonyms</key>
+				<dict>
+					<key>VocabularyItemExamples</key>
+					<array>
+						<string>别忘记带钥匙，提醒我</string>
+					</array>
+					<key>VocabularyItemPronunciation</key>
+					<string>试用踢踢题型喔</string>
+					<key>VocabularyItemPhrase</key>
+					<string>使用TT提醒我</string>
+				</dict>
+				<key>VocabularyItemIdentifier</key>
+				<string>VocabularyItemIdentifierWorkoutForSleep1</string>
+			</dict>
+		</array>
+	</dict>
+	<key>IntentPhrases</key>
+	<array>
+		<dict>
+			<key>IntentExamples</key>
+			<array>
+				<string>让TT记录一下买东西</string>
+				<string>请使用TT记录一条日志</string>
+			</array>
+			<key>IntentName</key>
+			<string>INRequestRideIntent</string>
+		</dict>
+	</array>
+</dict>
+</plist>
