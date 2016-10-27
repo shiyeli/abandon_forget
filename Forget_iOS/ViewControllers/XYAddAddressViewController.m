@@ -11,12 +11,12 @@
 #import <MAMapKit/MAMapKit.h>
 #import <AMapSearchKit/AMapSearchKit.h>
 #import "AMapTipAnnotation.h"
-
+#import "XYHgithtOfKeyboard.h"
 #define POSITION_HEIGH Main_Screen_Height-150.0
 #define POSITION_LOW 58.0
+#define REMARK_LOCATION_HEIGHT 100
 
-
-@interface XYAddAddressViewController ()<MAMapViewDelegate, AMapSearchDelegate, UITableViewDataSource, UITableViewDelegate,UISearchBarDelegate>
+@interface XYAddAddressViewController ()<MAMapViewDelegate, AMapSearchDelegate, UITableViewDataSource, UITableViewDelegate,UISearchBarDelegate,XYHgithtOfKeyboardDelegate>
 
 @property (nonatomic, strong) MAMapView *mapView;
 @property (nonatomic, strong) AMapSearchAPI *search;
@@ -26,13 +26,36 @@
 @property (weak, nonatomic) IBOutlet UISearchBar *mySearchBar;
 @property (weak, nonatomic) IBOutlet UITableView *myTableView;
 
-@property (weak, nonatomic) IBOutlet UIView *searchHoldView;
 
+
+@property (weak, nonatomic) IBOutlet UIView *searchHoldView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *searchHoldViewH;
+
+
+@property (weak, nonatomic) IBOutlet UIView *remarkHoldView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *remarkHoldViewBottomD;
+@property (weak, nonatomic) IBOutlet UILabel *addressDetail;
+@property (weak, nonatomic) IBOutlet UITextField *remarkImput;
+
+@property(nonatomic,strong)XYHgithtOfKeyboard* keyboardMgr;
 
 @end
 
 @implementation XYAddAddressViewController
+
+- (IBAction)cancelRemarkClick:(id)sender {
+    self.remarkHoldViewBottomD.constant=-REMARK_LOCATION_HEIGHT;
+    [UIView animateWithDuration:0.3 animations:^{
+        [self.view layoutIfNeeded];
+    }];
+}
+
+
+- (IBAction)remarkClick:(id)sender {
+    
+    [self cancelRemarkClick:nil];
+}
+
 
 - (IBAction)accomplish:(id)sender {
     
@@ -63,6 +86,10 @@
     UIPanGestureRecognizer *panGestureRecognizer = [[UIPanGestureRecognizer alloc] init];
     [panGestureRecognizer addTarget:self action:@selector(panGestureAction:)];
     [self.searchHoldView addGestureRecognizer:panGestureRecognizer];
+    
+    self.keyboardMgr=[[XYHgithtOfKeyboard alloc]init];
+    self.keyboardMgr.delegate=self;
+    self.remarkHoldViewBottomD.constant=-REMARK_LOCATION_HEIGHT;
     
 }
 
@@ -234,13 +261,22 @@
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return self.tips.count;
 }
-
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    AMapTip* tip=[self.tips objectAtIndex:indexPath.row];
+    self.addressDetail.text=tip.name;
+    
+    self.searchHoldViewH.constant=POSITION_LOW;
+    self.remarkHoldViewBottomD.constant=0;
+    [UIView animateWithDuration:0.3 animations:^{
+        [self.view layoutIfNeeded];
+    }];
+}
 
 #pragma mark - 实现托移手势的方法
 - (void)panGestureAction:(UIPanGestureRecognizer *) sender {
     
     if (sender.state == UIGestureRecognizerStateChanged) {
-        //注意，这里取得的参照坐标系是该对象的上层View的坐标。
+        //参照坐标系是该对象的上层View的坐标。
         CGPoint offset = [sender translationInView:self.view];
     
         self.searchHoldViewH.constant=(self.searchHoldViewH.constant-offset.y)<=POSITION_LOW? POSITION_LOW: (self.searchHoldViewH.constant-offset.y);
@@ -260,7 +296,15 @@
     }
 }
 
-
+#pragma mark - heithtOfKeyboard
+-(void)heithtOfKeyboard:(CGFloat)height isShow:(BOOL)isShow{
+    if (self.remarkHoldViewBottomD.constant>=0) {
+        self.remarkHoldViewBottomD.constant=height;
+        [UIView animateWithDuration:0.05 animations:^{
+            [self.view layoutIfNeeded];
+        }];
+    };
+}
 
 /*
 #pragma mark - Navigation
