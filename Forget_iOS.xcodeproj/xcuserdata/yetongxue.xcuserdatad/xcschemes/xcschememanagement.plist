@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>DBManager.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>3</integer>
+		</dict>
 		<key>Forget_Siri.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -33,6 +38,11 @@
 			<true/>
 		</dict>
 		<key>6E3063621DC05171000DBB7D</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>82A42F681DC1DF2800A29058</key>
 		<dict>
 			<key>primary</key>
 			<true/>

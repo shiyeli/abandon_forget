@@ -39,6 +39,8 @@
 		6E3063BD1DC08FE3000DBB7D /* XYNotifyPropertyChangeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E3063BC1DC08FE3000DBB7D /* XYNotifyPropertyChangeView.m */; };
 		6E3063C01DC0A250000DBB7D /* XYUserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E3063BF1DC0A250000DBB7D /* XYUserInfo.m */; };
 		6E3063C41DC0B390000DBB7D /* AMapTipAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E3063C31DC0B390000DBB7D /* AMapTipAnnotation.m */; };
+		6E3066CC1DC1F4E2000DBB7D /* locate@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6E3066CB1DC1F4E2000DBB7D /* locate@2x.png */; };
+		6E3066CE1DC1F516000DBB7D /* AMap.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 6E3066CD1DC1F516000DBB7D /* AMap.bundle */; };
 		82A42F6D1DC1DF2800A29058 /* DBManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 82A42F6B1DC1DF2800A29058 /* DBManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		82A42F701DC1DF2800A29058 /* DBManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82A42F691DC1DF2800A29058 /* DBManager.framework */; };
 		82A42F711DC1DF2800A29058 /* DBManager.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 82A42F691DC1DF2800A29058 /* DBManager.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -166,6 +168,8 @@
 		6E3063BF1DC0A250000DBB7D /* XYUserInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYUserInfo.m; sourceTree = "<group>"; };
 		6E3063C21DC0B390000DBB7D /* AMapTipAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMapTipAnnotation.h; sourceTree = "<group>"; };
 		6E3063C31DC0B390000DBB7D /* AMapTipAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMapTipAnnotation.m; sourceTree = "<group>"; };
+		6E3066CB1DC1F4E2000DBB7D /* locate@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "locate@2x.png"; sourceTree = "<group>"; };
+		6E3066CD1DC1F516000DBB7D /* AMap.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = AMap.bundle; sourceTree = "<group>"; };
 		82A42F5E1DC1AD9000A29058 /*  AppIntentVocabulary.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = " AppIntentVocabulary.plist"; sourceTree = "<group>"; };
 		82A42F631DC1DEC500A29058 /* Forget_Siri.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Forget_Siri.entitlements; sourceTree = "<group>"; };
 		82A42F691DC1DF2800A29058 /* DBManager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DBManager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -329,6 +333,8 @@
 		6E3063761DC05AD9000DBB7D /* AMap */ = {
 			isa = PBXGroup;
 			children = (
+				6E3066CD1DC1F516000DBB7D /* AMap.bundle */,
+				6E3066CA1DC1F4CC000DBB7D /* img */,
 				6E3063771DC05B03000DBB7D /* AMapFoundationKit.framework */,
 				6E3063781DC05B03000DBB7D /* AMapSearchKit.framework */,
 				6E3063791DC05B03000DBB7D /* MAMapKit.framework */,
@@ -415,6 +421,14 @@
 				6E3063C31DC0B390000DBB7D /* AMapTipAnnotation.m */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		6E3066CA1DC1F4CC000DBB7D /* img */ = {
+			isa = PBXGroup;
+			children = (
+				6E3066CB1DC1F4E2000DBB7D /* locate@2x.png */,
+			);
+			name = img;
 			sourceTree = "<group>";
 		};
 		82A42F6A1DC1DF2800A29058 /* DBManager */ = {
@@ -621,8 +635,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6E3066CE1DC1F516000DBB7D /* AMap.bundle in Resources */,
 				6E3063521DC05171000DBB7D /* LaunchScreen.storyboard in Resources */,
 				6E30634F1DC05171000DBB7D /* Assets.xcassets in Resources */,
+				6E3066CC1DC1F4E2000DBB7D /* locate@2x.png in Resources */,
 				6E30634D1DC05171000DBB7D /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
