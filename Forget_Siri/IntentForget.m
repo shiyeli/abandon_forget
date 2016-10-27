@@ -7,7 +7,12 @@
 //
 
 #import "IntentForget.h"
+@interface IntentForget ()
+@end
 
 @implementation IntentForget
-
+- (id)handlerForIntent:(INIntent *)intent {
+    
+    return self;
+}
 @end
