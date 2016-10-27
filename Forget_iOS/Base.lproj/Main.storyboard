@@ -96,7 +96,63 @@
                     <view key="view" contentMode="scaleToFill" id="00D-Cp-VVc">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="20C-3U-TZF">
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xGb-kC-rLh">
+                                <subviews>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="QNB-3h-Cop">
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <outlet property="dataSource" destination="iyK-Gw-0EN" id="gv3-Jp-H0G"/>
+                                            <outlet property="delegate" destination="iyK-Gw-0EN" id="aUp-un-9Ql"/>
+                                        </connections>
+                                    </tableView>
+                                    <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="ONG-5i-Txa">
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="nLw-Ht-Rtp"/>
+                                        </constraints>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </searchBar>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cfq-0R-ELA">
+                                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="50" id="2fR-uJ-uWh"/>
+                                            <constraint firstAttribute="height" constant="6" id="ey6-w9-5Ue"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="3"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" red="0.77632373571395874" green="0.77614909410476685" blue="0.79677623510360718" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="Cfq-0R-ELA" firstAttribute="centerX" secondItem="xGb-kC-rLh" secondAttribute="centerX" id="0qW-NK-Om1"/>
+                                    <constraint firstAttribute="height" constant="58" id="1qn-PI-I7U"/>
+                                    <constraint firstItem="Cfq-0R-ELA" firstAttribute="top" secondItem="xGb-kC-rLh" secondAttribute="top" constant="4" id="3bw-8l-NDx"/>
+                                    <constraint firstItem="QNB-3h-Cop" firstAttribute="leading" secondItem="xGb-kC-rLh" secondAttribute="leading" id="89k-aQ-OFg"/>
+                                    <constraint firstItem="QNB-3h-Cop" firstAttribute="top" secondItem="ONG-5i-Txa" secondAttribute="bottom" id="QMx-Il-yrN"/>
+                                    <constraint firstAttribute="trailing" secondItem="QNB-3h-Cop" secondAttribute="trailing" id="eRy-Vb-k23"/>
+                                    <constraint firstAttribute="trailing" secondItem="ONG-5i-Txa" secondAttribute="trailing" id="kDl-lk-STl"/>
+                                    <constraint firstAttribute="bottom" secondItem="QNB-3h-Cop" secondAttribute="bottom" id="wM3-Xb-56M"/>
+                                    <constraint firstItem="ONG-5i-Txa" firstAttribute="top" secondItem="Cfq-0R-ELA" secondAttribute="bottom" constant="4" id="wTM-EO-Gwc"/>
+                                    <constraint firstItem="ONG-5i-Txa" firstAttribute="leading" secondItem="xGb-kC-rLh" secondAttribute="leading" id="xZE-WT-5Gg"/>
+                                </constraints>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="xGb-kC-rLh" secondAttribute="trailing" id="4MB-IR-tf0"/>
+                            <constraint firstItem="xGb-kC-rLh" firstAttribute="leading" secondItem="00D-Cp-VVc" secondAttribute="leading" id="4qA-0y-dHc"/>
+                            <constraint firstItem="Nz2-QF-W9L" firstAttribute="top" secondItem="xGb-kC-rLh" secondAttribute="bottom" id="7ed-Dy-7dg"/>
+                            <constraint firstAttribute="trailing" secondItem="20C-3U-TZF" secondAttribute="trailing" id="M3d-ny-rO4"/>
+                            <constraint firstItem="20C-3U-TZF" firstAttribute="leading" secondItem="00D-Cp-VVc" secondAttribute="leading" id="gQc-IX-lce"/>
+                            <constraint firstItem="Nz2-QF-W9L" firstAttribute="top" secondItem="20C-3U-TZF" secondAttribute="bottom" id="pGQ-KG-JbH"/>
+                            <constraint firstItem="20C-3U-TZF" firstAttribute="top" secondItem="QmJ-EJ-1nh" secondAttribute="bottom" id="xU0-2H-vab"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="添加常用地址" id="m5z-Ul-B2G">
                         <barButtonItem key="rightBarButtonItem" title="完成" id="zly-zM-WbU">
@@ -105,10 +161,17 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="mySearchBar" destination="ONG-5i-Txa" id="TI8-IX-Bza"/>
+                        <outlet property="myTableView" destination="QNB-3h-Cop" id="8m0-qg-zB0"/>
+                        <outlet property="myView" destination="20C-3U-TZF" id="en8-TG-sal"/>
+                        <outlet property="searchHoldView" destination="xGb-kC-rLh" id="N2n-fH-Aup"/>
+                        <outlet property="searchHoldViewH" destination="1qn-PI-I7U" id="ow2-b0-Qs7"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vol-SL-ZVG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="420" y="-726"/>
+            <point key="canvasLocation" x="420" y="-726.38680659670172"/>
         </scene>
         <!--提醒事项-->
         <scene sceneID="AVT-ul-Sh4">

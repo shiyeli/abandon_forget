@@ -12,6 +12,9 @@
 
 @property (nonatomic,strong) CLLocationManager *mLocationManager;
 
+@property(nonatomic,strong)CLLocation* userLocation;
 
+
++ (instancetype)userInfo;
 
 @end
