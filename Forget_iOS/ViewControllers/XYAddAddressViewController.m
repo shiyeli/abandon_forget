@@ -59,14 +59,6 @@
     self.mySearchBar.delegate=self;
     
     
-//    UISwipeGestureRecognizer  *upSwipeGestureRecognizer=[[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(swipeGestureRecognizer:)];
-//    upSwipeGestureRecognizer.direction=UISwipeGestureRecognizerDirectionUp;
-//    [self.searchHoldView addGestureRecognizer:upSwipeGestureRecognizer];
-//
-//    UISwipeGestureRecognizer  *downSwipeGestureRecognizer=[[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(swipeGestureRecognizer:)];
-//    downSwipeGestureRecognizer.direction=UISwipeGestureRecognizerDirectionDown;
-//    [self.searchHoldView addGestureRecognizer:downSwipeGestureRecognizer];
-    
     UIPanGestureRecognizer *panGestureRecognizer = [[UIPanGestureRecognizer alloc] init];
     [panGestureRecognizer addTarget:self action:@selector(panGestureAction:)];
     [self.searchHoldView addGestureRecognizer:panGestureRecognizer];
@@ -114,6 +106,8 @@
     [self.myTableView reloadData];
     [self addTipsOnmap:self.tips];
 }
+
+
 -(void)addTipsOnmap:(NSArray*)tips{
     
     [self.mapView removeAnnotations:self.mapView.annotations];
@@ -145,17 +139,104 @@
     }
 }
 
+#pragma mark - MAMapViewDelegate
+
+//点击大头针详情
+- (void)mapView:(MAMapView *)mapView annotationView:(MAAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control
+{
+    if ([view.annotation isKindOfClass:[AMapTipAnnotation class]])
+    {
+        //[self gotoDetailForTip:[(AMapTipAnnotation *)view.annotation tip]];
+    }
+    
+}
+//点击大头针
+- (MAAnnotationView *)mapView:(MAMapView *)mapView viewForAnnotation:(id<MAAnnotation>)annotation
+{
+    if ([annotation isKindOfClass:[AMapTipAnnotation class]])
+    {
+        static NSString *tipIdentifier = @"tipIdentifier";
+        
+        MAPinAnnotationView *poiAnnotationView = (MAPinAnnotationView*)[self.mapView dequeueReusableAnnotationViewWithIdentifier:tipIdentifier];
+        if (poiAnnotationView == nil)
+        {
+            poiAnnotationView = [[MAPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:tipIdentifier];
+        }
+        
+        poiAnnotationView.canShowCallout = YES;
+        poiAnnotationView.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+        
+        return poiAnnotationView;
+    }
+    
+    
+    return nil;
+}
+
+//- (MAOverlayRenderer *)mapView:(MAMapView *)mapView rendererForOverlay:(id<MAOverlay>)overlay
+//{
+//    if ([overlay isKindOfClass:[MAPolyline class]])
+//    {
+//        MAPolylineRenderer *polylineRenderer = [[MAPolylineRenderer alloc] initWithPolyline:overlay];
+//        
+//        polylineRenderer.lineWidth   = 4.f;
+//        polylineRenderer.strokeColor = [UIColor magentaColor];
+//        
+//        return polylineRenderer;
+//    }
+//    
+//    return nil;
+//}
+
+
+//长按地图
+- (void)mapView:(MAMapView *)mapView didLongPressedAtCoordinate:(CLLocationCoordinate2D)coordinate{
+    
+    CLLocation * location = [[CLLocation alloc] initWithLatitude:coordinate.latitude longitude:coordinate.longitude];
+    CLGeocoder * geocoder = [[CLGeocoder alloc] init];
+    [geocoder  reverseGeocodeLocation:location completionHandler:^(NSArray *placemarks, NSError *error) {
+        CLPlacemark * place = placemarks[0];
+        NSLog(@"点击位置: %@",place.name);
+        
+        AMapTip* tip=[[AMapTip alloc]init];
+        tip.name=place.name;
+        tip.location=[AMapGeoPoint locationWithLatitude:coordinate.latitude longitude:coordinate.longitude];
+        AMapTipAnnotation * annotation = [[AMapTipAnnotation alloc] initWithMapTip:tip];
+        
+        [self.tips addObject:annotation];
+        [self.mapView addAnnotation:annotation];
+        [self.mapView selectAnnotation:annotation animated:YES];
+        
+    }];
+    
+    
+    
+}
+
 
 #pragma mark - tableView
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    static NSString * searchCellIdentifer=@"searchCellIdentifer";
-    UITableViewCell* cell=[self.myTableView dequeueReusableCellWithIdentifier:searchCellIdentifer];
-    if (!cell) {
-        cell=[[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:searchCellIdentifer];
+    static NSString *tipCellIdentifier = @"tipCellIdentifier";
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:tipCellIdentifier];
+    
+    if (cell == nil)
+    {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle
+                                      reuseIdentifier:tipCellIdentifier];
+        cell.imageView.image = [UIImage imageNamed:@"locate"];
     }
-    AMapTip* tempTip=[self.tips objectAtIndex:indexPath.row];
-    cell.textLabel.text=tempTip.name;
-
+    
+    AMapTip *tip = self.tips[indexPath.row];
+    
+    if (tip.location == nil)
+    {
+        cell.imageView.image = [UIImage imageNamed:@"search"];
+    }
+    
+    cell.textLabel.text = tip.name;
+    cell.detailTextLabel.text = tip.address;
+    
     return cell;
 }
 
@@ -163,22 +244,6 @@
     return self.tips.count;
 }
 
-#pragma mark -  UISwipeGestureRecognizer
-
-//-(void)swipeGestureRecognizer:(UISwipeGestureRecognizer *)recongnizer{
-//    
-//    
-//    if (recongnizer.direction==UISwipeGestureRecognizerDirectionUp) {
-//        NSLog(@"向上滑动");
-//        NSLog(@"博客园-FlyElephant");
-//    }
-//    
-//    if (recongnizer.direction==UISwipeGestureRecognizerDirectionDown) {
-//        NSLog(@"向下滑动");
-//        NSLog(@"原文地址:http://www.cnblogs.com/xiaofeixiang");
-//    }
-//
-//}
 
 #pragma mark - 实现托移手势的方法
 - (void)panGestureAction:(UIPanGestureRecognizer *) sender {
