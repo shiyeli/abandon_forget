@@ -15,7 +15,6 @@
 		6E30637C1DC05B03000DBB7D /* AMapFoundationKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E3063771DC05B03000DBB7D /* AMapFoundationKit.framework */; };
 		6E30637D1DC05B03000DBB7D /* AMapSearchKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E3063781DC05B03000DBB7D /* AMapSearchKit.framework */; };
 		6E30637E1DC05B03000DBB7D /* MAMapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E3063791DC05B03000DBB7D /* MAMapKit.framework */; };
-		6E30637F1DC05B03000DBB7D /* POIAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E30637B1DC05B03000DBB7D /* POIAnnotation.m */; };
 		6E3063821DC05B23000DBB7D /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E3063811DC05B23000DBB7D /* MapKit.framework */; };
 		6E3063841DC05B2C000DBB7D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E3063831DC05B2C000DBB7D /* CoreGraphics.framework */; };
 		6E3063861DC05B34000DBB7D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E3063851DC05B34000DBB7D /* UIKit.framework */; };
@@ -128,8 +127,6 @@
 		6E3063771DC05B03000DBB7D /* AMapFoundationKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AMapFoundationKit.framework; sourceTree = "<group>"; };
 		6E3063781DC05B03000DBB7D /* AMapSearchKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AMapSearchKit.framework; sourceTree = "<group>"; };
 		6E3063791DC05B03000DBB7D /* MAMapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MAMapKit.framework; sourceTree = "<group>"; };
-		6E30637A1DC05B03000DBB7D /* POIAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = POIAnnotation.h; sourceTree = "<group>"; };
-		6E30637B1DC05B03000DBB7D /* POIAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = POIAnnotation.m; sourceTree = "<group>"; };
 		6E3063811DC05B23000DBB7D /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		6E3063831DC05B2C000DBB7D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		6E3063851DC05B34000DBB7D /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -335,8 +332,6 @@
 				6E3063771DC05B03000DBB7D /* AMapFoundationKit.framework */,
 				6E3063781DC05B03000DBB7D /* AMapSearchKit.framework */,
 				6E3063791DC05B03000DBB7D /* MAMapKit.framework */,
-				6E30637A1DC05B03000DBB7D /* POIAnnotation.h */,
-				6E30637B1DC05B03000DBB7D /* POIAnnotation.m */,
 			);
 			path = AMap;
 			sourceTree = "<group>";
@@ -664,7 +659,6 @@
 			files = (
 				6E3063AA1DC0761C000DBB7D /* XYWillNotifyViewController.m in Sources */,
 				6E3063C41DC0B390000DBB7D /* AMapTipAnnotation.m in Sources */,
-				6E30637F1DC05B03000DBB7D /* POIAnnotation.m in Sources */,
 				6E3063A41DC060DD000DBB7D /* XYParentView.m in Sources */,
 				6E3063471DC05171000DBB7D /* AppDelegate.m in Sources */,
 				6E30639C1DC05F5C000DBB7D /* XYMainViewController.m in Sources */,
@@ -1040,6 +1034,7 @@
 				82A42F741DC1DF2800A29058 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		82BEA03D1DC07EA1001F39F0 /* Build configuration list for PBXNativeTarget "Forget_SiriUI" */ = {
 			isa = XCConfigurationList;
