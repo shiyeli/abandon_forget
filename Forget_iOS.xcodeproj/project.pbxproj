@@ -54,6 +54,7 @@
 		82A42F841DC1EA1000A29058 /* IntentEvent+CoreDataProperties.h in Headers */ = {isa = PBXBuildFile; fileRef = 82CAFCFC1DC083D0004730DF /* IntentEvent+CoreDataProperties.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		82A42F851DC1EA1000A29058 /* DBManagerContext.h in Headers */ = {isa = PBXBuildFile; fileRef = 82A42F791DC1DF8000A29058 /* DBManagerContext.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		82A42F861DC1EE4600A29058 /* ForgetGroupDB.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 82BEA0411DC07F6E001F39F0 /* ForgetGroupDB.xcdatamodeld */; };
+		82A42F891DC1F6BC00A29058 /* IntentForget.m in Sources */ = {isa = PBXBuildFile; fileRef = 82A42F881DC1F6BC00A29058 /* IntentForget.m */; };
 		82BEA0221DC07EA0001F39F0 /* IntentHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 82BEA0211DC07EA0001F39F0 /* IntentHandler.m */; };
 		82BEA02A1DC07EA1001F39F0 /* IntentsUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82BEA0291DC07EA1001F39F0 /* IntentsUI.framework */; };
 		82BEA02E1DC07EA1001F39F0 /* IntentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82BEA02D1DC07EA1001F39F0 /* IntentViewController.m */; };
@@ -178,6 +179,8 @@
 		82A42F791DC1DF8000A29058 /* DBManagerContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBManagerContext.h; sourceTree = "<group>"; };
 		82A42F7A1DC1DF8000A29058 /* DBManagerContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBManagerContext.m; sourceTree = "<group>"; };
 		82A42F7E1DC1E65400A29058 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		82A42F871DC1F6BC00A29058 /* IntentForget.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IntentForget.h; sourceTree = "<group>"; };
+		82A42F881DC1F6BC00A29058 /* IntentForget.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IntentForget.m; sourceTree = "<group>"; };
 		82BEA01E1DC07EA0001F39F0 /* Forget_Siri.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = Forget_Siri.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		82BEA0201DC07EA0001F39F0 /* IntentHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IntentHandler.h; sourceTree = "<group>"; };
 		82BEA0211DC07EA0001F39F0 /* IntentHandler.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IntentHandler.m; sourceTree = "<group>"; };
@@ -453,6 +456,8 @@
 				82A42F631DC1DEC500A29058 /* Forget_Siri.entitlements */,
 				82BEA0201DC07EA0001F39F0 /* IntentHandler.h */,
 				82BEA0211DC07EA0001F39F0 /* IntentHandler.m */,
+				82A42F871DC1F6BC00A29058 /* IntentForget.h */,
+				82A42F881DC1F6BC00A29058 /* IntentForget.m */,
 				82BEA0231DC07EA1001F39F0 /* Info.plist */,
 			);
 			path = Forget_Siri;
@@ -707,6 +712,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				82A42F861DC1EE4600A29058 /* ForgetGroupDB.xcdatamodeld in Sources */,
+				82A42F891DC1F6BC00A29058 /* IntentForget.m in Sources */,
 				82BEA0221DC07EA0001F39F0 /* IntentHandler.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
