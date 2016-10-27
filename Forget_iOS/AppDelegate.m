@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-#import <AMapFoundationKit/AMapFoundationKit.h>
+
 
 @interface AppDelegate ()
 
@@ -18,7 +18,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-    [AMapServices sharedServices].apiKey=AMapApiKey;
+    
     
     
     return YES;
