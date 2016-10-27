@@ -53,6 +53,7 @@
 		82CAFD011DC083D0004730DF /* IntentEvent+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 82CAFCFD1DC083D0004730DF /* IntentEvent+CoreDataProperties.m */; };
 		82CAFD021DC083D0004730DF /* IntentEvent+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 82CAFCFD1DC083D0004730DF /* IntentEvent+CoreDataProperties.m */; };
 		82CAFD031DC083D0004730DF /* IntentEvent+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 82CAFCFD1DC083D0004730DF /* IntentEvent+CoreDataProperties.m */; };
+		82CAFD061DC0AC6A004730DF /* 222.png in Resources */ = {isa = PBXBuildFile; fileRef = 82CAFD051DC0AC6A004730DF /* 222.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -160,6 +161,7 @@
 		82CAFCFC1DC083D0004730DF /* IntentEvent+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "IntentEvent+CoreDataProperties.h"; sourceTree = "<group>"; };
 		82CAFCFD1DC083D0004730DF /* IntentEvent+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "IntentEvent+CoreDataProperties.m"; sourceTree = "<group>"; };
 		82CAFD041DC0872C004730DF /* Forget_iOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Forget_iOS.entitlements; sourceTree = "<group>"; };
+		82CAFD051DC0AC6A004730DF /* 222.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 222.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -388,6 +390,7 @@
 		82BEA02B1DC07EA1001F39F0 /* Forget_SiriUI */ = {
 			isa = PBXGroup;
 			children = (
+				82CAFD051DC0AC6A004730DF /* 222.png */,
 				82BEA02C1DC07EA1001F39F0 /* IntentViewController.h */,
 				82BEA02D1DC07EA1001F39F0 /* IntentViewController.m */,
 				82BEA02F1DC07EA1001F39F0 /* MainInterface.storyboard */,
@@ -542,6 +545,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				82CAFD061DC0AC6A004730DF /* 222.png in Resources */,
 				82BEA0311DC07EA1001F39F0 /* MainInterface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
