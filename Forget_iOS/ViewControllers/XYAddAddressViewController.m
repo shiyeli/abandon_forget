@@ -98,7 +98,7 @@
 #pragma mark - AMapSearchDelegate
 - (void)AMapSearchRequest:(id)request didFailWithError:(NSError *)error
 {
-    NSLog(@"Error: %@", error);
+    NSLog(@"AMapSearchDelegate ,Error: %@", error);
 }
 
 /* 输入提示回调. */
