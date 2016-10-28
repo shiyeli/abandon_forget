@@ -12,7 +12,7 @@
 #import <AMapSearchKit/AMapSearchKit.h>
 #import "AMapTipAnnotation.h"
 #import "XYHgithtOfKeyboard.h"
-#define POSITION_HEIGH Main_Screen_Height-150.0
+#define POSITION_HEIGH Main_Screen_Height-100.0
 #define POSITION_LOW 58.0
 #define REMARK_LOCATION_HEIGHT 100
 
@@ -39,18 +39,20 @@
 
 @property(nonatomic,strong)XYHgithtOfKeyboard* keyboardMgr;
 
+
+
 @end
 
 @implementation XYAddAddressViewController
 
 - (IBAction)cancelRemarkClick:(id)sender {
     self.remarkHoldViewBottomD.constant=-REMARK_LOCATION_HEIGHT;
-    [UIView animateWithDuration:0.3 animations:^{
+    [UIView animateWithDuration:0.1 animations:^{
         [self.view layoutIfNeeded];
     }];
 }
 
-
+//点击标记
 - (IBAction)remarkClick:(id)sender {
     
     [self cancelRemarkClick:nil];
@@ -81,7 +83,7 @@
     self.search.delegate = self;
     
     self.mySearchBar.delegate=self;
-    
+    self.mySearchBar.placeholder=@"请输入内容检索";
     
     UIPanGestureRecognizer *panGestureRecognizer = [[UIPanGestureRecognizer alloc] init];
     [panGestureRecognizer addTarget:self action:@selector(panGestureAction:)];
@@ -175,13 +177,11 @@
 #pragma mark - MAMapViewDelegate
 
 //点击大头针详情
-- (void)mapView:(MAMapView *)mapView annotationView:(MAAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control
-{
-    if ([view.annotation isKindOfClass:[AMapTipAnnotation class]])
-    {
-        //[self gotoDetailForTip:[(AMapTipAnnotation *)view.annotation tip]];
+- (void)mapView:(MAMapView *)mapView annotationView:(MAAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control{
+    if ([view.annotation isKindOfClass:[AMapTipAnnotation class]]){
+        AMapTip* tip=[(AMapTipAnnotation *)view.annotation tip];
+        [self showRemarkView:tip];
     }
-    
 }
 //点击大头针
 - (MAAnnotationView *)mapView:(MAMapView *)mapView viewForAnnotation:(id<MAAnnotation>)annotation
@@ -263,6 +263,10 @@
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     AMapTip* tip=[self.tips objectAtIndex:indexPath.row];
+    [self showRemarkView:tip];
+}
+
+-(void)showRemarkView:(AMapTip*)tip{
     self.addressDetail.text=tip.name;
     
     self.searchHoldViewH.constant=POSITION_LOW;
@@ -270,6 +274,7 @@
     [UIView animateWithDuration:0.3 animations:^{
         [self.view layoutIfNeeded];
     }];
+
 }
 
 #pragma mark - 实现托移手势的方法
@@ -300,7 +305,7 @@
 -(void)heithtOfKeyboard:(CGFloat)height isShow:(BOOL)isShow{
     if (self.remarkHoldViewBottomD.constant>=0) {
         self.remarkHoldViewBottomD.constant=height;
-        [UIView animateWithDuration:0.05 animations:^{
+        [UIView animateWithDuration:0.1 animations:^{
             [self.view layoutIfNeeded];
         }];
     };
