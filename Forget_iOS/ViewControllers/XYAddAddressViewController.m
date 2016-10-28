@@ -76,6 +76,7 @@
     self.mapView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     self.mapView.delegate = self;
     self.mapView.showsUserLocation=YES;
+    self.mapView.userTrackingMode=MAUserTrackingModeFollowWithHeading;
     [self.mapView setCenterCoordinate:[XYUserInfo userInfo].userLocation.coordinate animated:NO];
     [self.myView addSubview:self.mapView];
     
@@ -230,7 +231,11 @@
     
     
 }
+//移动地图
+- (void)mapView:(MAMapView *)mapView mapWillMoveByUser:(BOOL)wasUserAction{
+    
 
+}
 
 #pragma mark - tableView
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{

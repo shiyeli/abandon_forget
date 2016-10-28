@@ -168,8 +168,8 @@
                                             <action selector="cancelRemarkClick:" destination="iyK-Gw-0EN" eventType="touchUpInside" id="L8n-pB-KoU"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rql-y4-YEz">
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rql-y4-YEz">
+                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -180,8 +180,8 @@
                                     <constraint firstItem="lz4-bU-uOB" firstAttribute="centerY" secondItem="mPp-1s-3dt" secondAttribute="centerY" id="DCh-d7-4cI"/>
                                     <constraint firstAttribute="bottom" secondItem="mPp-1s-3dt" secondAttribute="bottom" constant="16" id="F3E-D6-Sgf"/>
                                     <constraint firstItem="lz4-bU-uOB" firstAttribute="leading" secondItem="BpL-MR-lc8" secondAttribute="leading" constant="16" id="FvK-ML-qUI"/>
-                                    <constraint firstItem="lz4-bU-uOB" firstAttribute="top" secondItem="Rql-y4-YEz" secondAttribute="bottom" constant="18" id="GZ2-5E-2F9"/>
-                                    <constraint firstItem="Rql-y4-YEz" firstAttribute="trailing" secondItem="mPp-1s-3dt" secondAttribute="trailing" id="Ghg-dz-a7a"/>
+                                    <constraint firstItem="lz4-bU-uOB" firstAttribute="top" secondItem="Rql-y4-YEz" secondAttribute="bottom" constant="5" id="GZ2-5E-2F9"/>
+                                    <constraint firstItem="Rql-y4-YEz" firstAttribute="trailing" secondItem="mPp-1s-3dt" secondAttribute="trailing" constant="-35" id="Ghg-dz-a7a"/>
                                     <constraint firstAttribute="height" constant="100" id="Gny-J9-O4q"/>
                                     <constraint firstItem="mPp-1s-3dt" firstAttribute="leading" secondItem="lz4-bU-uOB" secondAttribute="trailing" constant="8" id="Nbr-a6-Xdk"/>
                                     <constraint firstAttribute="trailing" secondItem="b8w-Nl-Uat" secondAttribute="trailing" constant="8" id="Odt-pq-HN5"/>
