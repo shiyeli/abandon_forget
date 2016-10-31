@@ -43,8 +43,7 @@
 /**配置主要视图*/
 -(void)initMainViews{
     
-    XYRearViewController* rearCtl=[[XYRearViewController alloc]init];
-    
+    XYRearViewController* rearCtl=[[XYRearViewController alloc]initWithNibName:@"XYRearViewController" bundle:nil];
     UINavigationController *frontNavi = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateInitialViewController];
     
     SWRevealViewController *revealController = [[SWRevealViewController alloc] initWithRearViewController:rearCtl frontViewController:frontNavi];
