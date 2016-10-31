@@ -42,6 +42,9 @@
 		6E3066CC1DC1F4E2000DBB7D /* locate@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6E3066CB1DC1F4E2000DBB7D /* locate@2x.png */; };
 		6E3066CE1DC1F516000DBB7D /* AMap.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 6E3066CD1DC1F516000DBB7D /* AMap.bundle */; };
 		6E3066D11DC200AF000DBB7D /* XYHgithtOfKeyboard.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E3066D01DC200AF000DBB7D /* XYHgithtOfKeyboard.m */; };
+		6E3D4F511DC721E50079D8FD /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E3D4F501DC721E50079D8FD /* SWRevealViewController.m */; };
+		6E3D4F561DC723090079D8FD /* XYRearViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E3D4F541DC723090079D8FD /* XYRearViewController.m */; };
+		6E3D4F571DC723090079D8FD /* XYRearViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6E3D4F551DC723090079D8FD /* XYRearViewController.xib */; };
 		82A42F6D1DC1DF2800A29058 /* DBManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 82A42F6B1DC1DF2800A29058 /* DBManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		82A42F701DC1DF2800A29058 /* DBManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82A42F691DC1DF2800A29058 /* DBManager.framework */; };
 		82A42F711DC1DF2800A29058 /* DBManager.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 82A42F691DC1DF2800A29058 /* DBManager.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -176,6 +179,11 @@
 		6E3066CD1DC1F516000DBB7D /* AMap.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = AMap.bundle; sourceTree = "<group>"; };
 		6E3066CF1DC200AF000DBB7D /* XYHgithtOfKeyboard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYHgithtOfKeyboard.h; sourceTree = "<group>"; };
 		6E3066D01DC200AF000DBB7D /* XYHgithtOfKeyboard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYHgithtOfKeyboard.m; sourceTree = "<group>"; };
+		6E3D4F4F1DC721E50079D8FD /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
+		6E3D4F501DC721E50079D8FD /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
+		6E3D4F531DC723090079D8FD /* XYRearViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYRearViewController.h; sourceTree = "<group>"; };
+		6E3D4F541DC723090079D8FD /* XYRearViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYRearViewController.m; sourceTree = "<group>"; };
+		6E3D4F551DC723090079D8FD /* XYRearViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XYRearViewController.xib; sourceTree = "<group>"; };
 		82A42F5E1DC1AD9000A29058 /*  AppIntentVocabulary.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = " AppIntentVocabulary.plist"; sourceTree = "<group>"; };
 		82A42F631DC1DEC500A29058 /* Forget_Siri.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Forget_Siri.entitlements; sourceTree = "<group>"; };
 		82A42F691DC1DF2800A29058 /* DBManager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DBManager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -335,6 +343,7 @@
 		6E3063751DC05AD9000DBB7D /* ThirdLib */ = {
 			isa = PBXGroup;
 			children = (
+				6E3D4F4E1DC721E50079D8FD /* SWRevealViewController */,
 				6E3063761DC05AD9000DBB7D /* AMap */,
 			);
 			path = ThirdLib;
@@ -402,6 +411,7 @@
 		6E3063991DC05F0D000DBB7D /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				6E3D4F521DC722A30079D8FD /* RearViewController */,
 				6E30639A1DC05F5C000DBB7D /* XYMainViewController.h */,
 				6E30639B1DC05F5C000DBB7D /* XYMainViewController.m */,
 				6E3063A81DC0761C000DBB7D /* XYWillNotifyViewController.h */,
@@ -442,6 +452,25 @@
 				6E3066CB1DC1F4E2000DBB7D /* locate@2x.png */,
 			);
 			name = img;
+			sourceTree = "<group>";
+		};
+		6E3D4F4E1DC721E50079D8FD /* SWRevealViewController */ = {
+			isa = PBXGroup;
+			children = (
+				6E3D4F4F1DC721E50079D8FD /* SWRevealViewController.h */,
+				6E3D4F501DC721E50079D8FD /* SWRevealViewController.m */,
+			);
+			path = SWRevealViewController;
+			sourceTree = "<group>";
+		};
+		6E3D4F521DC722A30079D8FD /* RearViewController */ = {
+			isa = PBXGroup;
+			children = (
+				6E3D4F531DC723090079D8FD /* XYRearViewController.h */,
+				6E3D4F541DC723090079D8FD /* XYRearViewController.m */,
+				6E3D4F551DC723090079D8FD /* XYRearViewController.xib */,
+			);
+			name = RearViewController;
 			sourceTree = "<group>";
 		};
 		82A42F6A1DC1DF2800A29058 /* DBManager */ = {
@@ -652,6 +681,7 @@
 			files = (
 				6E3066CE1DC1F516000DBB7D /* AMap.bundle in Resources */,
 				82A42F8A1DC1F8DA00A29058 /*  AppIntentVocabulary.plist in Resources */,
+				6E3D4F571DC723090079D8FD /* XYRearViewController.xib in Resources */,
 				6E3063521DC05171000DBB7D /* LaunchScreen.storyboard in Resources */,
 				6E30634F1DC05171000DBB7D /* Assets.xcassets in Resources */,
 				6E3066CC1DC1F4E2000DBB7D /* locate@2x.png in Resources */,
@@ -700,6 +730,8 @@
 				6E3063B91DC08DD4000DBB7D /* XYSettingOccasionViewController.m in Sources */,
 				6E3063441DC05171000DBB7D /* main.m in Sources */,
 				6E3063B01DC07F58000DBB7D /* XYAddEventViewController.m in Sources */,
+				6E3D4F561DC723090079D8FD /* XYRearViewController.m in Sources */,
+				6E3D4F511DC721E50079D8FD /* SWRevealViewController.m in Sources */,
 				6E3063A71DC06141000DBB7D /* XYParentModel.m in Sources */,
 				6E3063C01DC0A250000DBB7D /* XYUserInfo.m in Sources */,
 				6E3063B31DC0863D000DBB7D /* HWTextView.m in Sources */,

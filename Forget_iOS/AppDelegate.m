@@ -8,8 +8,9 @@
 
 #import "AppDelegate.h"
 #import <Intents/Intents.h>
-
-@interface AppDelegate ()
+#import "SWRevealViewController.h"
+#import "XYRearViewController.h"
+@interface AppDelegate ()<SWRevealViewControllerDelegate>
 
 @end
 
@@ -18,7 +19,15 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
     [self setUpSiri];
+    
+    [self initMainViews];
+    
+    
+    
+    
+    
     return YES;
 }
 
@@ -30,6 +39,24 @@
     }
 }
 
+
+/**配置主要视图*/
+-(void)initMainViews{
+    
+    XYRearViewController* rearCtl=[[XYRearViewController alloc]init];
+    
+    UINavigationController *frontNavi = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateInitialViewController];
+    
+    SWRevealViewController *revealController = [[SWRevealViewController alloc] initWithRearViewController:rearCtl frontViewController:frontNavi];
+    revealController.delegate = self;
+    
+    UIWindow* window=[[UIWindow alloc]initWithFrame: [UIScreen mainScreen].bounds];
+    window.rootViewController=revealController;
+    self.window=window;
+    [self.window makeKeyAndVisible];
+    
+    
+}
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

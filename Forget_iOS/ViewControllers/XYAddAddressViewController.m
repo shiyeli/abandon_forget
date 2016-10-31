@@ -80,6 +80,7 @@
     [self.mapView setCenterCoordinate:[XYUserInfo userInfo].userLocation.coordinate animated:NO];
     [self.myView addSubview:self.mapView];
     
+    
     self.search = [[AMapSearchAPI alloc] init];
     self.search.delegate = self;
     
@@ -233,7 +234,35 @@
 }
 //移动地图
 - (void)mapView:(MAMapView *)mapView mapWillMoveByUser:(BOOL)wasUserAction{
-    
+    if (wasUserAction) {
+        
+        
+        
+        CGPoint p;
+        if (mapView.selectedAnnotations.count>0) {
+            mapView.scrollEnabled=NO;
+            AMapTipAnnotation* tipAnno =[mapView.selectedAnnotations firstObject];
+            p=[mapView convertCoordinate:tipAnno.coordinate toPointToView:mapView];
+            NSLog(@"%f,%f",p.x,p.y);
+            
+            
+            
+        }else{
+            mapView.scrollEnabled=YES;
+        }
+        
+        for (AMapTipAnnotation* anno in mapView.selectedAnnotations) {
+            
+        }
+        
+        
+        
+        
+        
+        
+        
+        
+    }
 
 }
 

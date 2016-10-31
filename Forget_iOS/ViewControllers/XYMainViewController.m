@@ -7,7 +7,7 @@
 //
 
 #import "XYMainViewController.h"
-
+#import "SWRevealViewController.h"
 @interface XYMainViewController ()
 
 @end
@@ -16,7 +16,19 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+    [self settingsOfSlide];
+    
+    
+}
+
+-(void)settingsOfSlide{
+    SWRevealViewController *revealController = [self revealViewController];
+    [revealController panGestureRecognizer];
+    [revealController tapGestureRecognizer];
+    UIBarButtonItem *revealButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"icon_share"]style:UIBarButtonItemStylePlain target:revealController action:@selector(revealToggle:)];
+    self.navigationItem.leftBarButtonItem = revealButtonItem;
+
 }
 
 - (void)didReceiveMemoryWarning {
