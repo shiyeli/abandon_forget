@@ -21,10 +21,16 @@
     tap.delegate=self;
     [self.view addGestureRecognizer:tap];
     
+    //设置标题/导航栏按钮颜色/导航栏/视图背景色
     self.navigationController.navigationBar.barTintColor=THIEM_COLOR;
     self.navigationController.navigationBar.translucent=NO;
     self.view.backgroundColor=THIEM_COLOR;
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]}];
+    self.navigationController.navigationBar.tintColor=[UIColor whiteColor];
+    
+    //去除返回按钮文字
+    UIBarButtonItem *backBtn = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
+    self.navigationItem.backBarButtonItem = backBtn;
 }
 
 

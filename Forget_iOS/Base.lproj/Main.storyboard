@@ -43,6 +43,9 @@
                                     <constraint firstAttribute="height" constant="87" id="bXG-it-QAe"/>
                                 </constraints>
                                 <state key="normal" backgroundImage="add_notify"/>
+                                <connections>
+                                    <segue destination="1Eb-BJ-DmZ" kind="show" id="qr4-sO-LNl"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -56,13 +59,10 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="抛弃健忘症" id="hq8-AH-RFi"/>
-                    <connections>
-                        <segue destination="1Eb-BJ-DmZ" kind="show" identifier="XYWillNotifyViewController" id="4Ti-mr-vXA"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-434.39999999999998" y="-1.3493253373313345"/>
+            <point key="canvasLocation" x="-394" y="-1"/>
         </scene>
         <!--添加常用地址-->
         <scene sceneID="iIW-09-lZa">
@@ -204,9 +204,9 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vol-SL-ZVG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="420" y="-726.38680659670172"/>
+            <point key="canvasLocation" x="326" y="-734"/>
         </scene>
-        <!--提醒事项-->
+        <!--新提醒-->
         <scene sceneID="AVT-ul-Sh4">
             <objects>
                 <viewController id="1Eb-BJ-DmZ" customClass="XYWillNotifyViewController" sceneMemberID="viewController">
@@ -219,7 +219,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="提醒事项" id="jY1-sE-F8x">
+                    <navigationItem key="navigationItem" title="新提醒" id="jY1-sE-F8x">
                         <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="9uy-Q7-XZs">
                             <connections>
                                 <segue destination="dvf-mJ-DOc" kind="show" id="l5S-AE-T6L"/>
