@@ -12,11 +12,29 @@
 // Include any system framework and library headers here that should be included in all compilation units.
 // You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
 
-//宏定义
+////////////////宏定义////////////////
 #import "ACMacros.h"
 #import "XYUserInfo.h"
+#import "Masonry.h"
+#import "XYTool.h"
+
+
+
+
+
+
+///////////////固定值/////////////////
 //高德Apikey
 #define AMapApiKey @"881a46c1030c7f0aaf1dbd1c59fea787"
+//主题颜色
+#define THIEM_COLOR [XYTool stringToColor:@"#47214B"]
+
+
+
+
+
+
+////////////通知//////////////////////
 //用户当前位置通知
 #define kUSER_CURRENT_LOCATION @"kUSER_CURRENT_LOCATION"
 

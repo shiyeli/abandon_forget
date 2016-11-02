@@ -21,6 +21,9 @@
     tap.delegate=self;
     [self.view addGestureRecognizer:tap];
     
+    self.navigationController.navigationBar.barTintColor=THIEM_COLOR;
+    self.navigationController.navigationBar.translucent=NO;
+    self.view.backgroundColor=THIEM_COLOR;
 }
 
 
