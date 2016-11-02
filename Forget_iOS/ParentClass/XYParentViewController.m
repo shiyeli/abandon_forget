@@ -24,6 +24,7 @@
     self.navigationController.navigationBar.barTintColor=THIEM_COLOR;
     self.navigationController.navigationBar.translucent=NO;
     self.view.backgroundColor=THIEM_COLOR;
+    [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]}];
 }
 
 
