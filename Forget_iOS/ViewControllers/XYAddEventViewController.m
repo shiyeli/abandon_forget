@@ -31,8 +31,6 @@
 - (IBAction)timeLocationClick:(UIButton *)sender {
     
     self.activeMarkViewCT.constant=Main_Screen_Width*0.5*(sender.tag -1);
-    
-    
     if ([sender isEqual:self.setTimeBtn]) {
         self.setLocationBtn.selected=NO;
     }else{
