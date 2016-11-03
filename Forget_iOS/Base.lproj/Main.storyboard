@@ -220,7 +220,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="新提醒" id="jY1-sE-F8x">
-                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="9uy-Q7-XZs">
+                        <barButtonItem key="rightBarButtonItem" image="next_item" style="plain" id="9uy-Q7-XZs">
                             <connections>
                                 <segue destination="dvf-mJ-DOc" kind="show" id="l5S-AE-T6L"/>
                             </connections>
@@ -428,5 +428,6 @@
     </scenes>
     <resources>
         <image name="add_notify" width="86" height="86"/>
+        <image name="next_item" width="27" height="26"/>
     </resources>
 </document>
