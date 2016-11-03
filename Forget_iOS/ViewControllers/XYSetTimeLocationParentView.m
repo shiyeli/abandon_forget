@@ -42,7 +42,6 @@
     }
     
     CATransition* anim=[CATransition animation];
-    
     anim.type=@"kCATransitionFade";
     anim.duration=0.3;
     [self.powerMark.layer addAnimation:anim forKey:nil];

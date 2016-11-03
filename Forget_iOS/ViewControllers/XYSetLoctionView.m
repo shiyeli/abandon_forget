@@ -17,6 +17,45 @@
 
 @implementation XYSetLoctionView
 
+- (IBAction)clickEvent:(UIButton *)sender {
+    switch (sender.tag) {
+        case 1:{
+            //常见地点
+        
+        
+        
+        }
+            break;
+        case 2:{
+            //个人地点
+            
+            
+        }
+            break;
+        case 3:{
+            //搜索
+            if (self.sendBlock) {
+                self.sendBlock(sender);
+            }
+            
+        }
+            break;
+        case 4:{
+            //关闭
+            self.needSetting=NO;
+            
+        }
+            break;
+            
+        default:
+            break;
+    }
+    
+    
+    
+}
+
+
 
 -(void)awakeFromNib{
     [super awakeFromNib];

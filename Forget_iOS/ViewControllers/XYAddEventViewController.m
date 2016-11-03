@@ -73,6 +73,10 @@
     
     //视图加载
     self.locationView=[[[NSBundle mainBundle]loadNibNamed:@"XYSetLoctionView" owner:nil options:nil] lastObject];
+    __weak XYAddEventViewController* weakSelf=self;
+    self.locationView.sendBlock=^(id sender){
+        [self handleEventOfLocationView:sender];
+    };
     
     self.timeView=[[[NSBundle mainBundle]loadNibNamed:@"XYSetTimeView" owner:nil options:nil] lastObject];
     
@@ -92,6 +96,13 @@
     
     
     
+    
+}
+-(void)handleEventOfLocationView:(id)sender{
+    if ([sender tag]==3) {
+        //搜索
+        [self performSegueWithIdentifier:@"XYAddAddressViewController" sender:nil];
+    }
     
 }
 - (void)didReceiveMemoryWarning {

@@ -204,7 +204,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vol-SL-ZVG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2847" y="-448"/>
+            <point key="canvasLocation" x="1930" y="-1"/>
         </scene>
         <!--新提醒-->
         <scene sceneID="AVT-ul-Sh4">
@@ -343,6 +343,7 @@
                         <outlet property="myScrollView" destination="DkR-cw-9Ad" id="QPa-hR-RAY"/>
                         <outlet property="setLocationBtn" destination="UJc-f6-QuJ" id="4l0-eb-3x2"/>
                         <outlet property="setTimeBtn" destination="N3i-eI-dS4" id="5pd-d8-tqw"/>
+                        <segue destination="iyK-Gw-0EN" kind="show" identifier="XYAddAddressViewController" id="a1m-ZE-bJx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bZf-jF-wAM" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -425,7 +426,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7k4-RU-GIa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2076" y="-448.42578710644682"/>
+            <point key="canvasLocation" x="2846" y="-466"/>
         </scene>
         <!--设置提醒时间-->
         <scene sceneID="5tj-tl-vDM">
