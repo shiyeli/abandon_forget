@@ -10,7 +10,10 @@
 #import "HWTextView.h"
 @interface XYAddEventViewController ()
 
-@property (weak, nonatomic) IBOutlet HWTextView *notifyContent;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *activeMarkViewCT;
+
+@property (weak, nonatomic) IBOutlet UIButton *setTimeBtn;
+@property (weak, nonatomic) IBOutlet UIButton *setLocationBtn;
 
 
 
@@ -25,12 +28,38 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
+- (IBAction)timeLocationClick:(UIButton *)sender {
+    
+    self.activeMarkViewCT.constant=Main_Screen_Width*0.5*(sender.tag -1);
+    
+    
+    if ([sender isEqual:self.setTimeBtn]) {
+        self.setLocationBtn.selected=NO;
+    }else{
+        self.setTimeBtn.selected=NO;
+    }
+    sender.selected=YES;
+}
+
+
+
+
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.notifyContent.placeholder=@"请输入提醒时间备注信息";
+    
+    [self setUserInterface];
+    
+   
 }
-
+-(void)setUserInterface{
+    [self.setTimeBtn setImage:[UIImage imageNamed:@"set_time_select"] forState:UIControlStateSelected];
+    [self.setTimeBtn setImage:[UIImage imageNamed:@"set_time_unselect"] forState:UIControlStateNormal];
+    [self.setLocationBtn setImage:[UIImage imageNamed:@"set_location_select"] forState:UIControlStateSelected];
+    [self.setLocationBtn setImage:[UIImage imageNamed:@"set_location_unselect"] forState:UIControlStateNormal];
+    self.setTimeBtn.selected=YES;
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
