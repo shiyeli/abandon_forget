@@ -489,8 +489,8 @@
 				6E3D4F521DC722A30079D8FD /* 侧滑底视图 */,
 				6E3063AB1DC07650000DBB7D /* XYAddAddressViewController.h */,
 				6E3063AC1DC07650000DBB7D /* XYAddAddressViewController.m */,
-				6E3063AE1DC07F58000DBB7D /* XYAddEventViewController.h */,
-				6E3063AF1DC07F58000DBB7D /* XYAddEventViewController.m */,
+				6E3063A81DC0761C000DBB7D /* XYWillNotifyViewController.h */,
+				6E3063A91DC0761C000DBB7D /* XYWillNotifyViewController.m */,
 				6E3063B41DC08DA3000DBB7D /* XYSettingTimeViewController.h */,
 				6E3063B51DC08DA3000DBB7D /* XYSettingTimeViewController.m */,
 				6E3063B71DC08DD4000DBB7D /* XYSettingOccasionViewController.h */,
@@ -570,8 +570,8 @@
 		6E35226D1DCB03B40000BEF0 /* 新建提醒 */ = {
 			isa = PBXGroup;
 			children = (
-				6E3063A81DC0761C000DBB7D /* XYWillNotifyViewController.h */,
-				6E3063A91DC0761C000DBB7D /* XYWillNotifyViewController.m */,
+				6E3063AE1DC07F58000DBB7D /* XYAddEventViewController.h */,
+				6E3063AF1DC07F58000DBB7D /* XYAddEventViewController.m */,
 				6E35226F1DCB0CF40000BEF0 /* XYSetTimeView.h */,
 				6E3522701DCB0CF40000BEF0 /* XYSetTimeView.m */,
 				6E3522721DCB0D040000BEF0 /* XYSetTimeView.xib */,

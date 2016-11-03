@@ -10,4 +10,6 @@
 
 @interface XYSetTimeView : XYParentView
 
+@property(nonatomic,assign)BOOL needSetting;
+
 @end

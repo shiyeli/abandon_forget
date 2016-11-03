@@ -6,8 +6,10 @@
 //  Copyright © 2016年 叶同学. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "XYParentView.h"
 
-@interface XYSetLoctionView : UIView
+@interface XYSetLoctionView : XYParentView
+
+@property(nonatomic,assign)BOOL needSetting;
 
 @end
