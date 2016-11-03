@@ -204,7 +204,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vol-SL-ZVG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="326" y="-734"/>
+            <point key="canvasLocation" x="2847" y="-448"/>
         </scene>
         <!--新提醒-->
         <scene sceneID="AVT-ul-Sh4">
@@ -318,12 +318,17 @@
                                     <constraint firstItem="N3i-eI-dS4" firstAttribute="top" secondItem="7Qe-Nh-7bf" secondAttribute="top" id="tWW-WO-VU4"/>
                                 </constraints>
                             </view>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DkR-cw-9Ad"/>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="7Qe-Nh-7bf" firstAttribute="leading" secondItem="U9p-dO-FYp" secondAttribute="leading" id="FGD-B9-vFa"/>
                             <constraint firstItem="7Qe-Nh-7bf" firstAttribute="top" secondItem="SSy-FP-nJw" secondAttribute="bottom" id="GW2-Rp-bXo"/>
+                            <constraint firstAttribute="trailing" secondItem="DkR-cw-9Ad" secondAttribute="trailing" id="O5g-Ai-2y5"/>
                             <constraint firstAttribute="trailing" secondItem="7Qe-Nh-7bf" secondAttribute="trailing" id="UH7-w5-cjK"/>
+                            <constraint firstItem="DkR-cw-9Ad" firstAttribute="top" secondItem="7Qe-Nh-7bf" secondAttribute="bottom" id="W2o-UD-vl5"/>
+                            <constraint firstItem="DkR-cw-9Ad" firstAttribute="leading" secondItem="U9p-dO-FYp" secondAttribute="leading" id="cFv-uG-0P7"/>
+                            <constraint firstItem="zFy-qc-PQn" firstAttribute="top" secondItem="DkR-cw-9Ad" secondAttribute="bottom" id="m5d-WR-pld"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="设置时间地点" id="6hX-MP-Y6I">
@@ -335,6 +340,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="activeMarkViewCT" destination="Dle-qh-FmY" id="M5G-I2-zC5"/>
+                        <outlet property="myScrollView" destination="DkR-cw-9Ad" id="QPa-hR-RAY"/>
                         <outlet property="setLocationBtn" destination="UJc-f6-QuJ" id="4l0-eb-3x2"/>
                         <outlet property="setTimeBtn" destination="N3i-eI-dS4" id="5pd-d8-tqw"/>
                     </connections>
@@ -465,7 +471,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pIk-5m-hd4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2076" y="276.61169415292358"/>
+            <point key="canvasLocation" x="2847" y="242"/>
         </scene>
     </scenes>
     <resources>
