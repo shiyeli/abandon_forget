@@ -29,20 +29,9 @@
     self.navigationController.navigationBar.tintColor=[UIColor whiteColor];
     
     //去除返回按钮文字
-    UIButton* backBtn=[[UIButton alloc]initWithFrame:CGRectMake(0, 0, 26, 26)];
-    [backBtn addTarget:self action:@selector(backAction:) forControlEvents:UIControlEventTouchUpInside];
-    [backBtn setBackgroundImage:[UIImage imageNamed:@"cancel_item"] forState:UIControlStateNormal];
-    UIBarButtonItem* backItem=[[UIBarButtonItem alloc]initWithCustomView:backBtn];
-    
-    
-    //UIBarButtonItem *backBtn = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:self action:@selector(backAction:)];
-    //UIImage * backImg=[[UIImage imageNamed:@"cancel_item"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-    //[backBtn setBackButtonBackgroundImage:backImg forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
 
-    self.navigationItem.leftBarButtonItem = backItem;
-}
--(void)backAction:(id)sender{
-    [self.navigationController popViewControllerAnimated:YES];
+    UIBarButtonItem *backBtn = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
+    self.navigationItem.backBarButtonItem = backBtn;
 }
 
 #pragma mark - UIGestureRecognizerDelegate
@@ -64,6 +53,9 @@
     // Dispose of any resources that can be recreated.
 }
 
+-(UIStatusBarStyle)preferredStatusBarStyle{
+    return UIStatusBarStyleLightContent;
+}
 /*
 #pragma mark - Navigation
 

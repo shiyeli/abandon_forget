@@ -217,9 +217,45 @@
                     <view key="view" contentMode="scaleToFill" id="nPZ-nK-0sh">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HaE-yY-E32">
+                                <subviews>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="提醒我..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="R1L-Sk-tEm">
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="RD0-TV-7Ra"/>
+                                        </constraints>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                </subviews>
+                                <color key="backgroundColor" red="0.59607843137254901" green="0.22745098039215686" blue="0.45882352941176469" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="R1L-Sk-tEm" secondAttribute="trailing" constant="16" id="KiR-fu-8YU"/>
+                                    <constraint firstAttribute="height" constant="64" id="Pe9-Ut-G4T"/>
+                                    <constraint firstItem="R1L-Sk-tEm" firstAttribute="leading" secondItem="HaE-yY-E32" secondAttribute="leading" constant="16" id="ghb-St-YEN"/>
+                                    <constraint firstItem="R1L-Sk-tEm" firstAttribute="centerY" secondItem="HaE-yY-E32" secondAttribute="centerY" id="vVq-4W-MAY"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c5q-zr-Hvb">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="70" id="Gf8-Vz-Vtb"/>
+                                    <constraint firstAttribute="width" constant="70" id="P2Z-IM-Y5U"/>
+                                </constraints>
+                                <state key="normal" backgroundImage="take_photo"/>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="c5q-zr-Hvb" firstAttribute="top" secondItem="9qU-gE-OyR" secondAttribute="bottom" constant="150" id="Cmf-0o-p4I"/>
+                            <constraint firstItem="HaE-yY-E32" firstAttribute="top" secondItem="9qU-gE-OyR" secondAttribute="bottom" id="EZP-78-B43"/>
+                            <constraint firstAttribute="trailing" secondItem="HaE-yY-E32" secondAttribute="trailing" id="Omb-fM-WKt"/>
+                            <constraint firstItem="HaE-yY-E32" firstAttribute="leading" secondItem="nPZ-nK-0sh" secondAttribute="leading" id="RvX-R8-EM2"/>
+                            <constraint firstItem="c5q-zr-Hvb" firstAttribute="centerX" secondItem="nPZ-nK-0sh" secondAttribute="centerX" id="gAW-XW-gRC"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="新提醒" id="jY1-sE-F8x">
+                        <barButtonItem key="leftBarButtonItem" image="cancel_item" id="rp1-Ya-F8D"/>
                         <barButtonItem key="rightBarButtonItem" image="next_item" style="plain" id="9uy-Q7-XZs">
                             <connections>
                                 <segue destination="dvf-mJ-DOc" kind="show" id="l5S-AE-T6L"/>
@@ -229,7 +265,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Cfz-EM-3oX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="327" y="-1"/>
+            <point key="canvasLocation" x="325.60000000000002" y="-1.3493253373313345"/>
         </scene>
         <!--添加提醒事件-->
         <scene sceneID="Bt0-BD-E0u">
@@ -428,6 +464,8 @@
     </scenes>
     <resources>
         <image name="add_notify" width="86" height="86"/>
+        <image name="cancel_item" width="26" height="26"/>
         <image name="next_item" width="27" height="26"/>
+        <image name="take_photo" width="69" height="69"/>
     </resources>
 </document>
