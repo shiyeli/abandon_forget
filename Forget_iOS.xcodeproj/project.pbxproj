@@ -351,13 +351,13 @@
 		6E3063411DC05171000DBB7D /* Forget_iOS */ = {
 			isa = PBXGroup;
 			children = (
+				6E3063751DC05AD9000DBB7D /* ThirdLib */,
 				6E3063C11DC0B381000DBB7D /* Model */,
 				6E3063BA1DC08F91000DBB7D /* PublicViews */,
 				82CAFD041DC0872C004730DF /* Forget_iOS.entitlements */,
 				6E3063971DC05F0D000DBB7D /* ParentClass */,
 				6E3063981DC05F0D000DBB7D /* Tool */,
 				6E3063991DC05F0D000DBB7D /* ViewControllers */,
-				6E3063751DC05AD9000DBB7D /* ThirdLib */,
 				6E3063451DC05171000DBB7D /* AppDelegate.h */,
 				6E3063461DC05171000DBB7D /* AppDelegate.m */,
 				6E30634B1DC05171000DBB7D /* Main.storyboard */,
@@ -474,11 +474,9 @@
 		6E3063991DC05F0D000DBB7D /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				6E3D4F521DC722A30079D8FD /* RearViewController */,
-				6E30639A1DC05F5C000DBB7D /* XYMainViewController.h */,
-				6E30639B1DC05F5C000DBB7D /* XYMainViewController.m */,
-				6E3063A81DC0761C000DBB7D /* XYWillNotifyViewController.h */,
-				6E3063A91DC0761C000DBB7D /* XYWillNotifyViewController.m */,
+				6E35226E1DCB04740000BEF0 /* 主界面(提醒列表) */,
+				6E35226D1DCB03B40000BEF0 /* 新建提醒 */,
+				6E3D4F521DC722A30079D8FD /* 侧滑底视图 */,
 				6E3063AB1DC07650000DBB7D /* XYAddAddressViewController.h */,
 				6E3063AC1DC07650000DBB7D /* XYAddAddressViewController.m */,
 				6E3063AE1DC07F58000DBB7D /* XYAddEventViewController.h */,
@@ -559,6 +557,24 @@
 			path = Masonry;
 			sourceTree = "<group>";
 		};
+		6E35226D1DCB03B40000BEF0 /* 新建提醒 */ = {
+			isa = PBXGroup;
+			children = (
+				6E3063A81DC0761C000DBB7D /* XYWillNotifyViewController.h */,
+				6E3063A91DC0761C000DBB7D /* XYWillNotifyViewController.m */,
+			);
+			name = "新建提醒";
+			sourceTree = "<group>";
+		};
+		6E35226E1DCB04740000BEF0 /* 主界面(提醒列表) */ = {
+			isa = PBXGroup;
+			children = (
+				6E30639A1DC05F5C000DBB7D /* XYMainViewController.h */,
+				6E30639B1DC05F5C000DBB7D /* XYMainViewController.m */,
+			);
+			name = "主界面(提醒列表)";
+			sourceTree = "<group>";
+		};
 		6E3D4F4E1DC721E50079D8FD /* SWRevealViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -568,14 +584,14 @@
 			path = SWRevealViewController;
 			sourceTree = "<group>";
 		};
-		6E3D4F521DC722A30079D8FD /* RearViewController */ = {
+		6E3D4F521DC722A30079D8FD /* 侧滑底视图 */ = {
 			isa = PBXGroup;
 			children = (
 				6E3D4F531DC723090079D8FD /* XYRearViewController.h */,
 				6E3D4F541DC723090079D8FD /* XYRearViewController.m */,
 				6E3D4F551DC723090079D8FD /* XYRearViewController.xib */,
 			);
-			name = RearViewController;
+			name = "侧滑底视图";
 			sourceTree = "<group>";
 		};
 		8256E0371DC6E3870006939C /* iCloud */ = {

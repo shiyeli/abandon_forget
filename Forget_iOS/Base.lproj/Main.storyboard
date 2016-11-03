@@ -255,7 +255,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="新提醒" id="jY1-sE-F8x">
-                        <barButtonItem key="leftBarButtonItem" image="cancel_item" id="rp1-Ya-F8D"/>
+                        <barButtonItem key="leftBarButtonItem" image="cancel_item" id="rp1-Ya-F8D">
+                            <connections>
+                                <action selector="closePageClick:" destination="1Eb-BJ-DmZ" id="JII-al-bhQ"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" image="next_item" style="plain" id="9uy-Q7-XZs">
                             <connections>
                                 <segue destination="dvf-mJ-DOc" kind="show" id="l5S-AE-T6L"/>
