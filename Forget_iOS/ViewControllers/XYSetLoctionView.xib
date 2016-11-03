@@ -153,6 +153,10 @@
                 <constraint firstItem="Lk8-cJ-4vX" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="SfV-pC-qLN"/>
                 <constraint firstAttribute="bottom" secondItem="Lk8-cJ-4vX" secondAttribute="bottom" id="otz-uR-Dls"/>
             </constraints>
+            <connections>
+                <outlet property="myTableView" destination="BBH-Gl-oI9" id="nXJ-B3-Koa"/>
+                <outlet property="myTableViewH" destination="kCK-9T-95m" id="Xfo-cE-9wf"/>
+            </connections>
             <point key="canvasLocation" x="95.5" y="71.5"/>
         </view>
     </objects>

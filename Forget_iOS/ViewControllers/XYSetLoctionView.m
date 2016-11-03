@@ -9,8 +9,10 @@
 #import "XYSetLoctionView.h"
 
 
-@interface XYSetLoctionView ()
+@interface XYSetLoctionView ()<UITableViewDelegate,UITableViewDataSource>
 
+@property (weak, nonatomic) IBOutlet UITableView *myTableView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *myTableViewH;
 
 
 @end
@@ -60,12 +62,32 @@
 -(void)awakeFromNib{
     [super awakeFromNib];
     
-    
+    self.myTableView.delegate=self;
+    self.myTableView.dataSource=self;
+    self.myTableView.backgroundColor=THIEM_COLOR;
+    self.myTableViewH.constant=44*3;
 }
 
+-(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    static NSString* identifer=@"identifer";
+    UITableViewCell* cell= [self.myTableView dequeueReusableCellWithIdentifier:identifer];
+    if (!cell) {
+        cell=[[UITableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:identifer];
+        cell.backgroundColor=THIEM_COLOR;
+        [cell.imageView setImage:[UIImage imageNamed:@"location_icon"]];
+        [cell.textLabel setTextColor:[UIColor whiteColor]];
+        [cell.detailTextLabel setTextColor:[UIColor whiteColor]];
+    }
+    cell.textLabel.text=@"宏达国际广场";
+    cell.detailTextLabel.text=@"青羊区下年大家汪家拐宏达国际广场1911室";
+    
+    
+    return cell;
+}
 
-
-
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return 3;
+}
 
 
 /*
