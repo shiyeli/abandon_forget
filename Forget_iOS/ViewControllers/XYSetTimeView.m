@@ -8,7 +8,27 @@
 
 #import "XYSetTimeView.h"
 
+
+@interface XYSetTimeView ()
+
+
+
+@end
+
 @implementation XYSetTimeView
+
+
+- (IBAction)closeClick:(UIButton *)sender {
+    self.needSetting=NO;
+}
+
+
+-(void)awakeFromNib{
+    [super awakeFromNib];
+    
+    
+
+}
 
 /*
 // Only override drawRect: if you perform custom drawing.

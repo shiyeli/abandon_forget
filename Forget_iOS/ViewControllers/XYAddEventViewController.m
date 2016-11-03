@@ -73,8 +73,12 @@
     
     //视图加载
     self.locationView=[[[NSBundle mainBundle]loadNibNamed:@"XYSetLoctionView" owner:nil options:nil] lastObject];
+    
     self.timeView=[[[NSBundle mainBundle]loadNibNamed:@"XYSetTimeView" owner:nil options:nil] lastObject];
+    
     [self.view layoutIfNeeded];
+    self.timeView.needSetting=YES;
+    self.locationView.needSetting=YES;
     CGFloat scrollViewH=self.myScrollView.frame.size.height;
     [self.timeView setFrame:CGRectMake(0, 0, Main_Screen_Width, scrollViewH)];
     [self.locationView setFrame:CGRectMake(Main_Screen_Width, 0, Main_Screen_Width, scrollViewH)];

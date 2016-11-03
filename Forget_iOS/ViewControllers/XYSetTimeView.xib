@@ -11,7 +11,57 @@
         <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="XYSetTimeView">
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qx4-hN-DTf">
+                    <subviews>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="9HS-ll-Anj">
+                            <subviews>
+                                <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2hV-my-okV"/>
+                                <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tRj-wb-iI2"/>
+                                <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wlq-Nm-gMr"/>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hT5-Eh-vbN">
+                                    <color key="backgroundColor" red="0.98039215686274506" green="0.34509803921568627" blue="0.34509803921568627" alpha="1" colorSpace="calibratedRGB"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="50" id="ch5-dm-v5S"/>
+                                    </constraints>
+                                    <state key="normal" image="close_circle_btn"/>
+                                    <connections>
+                                        <action selector="closeClick:" destination="iN0-l3-epB" eventType="touchUpInside" id="oUB-87-D0G"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="800" id="D1M-cS-vbU"/>
+                                <constraint firstAttribute="trailing" secondItem="hT5-Eh-vbN" secondAttribute="trailing" id="b0t-is-zon"/>
+                                <constraint firstItem="hT5-Eh-vbN" firstAttribute="leading" secondItem="9HS-ll-Anj" secondAttribute="leading" id="zXB-7g-Xij"/>
+                            </constraints>
+                        </stackView>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="9HS-ll-Anj" firstAttribute="leading" secondItem="Qx4-hN-DTf" secondAttribute="leading" id="4h2-qd-bqh"/>
+                        <constraint firstItem="9HS-ll-Anj" firstAttribute="centerX" secondItem="Qx4-hN-DTf" secondAttribute="centerX" id="96F-ER-8Go"/>
+                        <constraint firstItem="9HS-ll-Anj" firstAttribute="top" secondItem="Qx4-hN-DTf" secondAttribute="top" id="NoC-f0-uFG"/>
+                        <constraint firstAttribute="trailing" secondItem="9HS-ll-Anj" secondAttribute="trailing" id="epy-bl-yja"/>
+                        <constraint firstAttribute="bottom" secondItem="9HS-ll-Anj" secondAttribute="bottom" id="f7S-DX-61X"/>
+                    </constraints>
+                </scrollView>
+            </subviews>
             <color key="backgroundColor" red="0.098039215690000001" green="0.30980392159999998" blue="0.52156862749999999" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstItem="Qx4-hN-DTf" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="9WU-ET-EKZ"/>
+                <constraint firstAttribute="trailing" secondItem="Qx4-hN-DTf" secondAttribute="trailing" id="LJg-NB-LJt"/>
+                <constraint firstItem="Qx4-hN-DTf" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="nFg-lY-GVG"/>
+                <constraint firstAttribute="bottom" secondItem="Qx4-hN-DTf" secondAttribute="bottom" id="u3j-dE-woH"/>
+            </constraints>
+            <connections>
+                <outlet property="pickView2" destination="tRj-wb-iI2" id="gdU-ZA-4f1"/>
+                <outlet property="pickView3" destination="wlq-Nm-gMr" id="TEQ-NM-QyW"/>
+                <outlet property="pickerView1" destination="2hV-my-okV" id="au4-hg-sPX"/>
+            </connections>
+            <point key="canvasLocation" x="26.5" y="52.5"/>
         </view>
     </objects>
+    <resources>
+        <image name="close_circle_btn" width="44" height="44"/>
+    </resources>
 </document>

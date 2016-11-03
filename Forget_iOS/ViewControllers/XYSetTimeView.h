@@ -6,10 +6,16 @@
 //  Copyright © 2016年 叶同学. All rights reserved.
 //
 
-#import "XYParentView.h"
+#import "XYSetTimeLocationParentView.h"
 
-@interface XYSetTimeView : XYParentView
+@interface XYSetTimeView : XYSetTimeLocationParentView
 
-@property(nonatomic,assign)BOOL needSetting;
+
+@property (weak, nonatomic) IBOutlet UIPickerView *pickerView1;
+@property (weak, nonatomic) IBOutlet UIPickerView *pickView2;
+@property (weak, nonatomic) IBOutlet UIPickerView *pickView3;
+
+
+
 
 @end

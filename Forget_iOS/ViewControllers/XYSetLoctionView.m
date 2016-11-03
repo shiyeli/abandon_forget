@@ -8,7 +8,26 @@
 
 #import "XYSetLoctionView.h"
 
+
+@interface XYSetLoctionView ()
+
+
+
+@end
+
 @implementation XYSetLoctionView
+
+
+-(void)awakeFromNib{
+    [super awakeFromNib];
+    
+    
+}
+
+
+
+
+
 
 /*
 // Only override drawRect: if you perform custom drawing.
