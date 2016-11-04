@@ -232,7 +232,7 @@
                                 <color key="backgroundColor" red="0.59607843137254901" green="0.22745098039215686" blue="0.45882352941176469" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="R1L-Sk-tEm" secondAttribute="trailing" constant="16" id="KiR-fu-8YU"/>
-                                    <constraint firstAttribute="height" constant="64" id="Pe9-Ut-G4T"/>
+                                    <constraint firstAttribute="height" constant="60" id="Pe9-Ut-G4T"/>
                                     <constraint firstItem="R1L-Sk-tEm" firstAttribute="leading" secondItem="HaE-yY-E32" secondAttribute="leading" constant="16" id="ghb-St-YEN"/>
                                     <constraint firstItem="R1L-Sk-tEm" firstAttribute="centerY" secondItem="HaE-yY-E32" secondAttribute="centerY" id="vVq-4W-MAY"/>
                                 </constraints>
@@ -318,7 +318,9 @@
                                     <constraint firstItem="N3i-eI-dS4" firstAttribute="top" secondItem="7Qe-Nh-7bf" secondAttribute="top" id="tWW-WO-VU4"/>
                                 </constraints>
                             </view>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DkR-cw-9Ad"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DkR-cw-9Ad">
+                                <color key="backgroundColor" red="0.2784313725" green="0.12941176469999999" blue="0.29411764709999999" alpha="1" colorSpace="calibratedRGB"/>
+                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
