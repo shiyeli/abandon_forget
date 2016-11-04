@@ -9,7 +9,8 @@
 #import "XYSetTimeView.h"
 
 
-@interface XYSetTimeView ()
+@interface XYSetTimeView ()<UIPickerViewDelegate,UIPickerViewDataSource>
+
 
 
 
@@ -26,9 +27,31 @@
 -(void)awakeFromNib{
     [super awakeFromNib];
     
-    
+    self.pickerView1.delegate=self;
+    self.pickerView1.dataSource=self;
+    self.pickView2.delegate=self;
+    self.pickView2.dataSource=self;
+    self.pickView3.delegate=self;
+    self.pickView3.dataSource=self;
 
+    
+    
 }
+
+-(NSString*)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component{
+    
+    return @"我是PickView  标题";
+}
+
+- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView{
+    return 3;
+}
+
+// returns the # of rows in each component..
+- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component{
+    return 8;
+}
+
 
 /*
 // Only override drawRect: if you perform custom drawing.
