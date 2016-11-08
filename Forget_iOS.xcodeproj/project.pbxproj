@@ -13,6 +13,7 @@
 		6E1CD0D61DD1C6D800E1FD9D /* XYYearMonthDayCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E1CD0D51DD1C6D800E1FD9D /* XYYearMonthDayCell.m */; };
 		6E1CD0D91DD1C71100E1FD9D /* XYIsRepeatCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E1CD0D81DD1C71100E1FD9D /* XYIsRepeatCell.m */; };
 		6E1CD0DC1DD1C75800E1FD9D /* XYHourMinuteCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E1CD0DB1DD1C75800E1FD9D /* XYHourMinuteCell.m */; };
+		6E1CD0DF1DD1D44600E1FD9D /* XYTimeCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E1CD0DE1DD1D44600E1FD9D /* XYTimeCellModel.m */; };
 		6E3063441DC05171000DBB7D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E3063431DC05171000DBB7D /* main.m */; };
 		6E3063471DC05171000DBB7D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E3063461DC05171000DBB7D /* AppDelegate.m */; };
 		6E30634D1DC05171000DBB7D /* AddEvent.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6E30634B1DC05171000DBB7D /* AddEvent.storyboard */; };
@@ -157,6 +158,8 @@
 		6E1CD0D81DD1C71100E1FD9D /* XYIsRepeatCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYIsRepeatCell.m; sourceTree = "<group>"; };
 		6E1CD0DA1DD1C75800E1FD9D /* XYHourMinuteCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYHourMinuteCell.h; sourceTree = "<group>"; };
 		6E1CD0DB1DD1C75800E1FD9D /* XYHourMinuteCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYHourMinuteCell.m; sourceTree = "<group>"; };
+		6E1CD0DD1DD1D44600E1FD9D /* XYTimeCellModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYTimeCellModel.h; sourceTree = "<group>"; };
+		6E1CD0DE1DD1D44600E1FD9D /* XYTimeCellModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYTimeCellModel.m; sourceTree = "<group>"; };
 		6E30633F1DC05171000DBB7D /* Forget_iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Forget_iOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6E3063431DC05171000DBB7D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		6E3063451DC05171000DBB7D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -378,6 +381,8 @@
 				6E3522721DCB0D040000BEF0 /* XYSetTimeView.xib */,
 				6E1CD0D11DD1C5D100E1FD9D /* XYTimeParentCell.h */,
 				6E1CD0D21DD1C5D100E1FD9D /* XYTimeParentCell.m */,
+				6E1CD0DD1DD1D44600E1FD9D /* XYTimeCellModel.h */,
+				6E1CD0DE1DD1D44600E1FD9D /* XYTimeCellModel.m */,
 				6E1CD0D41DD1C6D800E1FD9D /* XYYearMonthDayCell.h */,
 				6E1CD0D51DD1C6D800E1FD9D /* XYYearMonthDayCell.m */,
 				6E1CD0D71DD1C71100E1FD9D /* XYIsRepeatCell.h */,
@@ -965,6 +970,7 @@
 				6E35226B1DC9DFC10000BEF0 /* ViewController+MASAdditions.m in Sources */,
 				6E3522761DCB0DAC0000BEF0 /* XYSetLoctionView.m in Sources */,
 				6E3D4F511DC721E50079D8FD /* SWRevealViewController.m in Sources */,
+				6E1CD0DF1DD1D44600E1FD9D /* XYTimeCellModel.m in Sources */,
 				6E35226C1DC9DFC10000BEF0 /* README.md in Sources */,
 				6E3522651DC9DFC10000BEF0 /* MASLayoutConstraint.m in Sources */,
 				8256E03A1DC6E3AA0006939C /* iCloudManager.m in Sources */,

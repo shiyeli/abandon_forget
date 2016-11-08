@@ -12,9 +12,13 @@
 #import "XYYearMonthDayCell.h"
 #import "XYIsRepeatCell.h"
 #import "XYHourMinuteCell.h"
+#import "XYTimeCellModel.h"
 
+#define HEIGHT_CELL_SPREADOUT 150;
 
 @interface XYSetTimeView ()<UITableViewDelegate,UITableViewDataSource>
+
+@property(nonatomic,strong)NSMutableArray * dataArr;
 
 
 
@@ -31,11 +35,29 @@
     self.myTableView.delegate=self;
     self.myTableView.dataSource=self;
     
-    
+    self.dataArr=[NSMutableArray array];
+    for (int i=0; i<3; i++) {
+        NSMutableArray* sectionArr=[NSMutableArray array];
+        if (i==0) {
+            for (int j=0; j<2; j++) {
+                XYTimeCellModel* model=[[XYTimeCellModel alloc]init];
+                model.isSwithOn=YES;
+                model.isSpreadOut=NO;
+                [sectionArr addObject:model];
+            }
+        }else{
+            XYTimeCellModel* model=[[XYTimeCellModel alloc]init];
+            model.isSwithOn=YES;
+            model.isSpreadOut=NO;
+            [sectionArr addObject:model];
+        }
+        [self.dataArr addObject:sectionArr];
+    }
     
 }
 
 -(XYTimeParentCell* )tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
 
     XYTimeParentCell* cell=[[XYTimeParentCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
     if (indexPath.section==0) {
@@ -79,8 +101,8 @@
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-
-    return 100;
+    XYTimeCellModel* model=[self.dataArr[indexPath.section] objectAtIndex:indexPath.row];
+    return model.cellH;
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
 
@@ -96,13 +118,17 @@
 }
 
 -(UIView*)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+    
+    XYTimeCellModel* model=[self.dataArr[section] objectAtIndex:0];
+    
+    
     UIView* header=[[UIView alloc]initWithFrame:CGRectMake(0, 0, Main_Screen_Width, SECTION_HEADER_HEIGHT)];
     
     
     UISwitch* mySwitch=[[UISwitch alloc]init];
     mySwitch.onTintColor=THIEM_COLOR;
-    [mySwitch setOn:YES];
     mySwitch.tag=section;
+    [mySwitch setOn:model.isSwithOn];
     [mySwitch addTarget:self action:@selector(switchActions:) forControlEvents:UIControlEventValueChanged];
     [header addSubview:mySwitch];
     [mySwitch mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -133,8 +159,17 @@
     return 0;
 }
 -(void)switchActions:(UISwitch*)sender{
+    NSArray* arr=[self.dataArr objectAtIndex:sender.tag];
     
+    for (XYTimeCellModel* model in arr) {
+        if (sender.isOn) {
+            model.isSwithOn=YES;
+        }else{
+            model.isSwithOn=NO;
+        }
+    }
     
+    [self.myTableView reloadSections:[NSIndexSet indexSetWithIndex:sender.tag] withRowAnimation:UITableViewRowAnimationAutomatic];
 }
 
 
