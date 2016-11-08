@@ -23,7 +23,7 @@
     return _powerMark;
 }
 
-
+    
 
 -(void)setNeedSetting:(BOOL)needSetting{
     _needSetting=needSetting;

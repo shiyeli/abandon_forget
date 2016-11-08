@@ -7,9 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6E1CD0C81DD19B1800E1FD9D /* NotifyList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6E1CD0C71DD19B1800E1FD9D /* NotifyList.storyboard */; };
 		6E3063441DC05171000DBB7D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E3063431DC05171000DBB7D /* main.m */; };
 		6E3063471DC05171000DBB7D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E3063461DC05171000DBB7D /* AppDelegate.m */; };
-		6E30634D1DC05171000DBB7D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6E30634B1DC05171000DBB7D /* Main.storyboard */; };
+		6E30634D1DC05171000DBB7D /* AddEvent.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6E30634B1DC05171000DBB7D /* AddEvent.storyboard */; };
 		6E30634F1DC05171000DBB7D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6E30634E1DC05171000DBB7D /* Assets.xcassets */; };
 		6E3063521DC05171000DBB7D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6E3063501DC05171000DBB7D /* LaunchScreen.storyboard */; };
 		6E30637C1DC05B03000DBB7D /* AMapFoundationKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E3063771DC05B03000DBB7D /* AMapFoundationKit.framework */; };
@@ -34,8 +35,6 @@
 		6E3063AD1DC07650000DBB7D /* XYAddAddressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E3063AC1DC07650000DBB7D /* XYAddAddressViewController.m */; };
 		6E3063B01DC07F58000DBB7D /* XYAddEventViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E3063AF1DC07F58000DBB7D /* XYAddEventViewController.m */; };
 		6E3063B31DC0863D000DBB7D /* HWTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E3063B21DC0863D000DBB7D /* HWTextView.m */; };
-		6E3063B61DC08DA3000DBB7D /* XYSettingTimeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E3063B51DC08DA3000DBB7D /* XYSettingTimeViewController.m */; };
-		6E3063B91DC08DD4000DBB7D /* XYSettingOccasionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E3063B81DC08DD4000DBB7D /* XYSettingOccasionViewController.m */; };
 		6E3063BD1DC08FE3000DBB7D /* XYNotifyPropertyChangeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E3063BC1DC08FE3000DBB7D /* XYNotifyPropertyChangeView.m */; };
 		6E3063C01DC0A250000DBB7D /* XYUserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E3063BF1DC0A250000DBB7D /* XYUserInfo.m */; };
 		6E3063C41DC0B390000DBB7D /* AMapTipAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E3063C31DC0B390000DBB7D /* AMapTipAnnotation.m */; };
@@ -144,11 +143,12 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		6E1CD0C71DD19B1800E1FD9D /* NotifyList.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = NotifyList.storyboard; sourceTree = "<group>"; };
 		6E30633F1DC05171000DBB7D /* Forget_iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Forget_iOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6E3063431DC05171000DBB7D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		6E3063451DC05171000DBB7D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		6E3063461DC05171000DBB7D /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		6E30634C1DC05171000DBB7D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		6E30634C1DC05171000DBB7D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/AddEvent.storyboard; sourceTree = "<group>"; };
 		6E30634E1DC05171000DBB7D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6E3063511DC05171000DBB7D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6E3063531DC05171000DBB7D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -188,10 +188,6 @@
 		6E3063AF1DC07F58000DBB7D /* XYAddEventViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYAddEventViewController.m; sourceTree = "<group>"; };
 		6E3063B11DC0863D000DBB7D /* HWTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HWTextView.h; sourceTree = "<group>"; };
 		6E3063B21DC0863D000DBB7D /* HWTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HWTextView.m; sourceTree = "<group>"; };
-		6E3063B41DC08DA3000DBB7D /* XYSettingTimeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYSettingTimeViewController.h; sourceTree = "<group>"; };
-		6E3063B51DC08DA3000DBB7D /* XYSettingTimeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYSettingTimeViewController.m; sourceTree = "<group>"; };
-		6E3063B71DC08DD4000DBB7D /* XYSettingOccasionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYSettingOccasionViewController.h; sourceTree = "<group>"; };
-		6E3063B81DC08DD4000DBB7D /* XYSettingOccasionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYSettingOccasionViewController.m; sourceTree = "<group>"; };
 		6E3063BB1DC08FE3000DBB7D /* XYNotifyPropertyChangeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYNotifyPropertyChangeView.h; sourceTree = "<group>"; };
 		6E3063BC1DC08FE3000DBB7D /* XYNotifyPropertyChangeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYNotifyPropertyChangeView.m; sourceTree = "<group>"; };
 		6E3063BE1DC0A250000DBB7D /* XYUserInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYUserInfo.h; sourceTree = "<group>"; };
@@ -336,6 +332,43 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6E1CD0C91DD1A11C00E1FD9D /* 添加新提醒 */ = {
+			isa = PBXGroup;
+			children = (
+				6E3063A81DC0761C000DBB7D /* XYWillNotifyViewController.h */,
+				6E3063A91DC0761C000DBB7D /* XYWillNotifyViewController.m */,
+			);
+			name = "添加新提醒";
+			sourceTree = "<group>";
+		};
+		6E1CD0CA1DD1A13600E1FD9D /* 设置时间地点 */ = {
+			isa = PBXGroup;
+			children = (
+				6E3063AE1DC07F58000DBB7D /* XYAddEventViewController.h */,
+				6E3063AF1DC07F58000DBB7D /* XYAddEventViewController.m */,
+				6E35227C1DCB25240000BEF0 /* XYSetTimeLocationParentView.h */,
+				6E35227D1DCB25240000BEF0 /* XYSetTimeLocationParentView.m */,
+				6E35226F1DCB0CF40000BEF0 /* XYSetTimeView.h */,
+				6E3522701DCB0CF40000BEF0 /* XYSetTimeView.m */,
+				6E3522721DCB0D040000BEF0 /* XYSetTimeView.xib */,
+				6E3522741DCB0DAC0000BEF0 /* XYSetLoctionView.h */,
+				6E3522751DCB0DAC0000BEF0 /* XYSetLoctionView.m */,
+				6E3522771DCB0DB40000BEF0 /* XYSetLoctionView.xib */,
+				6E3522791DCB1C710000BEF0 /* XYPowerMarkView.h */,
+				6E35227A1DCB1C710000BEF0 /* XYPowerMarkView.m */,
+			);
+			name = "设置时间地点";
+			sourceTree = "<group>";
+		};
+		6E1CD0CB1DD1A18200E1FD9D /* 搜索其他地址 */ = {
+			isa = PBXGroup;
+			children = (
+				6E3063AB1DC07650000DBB7D /* XYAddAddressViewController.h */,
+				6E3063AC1DC07650000DBB7D /* XYAddAddressViewController.m */,
+			);
+			name = "搜索其他地址";
+			sourceTree = "<group>";
+		};
 		6E3063361DC05171000DBB7D = {
 			isa = PBXGroup;
 			children = (
@@ -376,7 +409,6 @@
 				6E3063991DC05F0D000DBB7D /* ViewControllers */,
 				6E3063451DC05171000DBB7D /* AppDelegate.h */,
 				6E3063461DC05171000DBB7D /* AppDelegate.m */,
-				6E30634B1DC05171000DBB7D /* Main.storyboard */,
 				6E30634E1DC05171000DBB7D /* Assets.xcassets */,
 				6E3063501DC05171000DBB7D /* LaunchScreen.storyboard */,
 				6E3063531DC05171000DBB7D /* Info.plist */,
@@ -490,17 +522,10 @@
 		6E3063991DC05F0D000DBB7D /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				6E1CD0CB1DD1A18200E1FD9D /* 搜索其他地址 */,
 				6E35226E1DCB04740000BEF0 /* 主界面(提醒列表) */,
 				6E35226D1DCB03B40000BEF0 /* 新建提醒 */,
 				6E3D4F521DC722A30079D8FD /* 侧滑底视图 */,
-				6E3063AB1DC07650000DBB7D /* XYAddAddressViewController.h */,
-				6E3063AC1DC07650000DBB7D /* XYAddAddressViewController.m */,
-				6E3063A81DC0761C000DBB7D /* XYWillNotifyViewController.h */,
-				6E3063A91DC0761C000DBB7D /* XYWillNotifyViewController.m */,
-				6E3063B41DC08DA3000DBB7D /* XYSettingTimeViewController.h */,
-				6E3063B51DC08DA3000DBB7D /* XYSettingTimeViewController.m */,
-				6E3063B71DC08DD4000DBB7D /* XYSettingOccasionViewController.h */,
-				6E3063B81DC08DD4000DBB7D /* XYSettingOccasionViewController.m */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -576,18 +601,9 @@
 		6E35226D1DCB03B40000BEF0 /* 新建提醒 */ = {
 			isa = PBXGroup;
 			children = (
-				6E3063AE1DC07F58000DBB7D /* XYAddEventViewController.h */,
-				6E3063AF1DC07F58000DBB7D /* XYAddEventViewController.m */,
-				6E35227C1DCB25240000BEF0 /* XYSetTimeLocationParentView.h */,
-				6E35227D1DCB25240000BEF0 /* XYSetTimeLocationParentView.m */,
-				6E35226F1DCB0CF40000BEF0 /* XYSetTimeView.h */,
-				6E3522701DCB0CF40000BEF0 /* XYSetTimeView.m */,
-				6E3522721DCB0D040000BEF0 /* XYSetTimeView.xib */,
-				6E3522741DCB0DAC0000BEF0 /* XYSetLoctionView.h */,
-				6E3522751DCB0DAC0000BEF0 /* XYSetLoctionView.m */,
-				6E3522771DCB0DB40000BEF0 /* XYSetLoctionView.xib */,
-				6E3522791DCB1C710000BEF0 /* XYPowerMarkView.h */,
-				6E35227A1DCB1C710000BEF0 /* XYPowerMarkView.m */,
+				6E30634B1DC05171000DBB7D /* AddEvent.storyboard */,
+				6E1CD0C91DD1A11C00E1FD9D /* 添加新提醒 */,
+				6E1CD0CA1DD1A13600E1FD9D /* 设置时间地点 */,
 			);
 			name = "新建提醒";
 			sourceTree = "<group>";
@@ -595,6 +611,7 @@
 		6E35226E1DCB04740000BEF0 /* 主界面(提醒列表) */ = {
 			isa = PBXGroup;
 			children = (
+				6E1CD0C71DD19B1800E1FD9D /* NotifyList.storyboard */,
 				6E30639A1DC05F5C000DBB7D /* XYMainViewController.h */,
 				6E30639B1DC05F5C000DBB7D /* XYMainViewController.m */,
 			);
@@ -858,7 +875,8 @@
 				6E3063521DC05171000DBB7D /* LaunchScreen.storyboard in Resources */,
 				6E30634F1DC05171000DBB7D /* Assets.xcassets in Resources */,
 				6E3066CC1DC1F4E2000DBB7D /* locate@2x.png in Resources */,
-				6E30634D1DC05171000DBB7D /* Main.storyboard in Resources */,
+				6E1CD0C81DD19B1800E1FD9D /* NotifyList.storyboard in Resources */,
+				6E30634D1DC05171000DBB7D /* AddEvent.storyboard in Resources */,
 				6E3522781DCB0DB40000BEF0 /* XYSetLoctionView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -904,11 +922,9 @@
 				6E35226A1DC9DFC10000BEF0 /* View+MASAdditions.m in Sources */,
 				6E3063A11DC060C4000DBB7D /* XYParentViewController.m in Sources */,
 				6E3522631DC9DFC10000BEF0 /* MASConstraint.m in Sources */,
-				6E3063B61DC08DA3000DBB7D /* XYSettingTimeViewController.m in Sources */,
 				6E3522671DC9DFC10000BEF0 /* MASViewConstraint.m in Sources */,
 				6E3063AD1DC07650000DBB7D /* XYAddAddressViewController.m in Sources */,
 				8256E0401DC6EA9A0006939C /* EventManager.m in Sources */,
-				6E3063B91DC08DD4000DBB7D /* XYSettingOccasionViewController.m in Sources */,
 				6E3063441DC05171000DBB7D /* main.m in Sources */,
 				6E3522431DC9DEB90000BEF0 /* XYTool.m in Sources */,
 				6E35227E1DCB25240000BEF0 /* XYSetTimeLocationParentView.m in Sources */,
@@ -982,12 +998,13 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		6E30634B1DC05171000DBB7D /* Main.storyboard */ = {
+		6E30634B1DC05171000DBB7D /* AddEvent.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				6E30634C1DC05171000DBB7D /* Base */,
 			);
-			name = Main.storyboard;
+			name = AddEvent.storyboard;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		6E3063501DC05171000DBB7D /* LaunchScreen.storyboard */ = {

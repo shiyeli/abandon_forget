@@ -39,26 +39,20 @@
 - (IBAction)clickOnView:(UIButton *)sender {
     switch (sender.tag) {
         case 1:{
-            //添加常用地址
-            [self performSegueWithIdentifier:@"XYAddAddressViewController" sender:nil];
-        }
-            break;
-         
-        case 2:{
-            //设置
+            //添加提醒事件
+            UINavigationController* AddEventNavi=[[UIStoryboard storyboardWithName:@"AddEvent" bundle:nil] instantiateInitialViewController];
+            [self presentViewController:AddEventNavi animated:YES completion:^{
+                
+            }];
+            
             
         }
             break;
-        case 3:{
-            //提醒事项
-            [self performSegueWithIdentifier:@"XYWillNotifyViewController" sender:nil];
-        }
-            break;
-
+         
+        
         default:
             break;
     }
-    
     
     
 }

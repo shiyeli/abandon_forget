@@ -44,7 +44,7 @@
 -(void)initMainViews{
     
     XYRearViewController* rearCtl=[[XYRearViewController alloc]initWithNibName:@"XYRearViewController" bundle:nil];
-    UINavigationController *frontNavi = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateInitialViewController];
+    UINavigationController *frontNavi = [[UIStoryboard storyboardWithName:@"NotifyList" bundle:nil] instantiateInitialViewController];
     
     SWRevealViewController *revealController = [[SWRevealViewController alloc] initWithRearViewController:rearCtl frontViewController:frontNavi];
     revealController.delegate = self;

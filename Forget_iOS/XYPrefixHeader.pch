@@ -27,9 +27,10 @@
 //高德Apikey
 #define AMapApiKey @"881a46c1030c7f0aaf1dbd1c59fea787"
 //主题颜色
-#define THIEM_COLOR [XYTool stringToColor:@"#47214B"]
-
-
+#define THIEM_COLOR [XYTool stringToColor:@"#009688"]
+#define THIEM_COLOR_DARKER [XYTool stringToColor:@"#00796B"]
+#define THIEM_COLOR_LIGHTER [XYTool stringToColor:@"#4DB6AC"]
+#define THIEM_COLOR_LIGHTER2 [XYTool stringToColor:@"#80CBC4"]
 
 
 

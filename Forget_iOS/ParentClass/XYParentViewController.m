@@ -24,7 +24,7 @@
     //设置标题/导航栏按钮颜色/导航栏/视图背景色
     self.navigationController.navigationBar.barTintColor=THIEM_COLOR;
     self.navigationController.navigationBar.translucent=NO;
-    self.view.backgroundColor=THIEM_COLOR;
+    self.view.backgroundColor=THIEM_COLOR_LIGHTER;
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]}];
     self.navigationController.navigationBar.tintColor=[UIColor whiteColor];
     
