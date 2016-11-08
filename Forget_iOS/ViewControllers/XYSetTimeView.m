@@ -9,9 +9,12 @@
 #import "XYSetTimeView.h"
 //组头高度
 #define SECTION_HEADER_HEIGHT 44.0
+#import "XYYearMonthDayCell.h"
+#import "XYIsRepeatCell.h"
+#import "XYHourMinuteCell.h"
+
 
 @interface XYSetTimeView ()<UITableViewDelegate,UITableViewDataSource>
-
 
 
 
@@ -28,15 +31,57 @@
     self.myTableView.delegate=self;
     self.myTableView.dataSource=self;
     
+    
+    
 }
 
--(UITableViewCell* )tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+-(XYTimeParentCell* )tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+
+    XYTimeParentCell* cell=[[XYTimeParentCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
+    if (indexPath.section==0) {
+        if (indexPath.row==0) {
+            
+            
+            
+            
+        }else{
+        
+            
+            
+        
+        }
+    }else if (indexPath.section==1){
     
-    UITableViewCell* cell=[[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
+        if (indexPath.row==0) {
+            
+            
+            
+            
+            
+            
+            
+        }
+    }else if (indexPath.section==2){
+    
+        if (indexPath.row==0) {
+            
+            
+            
+            
+            
+        }
+    }
+    
+    
+    
     
     return cell;
 }
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
 
+    return 100;
+}
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
 
     if (section==0) {
@@ -56,6 +101,7 @@
     
     UISwitch* mySwitch=[[UISwitch alloc]init];
     mySwitch.onTintColor=THIEM_COLOR;
+    [mySwitch setOn:YES];
     mySwitch.tag=section;
     [mySwitch addTarget:self action:@selector(switchActions:) forControlEvents:UIControlEventValueChanged];
     [header addSubview:mySwitch];
@@ -88,8 +134,11 @@
 }
 -(void)switchActions:(UISwitch*)sender{
     
-
+    
 }
+
+
+
 
 /*
 // Only override drawRect: if you perform custom drawing.

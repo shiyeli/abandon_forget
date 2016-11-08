@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		6E1CD0C81DD19B1800E1FD9D /* NotifyList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6E1CD0C71DD19B1800E1FD9D /* NotifyList.storyboard */; };
+		6E1CD0D01DD1C58200E1FD9D /* XYParentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E1CD0CF1DD1C58200E1FD9D /* XYParentTableViewCell.m */; };
+		6E1CD0D31DD1C5D100E1FD9D /* XYTimeParentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E1CD0D21DD1C5D100E1FD9D /* XYTimeParentCell.m */; };
+		6E1CD0D61DD1C6D800E1FD9D /* XYYearMonthDayCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E1CD0D51DD1C6D800E1FD9D /* XYYearMonthDayCell.m */; };
+		6E1CD0D91DD1C71100E1FD9D /* XYIsRepeatCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E1CD0D81DD1C71100E1FD9D /* XYIsRepeatCell.m */; };
+		6E1CD0DC1DD1C75800E1FD9D /* XYHourMinuteCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E1CD0DB1DD1C75800E1FD9D /* XYHourMinuteCell.m */; };
 		6E3063441DC05171000DBB7D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E3063431DC05171000DBB7D /* main.m */; };
 		6E3063471DC05171000DBB7D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E3063461DC05171000DBB7D /* AppDelegate.m */; };
 		6E30634D1DC05171000DBB7D /* AddEvent.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6E30634B1DC05171000DBB7D /* AddEvent.storyboard */; };
@@ -142,6 +147,16 @@
 
 /* Begin PBXFileReference section */
 		6E1CD0C71DD19B1800E1FD9D /* NotifyList.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = NotifyList.storyboard; sourceTree = "<group>"; };
+		6E1CD0CE1DD1C58200E1FD9D /* XYParentTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYParentTableViewCell.h; sourceTree = "<group>"; };
+		6E1CD0CF1DD1C58200E1FD9D /* XYParentTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYParentTableViewCell.m; sourceTree = "<group>"; };
+		6E1CD0D11DD1C5D100E1FD9D /* XYTimeParentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYTimeParentCell.h; sourceTree = "<group>"; };
+		6E1CD0D21DD1C5D100E1FD9D /* XYTimeParentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYTimeParentCell.m; sourceTree = "<group>"; };
+		6E1CD0D41DD1C6D800E1FD9D /* XYYearMonthDayCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYYearMonthDayCell.h; sourceTree = "<group>"; };
+		6E1CD0D51DD1C6D800E1FD9D /* XYYearMonthDayCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYYearMonthDayCell.m; sourceTree = "<group>"; };
+		6E1CD0D71DD1C71100E1FD9D /* XYIsRepeatCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYIsRepeatCell.h; sourceTree = "<group>"; };
+		6E1CD0D81DD1C71100E1FD9D /* XYIsRepeatCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYIsRepeatCell.m; sourceTree = "<group>"; };
+		6E1CD0DA1DD1C75800E1FD9D /* XYHourMinuteCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYHourMinuteCell.h; sourceTree = "<group>"; };
+		6E1CD0DB1DD1C75800E1FD9D /* XYHourMinuteCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYHourMinuteCell.m; sourceTree = "<group>"; };
 		6E30633F1DC05171000DBB7D /* Forget_iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Forget_iOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6E3063431DC05171000DBB7D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		6E3063451DC05171000DBB7D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -340,12 +355,8 @@
 			children = (
 				6E3063AE1DC07F58000DBB7D /* XYAddEventViewController.h */,
 				6E3063AF1DC07F58000DBB7D /* XYAddEventViewController.m */,
-				6E35226F1DCB0CF40000BEF0 /* XYSetTimeView.h */,
-				6E3522701DCB0CF40000BEF0 /* XYSetTimeView.m */,
-				6E3522721DCB0D040000BEF0 /* XYSetTimeView.xib */,
-				6E3522741DCB0DAC0000BEF0 /* XYSetLoctionView.h */,
-				6E3522751DCB0DAC0000BEF0 /* XYSetLoctionView.m */,
-				6E3522771DCB0DB40000BEF0 /* XYSetLoctionView.xib */,
+				6E1CD0CC1DD1C52100E1FD9D /* 设置时间 */,
+				6E1CD0CD1DD1C53400E1FD9D /* 设置地点 */,
 			);
 			name = "设置时间地点";
 			sourceTree = "<group>";
@@ -357,6 +368,34 @@
 				6E3063AC1DC07650000DBB7D /* XYAddAddressViewController.m */,
 			);
 			name = "搜索其他地址";
+			sourceTree = "<group>";
+		};
+		6E1CD0CC1DD1C52100E1FD9D /* 设置时间 */ = {
+			isa = PBXGroup;
+			children = (
+				6E35226F1DCB0CF40000BEF0 /* XYSetTimeView.h */,
+				6E3522701DCB0CF40000BEF0 /* XYSetTimeView.m */,
+				6E3522721DCB0D040000BEF0 /* XYSetTimeView.xib */,
+				6E1CD0D11DD1C5D100E1FD9D /* XYTimeParentCell.h */,
+				6E1CD0D21DD1C5D100E1FD9D /* XYTimeParentCell.m */,
+				6E1CD0D41DD1C6D800E1FD9D /* XYYearMonthDayCell.h */,
+				6E1CD0D51DD1C6D800E1FD9D /* XYYearMonthDayCell.m */,
+				6E1CD0D71DD1C71100E1FD9D /* XYIsRepeatCell.h */,
+				6E1CD0D81DD1C71100E1FD9D /* XYIsRepeatCell.m */,
+				6E1CD0DA1DD1C75800E1FD9D /* XYHourMinuteCell.h */,
+				6E1CD0DB1DD1C75800E1FD9D /* XYHourMinuteCell.m */,
+			);
+			name = "设置时间";
+			sourceTree = "<group>";
+		};
+		6E1CD0CD1DD1C53400E1FD9D /* 设置地点 */ = {
+			isa = PBXGroup;
+			children = (
+				6E3522741DCB0DAC0000BEF0 /* XYSetLoctionView.h */,
+				6E3522751DCB0DAC0000BEF0 /* XYSetLoctionView.m */,
+				6E3522771DCB0DB40000BEF0 /* XYSetLoctionView.xib */,
+			);
+			name = "设置地点";
 			sourceTree = "<group>";
 		};
 		6E3063361DC05171000DBB7D = {
@@ -492,6 +531,8 @@
 				6E3063A31DC060DD000DBB7D /* XYParentView.m */,
 				6E3063A51DC06141000DBB7D /* XYParentModel.h */,
 				6E3063A61DC06141000DBB7D /* XYParentModel.m */,
+				6E1CD0CE1DD1C58200E1FD9D /* XYParentTableViewCell.h */,
+				6E1CD0CF1DD1C58200E1FD9D /* XYParentTableViewCell.m */,
 			);
 			path = ParentClass;
 			sourceTree = "<group>";
@@ -901,6 +942,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6E1CD0DC1DD1C75800E1FD9D /* XYHourMinuteCell.m in Sources */,
 				6E3522681DC9DFC10000BEF0 /* NSArray+MASAdditions.m in Sources */,
 				6E3063AA1DC0761C000DBB7D /* XYWillNotifyViewController.m in Sources */,
 				6E3063C41DC0B390000DBB7D /* AMapTipAnnotation.m in Sources */,
@@ -913,6 +955,7 @@
 				6E3063A11DC060C4000DBB7D /* XYParentViewController.m in Sources */,
 				6E3522631DC9DFC10000BEF0 /* MASConstraint.m in Sources */,
 				6E3522671DC9DFC10000BEF0 /* MASViewConstraint.m in Sources */,
+				6E1CD0D01DD1C58200E1FD9D /* XYParentTableViewCell.m in Sources */,
 				6E3063AD1DC07650000DBB7D /* XYAddAddressViewController.m in Sources */,
 				8256E0401DC6EA9A0006939C /* EventManager.m in Sources */,
 				6E3063441DC05171000DBB7D /* main.m in Sources */,
@@ -927,12 +970,15 @@
 				8256E03A1DC6E3AA0006939C /* iCloudManager.m in Sources */,
 				6E3522711DCB0CF40000BEF0 /* XYSetTimeView.m in Sources */,
 				6E3522621DC9DFC10000BEF0 /* MASCompositeConstraint.m in Sources */,
+				6E1CD0D61DD1C6D800E1FD9D /* XYYearMonthDayCell.m in Sources */,
 				6E3063A71DC06141000DBB7D /* XYParentModel.m in Sources */,
+				6E1CD0D91DD1C71100E1FD9D /* XYIsRepeatCell.m in Sources */,
 				6E3063C01DC0A250000DBB7D /* XYUserInfo.m in Sources */,
 				6E3063B31DC0863D000DBB7D /* HWTextView.m in Sources */,
 				6E3066D11DC200AF000DBB7D /* XYHgithtOfKeyboard.m in Sources */,
 				6E3063BD1DC08FE3000DBB7D /* XYNotifyPropertyChangeView.m in Sources */,
 				6E3522661DC9DFC10000BEF0 /* MASViewAttribute.m in Sources */,
+				6E1CD0D31DD1C5D100E1FD9D /* XYTimeParentCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
