@@ -276,10 +276,10 @@
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pcr-xX-449">
                                         <rect key="frame" x="0.0" y="58" width="187.5" height="2"/>
-                                        <color key="backgroundColor" red="0.16470588235294117" green="0.64313725490196072" blue="0.72941176470588232" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     </view>
                                 </subviews>
-                                <color key="backgroundColor" red="0.0" green="0.58823529411764708" blue="0.53333333333333333" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="UJc-f6-QuJ" firstAttribute="leading" secondItem="N3i-eI-dS4" secondAttribute="trailing" id="0o7-ic-qrN"/>
                                     <constraint firstItem="Pcr-xX-449" firstAttribute="width" secondItem="N3i-eI-dS4" secondAttribute="width" id="0yv-bh-w36"/>
@@ -468,7 +468,7 @@
         <image name="determine_item" width="27" height="26"/>
         <image name="next_item" width="27" height="26"/>
         <image name="set_location_unselect" width="42" height="42"/>
-        <image name="set_time_select" width="57" height="42"/>
+        <image name="set_time_select" width="39" height="39"/>
         <image name="take_photo" width="69" height="69"/>
     </resources>
 </document>

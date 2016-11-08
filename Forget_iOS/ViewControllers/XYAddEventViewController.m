@@ -62,6 +62,9 @@
    
 }
 -(void)setUserInterface{
+    
+    self.view.backgroundColor=THIEM_COLOR;
+    
     //按钮设置
     [self.setTimeBtn setImage:[UIImage imageNamed:@"set_time_select"] forState:UIControlStateSelected];
     [self.setTimeBtn setImage:[UIImage imageNamed:@"set_time_unselect"] forState:UIControlStateNormal];
@@ -80,8 +83,6 @@
     self.timeView=[[[NSBundle mainBundle]loadNibNamed:@"XYSetTimeView" owner:nil options:nil] lastObject];
     
     [self.view layoutIfNeeded];
-    self.timeView.needSetting=YES;
-    self.locationView.needSetting=YES;
     CGFloat scrollViewH=self.myScrollView.frame.size.height;
     [self.timeView setFrame:CGRectMake(0, 0, Main_Screen_Width, scrollViewH)];
     [self.locationView setFrame:CGRectMake(Main_Screen_Width, 0, Main_Screen_Width, scrollViewH)];

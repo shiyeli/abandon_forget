@@ -31,7 +31,8 @@
 #define THIEM_COLOR_DARKER [XYTool stringToColor:@"#00796B"]
 #define THIEM_COLOR_LIGHTER [XYTool stringToColor:@"#4DB6AC"]
 #define THIEM_COLOR_LIGHTER2 [XYTool stringToColor:@"#80CBC4"]
-
+//边距
+#define DISTANCE_TO_EDGE 16.0
 
 
 

@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -12,62 +15,26 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qx4-hN-DTf">
-                    <subviews>
-                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="9HS-ll-Anj">
-                            <subviews>
-                                <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2hV-my-okV">
-                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                </pickerView>
-                                <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tRj-wb-iI2">
-                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                </pickerView>
-                                <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wlq-Nm-gMr">
-                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                </pickerView>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hT5-Eh-vbN">
-                                    <color key="backgroundColor" red="0.98039215686274506" green="0.34509803921568627" blue="0.34509803921568627" alpha="1" colorSpace="calibratedRGB"/>
-                                    <constraints>
-                                        <constraint firstAttribute="height" constant="50" id="ch5-dm-v5S"/>
-                                    </constraints>
-                                    <state key="normal" image="close_circle_btn"/>
-                                    <connections>
-                                        <action selector="closeClick:" destination="iN0-l3-epB" eventType="touchUpInside" id="oUB-87-D0G"/>
-                                    </connections>
-                                </button>
-                            </subviews>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="800" id="D1M-cS-vbU"/>
-                                <constraint firstAttribute="trailing" secondItem="hT5-Eh-vbN" secondAttribute="trailing" id="b0t-is-zon"/>
-                                <constraint firstItem="hT5-Eh-vbN" firstAttribute="leading" secondItem="9HS-ll-Anj" secondAttribute="leading" id="zXB-7g-Xij"/>
-                            </constraints>
-                        </stackView>
-                    </subviews>
-                    <constraints>
-                        <constraint firstItem="9HS-ll-Anj" firstAttribute="leading" secondItem="Qx4-hN-DTf" secondAttribute="leading" id="4h2-qd-bqh"/>
-                        <constraint firstItem="9HS-ll-Anj" firstAttribute="centerX" secondItem="Qx4-hN-DTf" secondAttribute="centerX" id="96F-ER-8Go"/>
-                        <constraint firstItem="9HS-ll-Anj" firstAttribute="top" secondItem="Qx4-hN-DTf" secondAttribute="top" id="NoC-f0-uFG"/>
-                        <constraint firstAttribute="trailing" secondItem="9HS-ll-Anj" secondAttribute="trailing" id="epy-bl-yja"/>
-                        <constraint firstAttribute="bottom" secondItem="9HS-ll-Anj" secondAttribute="bottom" id="f7S-DX-61X"/>
-                    </constraints>
-                </scrollView>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="yaE-JO-7aX">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="uAT-EO-3jE"/>
+                        <outlet property="delegate" destination="-1" id="A2Y-WG-SYP"/>
+                    </connections>
+                </tableView>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="Qx4-hN-DTf" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="9WU-ET-EKZ"/>
-                <constraint firstAttribute="trailing" secondItem="Qx4-hN-DTf" secondAttribute="trailing" id="LJg-NB-LJt"/>
-                <constraint firstItem="Qx4-hN-DTf" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="nFg-lY-GVG"/>
-                <constraint firstAttribute="bottom" secondItem="Qx4-hN-DTf" secondAttribute="bottom" id="u3j-dE-woH"/>
+                <constraint firstItem="yaE-JO-7aX" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="M8Y-sh-iBF"/>
+                <constraint firstAttribute="trailing" secondItem="yaE-JO-7aX" secondAttribute="trailing" id="dMt-GC-azZ"/>
+                <constraint firstItem="yaE-JO-7aX" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="eLx-jh-CZP"/>
+                <constraint firstAttribute="bottom" secondItem="yaE-JO-7aX" secondAttribute="bottom" id="t6e-B1-Z0E"/>
             </constraints>
             <connections>
-                <outlet property="pickView2" destination="tRj-wb-iI2" id="gdU-ZA-4f1"/>
-                <outlet property="pickView3" destination="wlq-Nm-gMr" id="TEQ-NM-QyW"/>
-                <outlet property="pickerView1" destination="2hV-my-okV" id="au4-hg-sPX"/>
+                <outlet property="myTableView" destination="yaE-JO-7aX" id="teX-z4-mcG"/>
             </connections>
             <point key="canvasLocation" x="26.5" y="52.5"/>
         </view>
     </objects>
-    <resources>
-        <image name="close_circle_btn" width="44" height="44"/>
-    </resources>
 </document>

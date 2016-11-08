@@ -44,7 +44,7 @@
             break;
         case 4:{
             //关闭
-            self.needSetting=NO;
+            
             
         }
             break;

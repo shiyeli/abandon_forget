@@ -58,8 +58,6 @@
 		6E3522731DCB0D040000BEF0 /* XYSetTimeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6E3522721DCB0D040000BEF0 /* XYSetTimeView.xib */; };
 		6E3522761DCB0DAC0000BEF0 /* XYSetLoctionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E3522751DCB0DAC0000BEF0 /* XYSetLoctionView.m */; };
 		6E3522781DCB0DB40000BEF0 /* XYSetLoctionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6E3522771DCB0DB40000BEF0 /* XYSetLoctionView.xib */; };
-		6E35227B1DCB1C710000BEF0 /* XYPowerMarkView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E35227A1DCB1C710000BEF0 /* XYPowerMarkView.m */; };
-		6E35227E1DCB25240000BEF0 /* XYSetTimeLocationParentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E35227D1DCB25240000BEF0 /* XYSetTimeLocationParentView.m */; };
 		6E3D4F511DC721E50079D8FD /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E3D4F501DC721E50079D8FD /* SWRevealViewController.m */; };
 		6E3D4F561DC723090079D8FD /* XYRearViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E3D4F541DC723090079D8FD /* XYRearViewController.m */; };
 		6E3D4F571DC723090079D8FD /* XYRearViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6E3D4F551DC723090079D8FD /* XYRearViewController.xib */; };
@@ -233,10 +231,6 @@
 		6E3522741DCB0DAC0000BEF0 /* XYSetLoctionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYSetLoctionView.h; sourceTree = "<group>"; };
 		6E3522751DCB0DAC0000BEF0 /* XYSetLoctionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYSetLoctionView.m; sourceTree = "<group>"; };
 		6E3522771DCB0DB40000BEF0 /* XYSetLoctionView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XYSetLoctionView.xib; sourceTree = "<group>"; };
-		6E3522791DCB1C710000BEF0 /* XYPowerMarkView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYPowerMarkView.h; sourceTree = "<group>"; };
-		6E35227A1DCB1C710000BEF0 /* XYPowerMarkView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYPowerMarkView.m; sourceTree = "<group>"; };
-		6E35227C1DCB25240000BEF0 /* XYSetTimeLocationParentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYSetTimeLocationParentView.h; sourceTree = "<group>"; };
-		6E35227D1DCB25240000BEF0 /* XYSetTimeLocationParentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYSetTimeLocationParentView.m; sourceTree = "<group>"; };
 		6E3D4F4F1DC721E50079D8FD /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
 		6E3D4F501DC721E50079D8FD /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
 		6E3D4F531DC723090079D8FD /* XYRearViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYRearViewController.h; sourceTree = "<group>"; };
@@ -346,16 +340,12 @@
 			children = (
 				6E3063AE1DC07F58000DBB7D /* XYAddEventViewController.h */,
 				6E3063AF1DC07F58000DBB7D /* XYAddEventViewController.m */,
-				6E35227C1DCB25240000BEF0 /* XYSetTimeLocationParentView.h */,
-				6E35227D1DCB25240000BEF0 /* XYSetTimeLocationParentView.m */,
 				6E35226F1DCB0CF40000BEF0 /* XYSetTimeView.h */,
 				6E3522701DCB0CF40000BEF0 /* XYSetTimeView.m */,
 				6E3522721DCB0D040000BEF0 /* XYSetTimeView.xib */,
 				6E3522741DCB0DAC0000BEF0 /* XYSetLoctionView.h */,
 				6E3522751DCB0DAC0000BEF0 /* XYSetLoctionView.m */,
 				6E3522771DCB0DB40000BEF0 /* XYSetLoctionView.xib */,
-				6E3522791DCB1C710000BEF0 /* XYPowerMarkView.h */,
-				6E35227A1DCB1C710000BEF0 /* XYPowerMarkView.m */,
 			);
 			name = "设置时间地点";
 			sourceTree = "<group>";
@@ -927,13 +917,11 @@
 				8256E0401DC6EA9A0006939C /* EventManager.m in Sources */,
 				6E3063441DC05171000DBB7D /* main.m in Sources */,
 				6E3522431DC9DEB90000BEF0 /* XYTool.m in Sources */,
-				6E35227E1DCB25240000BEF0 /* XYSetTimeLocationParentView.m in Sources */,
 				6E3063B01DC07F58000DBB7D /* XYAddEventViewController.m in Sources */,
 				6E3D4F561DC723090079D8FD /* XYRearViewController.m in Sources */,
 				6E35226B1DC9DFC10000BEF0 /* ViewController+MASAdditions.m in Sources */,
 				6E3522761DCB0DAC0000BEF0 /* XYSetLoctionView.m in Sources */,
 				6E3D4F511DC721E50079D8FD /* SWRevealViewController.m in Sources */,
-				6E35227B1DCB1C710000BEF0 /* XYPowerMarkView.m in Sources */,
 				6E35226C1DC9DFC10000BEF0 /* README.md in Sources */,
 				6E3522651DC9DFC10000BEF0 /* MASLayoutConstraint.m in Sources */,
 				8256E03A1DC6E3AA0006939C /* iCloudManager.m in Sources */,

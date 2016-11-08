@@ -6,9 +6,9 @@
 //  Copyright © 2016年 叶同学. All rights reserved.
 //
 
-#import "XYSetTimeLocationParentView.h"
+#import "XYParentView.h"
 
-@interface XYSetLoctionView : XYSetTimeLocationParentView
+@interface XYSetLoctionView : XYParentView
 
 
 
