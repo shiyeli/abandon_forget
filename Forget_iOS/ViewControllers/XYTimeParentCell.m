@@ -30,15 +30,15 @@
     _holdView=[[UIView alloc]init];
     [self.contentView addSubview:_holdView];
     [_holdView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.equalTo(self).with.insets(UIEdgeInsetsMake(DISTANCE_TO_EDGE, DISTANCE_TO_EDGE, DISTANCE_TO_EDGE, DISTANCE_TO_EDGE));
+        make.edges.equalTo(self).with.insets(UIEdgeInsetsMake(0, DISTANCE_TO_EDGE, 0, DISTANCE_TO_EDGE));
     }];
     _titleView=[[UIView alloc]init];
     _titleView.backgroundColor=THIEM_COLOR;
     [_holdView addSubview:_titleView];
     [_titleView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self);
-        make.leading.equalTo(self);
-        make.trailing.equalTo(self);
+        make.top.equalTo(_holdView);
+        make.leading.equalTo(_holdView);
+        make.trailing.equalTo(_holdView);
         make.height.equalTo(@TIME_CELL_HEIGHT);
     }];
     
@@ -51,12 +51,24 @@
         make.trailing.equalTo(_titleView).with.offset(-DISTANCE_TO_EDGE);
     }];
     
+    
+    _centerView=[[UIView alloc]init];
+    _centerView.backgroundColor=[UIColor redColor];
+    [_holdView addSubview:_centerView];
+    [_centerView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(_titleView.mas_bottom);
+        make.leading.equalTo(_holdView);
+        make.trailing.equalTo(_holdView);
+        make.height.equalTo(_holdView.mas_width);
+    }];
+    
+    
     _sureBtn=[[UIButton alloc]init];
     [_sureBtn setImage:[UIImage imageNamed:@"sure_selection"] forState:UIControlStateNormal];
     [_sureBtn addTarget:self action:@selector(sureOrNot:) forControlEvents:UIControlEventTouchUpInside];
     _sureBtn.tag=2;
     [_holdView addSubview:_sureBtn];
-    [_sureBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        [_sureBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.bottom.equalTo(_holdView).with.offset(-DISTANCE_TO_EDGE*0.5);
         make.trailing.equalTo(_holdView).with.offset(-DISTANCE_TO_EDGE);
     }];
@@ -92,7 +104,7 @@
     
     _model.isSpreadOut=spreadout;
     _spreadOutBtn.hidden=spreadout;
-    _model.cellH=spreadout?TIME_CELL_HEIGHT_SPREADOUT:TIME_CELL_HEIGHT;
+    [_centerView setHidden:!spreadout];
     
     if (self.sendBlock) {
         self.sendBlock(_model);
@@ -108,7 +120,7 @@
     _model=model;
     
     [_holdView setHidden:!_model.isSwithOn];
-    
+    [self spreadOut:_model.isSpreadOut];
     
 }
 

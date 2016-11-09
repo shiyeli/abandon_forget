@@ -12,6 +12,8 @@
 
 @property(nonatomic,strong)UIView* titleView;
 
+@property(nonatomic,strong)UIView* centerView;
+
 @property(nonatomic,weak)XYTimeCellModel * model;
 
 
