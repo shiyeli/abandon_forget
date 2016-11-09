@@ -12,7 +12,9 @@
 @implementation XYTimeParentCell
 {
     UIView * _holdView;
-    
+    UIButton* _spreadOutBtn;
+    UIButton* _closeBtn;
+    UIButton* _sureBtn;
 }
 
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
@@ -29,7 +31,6 @@
     [self.contentView addSubview:_holdView];
     [_holdView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self).with.insets(UIEdgeInsetsMake(DISTANCE_TO_EDGE, DISTANCE_TO_EDGE, DISTANCE_TO_EDGE, DISTANCE_TO_EDGE));
-        
     }];
     _titleView=[[UIView alloc]init];
     _titleView.backgroundColor=THIEM_COLOR;
@@ -41,22 +42,66 @@
         make.height.equalTo(@TIME_CELL_HEIGHT);
     }];
     
-    UIButton* spreadOutBtn =[[UIButton alloc]init];
-    [spreadOutBtn setImage:[UIImage imageNamed:@"down_view_btn"] forState:UIControlStateNormal];
-    [spreadOutBtn addTarget:self action:@selector(spreadOutCell:) forControlEvents:UIControlEventTouchUpInside];
-    [_titleView addSubview:spreadOutBtn];
-    [spreadOutBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+    _spreadOutBtn =[[UIButton alloc]init];
+    [_spreadOutBtn setImage:[UIImage imageNamed:@"down_view_btn"] forState:UIControlStateNormal];
+    [_spreadOutBtn addTarget:self action:@selector(spreadOutCell:) forControlEvents:UIControlEventTouchUpInside];
+    [_titleView addSubview:_spreadOutBtn];
+    [_spreadOutBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(_titleView);
         make.trailing.equalTo(_titleView).with.offset(-DISTANCE_TO_EDGE);
     }];
     
+    _sureBtn=[[UIButton alloc]init];
+    [_sureBtn setImage:[UIImage imageNamed:@"sure_selection"] forState:UIControlStateNormal];
+    [_sureBtn addTarget:self action:@selector(sureOrNot:) forControlEvents:UIControlEventTouchUpInside];
+    _sureBtn.tag=2;
+    [_holdView addSubview:_sureBtn];
+    [_sureBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.bottom.equalTo(_holdView).with.offset(-DISTANCE_TO_EDGE*0.5);
+        make.trailing.equalTo(_holdView).with.offset(-DISTANCE_TO_EDGE);
+    }];
+    
+    
+    _closeBtn=[[UIButton alloc]init];
+    [_closeBtn setImage:[UIImage imageNamed:@"close_spreadout"] forState:UIControlStateNormal];
+    [_closeBtn addTarget:self action:@selector(sureOrNot:) forControlEvents:UIControlEventTouchUpInside];
+    _closeBtn.tag=1;
+    [_holdView addSubview:_closeBtn];
+    [_closeBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.bottom.equalTo(_holdView).with.offset(-DISTANCE_TO_EDGE*0.5);
+        make.trailing.equalTo(_sureBtn.mas_leading).with.offset(-DISTANCE_TO_EDGE*3);
+    }];
+    
+}
+-(void)sureOrNot:(UIButton* )sender{
+    
+    [self spreadOut:NO];
+    
+    
+    if (sender.tag==1) {//关闭
+        
+        
+    }else{//确认
+    
+    
+    }
+
+}
+
+-(void)spreadOut:(BOOL)spreadout{
+    
+    _model.isSpreadOut=spreadout;
+    _spreadOutBtn.hidden=spreadout;
+    _model.cellH=spreadout?TIME_CELL_HEIGHT_SPREADOUT:TIME_CELL_HEIGHT;
+    
+    if (self.sendBlock) {
+        self.sendBlock(_model);
+    }
+
 }
 
 -(void)spreadOutCell:(UIButton* )sender{
-    _model.isSpreadOut=YES;
-    sender.hidden=YES;
-    _model.cellH=TIME_CELL_HEIGHT_SPREADOUT;
-    
+    [self spreadOut:YES];
     
 }
 -(void)setModel:(XYTimeCellModel *)model{
@@ -64,7 +109,7 @@
     
     [_holdView setHidden:!_model.isSwithOn];
     
-
+    
 }
 
 /*

@@ -14,7 +14,7 @@
 #import "XYHourMinuteCell.h"
 #import "XYTimeCellModel.h"
 
-#define HEIGHT_CELL_SPREADOUT 150;
+
 
 @interface XYSetTimeView ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -58,11 +58,16 @@
 
 -(XYTimeParentCell* )tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    
-    
     XYTimeParentCell* cell=[[XYTimeParentCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
+    cell.selectionStyle=UITableViewCellSelectionStyleNone;
     XYTimeCellModel* model=[self.dataArr[indexPath.section]objectAtIndex:indexPath.row];
+    model.indexPath=indexPath;
     cell.model=model;
+    __weak XYSetTimeView* weakSelf=self;
+    cell.sendBlock=^(XYTimeCellModel*  model){
+        [weakSelf.myTableView reloadRowsAtIndexPaths:@[model.indexPath] withRowAnimation:UITableViewRowAnimationFade];
+    };
+    
     
     if (indexPath.section==0) {
         if (indexPath.row==0) {
@@ -125,6 +130,8 @@
     
     XYTimeCellModel* model=[self.dataArr[section] objectAtIndex:0];
     
+    
+    
     UIView* header=[[UIView alloc]initWithFrame:CGRectMake(0, 0, Main_Screen_Width, SECTION_HEADER_HEIGHT)];
     
     UISwitch* mySwitch=[[UISwitch alloc]init];
@@ -163,16 +170,12 @@
 -(void)switchActions:(UISwitch*)sender{
     NSMutableArray* arrM=[NSMutableArray arrayWithArray:[self.dataArr objectAtIndex:sender.tag]];
     
-    XYTimeCellModel* model_0=[arrM objectAtIndex:0];
-    model_0.isSwithOn=sender.isOn;
-    [arrM replaceObjectsInRange:NSMakeRange(0, 1) withObjectsFromArray:@[model_0]];
-    if (arrM.count==2) {
-        XYTimeCellModel* model_1=[arrM objectAtIndex:1];
-        model_1.isSwithOn=sender.isOn;
-        [arrM replaceObjectsInRange:NSMakeRange(1, 1) withObjectsFromArray:@[model_1]];
+    for (XYTimeCellModel* modle in arrM) {
+        modle.isSwithOn=sender.isOn;
     }
-    [self.dataArr replaceObjectsInRange:NSMakeRange(sender.tag, 1) withObjectsFromArray:@[arrM]];
+    
     [self.myTableView reloadSections:[NSIndexSet indexSetWithIndex:sender.tag] withRowAnimation:UITableViewRowAnimationFade];
+    
 }
 
 

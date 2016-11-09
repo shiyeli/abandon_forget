@@ -12,7 +12,7 @@
 
 @property(nonatomic,strong)UIView* titleView;
 
-@property(nonatomic,strong)XYTimeCellModel * model;
+@property(nonatomic,weak)XYTimeCellModel * model;
 
 
 
