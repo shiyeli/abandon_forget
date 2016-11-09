@@ -13,8 +13,11 @@
 -(void)setIsSwithOn:(BOOL)isSwithOn{
     _isSwithOn=isSwithOn;
     
-    _cellH=HEIGHT_CELL;
-
+    if (isSwithOn) {
+        _cellH=HEIGHT_CELL;
+    }else{
+        _cellH=0;
+    }
 }
 
 @end

@@ -121,9 +121,7 @@
     
     XYTimeCellModel* model=[self.dataArr[section] objectAtIndex:0];
     
-    
     UIView* header=[[UIView alloc]initWithFrame:CGRectMake(0, 0, Main_Screen_Width, SECTION_HEADER_HEIGHT)];
-    
     
     UISwitch* mySwitch=[[UISwitch alloc]init];
     mySwitch.onTintColor=THIEM_COLOR;
@@ -159,17 +157,21 @@
     return 0;
 }
 -(void)switchActions:(UISwitch*)sender{
-    NSArray* arr=[self.dataArr objectAtIndex:sender.tag];
+    NSMutableArray* arrM=[NSMutableArray arrayWithArray:[self.dataArr objectAtIndex:sender.tag]];
     
-    for (XYTimeCellModel* model in arr) {
-        if (sender.isOn) {
-            model.isSwithOn=YES;
-        }else{
-            model.isSwithOn=NO;
-        }
+    XYTimeCellModel* model_0=[arrM objectAtIndex:0];
+    model_0.isSwithOn=sender.isOn;
+    [arrM replaceObjectsInRange:NSMakeRange(0, 1) withObjectsFromArray:@[model_0]];
+    if (arrM.count==2) {
+        XYTimeCellModel* model_1=[arrM objectAtIndex:1];
+        model_1.isSwithOn=sender.isOn;
+        [arrM replaceObjectsInRange:NSMakeRange(1, 1) withObjectsFromArray:@[model_1]];
     }
     
-    [self.myTableView reloadSections:[NSIndexSet indexSetWithIndex:sender.tag] withRowAnimation:UITableViewRowAnimationAutomatic];
+    
+    [self.dataArr replaceObjectsInRange:NSMakeRange(sender.tag, 1) withObjectsFromArray:@[arrM]];
+    
+    [self.myTableView reloadSections:[NSIndexSet indexSetWithIndex:sender.tag] withRowAnimation:UITableViewRowAnimationFade];
 }
 
 
