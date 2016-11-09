@@ -20,19 +20,4 @@
     }
 }
 
--(void)setIsSpreadOut:(BOOL)isSpreadOut{
-    _isSpreadOut=isSpreadOut;
-    
-    if (_isSwithOn) {
-        if (_isSpreadOut) {
-            _cellH=TIME_CELL_HEIGHT_SPREADOUT;
-        }else{
-            _cellH=TIME_CELL_HEIGHT;
-        }
-    }else{
-        _cellH=0;
-    }
-
-}
-
 @end

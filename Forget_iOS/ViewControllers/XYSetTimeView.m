@@ -53,26 +53,19 @@
         }
         [self.dataArr addObject:sectionArr];
     }
-    
 }
 
 -(XYTimeParentCell* )tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    static NSString* identifier=@"identifier";
-    XYTimeParentCell* cell=[self.myTableView dequeueReusableCellWithIdentifier:identifier];
-    if (!cell) {
-        cell=[[XYTimeParentCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
-        cell.selectionStyle=UITableViewCellSelectionStyleNone;
-    }
-    
+    XYTimeParentCell* cell=[[XYTimeParentCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
+    cell.selectionStyle=UITableViewCellSelectionStyleNone;
     XYTimeCellModel* model=[self.dataArr[indexPath.section]objectAtIndex:indexPath.row];
     model.indexPath=indexPath;
+    cell.model=model;
     __weak XYSetTimeView* weakSelf=self;
     cell.sendBlock=^(XYTimeCellModel*  model){
         [weakSelf.myTableView reloadRowsAtIndexPaths:@[model.indexPath] withRowAnimation:UITableViewRowAnimationFade];
     };
-
-    cell.model=model;
     
     
     if (indexPath.section==0) {
@@ -109,9 +102,6 @@
         }
     }
     
-    
-    
-    
     return cell;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -137,8 +127,7 @@
     
     XYTimeCellModel* model=[self.dataArr[section] objectAtIndex:0];
     
-    
-    
+
     UIView* header=[[UIView alloc]initWithFrame:CGRectMake(0, 0, Main_Screen_Width, SECTION_HEADER_HEIGHT)];
     
     UISwitch* mySwitch=[[UISwitch alloc]init];
@@ -175,12 +164,11 @@
     return 0;
 }
 -(void)switchActions:(UISwitch*)sender{
-    NSMutableArray* arrM=[NSMutableArray arrayWithArray:[self.dataArr objectAtIndex:sender.tag]];
+    NSArray* arr=[self.dataArr objectAtIndex:sender.tag];
     
-    for (XYTimeCellModel* modle in arrM) {
+    for (XYTimeCellModel* modle in arr) {
         modle.isSwithOn=sender.isOn;
     }
-    
     [self.myTableView reloadSections:[NSIndexSet indexSetWithIndex:sender.tag] withRowAnimation:UITableViewRowAnimationFade];
     
 }
