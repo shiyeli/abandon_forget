@@ -7,7 +7,8 @@
 //
 
 #import "XYParentModel.h"
-#define HEIGHT_CELL 60.0
+#define TIME_CELL_HEIGHT 60.0
+#define TIME_CELL_HEIGHT_SPREADOUT 180.0
 
 @interface XYTimeCellModel : XYParentModel
 

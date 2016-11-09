@@ -58,8 +58,12 @@
 
 -(XYTimeParentCell* )tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-
+    
+    
     XYTimeParentCell* cell=[[XYTimeParentCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
+    XYTimeCellModel* model=[self.dataArr[indexPath.section]objectAtIndex:indexPath.row];
+    cell.model=model;
+    
     if (indexPath.section==0) {
         if (indexPath.row==0) {
             
@@ -167,10 +171,7 @@
         model_1.isSwithOn=sender.isOn;
         [arrM replaceObjectsInRange:NSMakeRange(1, 1) withObjectsFromArray:@[model_1]];
     }
-    
-    
     [self.dataArr replaceObjectsInRange:NSMakeRange(sender.tag, 1) withObjectsFromArray:@[arrM]];
-    
     [self.myTableView reloadSections:[NSIndexSet indexSetWithIndex:sender.tag] withRowAnimation:UITableViewRowAnimationFade];
 }
 

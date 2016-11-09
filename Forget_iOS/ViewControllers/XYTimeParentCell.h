@@ -7,12 +7,12 @@
 //
 
 #import "XYParentTableViewCell.h"
-
+#import "XYTimeCellModel.h"
 @interface XYTimeParentCell : XYParentTableViewCell
 
+@property(nonatomic,strong)UIView* titleView;
 
-//是否展开,默认YES
-@property(nonatomic,assign)BOOL isSpredOut;
+@property(nonatomic,strong)XYTimeCellModel * model;
 
 
 

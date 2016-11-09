@@ -14,7 +14,7 @@
     _isSwithOn=isSwithOn;
     
     if (isSwithOn) {
-        _cellH=HEIGHT_CELL;
+        _cellH=TIME_CELL_HEIGHT;
     }else{
         _cellH=0;
     }
