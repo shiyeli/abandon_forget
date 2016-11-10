@@ -35,14 +35,16 @@
     _holdView=[[UIView alloc]init];
     [self.contentView addSubview:_holdView];
     [_holdView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.equalTo(self).with.insets(UIEdgeInsetsMake(0, DISTANCE_TO_EDGE,DISPATCH_IO_RANDOM, DISTANCE_TO_EDGE));
+        make.edges.equalTo(self).with.insets(UIEdgeInsetsMake(0, DISTANCE_TO_EDGE,DISTANCE_TO_EDGE*2, DISTANCE_TO_EDGE));
     }];
     
     
     _holdView.layer.shadowOpacity=0.4f;
-    _holdView.layer.shadowOffset=CGSizeMake(2, 2);
+    _holdView.layer.shadowOffset=CGSizeMake(0, 0);
     _holdView.layer.shadowRadius=2.0f;
     _holdView.layer.shadowColor=[UIColor blackColor].CGColor;
+    _holdView.layer.cornerRadius=5;
+    _holdView.backgroundColor=[UIColor whiteColor];
     
     _titleView=[[UIView alloc]init];
     _titleView.backgroundColor=THIEM_COLOR;
@@ -51,10 +53,8 @@
         make.top.equalTo(_holdView);
         make.leading.equalTo(_holdView);
         make.trailing.equalTo(_holdView);
-        make.height.equalTo(@(TIME_CELL_HEIGHT-8));
+        make.height.equalTo(@(TIME_CELL_HEIGHT));
     }];
-    _titleView.layer.cornerRadius=3;
-    _titleView.clipsToBounds=YES;
     
     _spreadOutBtn =[[UIButton alloc]init];
     [_spreadOutBtn setImage:[UIImage imageNamed:@"down_view_btn"] forState:UIControlStateNormal];
@@ -70,7 +70,7 @@
     
     _spreadOutView=[[UIView alloc]init];
     [_holdView addSubview:_spreadOutView];
-    [_spreadOutView setFrame:CGRectMake(0, 60, Main_Screen_Width-DISTANCE_TO_EDGE*2, Main_Screen_Width-DISTANCE_TO_EDGE*2+30)];
+    [_spreadOutView setFrame:CGRectMake(0, TIME_CELL_HEIGHT, Main_Screen_Width-DISTANCE_TO_EDGE*2, Main_Screen_Width-DISTANCE_TO_EDGE*2+40)];
     
     _centerView=[[UIView alloc]init];
     [_spreadOutView addSubview:_centerView];
@@ -80,8 +80,6 @@
         make.trailing.equalTo(_spreadOutView);
         make.height.equalTo(_spreadOutView.mas_width);
     }];
-    _spreadOutView.layer.shadowOpacity=0.3f;
-    _spreadOutView.layer.shadowOffset=CGSizeMake(1, 2);
     
     
     _sureBtn=[[UIButton alloc]init];
@@ -126,11 +124,10 @@
 -(void)spreadOutView:(BOOL)spreadout{
     
     if (spreadout) {
-        CGFloat cellH=CGRectGetMaxY(_closeBtn.frame);
-        _model.cellH=cellH+_titleView.frame.size.height+DISTANCE_TO_EDGE;
+        _model.cellH=TIME_CELL_HEIGHT+Main_Screen_Width+40;
         
     }else{
-        _model.cellH=TIME_CELL_HEIGHT;
+        _model.cellH=TIME_CELL_HEIGHT+DISTANCE_TO_EDGE;
     }
     _model.isSpreadOut=spreadout;
     
@@ -146,9 +143,14 @@
     [self setHidden:!_model.isSwithOn];
     if (!_model.isSwithOn) {
         _model.isSpreadOut=NO;
+    }else{
+        if (!_model.isSpreadOut) {
+            _model.cellH=TIME_CELL_HEIGHT+DISTANCE_TO_EDGE;
+        }
     }
     [_spreadOutView setHidden:!_model.isSpreadOut];
     [_spreadOutBtn setHidden:_model.isSpreadOut];
+    
     
 }
 
