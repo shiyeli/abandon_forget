@@ -57,8 +57,13 @@
 
 -(XYTimeParentCell* )tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    XYTimeParentCell* cell=[[XYTimeParentCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
-    cell.selectionStyle=UITableViewCellSelectionStyleNone;
+    static NSString* identifier=@"identifier";
+    XYTimeParentCell* cell=[self.myTableView dequeueReusableCellWithIdentifier:identifier];
+    if (!cell) {
+        cell=[[XYTimeParentCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+        cell.selectionStyle=UITableViewCellSelectionStyleNone;
+    }
+    
     XYTimeCellModel* model=[self.dataArr[indexPath.section]objectAtIndex:indexPath.row];
     model.indexPath=indexPath;
     

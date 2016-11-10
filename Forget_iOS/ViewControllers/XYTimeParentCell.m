@@ -32,9 +32,10 @@
     _holdView=[[UIView alloc]init];
     [self.contentView addSubview:_holdView];
     [_holdView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.equalTo(self).with.insets(UIEdgeInsetsMake(0, DISTANCE_TO_EDGE,0 , DISTANCE_TO_EDGE));
+        make.edges.equalTo(self).with.insets(UIEdgeInsetsMake(0, DISTANCE_TO_EDGE,DISTANCE_TO_EDGE , DISTANCE_TO_EDGE));
     }];
-    _holdView.backgroundColor=[UIColor greenColor];
+    
+    
     _titleView=[[UIView alloc]init];
     _titleView.backgroundColor=THIEM_COLOR;
     [_holdView addSubview:_titleView];
@@ -44,7 +45,6 @@
         make.trailing.equalTo(_holdView);
         make.height.equalTo(@TIME_CELL_HEIGHT);
     }];
-    
     _spreadOutBtn =[[UIButton alloc]init];
     [_spreadOutBtn setImage:[UIImage imageNamed:@"down_view_btn"] forState:UIControlStateNormal];
     [_spreadOutBtn addTarget:self action:@selector(spreadOutCell:) forControlEvents:UIControlEventTouchUpInside];
@@ -54,17 +54,14 @@
         make.trailing.equalTo(_titleView).with.offset(-DISTANCE_TO_EDGE);
     }];
     
+    
+    
+    
     _spreadOutView=[[UIView alloc]init];
-    _spreadOutView.backgroundColor=[UIColor blueColor];
     [_holdView addSubview:_spreadOutView];
-    [_spreadOutView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(_titleView.mas_bottom);
-        make.leading.equalTo(_holdView);
-        make.trailing.equalTo(_holdView);
-    }];
+    [_spreadOutView setFrame:CGRectMake(0, 60, Main_Screen_Width-DISTANCE_TO_EDGE*2, Main_Screen_Width-DISTANCE_TO_EDGE*2+30)];
     
     _centerView=[[UIView alloc]init];
-    _centerView.backgroundColor=[UIColor redColor];
     [_spreadOutView addSubview:_centerView];
     [_centerView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(_spreadOutView);
@@ -72,8 +69,6 @@
         make.trailing.equalTo(_spreadOutView);
         make.height.equalTo(_spreadOutView.mas_width);
     }];
-    
-    
     _sureBtn=[[UIButton alloc]init];
     [_sureBtn setImage:[UIImage imageNamed:@"sure_selection"] forState:UIControlStateNormal];
     [_sureBtn addTarget:self action:@selector(sureOrNot:) forControlEvents:UIControlEventTouchUpInside];
@@ -82,9 +77,8 @@
         [_sureBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(_centerView.mas_bottom);
         make.trailing.equalTo(_spreadOutView).with.offset(-DISTANCE_TO_EDGE);
+        make.width.equalTo(@60);
     }];
-    
-    
     _closeBtn=[[UIButton alloc]init];
     [_closeBtn setImage:[UIImage imageNamed:@"close_spreadout"] forState:UIControlStateNormal];
     [_closeBtn addTarget:self action:@selector(sureOrNot:) forControlEvents:UIControlEventTouchUpInside];
@@ -93,6 +87,7 @@
     [_closeBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(_centerView.mas_bottom);
         make.trailing.equalTo(_sureBtn.mas_leading).with.offset(-DISTANCE_TO_EDGE*3);
+        make.width.equalTo(@60);
     }];
     
     [_spreadOutView setHidden:YES];
@@ -118,28 +113,13 @@
     if (spreadout) {
         CGFloat cellH=CGRectGetMaxY(_closeBtn.frame);
         _model.cellH=cellH+_titleView.frame.size.height+DISTANCE_TO_EDGE;
-        [_spreadOutView setHidden:NO];
-        
-        [_spreadOutView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.equalTo(_titleView.mas_bottom);
-            make.leading.equalTo(_holdView);
-            make.trailing.equalTo(_holdView);
-            make.bottom.equalTo(_holdView);
-        }];
         
     }else{
         _model.cellH=TIME_CELL_HEIGHT;
-        [_spreadOutView setHidden:YES];
-        [_spreadOutView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.equalTo(_titleView.mas_bottom);
-            make.leading.equalTo(_holdView);
-            make.trailing.equalTo(_holdView);
-            make.height.equalTo(@0);
-        }];
     }
     _model.isSpreadOut=spreadout;
-    [self setModel:_model];
     
+    [self setModel:_model];
     if (self.sendBlock) {
         self.sendBlock(_model);
     }
@@ -154,6 +134,7 @@
     }
     [_spreadOutView setHidden:!_model.isSpreadOut];
     [_spreadOutBtn setHidden:_model.isSpreadOut];
+    
 }
 
 /*
