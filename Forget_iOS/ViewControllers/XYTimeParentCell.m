@@ -43,7 +43,7 @@
         make.top.equalTo(_holdView);
         make.leading.equalTo(_holdView);
         make.trailing.equalTo(_holdView);
-        make.height.equalTo(@TIME_CELL_HEIGHT);
+        make.height.equalTo(@(TIME_CELL_HEIGHT-8));
     }];
     _spreadOutBtn =[[UIButton alloc]init];
     [_spreadOutBtn setImage:[UIImage imageNamed:@"down_view_btn"] forState:UIControlStateNormal];
