@@ -139,6 +139,10 @@
     }
     _model.isSpreadOut=spreadout;
     [self setModel:_model];
+    
+    if (self.sendBlock) {
+        self.sendBlock(_model);
+    }
 }
 
 -(void)setModel:(XYTimeCellModel *)model{
@@ -148,11 +152,8 @@
     if (!_model.isSwithOn) {
         _model.isSpreadOut=NO;
     }
-    
     [_spreadOutView setHidden:!_model.isSpreadOut];
-    if (self.sendBlock) {
-        self.sendBlock(_model);
-    }
+    [_spreadOutBtn setHidden:_model.isSpreadOut];
 }
 
 /*

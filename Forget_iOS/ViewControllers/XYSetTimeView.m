@@ -61,11 +61,12 @@
     cell.selectionStyle=UITableViewCellSelectionStyleNone;
     XYTimeCellModel* model=[self.dataArr[indexPath.section]objectAtIndex:indexPath.row];
     model.indexPath=indexPath;
-    cell.model=model;
+    
     __weak XYSetTimeView* weakSelf=self;
     cell.sendBlock=^(XYTimeCellModel*  model){
         [weakSelf.myTableView reloadRowsAtIndexPaths:@[model.indexPath] withRowAnimation:UITableViewRowAnimationFade];
     };
+    cell.model=model;
     
     
     if (indexPath.section==0) {
