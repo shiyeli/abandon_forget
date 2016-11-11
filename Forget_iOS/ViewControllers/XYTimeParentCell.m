@@ -107,7 +107,8 @@
 }
 //点击取消或确认
 -(void)sureOrNot:(UIButton* )sender{
-     [self spreadOutView:NO];
+    [_spreadOutBtn setHidden:NO];
+    [self spreadOutView:NO];
     
     if (sender.tag==1) {//关闭
         
@@ -123,15 +124,9 @@
 }
 -(void)spreadOutView:(BOOL)spreadout{
     
-    if (spreadout) {
-        _model.cellH=TIME_CELL_HEIGHT+Main_Screen_Width+40;
-        
-    }else{
-        _model.cellH=TIME_CELL_HEIGHT+DISTANCE_TO_EDGE;
-    }
     _model.isSpreadOut=spreadout;
+    [_spreadOutView setHidden:!spreadout];
     
-    [self setModel:_model];
     if (self.sendBlock) {
         self.sendBlock(_model);
     }
@@ -139,19 +134,11 @@
 
 -(void)setModel:(XYTimeCellModel *)model{
     _model=model;
-    
-    [self setHidden:!_model.isSwithOn];
-    if (!_model.isSwithOn) {
-        _model.isSpreadOut=NO;
-    }else{
-        if (!_model.isSpreadOut) {
-            _model.cellH=TIME_CELL_HEIGHT+DISTANCE_TO_EDGE;
-        }
+    [self setHidden:!_model.isSwitchOn];
+    if (_model.isSwitchOn) {
+        [_spreadOutView setHidden:!_model.isSpreadOut];
+        [_spreadOutBtn setHidden:_model.isSpreadOut];
     }
-    [_spreadOutView setHidden:!_model.isSpreadOut];
-    [_spreadOutBtn setHidden:_model.isSpreadOut];
-    
-    
 }
 
 /*

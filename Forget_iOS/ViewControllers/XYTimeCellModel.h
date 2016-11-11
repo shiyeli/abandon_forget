@@ -8,7 +8,7 @@
 
 #import "XYParentModel.h"
 #define TIME_CELL_HEIGHT 75.0
-#define TIME_CELL_HEIGHT_SPREADOUT 350.0
+#define TIME_CELL_HEIGHT_SPREADOUT (TIME_CELL_HEIGHT+Main_Screen_Width+40)
 
 @interface XYTimeCellModel : XYParentModel
 
@@ -18,8 +18,9 @@
 //记录当前cell所在的位置
 @property(nonatomic,strong)NSIndexPath* indexPath;
 
-//是否设置
-@property(nonatomic,assign)BOOL isSwithOn;
+
+//是否打开
+@property(nonatomic,assign)BOOL isSwitchOn;
 
 //是否展开
 @property(nonatomic,assign)BOOL isSpreadOut;

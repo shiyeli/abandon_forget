@@ -67,6 +67,7 @@
 		6E3D4F511DC721E50079D8FD /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E3D4F501DC721E50079D8FD /* SWRevealViewController.m */; };
 		6E3D4F561DC723090079D8FD /* XYRearViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E3D4F541DC723090079D8FD /* XYRearViewController.m */; };
 		6E3D4F571DC723090079D8FD /* XYRearViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6E3D4F551DC723090079D8FD /* XYRearViewController.xib */; };
+		6ED632841DD5707F00C8167D /* XYTimeSectionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 6ED632831DD5707F00C8167D /* XYTimeSectionModel.m */; };
 		8256E0361DC6E1ED0006939C /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8256E0351DC6E1ED0006939C /* CloudKit.framework */; };
 		8256E03A1DC6E3AA0006939C /* iCloudManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8256E0391DC6E3AA0006939C /* iCloudManager.m */; };
 		8256E03C1DC6EA860006939C /* EventKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8256E03B1DC6EA860006939C /* EventKit.framework */; };
@@ -254,6 +255,8 @@
 		6E3D4F531DC723090079D8FD /* XYRearViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYRearViewController.h; sourceTree = "<group>"; };
 		6E3D4F541DC723090079D8FD /* XYRearViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYRearViewController.m; sourceTree = "<group>"; };
 		6E3D4F551DC723090079D8FD /* XYRearViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XYRearViewController.xib; sourceTree = "<group>"; };
+		6ED632821DD5707F00C8167D /* XYTimeSectionModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYTimeSectionModel.h; sourceTree = "<group>"; };
+		6ED632831DD5707F00C8167D /* XYTimeSectionModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYTimeSectionModel.m; sourceTree = "<group>"; };
 		8256E0351DC6E1ED0006939C /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		8256E0381DC6E3AA0006939C /* iCloudManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iCloudManager.h; sourceTree = "<group>"; };
 		8256E0391DC6E3AA0006939C /* iCloudManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iCloudManager.m; sourceTree = "<group>"; };
@@ -379,6 +382,8 @@
 				6E35226F1DCB0CF40000BEF0 /* XYSetTimeView.h */,
 				6E3522701DCB0CF40000BEF0 /* XYSetTimeView.m */,
 				6E3522721DCB0D040000BEF0 /* XYSetTimeView.xib */,
+				6ED632821DD5707F00C8167D /* XYTimeSectionModel.h */,
+				6ED632831DD5707F00C8167D /* XYTimeSectionModel.m */,
 				6E1CD0D11DD1C5D100E1FD9D /* XYTimeParentCell.h */,
 				6E1CD0D21DD1C5D100E1FD9D /* XYTimeParentCell.m */,
 				6E1CD0DD1DD1D44600E1FD9D /* XYTimeCellModel.h */,
@@ -959,6 +964,7 @@
 				6E35226A1DC9DFC10000BEF0 /* View+MASAdditions.m in Sources */,
 				6E3063A11DC060C4000DBB7D /* XYParentViewController.m in Sources */,
 				6E3522631DC9DFC10000BEF0 /* MASConstraint.m in Sources */,
+				6ED632841DD5707F00C8167D /* XYTimeSectionModel.m in Sources */,
 				6E3522671DC9DFC10000BEF0 /* MASViewConstraint.m in Sources */,
 				6E1CD0D01DD1C58200E1FD9D /* XYParentTableViewCell.m in Sources */,
 				6E3063AD1DC07650000DBB7D /* XYAddAddressViewController.m in Sources */,

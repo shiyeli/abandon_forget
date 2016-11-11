@@ -10,14 +10,19 @@
 
 @implementation XYTimeCellModel
 
--(void)setIsSwithOn:(BOOL)isSwithOn{
-    _isSwithOn=isSwithOn;
-    
-    if (isSwithOn) {
-        _cellH=TIME_CELL_HEIGHT;
-    }else{
-        _cellH=0;
+
+
+-(void)setIsSpreadOut:(BOOL)isSpreadOut{
+    if (_isSwitchOn) {
+        _isSpreadOut=isSpreadOut;
+        _cellH=isSpreadOut?TIME_CELL_HEIGHT_SPREADOUT:TIME_CELL_HEIGHT;
     }
+}
+
+-(void)setIsSwitchOn:(BOOL)isSwitchOn{
+    _isSwitchOn=isSwitchOn;
+    _cellH=isSwitchOn?TIME_CELL_HEIGHT:0;
+
 }
 
 @end
