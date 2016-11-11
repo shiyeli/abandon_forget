@@ -10,4 +10,6 @@
 
 @interface XYIsRepeatCell : XYTimeParentCell
 
+@property(nonatomic,strong)UILabel* repeatLab;
+
 @end

@@ -10,4 +10,6 @@
 
 @interface XYHourMinuteCell : XYTimeParentCell
 
+@property(nonatomic,strong)UILabel* houtMinLab;
+
 @end

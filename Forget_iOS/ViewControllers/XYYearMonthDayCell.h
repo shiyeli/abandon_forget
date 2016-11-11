@@ -10,4 +10,7 @@
 
 @interface XYYearMonthDayCell : XYTimeParentCell
 
+@property(nonatomic,strong)UILabel* yearLab;
+@property(nonatomic,strong)UILabel* monthDayLab;
+
 @end

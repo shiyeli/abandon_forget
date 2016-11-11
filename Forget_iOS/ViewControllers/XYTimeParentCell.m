@@ -46,7 +46,7 @@
     _holdView.layer.cornerRadius=5;
     _holdView.backgroundColor=[UIColor whiteColor];
     
-    _titleView=[[UIView alloc]init];
+    self.titleView=[[UIView alloc]init];
     _titleView.backgroundColor=THIEM_COLOR;
     [_holdView addSubview:_titleView];
     [_titleView mas_makeConstraints:^(MASConstraintMaker *make) {
