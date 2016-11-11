@@ -208,7 +208,7 @@
         XYTimeSectionModel* sectionModel=[self.dataArr objectAtIndex:i];
         sectionModel.switchIsOpen=sender.isOn;
         if (i>sender.tag) {
-            [sectionModel.mySwitch setUserInteractionEnabled:sender.isOn];
+            [sectionModel.mySwitch setEnabled:sender.isOn];
         }
         for (XYTimeCellModel* model in sectionModel.arrM) {
             model.isSwitchOn=sender.isOn;
