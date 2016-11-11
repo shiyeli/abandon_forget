@@ -8,8 +8,12 @@
 
 #import "XYTimeParentCell.h"
 
-@interface XYIsRepeatCell : XYTimeParentCell
+@interface XYIsRepeatCell : XYTimeParentCell<UIPickerViewDelegate,UIPickerViewDataSource>
+
+//key: count/circle
+@property(nonatomic,strong)NSMutableDictionary* dic;
 
 @property(nonatomic,strong)UILabel* repeatLab;
+@property(nonatomic,strong)UIPickerView* myPickerView;
 
 @end
