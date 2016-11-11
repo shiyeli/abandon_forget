@@ -26,7 +26,6 @@
     
     for (XYTimeCellModel* model in _arrM) {
         model.isSwitchOn=switchIsOpen;
-        model.isSpreadOut=NO;
     }
 }
 

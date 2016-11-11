@@ -21,8 +21,9 @@
 
 -(void)setIsSwitchOn:(BOOL)isSwitchOn{
     _isSwitchOn=isSwitchOn;
+    _isSpreadOut=NO;
     _cellH=isSwitchOn?TIME_CELL_HEIGHT:0;
-
+    
 }
 
 @end

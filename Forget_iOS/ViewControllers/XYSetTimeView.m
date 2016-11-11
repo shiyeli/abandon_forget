@@ -138,8 +138,10 @@
     cell.selectionStyle=UITableViewCellSelectionStyleNone;
     cell.model=cellModel;
     
+    if (cell.isHidden==YES) {
+        NSLog(@"--------%@---------",cell);
+    }
     
-    NSLog(@"--------%@---------",cell);
     return cell;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
