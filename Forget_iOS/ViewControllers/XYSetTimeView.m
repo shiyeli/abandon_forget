@@ -132,7 +132,7 @@
     __weak XYSetTimeView* weakSelf=self;
     cell.sendBlock=^(XYTimeCellModel*  model){
         
-        [weakSelf.myTableView reloadRowsAtIndexPaths:@[model.indexPath] withRowAnimation:UITableViewRowAnimationFade];
+        [weakSelf.myTableView reloadData];
         
     };
     cell.selectionStyle=UITableViewCellSelectionStyleNone;

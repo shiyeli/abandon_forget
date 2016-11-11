@@ -107,7 +107,7 @@
 }
 //点击取消或确认
 -(void)sureOrNot:(UIButton* )sender{
-    [_spreadOutBtn setHidden:NO];
+   
     [self spreadOutView:NO];
     
     if (sender.tag==1) {//关闭
@@ -125,7 +125,6 @@
 -(void)spreadOutView:(BOOL)spreadout{
     
     _model.isSpreadOut=spreadout;
-    [_spreadOutView setHidden:!spreadout];
     
     if (self.sendBlock) {
         self.sendBlock(_model);
