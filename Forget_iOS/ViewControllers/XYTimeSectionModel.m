@@ -14,6 +14,7 @@
     self = [super init];
     if (self) {
         _arrM=[NSMutableArray array];
+        _mySwitch=[[UISwitch alloc]init];
     }
     return self;
 }

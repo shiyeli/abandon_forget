@@ -13,7 +13,7 @@
 @property(nonatomic,copy)NSString* sectionTitle;
 
 @property(nonatomic,assign)BOOL switchIsOpen;
-@property(nonatomic,weak)UISwitch* mySwitch;
+@property(nonatomic,strong)UISwitch* mySwitch;
 
 @property(nonatomic,strong)NSMutableArray <XYTimeCellModel*> * arrM;
 

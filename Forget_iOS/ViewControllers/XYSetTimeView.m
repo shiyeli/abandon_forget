@@ -173,24 +173,25 @@
     
     UIView* header=[[UIView alloc]initWithFrame:CGRectMake(0, 0, Main_Screen_Width, SECTION_HEADER_HEIGHT)];
     
-    UISwitch* mySwitch=[[UISwitch alloc]init];
-    mySwitch.onTintColor=THIEM_COLOR;
-    mySwitch.tag=section;
-    [mySwitch setOn:sectionModel.switchIsOpen];
-    [mySwitch addTarget:self action:@selector(switchActions:) forControlEvents:UIControlEventValueChanged];
-    [header addSubview:mySwitch];
-    [mySwitch mas_makeConstraints:^(MASConstraintMaker *make) {
+    
+   
+     sectionModel.mySwitch.onTintColor=THIEM_COLOR;
+     sectionModel.mySwitch.tag=section;
+    [ sectionModel.mySwitch setOn:sectionModel.switchIsOpen];
+    [ sectionModel.mySwitch addTarget:self action:@selector(switchActions:) forControlEvents:UIControlEventValueChanged];
+    [header addSubview: sectionModel.mySwitch];
+    [ sectionModel.mySwitch mas_makeConstraints:^(MASConstraintMaker *make) {
         make.leading.equalTo(header).with.offset(DISTANCE_TO_EDGE);
         make.centerY.equalTo(header);
     }];
-    sectionModel.mySwitch=mySwitch;
+    
     
     UILabel* myLab=[[UILabel alloc]init];
     myLab.text=sectionModel.sectionTitle;
     [header addSubview:myLab];
     [myLab mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(header);
-        make.leading.equalTo(mySwitch.mas_trailing).with.offset(10);
+        make.leading.equalTo( sectionModel.mySwitch.mas_trailing).with.offset(10);
     }];
     
     return header;
@@ -206,7 +207,9 @@
     for (int i=sender.tag; i<self.dataArr.count; i++) {
         XYTimeSectionModel* sectionModel=[self.dataArr objectAtIndex:i];
         sectionModel.switchIsOpen=sender.isOn;
-        
+        if (i>sender.tag) {
+            [sectionModel.mySwitch setUserInteractionEnabled:sender.isOn];
+        }
         for (XYTimeCellModel* model in sectionModel.arrM) {
             model.isSwitchOn=sender.isOn;
         }
