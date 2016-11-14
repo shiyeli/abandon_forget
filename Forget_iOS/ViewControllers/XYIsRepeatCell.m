@@ -30,17 +30,19 @@
         NSString* temStr=[NSString stringWithFormat:@"%d",i+1];
         [arrCount addObject:temStr];
     }
+    arrCircle=[NSMutableArray arrayWithArray:TimeSetRepeatCircleArr];
     
-    arrCircle=[NSMutableArray arrayWithArray:@[@"天",@"周",@"月"]];
     
-    _dic=[NSMutableDictionary dictionaryWithDictionary:@{@"count":arrCount[0],@"circle":arrCircle[0]}];
+    
 }
+
+
 -(void)setCustomView{
     _repeatLab=[[UILabel alloc]init];
     _repeatLab.textColor=[UIColor whiteColor];
     _repeatLab.font=SYSTEMFONT(45);
     _repeatLab.textAlignment=NSTextAlignmentCenter;
-    _repeatLab.text=[NSString stringWithFormat:@"每%@%@",_dic[@"count"],_dic[@"circle"]];
+    _repeatLab.text=[NSString stringWithFormat:@"每%@%@",arrCount[0],arrCircle[0]];
     [self.titleView addSubview:_repeatLab];
     [_repeatLab mas_makeConstraints:^(MASConstraintMaker *make) {
         make.center.equalTo(self.titleView);
@@ -85,14 +87,27 @@
     
     
     if (component==0) {
-        [_dic setValue:arrCount[row] forKey:@"count"];
+        self.model.setRepeatCount=arrCount[row];
     }else{
-        [_dic setValue:arrCircle[row] forKey:@"circle"];
+        self.model.setRepeatCircle=row;
     }
-    NSString* resultStr=[NSString stringWithFormat:@"每%@%@",_dic[@"count"],_dic[@"circle"]];
     
-    _repeatLab.text=resultStr;
 }
+
+//点击取消或确认
+-(void)sureOrNot:(UIButton* )sender{
+    [super sureOrNot:sender];
+    
+    if (sender.tag==1) {//关闭
+        
+        
+    }else{//确认
+        NSString* resultStr=[NSString stringWithFormat:@"每%@%@",self.model.setRepeatCount,arrCircle[self.model.setRepeatCircle]];
+        _repeatLab.text=resultStr;
+    }
+    
+}
+
 /*
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.

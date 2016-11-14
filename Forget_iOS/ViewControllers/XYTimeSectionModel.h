@@ -8,6 +8,10 @@
 
 #import "XYParentModel.h"
 #import "XYTimeCellModel.h"
+
+
+
+
 @interface XYTimeSectionModel : XYParentModel
 
 @property(nonatomic,copy)NSString* sectionTitle;
@@ -16,5 +20,8 @@
 @property(nonatomic,strong)UISwitch* mySwitch;
 
 @property(nonatomic,strong)NSMutableArray <XYTimeCellModel*> * arrM;
+
+
+
 
 @end

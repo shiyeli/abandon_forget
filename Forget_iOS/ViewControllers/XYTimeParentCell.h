@@ -18,6 +18,6 @@
 
 
 
-
+-(void)sureOrNot:(UIButton* )sender;
 
 @end
