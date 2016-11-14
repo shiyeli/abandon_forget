@@ -70,8 +70,8 @@
 
 - (void)createCalendarViewWith:(NSDate *)date{
     
-    CGFloat itemW     = self.frame.size.width / 7;
-    CGFloat itemH     = self.frame.size.width / 7;
+    CGFloat itemW     = self.frame.size.width / 8;
+    CGFloat itemH     = self.frame.size.width / 8;
     
     // 1.year month
     self.headlabel = [[UILabel alloc] init];
@@ -100,7 +100,7 @@
         UILabel *week = [[UILabel alloc] init];
         week.text     = array[i];
         week.font     = [UIFont systemFontOfSize:14];
-        week.frame    = CGRectMake(itemW * i, 0, itemW, 32);
+        week.frame    = CGRectMake(itemW * i+DISTANCE_TO_EDGE, 0, itemW, 32);
         week.textAlignment   = NSTextAlignmentCenter;
         week.backgroundColor = [UIColor clearColor];
         week.textColor       = self.weekDaysColor;
@@ -110,7 +110,7 @@
     //  3.days (1-31)
     for (int i = 0; i < 42; i++) {
         
-        int x = (i % 7) * itemW ;
+        int x = (i % 7) * itemW +DISTANCE_TO_EDGE;
         int y = (i / 7) * itemH + CGRectGetMaxY(self.weekBg.frame);
         
         UIButton *dayButton = _daysArray[i];
