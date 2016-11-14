@@ -74,15 +74,23 @@
         return 3;
     }
 }
-
--(NSString*)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component{
+- (nullable NSAttributedString *)pickerView:(UIPickerView *)pickerView attributedTitleForRow:(NSInteger)row forComponent:(NSInteger)component{
+    NSAttributedString* attStr=nil;
     if (component==0) {
-        return arrCount[row];
+         attStr=[[NSAttributedString alloc]initWithString:arrCount[row] attributes:@{NSForegroundColorAttributeName:THIEM_COLOR_DARKER}];
     }else{
-        return arrCircle[row];
+         attStr=[[NSAttributedString alloc]initWithString:arrCircle[row] attributes:@{NSForegroundColorAttributeName:THIEM_COLOR_DARKER}];
     }
-
+    return attStr;
 }
+//-(NSString*)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component{
+//    if (component==0) {
+//        return arrCount[row];
+//    }else{
+//        return arrCircle[row];
+//    }
+//
+//}
 -(void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component{
     
     
