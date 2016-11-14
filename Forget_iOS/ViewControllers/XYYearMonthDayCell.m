@@ -24,11 +24,12 @@
 }
 -(void)setData{
     tempDate=[NSDate date];
+    [self setYearMonthDay:tempDate];
 }
 -(void)setCustomView{
     _yearLab=[[UILabel alloc]init];
     _yearLab.textColor=[UIColor whiteColor];
-    _yearLab.text=@"2016";
+    
     _yearLab.font=SYSTEMFONT(15);
     [self.titleView addSubview:_yearLab];
     [_yearLab mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -38,7 +39,7 @@
 
     _monthDayLab=[[UILabel alloc]init];
     _monthDayLab.textColor=[UIColor whiteColor];
-    _monthDayLab.text=@"十月四日,星期五";
+    
     _monthDayLab.font=SYSTEMFONT(22);
     [self.titleView addSubview:_monthDayLab];
     [_monthDayLab mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -48,6 +49,8 @@
     
     [self setupCalendarView];
 
+    
+    
 }
 
 
@@ -57,15 +60,13 @@
     self.calendarView = [[FyCalendarView alloc] initWithFrame:CGRectMake(0, 0, Main_Screen_Width-DISTANCE_TO_EDGE*2, Main_Screen_Width-DISTANCE_TO_EDGE*2)];
     [self.centerView addSubview:self.calendarView];
     
-    //日期状态
-//    self.calendarView.allDaysArr = [NSArray arrayWithObjects: @"5", @"8", @"9", @"17",  @"30", nil];
-//    self.calendarView.partDaysArr = [NSArray arrayWithObjects:@"1", @"2", @"26", @"12",@"15", @"19",nil];
-    //    self.calendarView.isShowOnlyMonthDays = NO;
+
     self.calendarView.date = [NSDate date];
-    self.calendarView.calendarBlock =  ^(NSInteger day, NSInteger month, NSInteger year){
-        NSLog(@"%li-%li-%li", (long)year,(long)month,(long)day);
-    };
     WS(weakSelf)
+    self.calendarView.calendarBlock =  ^(NSDate* selectDate,NSInteger day, NSInteger month, NSInteger year){
+        NSLog(@"%@ %li-%li-%li",selectDate, (long)year,(long)month,(long)day);
+        
+    };
     self.calendarView.nextMonthBlock = ^(){
         [weakSelf setupNextMonth];
     };
@@ -79,15 +80,14 @@
     self.calendarView = [[FyCalendarView alloc] initWithFrame:CGRectMake(0, 0, Main_Screen_Width-DISTANCE_TO_EDGE*2, Main_Screen_Width-DISTANCE_TO_EDGE*2)];
     [self.centerView addSubview:self.calendarView];
    
-    
-//    self.calendarView.allDaysArr = [NSArray arrayWithObjects:  @"17",  @"21", @"25",  @"30", nil];
-//    self.calendarView.partDaysArr = [NSArray arrayWithObjects:@"1", @"2", @"26", @"19",nil];
+
     tempDate = [self.calendarView nextMonth:tempDate];
     [self.calendarView createCalendarViewWith:tempDate];
-    self.calendarView.calendarBlock =  ^(NSInteger day, NSInteger month, NSInteger year){
-        NSLog(@"%li-%li-%li", (long)year,(long)month,(long)day);
-    };
     WS(weakSelf)
+    self.calendarView.calendarBlock =  ^(NSDate* selectDate,NSInteger day, NSInteger month, NSInteger year){
+        NSLog(@"%@ %li-%li-%li",selectDate, (long)year,(long)month,(long)day);
+        
+    };
     self.calendarView.nextMonthBlock = ^(){
         [weakSelf setupNextMonth];
     };
@@ -101,15 +101,14 @@
     [self.calendarView removeFromSuperview];
     self.calendarView = [[FyCalendarView alloc] initWithFrame:CGRectMake(0, 0, Main_Screen_Width-DISTANCE_TO_EDGE*2, Main_Screen_Width-DISTANCE_TO_EDGE*2)];
     [self.centerView addSubview:self.calendarView];
-    
-//    self.calendarView.allDaysArr = [NSArray arrayWithObjects: @"5", @"6", @"8", @"9", @"11", @"16", @"17", @"21", @"25",  @"30", nil];
-//    self.calendarView.partDaysArr = [NSArray arrayWithObjects:@"1", @"2", @"26", @"29", @"12",@"15", @"18", @"19",nil];
+
     tempDate = [self.calendarView lastMonth:tempDate];
     [self.calendarView createCalendarViewWith:tempDate];
-    self.calendarView.calendarBlock =  ^(NSInteger day, NSInteger month, NSInteger year){
-        NSLog(@"%li-%li-%li", (long)year,(long)month,(long)day);
-    };
     WS(weakSelf)
+    self.calendarView.calendarBlock =  ^(NSDate* selectDate,NSInteger day, NSInteger month, NSInteger year){
+        NSLog(@"%@ %li-%li-%li",selectDate, (long)year,(long)month,(long)day);
+        
+    };
     self.calendarView.lastMonthBlock = ^(){
         [weakSelf setupLastMonth];
     };
@@ -119,9 +118,30 @@
 
 }
 
+-(void)sureOrNot:(UIButton *)sender{
+    [super sureOrNot:sender];
+    
+    if (sender.tag==1) {//关闭
+        self.model.setDate=[NSDate date];
+        
+    }else{//确认
+        [self setYearMonthDay:self.calendarView.tempDate];
+    }
 
+}
 
-
+-(void)setYearMonthDay:(NSDate*)date{
+    
+    NSDateComponents *comp = [[NSCalendar currentCalendar] components:(NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay) fromDate:date];
+    //更新界面
+    
+    _yearLab.text=[NSString stringWithFormat:@"%zd",comp.year];
+    _monthDayLab.text=[NSString stringWithFormat:@"%zd月%zd日,%@",comp.month,comp.day,[XYTool getWeekdayStringFromDate:date]];
+    
+    //存储时间
+    
+    self.model.setDate=date;
+}
 
 /*
 // Only override drawRect: if you perform custom drawing.

@@ -9,6 +9,7 @@
 #import "FyCalendarView.h"
 
 @interface FyCalendarView ()
+
 @property (nonatomic, strong) UIButton *selectBtn;
 @property (nonatomic, strong) NSMutableArray *daysArray;
 @end
@@ -69,6 +70,8 @@
 }
 
 - (void)createCalendarViewWith:(NSDate *)date{
+    
+    _tempDate=date;
     
     CGFloat itemW     = self.frame.size.width / 8;
     CGFloat itemH     = self.frame.size.width / 8;
@@ -180,9 +183,19 @@
     
     NSInteger day = [[dayBtn titleForState:UIControlStateNormal] integerValue];
     
-    NSDateComponents *comp = [[NSCalendar currentCalendar] components:(NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay) fromDate:self.date];
+    NSDateComponents *comp = [[NSCalendar currentCalendar] components:(NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay) fromDate:_tempDate];
+    comp.day=day;
+    
+    
+    
+    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+    
+    [calendar setTimeZone: [NSTimeZone systemTimeZone]];
+    _tempDate = [calendar dateFromComponents:comp];
+    
+    
     if (self.calendarBlock) {
-        self.calendarBlock(day, [comp month], [comp year]);
+        self.calendarBlock(_tempDate, comp.day, comp.month, comp.year);
     }
     
 }

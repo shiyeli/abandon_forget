@@ -21,6 +21,10 @@
 
 //set 选择日期
 @property (nonatomic, strong) NSDate *date;
+
+//记录选择的日期
+@property(nonatomic,strong)NSDate* tempDate;
+
 @property (nonatomic, strong) UIColor *dateColor;
 //年月label
 @property (nonatomic, strong) UILabel *headlabel;
@@ -74,7 +78,7 @@
 /**
  *  点击返回日期
  */
-@property (nonatomic, copy) void(^calendarBlock)(NSInteger day, NSInteger month, NSInteger year);
+@property (nonatomic, copy) void(^calendarBlock)(NSDate* selectDate, NSInteger day, NSInteger month, NSInteger year);
 
 
 @end

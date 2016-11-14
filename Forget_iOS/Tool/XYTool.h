@@ -94,7 +94,7 @@
  */
 + (NSString *)urlencode:(NSString *)encodeString;
 
-+ (NSString*)weekdayStringFromDate:(NSString*)inputDate;
++ (NSString*)getWeekdayStringFromDate:(NSDate*)inputDate;
 /**
  *  过滤空格与回车
  */

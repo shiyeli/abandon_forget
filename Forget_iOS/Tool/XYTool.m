@@ -315,15 +315,9 @@
 
 }
 //获取星期几
-+ (NSString*)weekdayStringFromDate:(NSString*)inputDate {
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
++ (NSString*)getWeekdayStringFromDate:(NSDate*)inputDate {
     
-    dateFormatter.dateFormat = [NSString stringWithFormat:@"yyyy-MM-dd"];
-    
-    NSDate * date = [dateFormatter dateFromString:inputDate];
-    
-    
-    NSArray *weekdays = [NSArray arrayWithObjects: [NSNull null], @"周日", @"周一", @"周二", @"周三", @"周四", @"周五", @"周六", nil];
+    NSArray *weekdays = [NSArray arrayWithObjects: [NSNull null], @"星期日", @"星期一", @"星期二", @"星期三", @"星期四", @"星期五", @"星期六", nil];
     
     NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
     
@@ -333,7 +327,7 @@
     
     NSCalendarUnit calendarUnit = NSCalendarUnitWeekday;
     
-    NSDateComponents *theComponents = [calendar components:calendarUnit fromDate:date];
+    NSDateComponents *theComponents = [calendar components:calendarUnit fromDate:inputDate];
     
     return [weekdays objectAtIndex:theComponents.weekday];
     
