@@ -129,7 +129,7 @@
     XYTimeCellModel* cellModel=[sectionModel.arrM objectAtIndex:indexPath.row];
     cellModel.indexPath=indexPath;
 
-    __weak XYSetTimeView* weakSelf=self;
+    WS(weakSelf)
     cell.sendBlock=^(XYTimeCellModel*  model){
         
         [weakSelf.myTableView reloadData];

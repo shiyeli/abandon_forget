@@ -103,7 +103,7 @@
         make.width.equalTo(@60);
     }];
     
-    [_spreadOutView setHidden:YES];
+    //[_spreadOutView setHidden:YES];
 }
 //点击取消或确认
 -(void)sureOrNot:(UIButton* )sender{

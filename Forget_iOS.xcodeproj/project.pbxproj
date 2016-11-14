@@ -68,6 +68,7 @@
 		6E3D4F561DC723090079D8FD /* XYRearViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E3D4F541DC723090079D8FD /* XYRearViewController.m */; };
 		6E3D4F571DC723090079D8FD /* XYRearViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6E3D4F551DC723090079D8FD /* XYRearViewController.xib */; };
 		6ED632841DD5707F00C8167D /* XYTimeSectionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 6ED632831DD5707F00C8167D /* XYTimeSectionModel.m */; };
+		6ED632881DD95E9F00C8167D /* FyCalendarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6ED632871DD95E9F00C8167D /* FyCalendarView.m */; };
 		8256E0361DC6E1ED0006939C /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8256E0351DC6E1ED0006939C /* CloudKit.framework */; };
 		8256E03A1DC6E3AA0006939C /* iCloudManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8256E0391DC6E3AA0006939C /* iCloudManager.m */; };
 		8256E03C1DC6EA860006939C /* EventKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8256E03B1DC6EA860006939C /* EventKit.framework */; };
@@ -257,6 +258,8 @@
 		6E3D4F551DC723090079D8FD /* XYRearViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XYRearViewController.xib; sourceTree = "<group>"; };
 		6ED632821DD5707F00C8167D /* XYTimeSectionModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYTimeSectionModel.h; sourceTree = "<group>"; };
 		6ED632831DD5707F00C8167D /* XYTimeSectionModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYTimeSectionModel.m; sourceTree = "<group>"; };
+		6ED632861DD95E9F00C8167D /* FyCalendarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FyCalendarView.h; sourceTree = "<group>"; };
+		6ED632871DD95E9F00C8167D /* FyCalendarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FyCalendarView.m; sourceTree = "<group>"; };
 		8256E0351DC6E1ED0006939C /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		8256E0381DC6E3AA0006939C /* iCloudManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iCloudManager.h; sourceTree = "<group>"; };
 		8256E0391DC6E3AA0006939C /* iCloudManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iCloudManager.m; sourceTree = "<group>"; };
@@ -487,6 +490,7 @@
 		6E3063751DC05AD9000DBB7D /* ThirdLib */ = {
 			isa = PBXGroup;
 			children = (
+				6ED632851DD95E9F00C8167D /* CalendarView */,
 				6E3522441DC9DFC10000BEF0 /* Masonry */,
 				6E3D4F4E1DC721E50079D8FD /* SWRevealViewController */,
 				6E3063761DC05AD9000DBB7D /* AMap */,
@@ -676,6 +680,15 @@
 				6E3D4F551DC723090079D8FD /* XYRearViewController.xib */,
 			);
 			name = "侧滑底视图";
+			sourceTree = "<group>";
+		};
+		6ED632851DD95E9F00C8167D /* CalendarView */ = {
+			isa = PBXGroup;
+			children = (
+				6ED632861DD95E9F00C8167D /* FyCalendarView.h */,
+				6ED632871DD95E9F00C8167D /* FyCalendarView.m */,
+			);
+			path = CalendarView;
 			sourceTree = "<group>";
 		};
 		8256E0371DC6E3870006939C /* iCloud */ = {
@@ -991,6 +1004,7 @@
 				6E3063BD1DC08FE3000DBB7D /* XYNotifyPropertyChangeView.m in Sources */,
 				6E3522661DC9DFC10000BEF0 /* MASViewAttribute.m in Sources */,
 				6E1CD0D31DD1C5D100E1FD9D /* XYTimeParentCell.m in Sources */,
+				6ED632881DD95E9F00C8167D /* FyCalendarView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

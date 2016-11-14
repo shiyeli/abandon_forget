@@ -7,10 +7,12 @@
 //
 
 #import "XYTimeParentCell.h"
-
+#import "FyCalendarView.h"
 @interface XYYearMonthDayCell : XYTimeParentCell
 
 @property(nonatomic,strong)UILabel* yearLab;
 @property(nonatomic,strong)UILabel* monthDayLab;
+
+@property(nonatomic,strong)FyCalendarView* calendarView;
 
 @end
