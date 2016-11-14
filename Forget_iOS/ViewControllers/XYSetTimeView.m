@@ -39,7 +39,7 @@
     
     self.myTableView.delegate=self;
     self.myTableView.dataSource=self;
-    
+    self.myTableView.backgroundColor=[UIColor whiteColor];
     [self setModel];
     
     [self initCellUI];
@@ -168,7 +168,7 @@
     XYTimeSectionModel* sectionModel=[self.dataArr objectAtIndex:section];
     
     UIView* header=[[UIView alloc]initWithFrame:CGRectMake(0, 0, Main_Screen_Width, SECTION_HEADER_HEIGHT)];
-    
+    header.backgroundColor=[UIColor whiteColor];
     
    
      sectionModel.mySwitch.onTintColor=THIEM_COLOR;
