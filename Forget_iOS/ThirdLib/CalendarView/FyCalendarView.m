@@ -121,6 +121,9 @@
         
         dayButton.titleLabel.textAlignment = NSTextAlignmentCenter;
         dayButton.layer.cornerRadius = 5.0f;
+        [dayButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        [dayButton setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected];
+        
         [dayButton addTarget:self action:@selector(logDate:) forControlEvents:UIControlEventTouchUpInside];
         
         NSInteger daysInLastMonth = [self totaldaysInMonth:[self lastMonth:date]];
@@ -156,6 +159,8 @@
                 //                [self setStyle_BeforeToday:dayButton];
             }else if(i ==  todayIndex){
                 [self setStyle_Today:dayButton];
+                dayButton.selected=YES;
+                self.selectBtn=dayButton;
             }
             
         }
@@ -173,12 +178,12 @@
 {
     self.selectBtn.selected = NO;
     [self.selectBtn setBackgroundColor:[UIColor clearColor]];
+    
     dayBtn.selected = YES;
     self.selectBtn = dayBtn;
     dayBtn.layer.cornerRadius = dayBtn.frame.size.height / 2;
     dayBtn.layer.masksToBounds = YES;
-    [dayBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    [dayBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected];
+    
     [dayBtn setBackgroundColor:self.dateColor];
     
     NSInteger day = [[dayBtn titleForState:UIControlStateNormal] integerValue];
@@ -242,14 +247,14 @@
 {
     btn.layer.cornerRadius = btn.frame.size.height / 2;
     btn.layer.masksToBounds = YES;
-    [btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [btn setTitleColor:[UIColor redColor] forState:UIControlStateSelected];
+    [btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [btn setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected];
     [btn setBackgroundColor:THIEM_COLOR];
 }
 
 - (void)setStyle_AfterToday:(UIButton *)btn
 {;
-    [btn setTitleColor:[UIColor redColor] forState:UIControlStateSelected];
+    [btn setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected];
     [btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     for (NSString *str in self.allDaysArr) {
         if ([str isEqualToString:btn.titleLabel.text]) {
