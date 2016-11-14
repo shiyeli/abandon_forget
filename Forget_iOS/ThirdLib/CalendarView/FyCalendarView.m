@@ -115,7 +115,7 @@
         
         UIButton *dayButton = _daysArray[i];
         dayButton.frame = CGRectMake(x, y, itemW, itemH);
-        dayButton.titleLabel.font = [UIFont systemFontOfSize:14.0];
+        
         dayButton.titleLabel.textAlignment = NSTextAlignmentCenter;
         dayButton.layer.cornerRadius = 5.0f;
         [dayButton addTarget:self action:@selector(logDate:) forControlEvents:UIControlEventTouchUpInside];
@@ -142,7 +142,7 @@
         }
         
         [dayButton setTitle:[NSString stringWithFormat:@"%li", (long)day] forState:UIControlStateNormal];
-        dayButton.titleLabel.font = [UIFont systemFontOfSize:21];
+        dayButton.titleLabel.font = [UIFont systemFontOfSize:12];
         
         // this month
         if ([self month:date] == [self month:[NSDate date]]) {
@@ -175,7 +175,7 @@
     dayBtn.layer.cornerRadius = dayBtn.frame.size.height / 2;
     dayBtn.layer.masksToBounds = YES;
     [dayBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    [dayBtn setTitleColor:[UIColor redColor] forState:UIControlStateSelected];
+    [dayBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected];
     [dayBtn setBackgroundColor:self.dateColor];
     
     NSInteger day = [[dayBtn titleForState:UIControlStateNormal] integerValue];
@@ -229,9 +229,9 @@
 {
     btn.layer.cornerRadius = btn.frame.size.height / 2;
     btn.layer.masksToBounds = YES;
-    [btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [btn setTitleColor:[UIColor redColor] forState:UIControlStateSelected];
-    [btn setBackgroundColor:[UIColor greenColor]];
+    [btn setBackgroundColor:THIEM_COLOR];
 }
 
 - (void)setStyle_AfterToday:(UIButton *)btn
@@ -279,14 +279,14 @@
 
 - (UIColor *)headColor {
     if (!_headColor) {
-        _headColor = [UIColor orangeColor];
+        _headColor = BLACK_ALPHA_87;
     }
     return _headColor;
 }
 
 - (UIColor *)dateColor {
     if (!_dateColor) {
-        _dateColor = [UIColor orangeColor];
+        _dateColor = THIEM_COLOR;
     }
     return _dateColor;
 }
