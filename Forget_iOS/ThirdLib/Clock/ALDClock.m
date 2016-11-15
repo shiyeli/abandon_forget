@@ -48,6 +48,8 @@ const CGFloat kALDClockAnimationIncrement = 30;
 @synthesize minute = _minute, hour = _hour;
 
 -(void)setIsHour:(BOOL)isHour{
+    _isHour=isHour;
+    
     if (isHour) {
         
         
@@ -61,6 +63,7 @@ const CGFloat kALDClockAnimationIncrement = 30;
         
     
     }
+   [self updateDisplayAndListeners];
 }
 
 
@@ -241,7 +244,7 @@ const CGFloat kALDClockAnimationIncrement = 30;
     {
         self.totalRotation = fmod(self.totalRotation + kALDClockAnimationIncrement, 24 * 360);
     }
-    else
+    
     {
         self.totalRotation = fmod(self.totalRotation - kALDClockAnimationIncrement, 24 * 360);
     }
@@ -450,40 +453,57 @@ const CGFloat kALDClockAnimationIncrement = 30;
         CGFloat labelX = center.x + (markingDistanceFromCenter - digitFont.lineHeight/2.0f) * cos( (M_PI/180)* (i+offset) * 30 + M_PI);
         CGFloat labelY = center.y + - 1 * (markingDistanceFromCenter - digitFont.lineHeight/2.0f) * sin((M_PI/180)*(i+offset) * 30);
         
-        NSString *hourNumber = [NSString stringWithFormat:@"%d", i + 1];
-        [hourNumber drawInRect:CGRectMake(labelX - digitFont.lineHeight/2.0f,
-                                          labelY - digitFont.lineHeight/2.0f,
-                                          digitFont.lineHeight,
-                                          digitFont.lineHeight)
-                withAttributes:self.digitAttributes];
+        NSString *hourNumber = nil;
+        
+        if (self.isHour) {
+            hourNumber=[NSString stringWithFormat:@"%d", i + 1];
+            [hourNumber drawInRect:CGRectMake(labelX - digitFont.lineHeight/2.0f,
+                                              labelY - digitFont.lineHeight/2.0f,
+                                              digitFont.lineHeight,
+                                              digitFont.lineHeight)
+                    withAttributes:self.digitAttributes];
+        }else{
+            hourNumber=[NSString stringWithFormat:@"%d",(i+1)*5];
+            if ([hourNumber isEqualToString:@"60"]) {
+                hourNumber=@"0";
+            }
+            [hourNumber drawInRect:CGRectMake(labelX - digitFont.lineHeight/2.0f,
+                                              labelY - digitFont.lineHeight/2.0f,
+                                              digitFont.lineHeight*1.2,
+                                              digitFont.lineHeight*1.2)
+                    withAttributes:self.digitAttributes];
+        }
+        
+        
     }
-    
+  #pragma mark - 画时针
     // --------------------------
     // --  Draw the hour hand  --
     // --------------------------
     
-    // Set the hand width
-    CGContextSetLineWidth(context, self.hourHandThickness);
-    
-    // Set the colour of the hand
-    CGContextSetStrokeColorWithColor(context, self.hourHandColor.CGColor);
-    
-    // Offset the hour hand by 90 degrees
-    CGFloat hourHandAngle = fmod(self.totalRotation * 1/12.0f, 360);
-    hourHandAngle += 90;
-    
-    // Move the cursor to the center
-    CGContextMoveToPoint(context, center.x, center.y);
-    
-    // Get the location of the end of the hand
-    CGFloat hourHandX = center.x + (0.6*self.radius) * cos((M_PI/180)*hourHandAngle);
-    CGFloat hourHandY = center.y + - 1 * (0.6*self.radius) * sin((M_PI/180)*hourHandAngle);
-    
-    // Move to the end of the hand
-    CGContextAddLineToPoint(context, hourHandX, hourHandY);
-    
-    // Draw hour hand.
-    CGContextDrawPath(context, kCGPathStroke);
+//    // Set the hand width
+//    CGContextSetLineWidth(context, self.hourHandThickness);
+//    
+//    // Set the colour of the hand
+//    CGContextSetStrokeColorWithColor(context, self.hourHandColor.CGColor);
+//    
+//    // Offset the hour hand by 90 degrees
+//    CGFloat hourHandAngle = fmod(self.totalRotation * 1/12.0f, 360);
+//    hourHandAngle += 90;
+//    
+//    // Move the cursor to the center
+//    CGContextMoveToPoint(context, center.x, center.y);
+//    
+//    // Get the location of the end of the hand
+//    CGFloat hourHandX = center.x + (0.6*self.radius) * cos((M_PI/180)*hourHandAngle);
+//    CGFloat hourHandY = center.y + - 1 * (0.6*self.radius) * sin((M_PI/180)*hourHandAngle);
+//    
+//    // Move to the end of the hand
+//    CGContextAddLineToPoint(context, hourHandX, hourHandY);
+//    
+//
+//    // Draw hour hand.
+//    CGContextDrawPath(context, kCGPathStroke);
     
     // --------------------------
     // -- Draw the minute hand --

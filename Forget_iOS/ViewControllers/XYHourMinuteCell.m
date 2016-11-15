@@ -34,12 +34,14 @@
         case 1:
         {
             minuteBtn.selected=NO;
+            [self setClockViewHour:YES];
             
         }
             break;
         case 2:
         {
             hourBtn.selected=NO;
+            [self setClockViewHour:NO];
         }
             break;
         case 3:
@@ -74,7 +76,7 @@
     [self.titleView addSubview:centerLab];
     [centerLab mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(self.titleView);
-        make.centerX.equalTo(self.titleView).with.offset(-DISTANCE_TO_EDGE*2);
+        make.centerX.equalTo(self.titleView).with.offset(-DISTANCE_TO_EDGE*1.5);
     }];
     
     
@@ -89,7 +91,7 @@
     [self.titleView addSubview:hourBtn];
     [hourBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(self.titleView);
-        make.trailing.equalTo(centerLab.mas_leading);
+        make.leading.equalTo(centerLab.mas_leading).with.offset(-55);
     }];
     
     
@@ -117,7 +119,7 @@
     [self.titleView addSubview:amBtn];
     [amBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(centerLab);
-        make.leading.equalTo(minuteBtn.mas_trailing);
+        make.leading.equalTo(centerLab.mas_trailing).with.offset(65);
     }];
     
     pmBtn=[[UIButton alloc]init];
@@ -133,13 +135,22 @@
         make.leading.equalTo(amBtn);
     }];
     
-    
     _clockView=[[ALDClock alloc]initWithFrame:CGRectMake(DISTANCE_TO_EDGE, DISTANCE_TO_EDGE, Main_Screen_Width-DISTANCE_TO_EDGE*4, Main_Screen_Width-DISTANCE_TO_EDGE*4)];
     [self.centerView addSubview:_clockView];
     [self applyClockCustomisations];
-    self.clockView.isHour=hourBtn.selected;
+    self.clockView.isHour=YES;
+    
     
 }
+
+-(void)setClockViewHour:(BOOL)isHour{
+    _clockView.isHour=isHour;
+    
+    
+    [self setHourMInWithDate:[NSDate date]];
+
+}
+
 
 -(void)setHourMInWithDate:(NSDate*)date{
     NSDateComponents *comp = [[NSCalendar currentCalendar] components:(NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay|NSCalendarUnitHour|NSCalendarUnitMinute) fromDate:date];
@@ -186,6 +197,11 @@
 - (void)clockDidChangeTime:(ALDClock *)clock
 {
     NSLog(@"The time is: %02d:%02d", clock.hour, clock.minute);
+    if (clock.isHour) {
+        [self setHour:clock.minute/5];
+    }else{
+        [self setMinute:clock.minute];
+    }
     
 }
 
