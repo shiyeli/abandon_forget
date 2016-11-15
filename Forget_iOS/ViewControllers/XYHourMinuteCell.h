@@ -10,7 +10,7 @@
 #import "ALDClock.h"
 @interface XYHourMinuteCell : XYTimeParentCell
 
-@property(nonatomic,strong)UILabel* houtMinLab;
+
 
 @property(nonatomic,strong)ALDClock* clockView;
 

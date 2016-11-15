@@ -29,6 +29,10 @@
 
 @interface ALDClock : UIControl
 
+
+//设置小时/否则设置分钟
+@property(nonatomic,assign)BOOL isHour;
+
 /**
  The hour and minute that the clock is currently displaying.
  */

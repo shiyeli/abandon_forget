@@ -47,6 +47,23 @@ const CGFloat kALDClockAnimationIncrement = 30;
 @implementation ALDClock
 @synthesize minute = _minute, hour = _hour;
 
+-(void)setIsHour:(BOOL)isHour{
+    if (isHour) {
+        
+        
+        
+        
+        
+    }else{
+    
+    
+        
+        
+    
+    }
+}
+
+
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];

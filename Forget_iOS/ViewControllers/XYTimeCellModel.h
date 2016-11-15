@@ -41,6 +41,7 @@ typedef enum: NSInteger {
 //提醒时间/结束日期
 @property(nonatomic,strong) NSDate* setDate;
 
+
 //重复
 @property(nonatomic,copy)NSString * setRepeatCount;
 @property(nonatomic,assign) TimeSetRepeatCircle setRepeatCircle;//天周月
