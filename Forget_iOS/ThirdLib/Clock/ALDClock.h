@@ -63,6 +63,7 @@
 @property (nonatomic, strong) NSDictionary *titleAttributes;
 @property (nonatomic, strong) NSDictionary *subtitleAttributes;
 @property (nonatomic, strong) NSDictionary *digitAttributes;
+@property (nonatomic, strong) NSDictionary *digitAttributesSelect;
 
 /**
  By setting this to YES, the minute hand will move slowly around

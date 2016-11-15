@@ -118,13 +118,17 @@ const CGFloat kALDClockAnimationIncrement = 30;
         _digitAttributes = @{NSForegroundColorAttributeName : [UIColor colorWithWhite:0.0 alpha:0.54],
                                 NSParagraphStyleAttributeName: paragraphStyle,
                                 NSFontAttributeName : [UIFont systemFontOfSize:16.0f]};
+        
+        _digitAttributesSelect=@{NSForegroundColorAttributeName : [UIColor colorWithWhite:1.0 alpha:1],
+                                 NSParagraphStyleAttributeName: paragraphStyle,
+                                 NSFontAttributeName : [UIFont systemFontOfSize:16.0f]};
     }
     return self;
 }
 
 - (void)updateRadius
 {
-    _radius = MIN(CGRectGetWidth(self.frame)/2.0f, CGRectGetHeight(self.frame)/2.0f) - 20;
+    _radius = MIN(CGRectGetWidth(self.frame)/2.0f, CGRectGetHeight(self.frame)/2.0f) - 10;
 }
 
 - (void)setFrame:(CGRect)frame
@@ -443,6 +447,9 @@ const CGFloat kALDClockAnimationIncrement = 30;
     CGContextDrawPath(context, kCGPathStroke);
     
     // Draw the digits
+    
+    NSMutableArray* digitsArr=[NSMutableArray array];
+    
     for(unsigned i = 0; i < 12; i ++)
     {
         UIFont *digitFont = self.digitAttributes[NSFontAttributeName];
@@ -473,6 +480,7 @@ const CGFloat kALDClockAnimationIncrement = 30;
                                               digitFont.lineHeight*1.2)
                     withAttributes:self.digitAttributes];
         }
+        
         
         
     }
@@ -515,7 +523,15 @@ const CGFloat kALDClockAnimationIncrement = 30;
     // Set the colour of the hand
     CGContextSetStrokeColorWithColor(context, self.minuteHandColor.CGColor);
     
+    
+    
+    
     CGFloat minuteHandAngle = ceil(fmod(self.totalRotation + 24 * 360, 24 * 360) / 6.0f) * 6;
+    
+    if (self.isHour) {
+        //minuteHandAngle*=5;
+    }
+    
     if(self.minuteHandMovesSmoothly)
         minuteHandAngle = self.totalRotation;
     
@@ -534,6 +550,35 @@ const CGFloat kALDClockAnimationIncrement = 30;
     
     // Draw minute hand.
     CGContextDrawPath(context, kCGPathStroke);
+    
+    //填充圆，无边框
+    CGContextSetFillColorWithColor(context,THIEM_COLOR.CGColor);
+    CGContextAddArc(context, minuteHandX, minuteHandY, DISTANCE_TO_EDGE, 0, M_PI*2, 0); //添加一个圆
+    CGContextDrawPath(context, kCGPathFill);
+    
+   
+    
+    
+    NSInteger tempminuteHandAngle=(int)minuteHandAngle;
+    NSLog(@"%d",360-(tempminuteHandAngle-90)%360);
+    int resuleAgnle=360-(tempminuteHandAngle-90)%360;
+    
+    
+    NSString* tempStr=@"";
+    if (_isHour) {
+        tempStr=[NSString stringWithFormat:@"%d",resuleAgnle/(360/12)];
+    }else{
+        tempStr=[NSString stringWithFormat:@"%d",resuleAgnle/(360/60)];
+        if (resuleAgnle/(360/60)==60) {
+            tempStr=@"0";
+        }
+    }
+    
+    
+    
+    [tempStr drawInRect:CGRectMake(minuteHandX-DISTANCE_TO_EDGE*0.65, minuteHandY-DISTANCE_TO_EDGE*0.65, DISTANCE_TO_EDGE*1.3, DISTANCE_TO_EDGE*1.3) withAttributes:_digitAttributesSelect];
+    //[tempStr drawAtPoint:CGPointMake(minuteHandX, minuteHandY) withAttributes:_digitAttributesSelect];
+    
     
     // --------------------------
     // -- Draw the centre cap  --
