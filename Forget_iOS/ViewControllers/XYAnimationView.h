@@ -7,7 +7,10 @@
 //
 
 #import "XYParentView.h"
-
+#import "XYAnimationViewModel.h"
 @interface XYAnimationView : XYParentView
+
+@property(nonatomic,assign)BOOL isCommomAddress;
+@property(nonatomic,strong)NSMutableArray <XYAnimationViewModel*>* dataArray;
 
 @end

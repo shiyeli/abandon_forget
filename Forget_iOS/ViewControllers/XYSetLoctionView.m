@@ -42,27 +42,29 @@
     
 }
 
--(void)addAnimationView{
+-(void)addAnimationViewisCommonAddress:(BOOL)isCommonAddress{
+    
     [[UIApplication sharedApplication].keyWindow addSubview:self.animationView];
+    self.animationView.isCommomAddress=isCommonAddress;
     CATransition* anim=[CATransition animation];
     anim.type=@"kCATransitionFade";
-    anim.duration=0.3;
+    anim.duration=0.5;
     //anim.subtype=kCATransitionFromLeft;
     [[UIApplication sharedApplication].keyWindow.layer addAnimation:anim forKey:nil];
-
+    
 }
 
 - (IBAction)clickEvent:(UIButton *)sender {
     switch (sender.tag) {
         case 1:{
             //常见地点
-            [self addAnimationView];
+            [self addAnimationViewisCommonAddress:YES];
         
         }
             break;
         case 2:{
             //个人地点
-            [self addAnimationView];
+            [self addAnimationViewisCommonAddress:NO];
         }
             break;
         case 3:{

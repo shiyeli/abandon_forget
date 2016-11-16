@@ -71,6 +71,7 @@
 		6ED632881DD95E9F00C8167D /* FyCalendarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6ED632871DD95E9F00C8167D /* FyCalendarView.m */; };
 		6ED6328C1DDAA6CF00C8167D /* ALDClock.m in Sources */ = {isa = PBXBuildFile; fileRef = 6ED6328B1DDAA6CF00C8167D /* ALDClock.m */; };
 		6ED6328F1DDC07A500C8167D /* XYAnimationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6ED6328E1DDC07A500C8167D /* XYAnimationView.m */; };
+		6ED632921DDC0F9200C8167D /* XYAnimationViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 6ED632911DDC0F9200C8167D /* XYAnimationViewModel.m */; };
 		8256E0361DC6E1ED0006939C /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8256E0351DC6E1ED0006939C /* CloudKit.framework */; };
 		8256E03A1DC6E3AA0006939C /* iCloudManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8256E0391DC6E3AA0006939C /* iCloudManager.m */; };
 		8256E03C1DC6EA860006939C /* EventKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8256E03B1DC6EA860006939C /* EventKit.framework */; };
@@ -266,6 +267,8 @@
 		6ED6328B1DDAA6CF00C8167D /* ALDClock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALDClock.m; sourceTree = "<group>"; };
 		6ED6328D1DDC07A500C8167D /* XYAnimationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYAnimationView.h; sourceTree = "<group>"; };
 		6ED6328E1DDC07A500C8167D /* XYAnimationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYAnimationView.m; sourceTree = "<group>"; };
+		6ED632901DDC0F9200C8167D /* XYAnimationViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYAnimationViewModel.h; sourceTree = "<group>"; };
+		6ED632911DDC0F9200C8167D /* XYAnimationViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYAnimationViewModel.m; sourceTree = "<group>"; };
 		8256E0351DC6E1ED0006939C /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		8256E0381DC6E3AA0006939C /* iCloudManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iCloudManager.h; sourceTree = "<group>"; };
 		8256E0391DC6E3AA0006939C /* iCloudManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iCloudManager.m; sourceTree = "<group>"; };
@@ -414,6 +417,8 @@
 				6E3522751DCB0DAC0000BEF0 /* XYSetLoctionView.m */,
 				6ED6328D1DDC07A500C8167D /* XYAnimationView.h */,
 				6ED6328E1DDC07A500C8167D /* XYAnimationView.m */,
+				6ED632901DDC0F9200C8167D /* XYAnimationViewModel.h */,
+				6ED632911DDC0F9200C8167D /* XYAnimationViewModel.m */,
 				6E3522771DCB0DB40000BEF0 /* XYSetLoctionView.xib */,
 			);
 			name = "设置地点";
@@ -1013,6 +1018,7 @@
 				6E35226C1DC9DFC10000BEF0 /* README.md in Sources */,
 				6E3522651DC9DFC10000BEF0 /* MASLayoutConstraint.m in Sources */,
 				8256E03A1DC6E3AA0006939C /* iCloudManager.m in Sources */,
+				6ED632921DDC0F9200C8167D /* XYAnimationViewModel.m in Sources */,
 				6E3522711DCB0CF40000BEF0 /* XYSetTimeView.m in Sources */,
 				6E3522621DC9DFC10000BEF0 /* MASCompositeConstraint.m in Sources */,
 				6E1CD0D61DD1C6D800E1FD9D /* XYYearMonthDayCell.m in Sources */,
