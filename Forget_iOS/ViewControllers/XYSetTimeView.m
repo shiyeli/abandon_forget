@@ -170,7 +170,7 @@
     UIView* header=[[UIView alloc]initWithFrame:CGRectMake(0, 0, Main_Screen_Width, SECTION_HEADER_HEIGHT)];
     header.backgroundColor=[UIColor whiteColor];
     
-   
+    sectionModel.mySwitch.tintColor=THIEM_COLOR;
      sectionModel.mySwitch.onTintColor=THIEM_COLOR;
      sectionModel.mySwitch.tag=section;
     [ sectionModel.mySwitch setOn:sectionModel.switchIsOpen];

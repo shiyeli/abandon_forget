@@ -26,6 +26,9 @@
                                     <subviews>
                                         <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7DX-Zx-JIC">
                                             <rect key="frame" x="16" y="7" width="51" height="31"/>
+                                            <connections>
+                                                <action selector="switchChange:" destination="iN0-l3-epB" eventType="valueChanged" id="JOf-E3-V2i"/>
+                                            </connections>
                                         </switch>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="提醒地点" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GMY-tP-M4n">
                                             <rect key="frame" x="75" y="17" width="69.5" height="11"/>
@@ -117,15 +120,24 @@
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9db-0n-lup">
                                             <rect key="frame" x="0.0" y="312" width="375" height="50"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fcb-22-Jhx">
+                                                <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fcb-22-Jhx">
                                                     <rect key="frame" x="50" y="8.5" width="70" height="33"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                    <color key="tintColor" red="0.0" green="0.58823529409999997" blue="0.53333333329999999" alpha="0.0" colorSpace="calibratedRGB"/>
                                                     <state key="normal" title="到达地点"/>
+                                                    <connections>
+                                                        <action selector="clickEvent:" destination="iN0-l3-epB" eventType="touchUpInside" id="3Ab-QU-yH4"/>
+                                                    </connections>
                                                 </button>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kpw-RG-mqf">
+                                                <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kpw-RG-mqf">
                                                     <rect key="frame" x="255" y="8.5" width="70" height="33"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                    <color key="tintColor" red="0.0" green="0.58823529409999997" blue="0.53333333329999999" alpha="0.0" colorSpace="calibratedRGB"/>
                                                     <state key="normal" title="离开地点"/>
+                                                    <connections>
+                                                        <action selector="clickEvent:" destination="iN0-l3-epB" eventType="touchUpInside" id="BwP-Kw-Xhv"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -189,9 +201,13 @@
                 <constraint firstItem="Lk8-cJ-4vX" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="sac-BM-8P4"/>
             </constraints>
             <connections>
+                <outlet property="arriveAddressBtn" destination="fcb-22-Jhx" id="qpq-xz-kBI"/>
+                <outlet property="holdStackView" destination="3RR-Mi-Vbx" id="0sM-Jg-ol9"/>
+                <outlet property="leaveAddressBtn" destination="kpw-RG-mqf" id="zK2-TO-yeI"/>
+                <outlet property="mySwith" destination="7DX-Zx-JIC" id="pY1-Dn-I9f"/>
                 <outlet property="myTableView" destination="BBH-Gl-oI9" id="nXJ-B3-Koa"/>
             </connections>
-            <point key="canvasLocation" x="129.5" y="64.5"/>
+            <point key="canvasLocation" x="5" y="73"/>
         </view>
     </objects>
     <resources>

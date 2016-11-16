@@ -11,13 +11,28 @@
 
 @interface XYSetLoctionView ()<UITableViewDelegate,UITableViewDataSource>
 
+
+@property (weak, nonatomic) IBOutlet UISwitch *mySwith;
+
+@property (weak, nonatomic) IBOutlet UIStackView *holdStackView;
+
+
 @property (weak, nonatomic) IBOutlet UITableView *myTableView;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *myTableViewH;
+
+
+@property (weak, nonatomic) IBOutlet UIButton *arriveAddressBtn;
+@property (weak, nonatomic) IBOutlet UIButton *leaveAddressBtn;
 
 
 @end
 
 @implementation XYSetLoctionView
+
+- (IBAction)switchChange:(UISwitch *)sender {
+    [self.holdStackView setHidden:!sender.isOn];
+    
+}
+
 
 - (IBAction)clickEvent:(UIButton *)sender {
     switch (sender.tag) {
@@ -43,8 +58,16 @@
         }
             break;
         case 4:{
-            //关闭
+            //到达地点
+            self.leaveAddressBtn.selected=NO;
+            self.arriveAddressBtn.selected=YES;
             
+        }
+            break;
+        case 5:{
+            //离开地点
+            self.leaveAddressBtn.selected=YES;
+            self.arriveAddressBtn.selected=NO;
             
         }
             break;
@@ -62,10 +85,19 @@
 -(void)awakeFromNib{
     [super awakeFromNib];
     
+    [self.mySwith setTintColor:THIEM_COLOR];
+    [self.mySwith setOnTintColor:THIEM_COLOR];
+    
     self.myTableView.delegate=self;
     self.myTableView.dataSource=self;
     self.myTableView.backgroundColor=[UIColor clearColor];
-    self.myTableViewH.constant=44*3;
+    self.myTableView.scrollEnabled=NO;
+    
+    [self.arriveAddressBtn setTitleColor:BLACK_FONT_COLOR forState:UIControlStateNormal];
+    [self.arriveAddressBtn setTitleColor:THIEM_COLOR forState:UIControlStateSelected];
+    [self.leaveAddressBtn setTitleColor:BLACK_FONT_COLOR forState:UIControlStateNormal];
+    [self.leaveAddressBtn setTitleColor:THIEM_COLOR forState:UIControlStateSelected];
+    self.arriveAddressBtn.selected=YES;
 }
 
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
