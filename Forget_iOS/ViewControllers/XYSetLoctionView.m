@@ -48,7 +48,7 @@
     self.animationView.isCommomAddress=isCommonAddress;
     CATransition* anim=[CATransition animation];
     anim.type=@"kCATransitionFade";
-    anim.duration=0.5;
+    anim.duration=0.3;
     //anim.subtype=kCATransitionFromLeft;
     [[UIApplication sharedApplication].keyWindow.layer addAnimation:anim forKey:nil];
     
