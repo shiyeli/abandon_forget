@@ -75,11 +75,11 @@
         cell=[[UITableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:identifer];
         cell.backgroundColor=[UIColor clearColor];
         [cell.imageView setImage:[UIImage imageNamed:@"location_icon"]];
-        [cell.textLabel setTextColor:[UIColor whiteColor]];
-        [cell.detailTextLabel setTextColor:[UIColor whiteColor]];
+        [cell.textLabel setTextColor:BLACK_FONT_COLOR];
+        [cell.detailTextLabel setTextColor:LIGHT_FONT_COLOR];
         
         UIView* backbg=[[UIView alloc]initWithFrame:cell.frame];
-        backbg.backgroundColor=[XYTool stringToColor:@"#231025"];
+        backbg.backgroundColor=[XYTool stringToColor:@"#B2DFDB"];
         cell.selectedBackgroundView=backbg;
     }
     cell.textLabel.text=@"宏达国际广场";

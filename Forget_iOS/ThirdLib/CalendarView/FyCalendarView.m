@@ -297,7 +297,7 @@
 
 - (UIColor *)headColor {
     if (!_headColor) {
-        _headColor = BLACK_ALPHA_87;
+        _headColor = BLACK_FONT_COLOR;
     }
     return _headColor;
 }
