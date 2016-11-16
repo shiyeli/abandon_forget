@@ -7,7 +7,7 @@
 //
 
 #import "XYSetLoctionView.h"
-
+#import "XYAnimationView.h"
 
 @interface XYSetLoctionView ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -23,30 +23,46 @@
 @property (weak, nonatomic) IBOutlet UIButton *arriveAddressBtn;
 @property (weak, nonatomic) IBOutlet UIButton *leaveAddressBtn;
 
+@property(strong,nonatomic) XYAnimationView* animationView;
 
 @end
 
 @implementation XYSetLoctionView
+
+-(XYAnimationView*)animationView{
+    if (!_animationView) {
+        _animationView=[[XYAnimationView alloc]initWithFrame:CGRectMake(0, 0, Main_Screen_Width, Main_Screen_Height)];
+        _animationView.backgroundColor=THIEM_COLOR_LIGHTER;
+    }
+    return _animationView;
+}
 
 - (IBAction)switchChange:(UISwitch *)sender {
     [self.holdStackView setHidden:!sender.isOn];
     
 }
 
+-(void)addAnimationView{
+    [[UIApplication sharedApplication].keyWindow addSubview:self.animationView];
+    CATransition* anim=[CATransition animation];
+    anim.type=@"kCATransitionFade";
+    anim.duration=0.3;
+    //anim.subtype=kCATransitionFromLeft;
+    [[UIApplication sharedApplication].keyWindow.layer addAnimation:anim forKey:nil];
+
+}
 
 - (IBAction)clickEvent:(UIButton *)sender {
     switch (sender.tag) {
         case 1:{
             //常见地点
-        
-        
+            [self addAnimationView];
         
         }
             break;
         case 2:{
             //个人地点
-            
-            
+            [self addAnimationView];
         }
             break;
         case 3:{
