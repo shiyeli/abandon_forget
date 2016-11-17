@@ -38,7 +38,8 @@
                        @{@"img":@"company_btn",@"name":@"公司"},
                        @{@"img":@"exercise_btn",@"name":@"健身房"},
                        @{@"img":@"girl_home",@"name":@"女朋友家"},
-                       @{@"img":@"parents_home",@"name":@"父母家"}];
+                       @{@"img":@"parents_home",@"name":@"父母家"},
+                       @{@"img":@"parents_home",@"name":@"第六个"}];
         
         center=CGPointMake(Main_Screen_Width*0.5, Main_Screen_Height*0.5);
         intevalAngle=M_PI/4.0f;
