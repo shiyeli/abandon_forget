@@ -30,9 +30,9 @@
                        @{@"img":@"park_btn",@"name":@"停车场"},
                     @{@"img":@"bank_btn",@"name":@"银行"},
                     
-                    @{@"img":@"hospital_btn",@"name":@"医院"},
-                    @{@"img":@"park_btn",@"name":@"停车场"},
-                    @{@"img":@"bank_btn",@"name":@"银行"}];
+                    @{@"img":@"hospital_btn",@"name":@"菜市场"},
+                    @{@"img":@"park_btn",@"name":@"快时代"},
+                    @{@"img":@"bank_btn",@"name":@"梦思特"}];
         
         personArr=@[@{@"img":@"home_btn",@"name":@"家"},
                        @{@"img":@"company_btn",@"name":@"公司"},
@@ -65,8 +65,14 @@
         [obj removeFromSuperview];
     }
     
+    CGRect frame;
+    if (_isCommomAddress) {
+        frame=CGRectMake(-Main_Screen_Width*0.35, 0, Main_Screen_Width, Main_Screen_Height);
+    }else{
+        frame=CGRectMake(Main_Screen_Width*0.35, 0, Main_Screen_Width, Main_Screen_Height);
+    }
     
-    holdView=[[UIView alloc]initWithFrame:CGRectMake(0, 0, Main_Screen_Width, Main_Screen_Height)];
+    holdView=[[UIView alloc]initWithFrame:frame];
     holdView.backgroundColor=[UIColor clearColor];
     [self addSubview:holdView];
     
@@ -92,7 +98,7 @@
     for (int i=0; i<self.dataArray.count; i++) {
         XYAnimationViewModel* model=self.dataArray[i];
         
-        tempAngle = intevalAngle * i;
+        tempAngle =_isCommomAddress?intevalAngle * i:(intevalAngle * i+M_PI);
         btnCenterX = centerX + radius * sin(tempAngle);
         btnCenterY = centerY - radius * cos(tempAngle);
         
@@ -105,14 +111,21 @@
         
         UILabel* name=[[UILabel alloc]init];
         name.text=model.name;
-        name.tag=kTag*2+i;
+        name.font=SYSTEMFONT(12);
+        name.textColor=[UIColor whiteColor];
         [holdView addSubview:name];
         [name mas_makeConstraints:^(MASConstraintMaker *make) {
             make.centerY.equalTo(tempBtn);
-            make.leading.equalTo(tempBtn.mas_trailing);
+            if (_isCommomAddress) {
+                make.leading.equalTo(tempBtn.mas_trailing);
+            }else{
+                make.trailing.equalTo(tempBtn.mas_leading);
+            }
         }];
         
     }
+    
+    
     
 }
 
@@ -162,7 +175,6 @@
     
     
     CGFloat changeAngle=_currentAngle-_lastAngle;
-    NSLog(@"------%lf+++++%lf",changeAngle*180/M_PI,_currentAngle*180/M_PI);
     CGFloat btnCenterX;
     CGFloat btnCenterY;
     UIButton* btn=[holdView viewWithTag:kTag+0];
@@ -176,11 +188,10 @@
         
         btnCenterX=center.x+radius*sin(tempAngle+i*intevalAngle+changeAngle);
         btnCenterY=center.y-radius*cos(tempAngle+i*intevalAngle+changeAngle);
-        //NSLog(@"%f  %f",btnCenterX,btnCenterY);
         btn.center=CGPointMake(btnCenterX, btnCenterY);
         
     }
-    _lastAngle=_currentAngle;
+    //_lastAngle=_currentAngle;
 }
 
 
