@@ -72,6 +72,8 @@
 		6ED6328C1DDAA6CF00C8167D /* ALDClock.m in Sources */ = {isa = PBXBuildFile; fileRef = 6ED6328B1DDAA6CF00C8167D /* ALDClock.m */; };
 		6ED6328F1DDC07A500C8167D /* XYAnimationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6ED6328E1DDC07A500C8167D /* XYAnimationView.m */; };
 		6ED632921DDC0F9200C8167D /* XYAnimationViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 6ED632911DDC0F9200C8167D /* XYAnimationViewModel.m */; };
+		6ED6329C1DDD965B00C8167D /* XYCircleViewLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 6ED6329B1DDD965B00C8167D /* XYCircleViewLayout.m */; };
+		6ED6329F1DDD971B00C8167D /* XYCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6ED6329E1DDD971B00C8167D /* XYCollectionViewCell.m */; };
 		8256E0361DC6E1ED0006939C /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8256E0351DC6E1ED0006939C /* CloudKit.framework */; };
 		8256E03A1DC6E3AA0006939C /* iCloudManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8256E0391DC6E3AA0006939C /* iCloudManager.m */; };
 		8256E03C1DC6EA860006939C /* EventKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8256E03B1DC6EA860006939C /* EventKit.framework */; };
@@ -269,6 +271,10 @@
 		6ED6328E1DDC07A500C8167D /* XYAnimationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYAnimationView.m; sourceTree = "<group>"; };
 		6ED632901DDC0F9200C8167D /* XYAnimationViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYAnimationViewModel.h; sourceTree = "<group>"; };
 		6ED632911DDC0F9200C8167D /* XYAnimationViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYAnimationViewModel.m; sourceTree = "<group>"; };
+		6ED6329A1DDD965B00C8167D /* XYCircleViewLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYCircleViewLayout.h; sourceTree = "<group>"; };
+		6ED6329B1DDD965B00C8167D /* XYCircleViewLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYCircleViewLayout.m; sourceTree = "<group>"; };
+		6ED6329D1DDD971B00C8167D /* XYCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYCollectionViewCell.h; sourceTree = "<group>"; };
+		6ED6329E1DDD971B00C8167D /* XYCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYCollectionViewCell.m; sourceTree = "<group>"; };
 		8256E0351DC6E1ED0006939C /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		8256E0381DC6E3AA0006939C /* iCloudManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iCloudManager.h; sourceTree = "<group>"; };
 		8256E0391DC6E3AA0006939C /* iCloudManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iCloudManager.m; sourceTree = "<group>"; };
@@ -417,6 +423,10 @@
 				6E3522751DCB0DAC0000BEF0 /* XYSetLoctionView.m */,
 				6ED6328D1DDC07A500C8167D /* XYAnimationView.h */,
 				6ED6328E1DDC07A500C8167D /* XYAnimationView.m */,
+				6ED6329D1DDD971B00C8167D /* XYCollectionViewCell.h */,
+				6ED6329E1DDD971B00C8167D /* XYCollectionViewCell.m */,
+				6ED6329A1DDD965B00C8167D /* XYCircleViewLayout.h */,
+				6ED6329B1DDD965B00C8167D /* XYCircleViewLayout.m */,
 				6ED632901DDC0F9200C8167D /* XYAnimationViewModel.h */,
 				6ED632911DDC0F9200C8167D /* XYAnimationViewModel.m */,
 				6E3522771DCB0DB40000BEF0 /* XYSetLoctionView.xib */,
@@ -1003,6 +1013,7 @@
 				6E3522631DC9DFC10000BEF0 /* MASConstraint.m in Sources */,
 				6ED632841DD5707F00C8167D /* XYTimeSectionModel.m in Sources */,
 				6E3522671DC9DFC10000BEF0 /* MASViewConstraint.m in Sources */,
+				6ED6329C1DDD965B00C8167D /* XYCircleViewLayout.m in Sources */,
 				6E1CD0D01DD1C58200E1FD9D /* XYParentTableViewCell.m in Sources */,
 				6E3063AD1DC07650000DBB7D /* XYAddAddressViewController.m in Sources */,
 				8256E0401DC6EA9A0006939C /* EventManager.m in Sources */,
@@ -1010,6 +1021,7 @@
 				6E3522431DC9DEB90000BEF0 /* XYTool.m in Sources */,
 				6ED6328F1DDC07A500C8167D /* XYAnimationView.m in Sources */,
 				6E3063B01DC07F58000DBB7D /* XYAddEventViewController.m in Sources */,
+				6ED6329F1DDD971B00C8167D /* XYCollectionViewCell.m in Sources */,
 				6E3D4F561DC723090079D8FD /* XYRearViewController.m in Sources */,
 				6E35226B1DC9DFC10000BEF0 /* ViewController+MASAdditions.m in Sources */,
 				6E3522761DCB0DAC0000BEF0 /* XYSetLoctionView.m in Sources */,

@@ -8,9 +8,14 @@
 
 #import "XYParentView.h"
 #import "XYAnimationViewModel.h"
-@interface XYAnimationView : XYParentView
+@interface XYAnimationView : XYParentView<UICollectionViewDelegate,UICollectionViewDataSource>
 
 @property(nonatomic,assign)BOOL isCommomAddress;
 @property(nonatomic,strong)NSMutableArray <XYAnimationViewModel*>* dataArray;
+
+
+@property (strong, nonatomic)  UICollectionView *myCollectionView;
+
+
 
 @end
