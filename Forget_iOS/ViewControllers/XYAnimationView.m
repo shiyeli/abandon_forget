@@ -16,6 +16,8 @@
     CGFloat _lastAngle;
     CGFloat _currentAngle;
     CGFloat radius;
+    CGPoint center;
+    CGFloat intevalAngle;
 }
 - (instancetype)initWithFrame:(CGRect)frame
 {
@@ -38,8 +40,8 @@
                        @{@"img":@"girl_home",@"name":@"女朋友家"},
                        @{@"img":@"parents_home",@"name":@"父母家"}];
         
-        
-        
+        center=CGPointMake(Main_Screen_Width*0.5, Main_Screen_Height*0.5);
+        intevalAngle=M_PI/4.0f;
         
     }
     return self;
@@ -77,7 +79,7 @@
         
     }];
     
-    CGFloat intevalAngle=M_PI/4.0f;
+    
     CGFloat tempAngle=0;
     radius=Main_Screen_Width*0.4;
     CGFloat centerX=Main_Screen_Width*0.5;
@@ -95,7 +97,7 @@
         btnCenterY = centerY - radius * cos(tempAngle);
         
         UIButton *tempBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, btnWidth, btnHeight)];
-        tempBtn.tag =i;
+        tempBtn.tag =kTag+i;
         tempBtn.center = CGPointMake(btnCenterX, btnCenterY);
         [tempBtn setImage:[UIImage imageNamed:model.img] forState:UIControlStateNormal];
         //[tempBtn setTitle:model.name forState:UIControlStateNormal];
@@ -103,7 +105,7 @@
         
         UILabel* name=[[UILabel alloc]init];
         name.text=model.name;
-        name.tag=100+i;
+        name.tag=kTag*2+i;
         [holdView addSubview:name];
         [name mas_makeConstraints:^(MASConstraintMaker *make) {
             make.centerY.equalTo(tempBtn);
@@ -114,50 +116,70 @@
     
 }
 
-
--(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
-    UITouch* touch=[touches anyObject];
-    CGPoint touchP=[touch locationInView:holdView];
+//求相对中点的角度,12点钟为0度,顺时针旋转
+-(CGFloat)getAnglePointToCenter:(CGPoint)point{
+    
+    
     //NSLog(@"%f  %f",touchP.x,touchP.y);
     
-    CGPoint center=CGPointMake(Main_Screen_Width*0.5, Main_Screen_Height*0.5);
-    //计算触摸点与中点连线与y轴负方向(向上)的夹角
+    //距离中点半径
+    CGFloat touchPRadius=sqrt(pow(point.x-center.x, 2)+pow(point.y-center.y, 2));
     
-    _lastAngle=asin((touchP.x-center.x)/sqrt(pow(touchP.x-center.x, 2)+pow(touchP.y-center.y, 2)));
+    if (touchPRadius==0) {
+        return 0;
+    }
+    
+    //计算触摸点与中点连线与y轴负方向(向上)的夹角
+    CGFloat angel=asin((point.x-center.x)/touchPRadius);
+    if (point.y>center.y) {//触摸点在中点的下面
+        angel=M_PI-angel;
+        
+    }else{
+        if (angel<0) {
+            angel=M_PI*2+angel;
+        }
+    }
+    
+    //NSLog(@"%f",angel*180/M_PI);
+
+    return angel;
+}
+
+-(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+    
+    
+    UITouch* touch=[touches anyObject];
+    CGPoint touchP=[touch locationInView:holdView];
+    
+    _lastAngle=[self getAnglePointToCenter:touchP];
+    
 }
 
 -(void)touchesMoved:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
-    UITouch* touch=[touches anyObject];
-    CGPoint touchP=[touch locationInView:holdView];
-    //NSLog(@"%f  %f",touchP.x,touchP.y);
     
-    CGPoint center=CGPointMake(Main_Screen_Width*0.5, Main_Screen_Height*0.5);
-    //计算触摸点与中点连线与y轴负方向(向上)的夹角
     
-    _currentAngle=asin((touchP.x-center.x)/sqrt(pow(touchP.x-center.x, 2)+pow(touchP.y-center.y, 2)));
+    _currentAngle=[self getAnglePointToCenter:[[touches anyObject] locationInView:holdView]];
+    
     
     CGFloat changeAngle=_currentAngle-_lastAngle;
-    NSLog(@"%lf",changeAngle);
-    
+    NSLog(@"------%lf+++++%lf",changeAngle*180/M_PI,_currentAngle*180/M_PI);
     CGFloat btnCenterX;
     CGFloat btnCenterY;
+    UIButton* btn=[holdView viewWithTag:kTag+0];
+    CGFloat tempAngle=[self getAnglePointToCenter:btn.center];
+    
+    _lastAngle = fmod(_lastAngle + changeAngle, 2 * M_PI);//对当前角度取模
     
     for (int i=0; i<self.dataArray.count; i++) {
-        UIButton* btn=[holdView viewWithTag:i];
         
-        CGFloat tempAngle=asin((btn.center.x-center.x)/sqrt(pow(btn.center.x-center.x, 2)+pow(btn.center.y-center.y, 2)));
-        NSLog(@"%f",tempAngle*180/M_PI);
+        UIButton* btn=[holdView viewWithTag:kTag+i];
         
-        btnCenterX=center.x+radius*sin(tempAngle+changeAngle);
-        btnCenterY=center.y+radius*cos(tempAngle+changeAngle);
+        btnCenterX=center.x+radius*sin(tempAngle+i*intevalAngle+changeAngle);
+        btnCenterY=center.y-radius*cos(tempAngle+i*intevalAngle+changeAngle);
+        //NSLog(@"%f  %f",btnCenterX,btnCenterY);
         btn.center=CGPointMake(btnCenterX, btnCenterY);
         
-        UILabel* lab=[holdView viewWithTag:100+i];
-        
-        
     }
-    
-    
     _lastAngle=_currentAngle;
 }
 

@@ -24,6 +24,7 @@
 
 
 ///////////////固定值/////////////////
+#define kTag 100
 //高德Apikey
 #define AMapApiKey @"881a46c1030c7f0aaf1dbd1c59fea787"
 //主题颜色
