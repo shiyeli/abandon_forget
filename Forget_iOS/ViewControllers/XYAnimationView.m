@@ -9,6 +9,7 @@
 #import "XYAnimationView.h"
 #import "XYCircleViewLayout.h"
 #import "XYCollectionViewCell.h"
+
 @implementation XYAnimationView
 {
     NSArray* commonArr;
@@ -38,11 +39,13 @@
                        @{@"img":@"parents_home",@"name":@"父母家"},
                        @{@"img":@"parents_home",@"name":@"第六个"}];
         
-       // XYCircleViewLayout* layout=[[XYCircleViewLayout alloc]init];
-         UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
-        layout.itemSize =CGSizeMake(70, 70);
+       XYCircleViewLayout* layout=[[XYCircleViewLayout alloc]initWithRadius:Main_Screen_Width*0.8 aliginType:WHEEL_ALIGNMEN_TLEFT cellSize:CGSizeMake(70, 70) xOffset:0 spacing:10];
+         //UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
+        
+        //AWCollectionViewDialLayout* layout = [[AWCollectionViewDialLayout alloc] initWithRadius:170 andAngularSpacing:50 andCellSize:CGSizeMake(70, 70) andAlignment:WHEELALIGNMENTCENTER andItemHeight:100 andXOffset:200];
         
         self.myCollectionView=[[UICollectionView alloc]initWithFrame:CGRectMake(0, 0, Main_Screen_Width, Main_Screen_Height) collectionViewLayout:layout];
+        self.myCollectionView.backgroundColor=[UIColor clearColor];
         [self addSubview:self.myCollectionView];
         cellId=@"cellIdentifier";
         [self.myCollectionView registerClass:[XYCollectionViewCell class] forCellWithReuseIdentifier:cellId];
@@ -62,7 +65,7 @@
         [model setValuesForKeysWithDictionary:dic];
         [self.dataArray addObject:model];
     }
-   
+    [self.myCollectionView reloadData];
 }
 
 
@@ -82,32 +85,18 @@
     return cell;
 }
 
-
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    XYCollectionViewCell *cell = (XYCollectionViewCell *)[self.myCollectionView cellForItemAtIndexPath:indexPath];
+    
+     [self removeFromSuperview];
+    
+}
 //设置每个item的尺寸
 //- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 //{
-//    return CGSizeMake(90, 130);
+//    return CGSizeMake(70, 70);
 //}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
--(void)closeAnimationView{
-     [self removeFromSuperview];
-}
-
 /*
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.
