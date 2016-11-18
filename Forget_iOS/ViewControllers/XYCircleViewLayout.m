@@ -26,29 +26,16 @@
     }
     return _attrsArr;
 }
-/*
- 
- @property (readwrite, nonatomic, assign) int itemCount;
- @property (readwrite, nonatomic, assign) WheelAlignmentType wheelType;
- @property (readwrite, nonatomic, assign) CGPoint center;
- @property (readwrite, nonatomic, assign) CGFloat offset;
- @property (readwrite, nonatomic, assign) CGFloat itemHeight;
- @property (readwrite, nonatomic, assign) CGFloat xOffset;
- @property (readwrite, nonatomic, assign) CGSize cellSize;
- @property (readwrite, nonatomic, assign) CGFloat spacing;
- @property (readwrite, nonatomic, assign) CGFloat radius;
- @property (readonly, nonatomic, strong) NSIndexPath *currentIndexPath;
- */
-- (instancetype)initWithRadius:(CGFloat)radius aliginType:(WheelAlignmentType)alignType cellSize:(CGSize)cellSize xOffset:(CGFloat)xOffset spacing:(CGFloat)spacing
-{
+
+- (instancetype)initWithRadius:(CGFloat)radius aliginType:(WheelAlignmentType)alignType cellSize:(CGSize)cellSize spacing:(CGFloat)spacing{
     self = [super init];
     if (self) {
         
         self.radius=radius;
         self.alignType=alignType;
         self.cellSize=cellSize;
-        self.xOffset=xOffset;
         self.spacing=spacing;
+
         
     }
     return self;
@@ -57,21 +44,21 @@
 -(void)prepareLayout{
     [super prepareLayout];
 
-    [super prepareLayout];
-    
-    
-    
+    self.itemCount=[self.collectionView numberOfItemsInSection:0];
+    self.itemHeight=self.cellSize.height+self.spacing;
 
 }
 
-
+- (BOOL)shouldInvalidateLayoutForBoundsChange:(CGRect)newBounds
+{
+    return YES;
+}
 
 
 -(NSArray<UICollectionViewLayoutAttributes *> *)layoutAttributesForElementsInRect:(CGRect)rect
 {
     [self.attrsArr removeAllObjects];
-    //计算出每组有多少个
-    self.itemCount=[self.collectionView numberOfItemsInSection:0];
+    
     //创建attributes
     for (int i=0; i<self.itemCount; i++) {
         //创建UICollectionViewLayoutAttributes
@@ -83,6 +70,15 @@
     return self.attrsArr;
 }
 
+- (CGSize)collectionViewContentSize
+{
+    const CGSize theSize = {
+        .width = self.collectionView.bounds.size.width,
+        .height = (self.itemCount+1) * self.itemHeight,
+    };
+    return(theSize);
+}
+
 #pragma mark ---- 这个方法需要返回indexPath位置对应cell的布局属性
 /**
  *  //TODO:  这个方法主要用于 切换布局的时候 如果不适用该方法 就不会切换布局的时候会报错
@@ -90,45 +86,37 @@
  */
 -(UICollectionViewLayoutAttributes *)layoutAttributesForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    //TODO: 主要是返回每个indexPath的attrs
     
-    //创建UICollectionViewLayoutAttributes
+    //double newIndex = (indexPath.item + self.offset);
+    
+    //获取UICollectionViewLayoutAttributes
     //这里需要 告诉 UICollectionViewLayoutAttributes 是哪里的attrs
-    //计算出每组有多少个
-    NSInteger  count=[self.collectionView numberOfItemsInSection:0];
-    //角度
-    CGFloat angle = 2* M_PI /count *indexPath.item;
-    //设置半径
-    CGFloat radius=100;
-    //CollectionView的圆心的位置
-    CGFloat Ox = self.collectionView.frame.size.width/2;
-    CGFloat Oy = self.collectionView.frame.size.height/2;
-    UICollectionViewLayoutAttributes * attrs=[UICollectionViewLayoutAttributes layoutAttributesForCellWithIndexPath:indexPath];
-    attrs.center =  CGPointMake(Ox+radius*sin(angle), Oy+radius*cos(angle));
-    if (count==1) {
-        attrs.size=CGSizeMake(200, 200);
-    }else{
-        attrs.size=CGSizeMake(50, 50);
+    UICollectionViewLayoutAttributes *theAttributes = [UICollectionViewLayoutAttributes layoutAttributesForCellWithIndexPath:indexPath];
+    theAttributes.size = self.cellSize;
+    
+    theAttributes.center=CGPointMake(self.collectionView.frame.size.width*0.5, (indexPath.row+1)* self.itemHeight);
+    
+//    float deltaX;//x轴方向的偏移
+//    CGAffineTransform translationT;
+//    CGAffineTransform rotationT = CGAffineTransformMakeRotation(10* newIndex *M_PI/180);
+    
+    if( self.alignType == WHEEL_ALIGNMEN_LEFT){
+        
+//        deltaX = self.cellSize.width/2;
+//        theAttributes.center = CGPointMake(-self.deltaRadius + self.xOffset  , self.collectionView.bounds.size.height/2 + self.collectionView.contentOffset.y);
+//        translationT =CGAffineTransformMakeTranslation(self.deltaRadius +self.deltaRadius, 0);
     }
-    return attrs;
+    
+//    theAttributes.transform = CGAffineTransformConcat(CGAffineTransformMakeScale(1,1), CGAffineTransformConcat(translationT, rotationT));
+//    theAttributes.zIndex = indexPath.item;
+    
+    
+    return theAttributes;
+    
 }
 
 
 
-
-
-
-
-
-
-//设置内容区域的大小
--(CGSize)collectionViewContentSize{
-    const CGSize theSize = {
-        .width = self.collectionView.bounds.size.width,
-        .height = (self.itemCount-1) * self.itemHeight + self.collectionView.bounds.size.height,
-    };
-    return(theSize);
-}
 
 
 @end

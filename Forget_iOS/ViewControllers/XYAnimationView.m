@@ -30,7 +30,10 @@
                     
                     @{@"img":@"hospital_btn",@"name":@"菜市场"},
                     @{@"img":@"park_btn",@"name":@"快时代"},
-                    @{@"img":@"bank_btn",@"name":@"梦思特"}];
+                    @{@"img":@"bank_btn",@"name":@"梦思特"},
+                    @{@"img":@"girl_home",@"name":@"女朋友家"},
+                    @{@"img":@"parents_home",@"name":@"父母家"},
+                    @{@"img":@"parents_home",@"name":@"第六个"}];
         
         personArr=@[@{@"img":@"home_btn",@"name":@"家"},
                        @{@"img":@"company_btn",@"name":@"公司"},
@@ -39,10 +42,7 @@
                        @{@"img":@"parents_home",@"name":@"父母家"},
                        @{@"img":@"parents_home",@"name":@"第六个"}];
         
-       XYCircleViewLayout* layout=[[XYCircleViewLayout alloc]initWithRadius:Main_Screen_Width*0.8 aliginType:WHEEL_ALIGNMEN_TLEFT cellSize:CGSizeMake(70, 70) xOffset:0 spacing:10];
-         //UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
-        
-        //AWCollectionViewDialLayout* layout = [[AWCollectionViewDialLayout alloc] initWithRadius:170 andAngularSpacing:50 andCellSize:CGSizeMake(70, 70) andAlignment:WHEELALIGNMENTCENTER andItemHeight:100 andXOffset:200];
+       XYCircleViewLayout* layout=[[XYCircleViewLayout alloc]initWithRadius:Main_Screen_Width*0.7 aliginType:WHEEL_ALIGNMEN_LEFT cellSize:CGSizeMake(70, 70) spacing:20];
         
         self.myCollectionView=[[UICollectionView alloc]initWithFrame:CGRectMake(0, 0, Main_Screen_Width, Main_Screen_Height) collectionViewLayout:layout];
         self.myCollectionView.backgroundColor=[UIColor clearColor];
@@ -87,7 +87,7 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    XYCollectionViewCell *cell = (XYCollectionViewCell *)[self.myCollectionView cellForItemAtIndexPath:indexPath];
+    //XYCollectionViewCell *cell = (XYCollectionViewCell *)[self.myCollectionView cellForItemAtIndexPath:indexPath];
     
      [self removeFromSuperview];
     
