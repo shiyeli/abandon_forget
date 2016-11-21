@@ -35,7 +35,7 @@
         self.alignType=alignType;
         self.cellSize=cellSize;
         self.spacing=spacing;
-
+        
         
     }
     return self;
@@ -46,7 +46,8 @@
 
     self.itemCount=[self.collectionView numberOfItemsInSection:0];
     self.itemHeight=self.cellSize.height+self.spacing;
-
+    self.circleCenter=CGPointMake(self.itemHeight,self.collectionView.frame.size.height*0.5);
+    
 }
 
 - (BOOL)shouldInvalidateLayoutForBoundsChange:(CGRect)newBounds
@@ -54,7 +55,7 @@
     return YES;
 }
 
-
+//初始化布局属性
 -(NSArray<UICollectionViewLayoutAttributes *> *)layoutAttributesForElementsInRect:(CGRect)rect
 {
     [self.attrsArr removeAllObjects];
@@ -68,13 +69,16 @@
         [self.attrsArr addObject:attrs];
     }
     return self.attrsArr;
+    
+
 }
 
+//范围ContentSize
 - (CGSize)collectionViewContentSize
 {
     const CGSize theSize = {
         .width = self.collectionView.bounds.size.width,
-        .height = (self.itemCount+1) * self.itemHeight,
+        .height = (self.itemCount+1) * self.itemHeight+self.collectionView.frame.size.height,
     };
     return(theSize);
 }
@@ -87,29 +91,19 @@
 -(UICollectionViewLayoutAttributes *)layoutAttributesForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     
-    //double newIndex = (indexPath.item + self.offset);
     
     //获取UICollectionViewLayoutAttributes
     //这里需要 告诉 UICollectionViewLayoutAttributes 是哪里的attrs
     UICollectionViewLayoutAttributes *theAttributes = [UICollectionViewLayoutAttributes layoutAttributesForCellWithIndexPath:indexPath];
     theAttributes.size = self.cellSize;
     
-    theAttributes.center=CGPointMake(self.collectionView.frame.size.width*0.5, (indexPath.row+1)* self.itemHeight);
     
-//    float deltaX;//x轴方向的偏移
-//    CGAffineTransform translationT;
-//    CGAffineTransform rotationT = CGAffineTransformMakeRotation(10* newIndex *M_PI/180);
+    //theAttributes.center = CGPointMake(self.circleCenter.x + _radius * cosf(2 * indexPath.item * M_PI / 7), self.circleCenter.y + _radius * sinf(2 * indexPath.item * M_PI / 7));
     
-    if( self.alignType == WHEEL_ALIGNMEN_LEFT){
-        
-//        deltaX = self.cellSize.width/2;
-//        theAttributes.center = CGPointMake(-self.deltaRadius + self.xOffset  , self.collectionView.bounds.size.height/2 + self.collectionView.contentOffset.y);
-//        translationT =CGAffineTransformMakeTranslation(self.deltaRadius +self.deltaRadius, 0);
-    }
-    
-//    theAttributes.transform = CGAffineTransformConcat(CGAffineTransformMakeScale(1,1), CGAffineTransformConcat(translationT, rotationT));
-//    theAttributes.zIndex = indexPath.item;
-    
+    theAttributes.center = CGPointMake(50 , self.collectionView.contentOffset.y );
+    theAttributes.transform=CGAffineTransformMakeTranslation(self.radius + self.cellSize.width/2 , 0);
+
+    NSLog(@"contentOffset.y: %lf",self.collectionView.contentOffset.y);
     
     return theAttributes;
     

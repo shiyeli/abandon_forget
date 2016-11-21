@@ -29,6 +29,7 @@ typedef enum : NSInteger {
 
 //半圆半径
 @property (readwrite, nonatomic, assign) CGFloat radius;
+@property (nonatomic,assign) CGPoint circleCenter;
 
 @property (readonly, nonatomic, strong) NSIndexPath *currentIndexPath;
 

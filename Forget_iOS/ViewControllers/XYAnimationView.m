@@ -42,7 +42,7 @@
                        @{@"img":@"parents_home",@"name":@"父母家"},
                        @{@"img":@"parents_home",@"name":@"第六个"}];
         
-       XYCircleViewLayout* layout=[[XYCircleViewLayout alloc]initWithRadius:Main_Screen_Width*0.7 aliginType:WHEEL_ALIGNMEN_LEFT cellSize:CGSizeMake(70, 70) spacing:20];
+       XYCircleViewLayout* layout=[[XYCircleViewLayout alloc]initWithRadius:Main_Screen_Width*0.3 aliginType:WHEEL_ALIGNMEN_LEFT cellSize:CGSizeMake(70, 70) spacing:20];
         
         self.myCollectionView=[[UICollectionView alloc]initWithFrame:CGRectMake(0, 0, Main_Screen_Width, Main_Screen_Height) collectionViewLayout:layout];
         self.myCollectionView.backgroundColor=[UIColor clearColor];
@@ -80,7 +80,14 @@
 // The cell that is returned must be retrieved from a call to -dequeueReusableCellWithReuseIdentifier:forIndexPath:
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     XYCollectionViewCell* cell=[collectionView dequeueReusableCellWithReuseIdentifier:cellId forIndexPath:indexPath];
-    cell.backgroundColor=[UIColor redColor];
+    XYAnimationViewModel* model=[self.dataArray objectAtIndex:indexPath.row];
+    
+    if (indexPath.row==0) {
+        cell.backgroundColor=[UIColor redColor];
+    }else{
+        cell.backgroundColor=[UIColor grayColor];
+    }
+    cell.model=model;
 
     return cell;
 }

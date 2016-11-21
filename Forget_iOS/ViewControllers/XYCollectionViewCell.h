@@ -11,6 +11,7 @@
 @interface XYCollectionViewCell : UICollectionViewCell
 
 
+
 @property(nonatomic,strong)XYAnimationViewModel* model;
 
 @end
