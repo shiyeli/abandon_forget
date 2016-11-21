@@ -33,6 +33,12 @@
                     @{@"img":@"bank_btn",@"name":@"梦思特"},
                     @{@"img":@"girl_home",@"name":@"女朋友家"},
                     @{@"img":@"parents_home",@"name":@"父母家"},
+                    @{@"img":@"parents_home",@"name":@"第六个"},
+                    @{@"img":@"hospital_btn",@"name":@"菜市场"},
+                    @{@"img":@"park_btn",@"name":@"快时代"},
+                    @{@"img":@"bank_btn",@"name":@"梦思特"},
+                    @{@"img":@"girl_home",@"name":@"女朋友家"},
+                    @{@"img":@"parents_home",@"name":@"父母家"},
                     @{@"img":@"parents_home",@"name":@"第六个"}];
         
         personArr=@[@{@"img":@"home_btn",@"name":@"家"},
@@ -42,7 +48,7 @@
                        @{@"img":@"parents_home",@"name":@"父母家"},
                        @{@"img":@"parents_home",@"name":@"第六个"}];
         
-       XYCircleViewLayout* layout=[[XYCircleViewLayout alloc]initWithRadius:Main_Screen_Width*0.3 aliginType:WHEEL_ALIGNMEN_LEFT cellSize:CGSizeMake(70, 70) spacing:20];
+       XYCircleViewLayout* layout=[[XYCircleViewLayout alloc]initWithRadius:Main_Screen_Width*0.5 aliginType:WHEEL_ALIGNMEN_LEFT cellSize:CGSizeMake(70, 70) spacing:30];
         
         self.myCollectionView=[[UICollectionView alloc]initWithFrame:CGRectMake(0, 0, Main_Screen_Width, Main_Screen_Height) collectionViewLayout:layout];
         self.myCollectionView.backgroundColor=[UIColor clearColor];
@@ -51,6 +57,7 @@
         [self.myCollectionView registerClass:[XYCollectionViewCell class] forCellWithReuseIdentifier:cellId];
         self.myCollectionView.delegate=self;
         self.myCollectionView.dataSource=self;
+        self.myCollectionView.bounces=NO;
         
     }
     return self;
@@ -80,12 +87,15 @@
 // The cell that is returned must be retrieved from a call to -dequeueReusableCellWithReuseIdentifier:forIndexPath:
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     XYCollectionViewCell* cell=[collectionView dequeueReusableCellWithReuseIdentifier:cellId forIndexPath:indexPath];
-    XYAnimationViewModel* model=[self.dataArray objectAtIndex:indexPath.row];
     
+    XYAnimationViewModel* model=[self.dataArray objectAtIndex:indexPath.row];
+    model.row=indexPath.row;
     if (indexPath.row==0) {
         cell.backgroundColor=[UIColor redColor];
+    }else if(indexPath.row==self.dataArray.count-1){
+        cell.backgroundColor=[UIColor greenColor];
     }else{
-        cell.backgroundColor=[UIColor grayColor];
+        cell.backgroundColor=[UIColor clearColor];
     }
     cell.model=model;
 

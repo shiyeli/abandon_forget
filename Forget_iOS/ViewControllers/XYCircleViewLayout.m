@@ -71,6 +71,7 @@
     return self.attrsArr;
     
 
+    
 }
 
 //范围ContentSize
@@ -78,7 +79,7 @@
 {
     const CGSize theSize = {
         .width = self.collectionView.bounds.size.width,
-        .height = (self.itemCount+1) * self.itemHeight+self.collectionView.frame.size.height,
+        .height = (self.itemCount-1) * self.itemHeight,
     };
     return(theSize);
 }
@@ -92,20 +93,107 @@
 {
     
     
+    
+    
     //获取UICollectionViewLayoutAttributes
     //这里需要 告诉 UICollectionViewLayoutAttributes 是哪里的attrs
     UICollectionViewLayoutAttributes *theAttributes = [UICollectionViewLayoutAttributes layoutAttributesForCellWithIndexPath:indexPath];
     theAttributes.size = self.cellSize;
+    CGFloat viewOffsetY=self.collectionView.contentOffset.y;
     
     
-    //theAttributes.center = CGPointMake(self.circleCenter.x + _radius * cosf(2 * indexPath.item * M_PI / 7), self.circleCenter.y + _radius * sinf(2 * indexPath.item * M_PI / 7));
+    static CGFloat lastOffsetY=0;
+    CGFloat deltaOffsetY=viewOffsetY-lastOffsetY;
+    lastOffsetY=viewOffsetY;
     
-    theAttributes.center = CGPointMake(50 , self.collectionView.contentOffset.y );
-    theAttributes.transform=CGAffineTransformMakeTranslation(self.radius + self.cellSize.width/2 , 0);
+    CGPoint relativeCenter=CGPointMake(self.circleCenter.x, viewOffsetY+self.collectionView.frame.size.height*0.5);
+    
+    
+    
+    
+    //默认 item 在上面一排
+    CGFloat itemX=relativeCenter.x+self.itemHeight*indexPath.row-viewOffsetY;
+    CGFloat itemY=relativeCenter.y-self.radius;
+    
+    
+    
+    
+    NSLog(@"itemX:  =====%f",itemX);
+    
+    //半圆上的item与y轴负方向的夹角,(0,180)
+    CGFloat angel;
+    if (itemX>self.circleCenter.x) {
+        angel=(itemX-self.circleCenter.x)/self.radius;
+        if (angel<M_PI*2) {
+            itemX=relativeCenter.x+sin(M_PI*2-angel)*self.radius;
+            itemY=relativeCenter.y+cos(M_PI*2-angel)*self.radius;
+        }else{
+            itemX=itemX-deltaOffsetY-indexPath.row*self.itemHeight;
+            itemY=relativeCenter.y+self.radius;
+        }
+    }
+    
+    NSLog(@"itemY: ++++++ %f",itemY);
+    
+    
+    
+    
+    
+   //
+    
+    
+    
+    
+    theAttributes.center=CGPointMake(itemX, itemY);
+    theAttributes.zIndex=1000-indexPath.row;
+   // theAttributes.center = CGPointMake(self.circleCenter.x+cos(angel)*self.radius ,self.circleCenter.y+sin(angel)*self.radius);
+    
 
     NSLog(@"contentOffset.y: %lf",self.collectionView.contentOffset.y);
     
+    
+    
     return theAttributes;
+    
+#if 0
+    
+    double newIndex = (indexPath.item + 0);
+    
+    UICollectionViewLayoutAttributes *theAttributes = [UICollectionViewLayoutAttributes layoutAttributesForCellWithIndexPath:indexPath];
+    
+    theAttributes.size = self.cellSize;
+    
+    float deltaX;
+    CGAffineTransform translationT;
+    CGAffineTransform rotationT = CGAffineTransformMakeRotation(self.spacing* newIndex *M_PI/180);
+    if(indexPath.item == 3){
+        NSLog(@"angle 3 :%f", self.spacing* newIndex);
+    }
+    
+    
+    deltaX = self.cellSize.width/2;
+    theAttributes.center = CGPointMake(0 , self.collectionView.bounds.size.height/2 + self.collectionView.contentOffset.y);
+    translationT =CGAffineTransformMakeTranslation(self.radius + (deltaX*1) , 0);
+    
+    
+    
+    CGAffineTransform scaleT = CGAffineTransformMakeScale(1, 1);
+    //theAttributes.alpha = scaleFactor;
+    
+    /*
+     if( fabs(self.AngularSpacing* newIndex) > 90 ){
+     theAttributes.hidden = YES;
+     }else{
+     theAttributes.hidden = NO;
+     }
+     */
+    
+    theAttributes.transform = CGAffineTransformConcat(scaleT, CGAffineTransformConcat(translationT, rotationT));
+    theAttributes.zIndex = indexPath.item;
+    
+    return(theAttributes);
+#endif
+    
     
 }
 

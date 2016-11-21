@@ -27,9 +27,17 @@
     return _imgView;
 }
 
+-(UILabel*)name{
+    if (!_name) {
+        _name=[[UILabel alloc]initWithFrame:CGRectMake(0, 0, 70, 70)];
+        [self.contentView addSubview:_name];
+    }
+    return _name;
+}
+
 -(void)setModel:(XYAnimationViewModel *)model{
     _model=model;
-    [self.imgView setImage:[UIImage imageNamed:_model.img]];
+    self.name.text=[NSString stringWithFormat:@"%d",_model.row];
 }
 
 @end
