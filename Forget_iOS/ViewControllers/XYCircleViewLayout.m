@@ -99,16 +99,9 @@
     //这里需要 告诉 UICollectionViewLayoutAttributes 是哪里的attrs
     UICollectionViewLayoutAttributes *theAttributes = [UICollectionViewLayoutAttributes layoutAttributesForCellWithIndexPath:indexPath];
     theAttributes.size = self.cellSize;
+    
     CGFloat viewOffsetY=self.collectionView.contentOffset.y;
-    
-    
-    static CGFloat lastOffsetY=0;
-    CGFloat deltaOffsetY=viewOffsetY-lastOffsetY;
-    lastOffsetY=viewOffsetY;
-    
     CGPoint relativeCenter=CGPointMake(self.circleCenter.x, viewOffsetY+self.collectionView.frame.size.height*0.5);
-    
-    
     
     
     //默认 item 在上面一排
@@ -118,7 +111,9 @@
     
     
     
-    NSLog(@"itemX:  =====%f",itemX);
+    NSLog(@"%d itemX:  =====%f",indexPath.row, itemX);
+    NSLog(@"%d itemY:  =====%f",indexPath.row, itemY);
+    
     
     //半圆上的item与y轴负方向的夹角,(0,180)
     CGFloat angel;
@@ -128,12 +123,11 @@
             itemX=relativeCenter.x+sin(M_PI*2-angel)*self.radius;
             itemY=relativeCenter.y+cos(M_PI*2-angel)*self.radius;
         }else{
-            itemX=itemX-deltaOffsetY-indexPath.row*self.itemHeight;
-            itemY=relativeCenter.y+self.radius;
+//            itemX=itemX-deltaOffsetY-indexPath.row*self.itemHeight;
+//            itemY=relativeCenter.y+self.radius;
         }
     }
     
-    NSLog(@"itemY: ++++++ %f",itemY);
     
     
     

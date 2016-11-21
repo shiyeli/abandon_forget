@@ -30,6 +30,7 @@
 -(UILabel*)name{
     if (!_name) {
         _name=[[UILabel alloc]initWithFrame:CGRectMake(0, 0, 70, 70)];
+        _name.textAlignment=NSTextAlignmentCenter;
         [self.contentView addSubview:_name];
     }
     return _name;
