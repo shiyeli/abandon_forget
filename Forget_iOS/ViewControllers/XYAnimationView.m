@@ -104,13 +104,7 @@
     
     XYAnimationViewModel* model=[self.dataArray objectAtIndex:indexPath.row];
     model.row=indexPath.row;
-    if (indexPath.row==0) {
-        cell.backgroundColor=[UIColor redColor];
-    }else if(indexPath.row==self.dataArray.count-1){
-        cell.backgroundColor=[UIColor greenColor];
-    }else{
-        cell.backgroundColor=[UIColor clearColor];
-    }
+    cell.backgroundColor=THIEM_COLOR_LIGHTER;
     cell.model=model;
 
     return cell;
