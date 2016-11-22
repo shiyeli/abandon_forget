@@ -84,7 +84,7 @@
 {
     const CGSize theSize = {
         .width = self.collectionView.bounds.size.width,
-        .height =self.itemCount* self.itemHeight,
+        .height =(self.itemCount+0.7)* self.itemHeight,
     };
     return(theSize);
 }

@@ -30,7 +30,6 @@
 -(UILabel*)name{
     if (!_name) {
         _name=[[UILabel alloc]init];
-        _name.textAlignment=NSTextAlignmentCenter;
         _name.font=SYSTEMFONT(13);
         _name.textColor=[UIColor whiteColor];
         [self.contentView addSubview:_name];
@@ -47,9 +46,11 @@
     self.name.text=_model.name;
     
    if (_model.isNameLeft) {
-       _name.frame=CGRectMake(50, 0, 70, 70);
+       _name.frame=CGRectMake(70, 0,100, 70);
+       _name.textAlignment=NSTextAlignmentLeft;
    }else{
-       _name.frame=CGRectMake(-50, 0, 70, 70);
+       _name.frame=CGRectMake(-100, 0,100, 70);
+       _name.textAlignment=NSTextAlignmentRight;
     }
     
 }

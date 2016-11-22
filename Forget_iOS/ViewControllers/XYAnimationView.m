@@ -82,28 +82,31 @@
 -(void)setIsCommomAddress:(BOOL)isCommomAddress{
     _isCommomAddress=isCommomAddress;
     
-    XYCircleViewLayout* layout;
-    if (_isCommomAddress) {
-        layout=[[XYCircleViewLayout alloc]initWithRadius:Main_Screen_Width*0.5 aliginType:WHEEL_ALIGNMEN_LEFT cellSize:CGSizeMake(70, 70) spacing:30];
-        [closeBtn setImage:[UIImage imageNamed:@"close_common"] forState:UIControlStateNormal];
-        
-    }else{
-        layout=[[XYCircleViewLayout alloc]initWithRadius:Main_Screen_Width*0.5 aliginType:WHEEL_ALIGNMEN_RIGHT cellSize:CGSizeMake(70, 70) spacing:30];
-        [closeBtn setImage:[UIImage imageNamed:@"close_personal"] forState:UIControlStateNormal];
-        
-    }
-    self.myCollectionView.collectionViewLayout=layout;
-    [closeBtn setCenter:layout.circleCenter];
-    
-    
-    
     self.dataArray=[NSMutableArray array];
+    [self.myCollectionView reloadData];
+    
     for (NSDictionary* dic in (isCommomAddress?commonArr:personArr)) {
         XYAnimationViewModel* model=[[XYAnimationViewModel alloc]init];
         [model setValuesForKeysWithDictionary:dic];
         model.isNameLeft=_isCommomAddress;
         [self.dataArray addObject:model];
     }
+    
+    
+    XYCircleViewLayout* layout;
+    if (_isCommomAddress) {
+        layout=[[XYCircleViewLayout alloc]initWithRadius:Main_Screen_Width*0.4 aliginType:WHEEL_ALIGNMEN_LEFT cellSize:CGSizeMake(70,70) spacing:30];
+        [closeBtn setImage:[UIImage imageNamed:@"close_common"] forState:UIControlStateNormal];
+        
+    }else{
+        layout=[[XYCircleViewLayout alloc]initWithRadius:Main_Screen_Width*0.4 aliginType:WHEEL_ALIGNMEN_RIGHT cellSize:CGSizeMake(70, 70) spacing:30];
+        [closeBtn setImage:[UIImage imageNamed:@"close_personal"] forState:UIControlStateNormal];
+        
+    }
+    
+    [self.myCollectionView setCollectionViewLayout:layout];
+    [closeBtn setCenter:layout.circleCenter];
+    
     [self.myCollectionView reloadData];
 }
 
@@ -135,6 +138,8 @@
     
     [self closeAction];
 }
+
+
 //设置每个item的尺寸
 //- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 //{
