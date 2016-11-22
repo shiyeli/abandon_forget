@@ -46,7 +46,12 @@
                        @{@"img":@"exercise_btn",@"name":@"健身房"},
                        @{@"img":@"girl_home",@"name":@"女朋友家"},
                        @{@"img":@"parents_home",@"name":@"父母家"},
-                       @{@"img":@"parents_home",@"name":@"第六个"}];
+                    @{@"img":@"parents_home",@"name":@"第六个"},
+                    @{@"img":@"company_btn",@"name":@"公司"},
+                    @{@"img":@"exercise_btn",@"name":@"健身房"},
+                    @{@"img":@"girl_home",@"name":@"女朋友家"},
+                    @{@"img":@"parents_home",@"name":@"父母家"},
+                    @{@"img":@"parents_home",@"name":@"第六个"}];
         
        XYCircleViewLayout* layout=[[XYCircleViewLayout alloc]initWithRadius:Main_Screen_Width*0.5 aliginType:WHEEL_ALIGNMEN_LEFT cellSize:CGSizeMake(70, 70) spacing:30];
         
@@ -65,6 +70,15 @@
 
 -(void)setIsCommomAddress:(BOOL)isCommomAddress{
     _isCommomAddress=isCommomAddress;
+    
+    if (_isCommomAddress) {
+        XYCircleViewLayout* layout=[[XYCircleViewLayout alloc]initWithRadius:Main_Screen_Width*0.5 aliginType:WHEEL_ALIGNMEN_LEFT cellSize:CGSizeMake(70, 70) spacing:30];
+        self.myCollectionView.collectionViewLayout=layout;
+    }else{
+        XYCircleViewLayout* layout=[[XYCircleViewLayout alloc]initWithRadius:Main_Screen_Width*0.5 aliginType:WHEEL_ALIGNMEN_RIGHT cellSize:CGSizeMake(70, 70) spacing:30];
+        self.myCollectionView.collectionViewLayout=layout;
+    }
+    
     
     self.dataArray=[NSMutableArray array];
     for (NSDictionary* dic in (isCommomAddress?commonArr:personArr)) {

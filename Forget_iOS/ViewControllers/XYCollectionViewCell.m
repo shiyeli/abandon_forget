@@ -39,6 +39,7 @@
 -(void)setModel:(XYAnimationViewModel *)model{
     _model=model;
     self.name.text=[NSString stringWithFormat:@"%d",_model.row];
+    //[self.imgView setImage:[UIImage imageNamed:_model.img]];
 }
 
 @end

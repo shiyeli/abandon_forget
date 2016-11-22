@@ -35,7 +35,12 @@
         self.alignType=alignType;
         self.cellSize=cellSize;
         self.spacing=spacing;
-        
+        self.itemHeight=self.cellSize.height+self.spacing;
+        if (alignType==WHEEL_ALIGNMEN_LEFT) {
+            self.circleCenter=CGPointMake(self.itemHeight*0.5,Main_Screen_Height*0.5);
+        }else{
+            self.circleCenter=CGPointMake(Main_Screen_Width-self.itemHeight*0.5,Main_Screen_Height*0.5);
+        }
         
     }
     return self;
@@ -45,8 +50,8 @@
     [super prepareLayout];
 
     self.itemCount=[self.collectionView numberOfItemsInSection:0];
-    self.itemHeight=self.cellSize.height+self.spacing;
-    self.circleCenter=CGPointMake(self.itemHeight,self.collectionView.frame.size.height*0.5);
+    
+    
     
 }
 
@@ -79,115 +84,75 @@
 {
     const CGSize theSize = {
         .width = self.collectionView.bounds.size.width,
-        .height = (self.itemCount-1) * self.itemHeight,
+        .height =self.itemCount* self.itemHeight,
     };
     return(theSize);
 }
 
-#pragma mark ---- 这个方法需要返回indexPath位置对应cell的布局属性
-/**
- *  //TODO:  这个方法主要用于 切换布局的时候 如果不适用该方法 就不会切换布局的时候会报错
- *   reason: 'no UICollectionViewLayoutAttributes instance for -layoutAttributesForItemAtIndexPath: <NSIndexPath: 0xc000000000400016> {length = 2, path = 0 - 2}'
- */
+
 -(UICollectionViewLayoutAttributes *)layoutAttributesForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    
-    
-    
-    
+
     //获取UICollectionViewLayoutAttributes
     //这里需要 告诉 UICollectionViewLayoutAttributes 是哪里的attrs
     UICollectionViewLayoutAttributes *theAttributes = [UICollectionViewLayoutAttributes layoutAttributesForCellWithIndexPath:indexPath];
     theAttributes.size = self.cellSize;
     
     CGFloat viewOffsetY=self.collectionView.contentOffset.y;
+    
     CGPoint relativeCenter=CGPointMake(self.circleCenter.x, viewOffsetY+self.collectionView.frame.size.height*0.5);
     
     
-    //默认 item 在上面一排
-    CGFloat itemX=relativeCenter.x+self.itemHeight*indexPath.row-viewOffsetY;
-    CGFloat itemY=relativeCenter.y-self.radius;
+    //计算item中心点
+    CGPoint attriCenter=CGPointZero;
     
-    
-    
-    
-    NSLog(@"%d itemX:  =====%f",indexPath.row, itemX);
-    NSLog(@"%d itemY:  =====%f",indexPath.row, itemY);
-    
-    
-    //半圆上的item与y轴负方向的夹角,(0,180)
-    CGFloat angel;
-    if (itemX>self.circleCenter.x) {
-        angel=(itemX-self.circleCenter.x)/self.radius;
-        if (angel<M_PI*2) {
-            itemX=relativeCenter.x+sin(angel)*self.radius;
-            itemY=relativeCenter.y-cos(angel)*self.radius;
-        }else{
-            theAttributes.size=CGSizeZero;
+    if (self.alignType==WHEEL_ALIGNMEN_LEFT) {
+        
+        /*********** 靠左 ****************/
+        
+        //默认 item 在上面一排
+        CGFloat itemX=relativeCenter.x+self.itemHeight*indexPath.row-viewOffsetY;
+        CGFloat itemY=relativeCenter.y-self.radius;
+        //半圆上的item与y轴负方向的夹角,(0,180)
+        CGFloat angel;
+        if (itemX>self.circleCenter.x) {
+            angel=(itemX-self.circleCenter.x)/self.radius;
+            if (angel<M_PI*2) {
+                itemX=relativeCenter.x+sin(angel)*self.radius;
+                itemY=relativeCenter.y-cos(angel)*self.radius;
+            }else{
+                itemX=relativeCenter.x+self.itemHeight*indexPath.row-viewOffsetY;
+                itemY=relativeCenter.y+self.radius;
+            
+            }
         }
+        attriCenter=CGPointMake(itemX, itemY);
+        
+    }else{
+        
+        /*********** 靠右 ****************/
+        
+        //默认 item 在上面一排
+        CGFloat itemX=relativeCenter.x-self.itemHeight*indexPath.row+viewOffsetY;
+        CGFloat itemY=relativeCenter.y-self.radius;
+        //半圆上的item与y轴负方向的夹角,(0,180)
+        CGFloat angel;
+        if (itemX<self.circleCenter.x) {
+            angel=(self.circleCenter.x-itemX)/self.radius;
+            if (angel<M_PI*2) {
+                itemX=relativeCenter.x-sin(angel)*self.radius;
+                itemY=relativeCenter.y-cos(angel)*self.radius;
+            }else{
+                itemX=relativeCenter.x+self.itemHeight*indexPath.row-viewOffsetY;
+                itemY=relativeCenter.y+self.radius;
+            }
+        }
+        attriCenter=CGPointMake(itemX, itemY);
     }
-    
-    
-    
-    
-    
-    
-   //
-    
-    
-    
-    
-    theAttributes.center=CGPointMake(itemX, itemY);
-    theAttributes.zIndex=1000-indexPath.row;
-   // theAttributes.center = CGPointMake(self.circleCenter.x+cos(angel)*self.radius ,self.circleCenter.y+sin(angel)*self.radius);
-    
-
-    NSLog(@"contentOffset.y: %lf",self.collectionView.contentOffset.y);
-    
-    
-    
+    theAttributes.center=attriCenter;
+    theAttributes.zIndex=self.itemCount-indexPath.row;
+ 
     return theAttributes;
-    
-#if 0
-    
-    double newIndex = (indexPath.item + 0);
-    
-    UICollectionViewLayoutAttributes *theAttributes = [UICollectionViewLayoutAttributes layoutAttributesForCellWithIndexPath:indexPath];
-    
-    theAttributes.size = self.cellSize;
-    
-    float deltaX;
-    CGAffineTransform translationT;
-    CGAffineTransform rotationT = CGAffineTransformMakeRotation(self.spacing* newIndex *M_PI/180);
-    if(indexPath.item == 3){
-        NSLog(@"angle 3 :%f", self.spacing* newIndex);
-    }
-    
-    
-    deltaX = self.cellSize.width/2;
-    theAttributes.center = CGPointMake(0 , self.collectionView.bounds.size.height/2 + self.collectionView.contentOffset.y);
-    translationT =CGAffineTransformMakeTranslation(self.radius + (deltaX*1) , 0);
-    
-    
-    
-    CGAffineTransform scaleT = CGAffineTransformMakeScale(1, 1);
-    //theAttributes.alpha = scaleFactor;
-    
-    /*
-     if( fabs(self.AngularSpacing* newIndex) > 90 ){
-     theAttributes.hidden = YES;
-     }else{
-     theAttributes.hidden = NO;
-     }
-     */
-    
-    theAttributes.transform = CGAffineTransformConcat(scaleT, CGAffineTransformConcat(translationT, rotationT));
-    theAttributes.zIndex = indexPath.item;
-    
-    return(theAttributes);
-#endif
-    
-    
 }
 
 
