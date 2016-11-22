@@ -120,11 +120,10 @@
     if (itemX>self.circleCenter.x) {
         angel=(itemX-self.circleCenter.x)/self.radius;
         if (angel<M_PI*2) {
-            itemX=relativeCenter.x+sin(M_PI*2-angel)*self.radius;
-            itemY=relativeCenter.y+cos(M_PI*2-angel)*self.radius;
+            itemX=relativeCenter.x+sin(angel)*self.radius;
+            itemY=relativeCenter.y-cos(angel)*self.radius;
         }else{
-//            itemX=itemX-deltaOffsetY-indexPath.row*self.itemHeight;
-//            itemY=relativeCenter.y+self.radius;
+            theAttributes.size=CGSizeZero;
         }
     }
     
