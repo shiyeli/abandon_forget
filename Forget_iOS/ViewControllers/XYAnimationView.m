@@ -16,6 +16,8 @@
     NSArray* personArr;
     
     NSString* cellId;
+    
+    UIButton* closeBtn;
 }
 - (instancetype)initWithFrame:(CGRect)frame
 {
@@ -28,18 +30,18 @@
                        @{@"img":@"park_btn",@"name":@"停车场"},
                     @{@"img":@"bank_btn",@"name":@"银行"},
                     
-                    @{@"img":@"hospital_btn",@"name":@"菜市场"},
-                    @{@"img":@"park_btn",@"name":@"快时代"},
-                    @{@"img":@"bank_btn",@"name":@"梦思特"},
-                    @{@"img":@"girl_home",@"name":@"女朋友家"},
-                    @{@"img":@"parents_home",@"name":@"父母家"},
-                    @{@"img":@"parents_home",@"name":@"第六个"},
-                    @{@"img":@"hospital_btn",@"name":@"菜市场"},
-                    @{@"img":@"park_btn",@"name":@"快时代"},
-                    @{@"img":@"bank_btn",@"name":@"梦思特"},
-                    @{@"img":@"girl_home",@"name":@"女朋友家"},
-                    @{@"img":@"parents_home",@"name":@"父母家"},
-                    @{@"img":@"parents_home",@"name":@"第六个"}];
+                    @{@"img":@"restaurant_btn",@"name":@"餐饮"},
+                    @{@"img":@"supermarket_btn",@"name":@"超市"},
+                    @{@"img":@"hospital_btn",@"name":@"医院"},
+                    @{@"img":@"park_btn",@"name":@"停车场"},
+                    @{@"img":@"bank_btn",@"name":@"银行"},
+                    @{@"img":@"restaurant_btn",@"name":@"餐饮"},
+                    @{@"img":@"supermarket_btn",@"name":@"超市"},
+                    @{@"img":@"hospital_btn",@"name":@"医院"},
+                    @{@"img":@"park_btn",@"name":@"停车场"},
+                    @{@"img":@"bank_btn",@"name":@"银行"}
+                    
+                    ];
         
         personArr=@[@{@"img":@"home_btn",@"name":@"家"},
                        @{@"img":@"company_btn",@"name":@"公司"},
@@ -64,20 +66,35 @@
         self.myCollectionView.dataSource=self;
         self.myCollectionView.bounces=NO;
         
+        
+        closeBtn=[[UIButton alloc]init];
+        [closeBtn addTarget:self action:@selector(closeAction) forControlEvents:UIControlEventTouchUpInside];
+        [closeBtn setFrame:CGRectMake(0, 0, 87, 87)];
+        [self addSubview:closeBtn];
+        
+        
     }
     return self;
 }
-
+-(void)closeAction{
+    [self removeFromSuperview];
+}
 -(void)setIsCommomAddress:(BOOL)isCommomAddress{
     _isCommomAddress=isCommomAddress;
     
+    XYCircleViewLayout* layout;
     if (_isCommomAddress) {
-        XYCircleViewLayout* layout=[[XYCircleViewLayout alloc]initWithRadius:Main_Screen_Width*0.5 aliginType:WHEEL_ALIGNMEN_LEFT cellSize:CGSizeMake(70, 70) spacing:30];
-        self.myCollectionView.collectionViewLayout=layout;
+        layout=[[XYCircleViewLayout alloc]initWithRadius:Main_Screen_Width*0.5 aliginType:WHEEL_ALIGNMEN_LEFT cellSize:CGSizeMake(70, 70) spacing:30];
+        [closeBtn setImage:[UIImage imageNamed:@"close_common"] forState:UIControlStateNormal];
+        
     }else{
-        XYCircleViewLayout* layout=[[XYCircleViewLayout alloc]initWithRadius:Main_Screen_Width*0.5 aliginType:WHEEL_ALIGNMEN_RIGHT cellSize:CGSizeMake(70, 70) spacing:30];
-        self.myCollectionView.collectionViewLayout=layout;
+        layout=[[XYCircleViewLayout alloc]initWithRadius:Main_Screen_Width*0.5 aliginType:WHEEL_ALIGNMEN_RIGHT cellSize:CGSizeMake(70, 70) spacing:30];
+        [closeBtn setImage:[UIImage imageNamed:@"close_personal"] forState:UIControlStateNormal];
+        
     }
+    self.myCollectionView.collectionViewLayout=layout;
+    [closeBtn setCenter:layout.circleCenter];
+    
     
     
     self.dataArray=[NSMutableArray array];
@@ -114,8 +131,8 @@
 {
     //XYCollectionViewCell *cell = (XYCollectionViewCell *)[self.myCollectionView cellForItemAtIndexPath:indexPath];
     
-     [self removeFromSuperview];
     
+    [self closeAction];
 }
 //设置每个item的尺寸
 //- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
