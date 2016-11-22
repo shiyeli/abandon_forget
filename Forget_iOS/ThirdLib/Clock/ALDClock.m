@@ -274,6 +274,29 @@ const CGFloat kALDClockAnimationIncrement = 30;
 
 #pragma mark - Tracking Methods
 
+//-(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+//    [super touchesBegan:touches withEvent:event];
+//    //Get touch location
+//    CGPoint currentPoint = [[touches anyObject] locationInView:self];
+//    CGPoint center = CGPointMake(CGRectGetWidth(self.frame)/2.0, CGRectGetHeight(self.frame)/2.0);
+//   
+//    CGFloat r=sqrt(pow(currentPoint.x-center.x, 2)+pow(currentPoint.y-center.y,2));
+//    CGFloat basicAngle=asin((currentPoint.x-center.x)/r);
+//    
+//    if (currentPoint.y<center.y) {
+//        if (currentPoint.x>center.x) {
+//            self.totalRotation=basicAngle;
+//        }else{
+//            self.totalRotation=M_PI*2+basicAngle;
+//        }
+//        
+//    }else{
+//        self.totalRotation=M_PI-basicAngle;
+//    }
+//    
+//    [self updateDisplayAndListeners];
+//}
+
 -(BOOL)beginTrackingWithTouch:(UITouch *)touch withEvent:(UIEvent *)event{
     [super beginTrackingWithTouch:touch withEvent:event];
     
@@ -513,6 +536,7 @@ const CGFloat kALDClockAnimationIncrement = 30;
 //    // Draw hour hand.
 //    CGContextDrawPath(context, kCGPathStroke);
     
+#pragma mark - 画分针
     // --------------------------
     // -- Draw the minute hand --
     // --------------------------
