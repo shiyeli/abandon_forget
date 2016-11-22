@@ -48,23 +48,34 @@
     self.animationView.isCommomAddress=isCommonAddress;
     CATransition* anim=[CATransition animation];
     anim.type=@"kCATransitionFade";
-    anim.duration=0.3;
+    anim.duration=0.6;
     //anim.subtype=kCATransitionFromLeft;
     [[UIApplication sharedApplication].keyWindow.layer addAnimation:anim forKey:nil];
     
 }
+
+-(void)buttonAnimationToCenter:(UIButton*)btn{
+//    
+//    CGRect btnF=btn.frame;
+//    [UIView animateWithDuration:1 animations:^{
+//        btn.layer.transform=CATransform3DMakeTranslation(btnF.origin.x, Main_Screen_Height*0.5, 0);
+//    }];
+    
+}
+
 
 - (IBAction)clickEvent:(UIButton *)sender {
     switch (sender.tag) {
         case 1:{
             //常见地点
             [self addAnimationViewisCommonAddress:YES];
-        
+            [self buttonAnimationToCenter:sender];
         }
             break;
         case 2:{
             //个人地点
             [self addAnimationViewisCommonAddress:NO];
+            [self buttonAnimationToCenter:sender];
         }
             break;
         case 3:{

@@ -19,6 +19,9 @@
 
 @interface FyCalendarView : UIView
 
+
+@property(nonatomic,strong)UIColor * cellColor;
+
 //set 选择日期
 @property (nonatomic, strong) NSDate *date;
 

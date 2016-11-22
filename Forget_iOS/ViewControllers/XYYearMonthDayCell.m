@@ -53,11 +53,18 @@
     
 }
 
+-(void)setCellColor:(UIColor *)cellColor{
+    [super setCellColor:cellColor];
+    if (self.calendarView) {
+        self.calendarView.cellColor=self.cellColor;
+    }
+}
 
 - (void)setupCalendarView {
     
  
     self.calendarView = [[FyCalendarView alloc] initWithFrame:CGRectMake(0, 0, Main_Screen_Width-DISTANCE_TO_EDGE*2, Main_Screen_Width-DISTANCE_TO_EDGE*2)];
+    
     [self.centerView addSubview:self.calendarView];
     
 
@@ -78,6 +85,7 @@
 - (void)setupNextMonth {
     [self.calendarView removeFromSuperview];
     self.calendarView = [[FyCalendarView alloc] initWithFrame:CGRectMake(0, 0, Main_Screen_Width-DISTANCE_TO_EDGE*2, Main_Screen_Width-DISTANCE_TO_EDGE*2)];
+    self.calendarView.cellColor=self.cellColor;
     [self.centerView addSubview:self.calendarView];
    
 
@@ -100,6 +108,7 @@
 - (void)setupLastMonth {
     [self.calendarView removeFromSuperview];
     self.calendarView = [[FyCalendarView alloc] initWithFrame:CGRectMake(0, 0, Main_Screen_Width-DISTANCE_TO_EDGE*2, Main_Screen_Width-DISTANCE_TO_EDGE*2)];
+    self.calendarView.cellColor=self.cellColor;
     [self.centerView addSubview:self.calendarView];
 
     tempDate = [self.calendarView lastMonth:tempDate];

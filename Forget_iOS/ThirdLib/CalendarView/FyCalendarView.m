@@ -159,8 +159,7 @@
                 //                [self setStyle_BeforeToday:dayButton];
             }else if(i ==  todayIndex){
                 [self setStyle_Today:dayButton];
-                dayButton.selected=YES;
-                self.selectBtn=dayButton;
+//                self.selectBtn=dayButton;
             }
             
         }
@@ -247,9 +246,9 @@
 {
     btn.layer.cornerRadius = btn.frame.size.height / 2;
     btn.layer.masksToBounds = YES;
-    [btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [btn setTitleColor:THIEM_COLOR forState:UIControlStateNormal];
     [btn setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected];
-    [btn setBackgroundColor:THIEM_COLOR];
+    [btn setBackgroundColor:[UIColor whiteColor]];
 }
 
 - (void)setStyle_AfterToday:(UIButton *)btn
@@ -304,7 +303,7 @@
 
 - (UIColor *)dateColor {
     if (!_dateColor) {
-        _dateColor = THIEM_COLOR;
+        _dateColor = _cellColor;
     }
     return _dateColor;
 }

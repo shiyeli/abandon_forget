@@ -279,7 +279,7 @@
                                         <color key="backgroundColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     </view>
                                 </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.30196078431372547" green="0.71372549019607845" blue="0.67450980392156867" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="UJc-f6-QuJ" firstAttribute="leading" secondItem="N3i-eI-dS4" secondAttribute="trailing" id="0o7-ic-qrN"/>
                                     <constraint firstItem="Pcr-xX-449" firstAttribute="width" secondItem="N3i-eI-dS4" secondAttribute="width" id="0yv-bh-w36"/>
@@ -467,8 +467,8 @@
         <image name="cancel_item" width="26" height="26"/>
         <image name="determine_item" width="27" height="26"/>
         <image name="next_item" width="27" height="26"/>
-        <image name="set_location_unselect" width="42" height="42"/>
-        <image name="set_time_select" width="39" height="39"/>
+        <image name="set_location_unselect" width="21" height="28"/>
+        <image name="set_time_select" width="25" height="25"/>
         <image name="take_photo" width="69" height="69"/>
     </resources>
 </document>

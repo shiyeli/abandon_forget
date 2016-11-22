@@ -100,13 +100,18 @@
             
             
         }
+        cell.cellColor=TIMECELL_COLOR_CYAN;
+        [cell.closeBtn setImage:[UIImage imageNamed:@"settime_cyan_close"] forState:UIControlStateNormal];
+        [cell.sureBtn setImage:[UIImage imageNamed:@"settime_cyan_sure"] forState:UIControlStateNormal];
+        
     }else if (indexPath.section==1){
         
         if (indexPath.row==0) {
             
             cell=repeatCell;
-
-            
+            cell.cellColor=TIMECELL_COLOR_BLUE;
+            [cell.closeBtn setImage:[UIImage imageNamed:@"settime_blue_close"] forState:UIControlStateNormal];
+            [cell.sureBtn setImage:[UIImage imageNamed:@"settime_blue_sure"] forState:UIControlStateNormal];
             
             
             
@@ -117,9 +122,10 @@
         if (indexPath.row==0) {
             
             cell=yearCell_2;
+            cell.cellColor=TIMECELL_COLOR_YELLOW;
+            [cell.closeBtn setImage:[UIImage imageNamed:@"settime_yellow_close"] forState:UIControlStateNormal];
+            [cell.sureBtn setImage:[UIImage imageNamed:@"settime_yellow_sure"] forState:UIControlStateNormal];
 
-            
-            
             
         }
     }

@@ -14,8 +14,7 @@
     UIView * _holdView;
     UIButton* _spreadOutBtn;
     UIView* _spreadOutView;
-    UIButton* _closeBtn;
-    UIButton* _sureBtn;
+    
 }
 
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
@@ -47,7 +46,7 @@
     _holdView.backgroundColor=[UIColor whiteColor];
     
     self.titleView=[[UIView alloc]init];
-    _titleView.backgroundColor=THIEM_COLOR;
+//   _titleView.backgroundColor=THIEM_COLOR;
     [_holdView addSubview:_titleView];
     [_titleView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(_holdView);
@@ -105,6 +104,13 @@
     
     //[_spreadOutView setHidden:YES];
 }
+
+-(void)setCellColor:(UIColor *)cellColor{
+    _cellColor=cellColor;
+    _titleView.backgroundColor=cellColor;
+
+}
+
 //点击取消或确认
 -(void)sureOrNot:(UIButton* )sender{
    
