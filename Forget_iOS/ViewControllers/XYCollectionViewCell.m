@@ -29,17 +29,29 @@
 
 -(UILabel*)name{
     if (!_name) {
-        _name=[[UILabel alloc]initWithFrame:CGRectMake(0, 0, 70, 70)];
+        _name=[[UILabel alloc]init];
         _name.textAlignment=NSTextAlignmentCenter;
+        _name.font=SYSTEMFONT(13);
+        _name.textColor=[UIColor whiteColor];
         [self.contentView addSubview:_name];
     }
+    
+
     return _name;
 }
 
 -(void)setModel:(XYAnimationViewModel *)model{
     _model=model;
-    //self.name.text=[NSString stringWithFormat:@"%d",_model.row];
+
     [self.imgView setImage:[UIImage imageNamed:_model.img]];
+    self.name.text=_model.name;
+    
+   if (_model.isNameLeft) {
+       _name.frame=CGRectMake(50, 0, 70, 70);
+   }else{
+       _name.frame=CGRectMake(-50, 0, 70, 70);
+    }
+    
 }
 
 @end

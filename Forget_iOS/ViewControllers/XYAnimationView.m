@@ -101,6 +101,7 @@
     for (NSDictionary* dic in (isCommomAddress?commonArr:personArr)) {
         XYAnimationViewModel* model=[[XYAnimationViewModel alloc]init];
         [model setValuesForKeysWithDictionary:dic];
+        model.isNameLeft=_isCommomAddress;
         [self.dataArray addObject:model];
     }
     [self.myCollectionView reloadData];
