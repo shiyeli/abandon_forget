@@ -86,8 +86,8 @@ const CGFloat kALDClockAnimationIncrement = 30;
         _clockFaceBackgroundColor = [UIColor colorWithWhite:0.97 alpha:1.0];
         _majorMarkingColor = [UIColor colorWithWhite:0.3 alpha:1.0];
         _minorMarkingColor = [UIColor colorWithWhite:0.4 alpha:1.0];
-        _minuteHandColor = THIEM_COLOR;
-        _hourHandColor = THIEM_COLOR;
+        _minuteHandColor = TIMECELL_COLOR_CYAN;
+        _hourHandColor = TIMECELL_COLOR_CYAN;
         
         // Set default thicknesses
         _majorMarkingsThickness = 1.0f;
@@ -552,7 +552,7 @@ const CGFloat kALDClockAnimationIncrement = 30;
     CGContextDrawPath(context, kCGPathStroke);
     
     //填充圆，无边框
-    CGContextSetFillColorWithColor(context,THIEM_COLOR.CGColor);
+    CGContextSetFillColorWithColor(context,TIMECELL_COLOR_CYAN.CGColor);
     CGContextAddArc(context, minuteHandX, minuteHandY, DISTANCE_TO_EDGE, 0, M_PI*2, 0); //添加一个圆
     CGContextDrawPath(context, kCGPathFill);
     

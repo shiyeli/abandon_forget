@@ -9,9 +9,7 @@
 #import "XYParentTableViewCell.h"
 #import "XYTimeCellModel.h"
 
-#define TIMECELL_COLOR_CYAN [XYTool stringToColor:@"#00BCD4"]
-#define TIMECELL_COLOR_BLUE [XYTool stringToColor:@"#03A9F4"]
-#define TIMECELL_COLOR_YELLOW [XYTool stringToColor:@"#FF9800"]
+
 
 
 @interface XYTimeParentCell : XYParentTableViewCell
