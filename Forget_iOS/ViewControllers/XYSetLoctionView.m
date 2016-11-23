@@ -41,10 +41,12 @@
             
             if (model.isNameLeft) {
                 weakSelf.commonBtn.selectModel=model;
+                weakSelf.personBtn.selectModel=nil;
             }else{
                 weakSelf.personBtn.selectModel=model;
+                weakSelf.commonBtn.selectModel=nil;
             }
-        
+            [weakSelf.myTableView reloadData];
         };
         
     }
@@ -144,7 +146,7 @@
     XYAnimationViewModel* personBtnModel=[[XYAnimationViewModel alloc]init];
     personBtnModel.name=@"个人地点";
     personBtnModel.img=@"personal_location";
-    self.commonBtn.unselectModel=personBtnModel;
+    self.personBtn.unselectModel=personBtnModel;
     
     [self.arriveAddressBtn setTitleColor:BLACK_FONT_COLOR forState:UIControlStateNormal];
     [self.arriveAddressBtn setTitleColor:THIEM_COLOR forState:UIControlStateSelected];
@@ -178,7 +180,11 @@
     return 3;
 }
 
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    self.personBtn.selectModel=nil;
+    self.commonBtn.selectModel=nil;
 
+}
 /*
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.
