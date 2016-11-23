@@ -115,16 +115,13 @@
         CGFloat itemY=relativeCenter.y-self.radius;
         //半圆上的item与y轴负方向的夹角,(0,180)
         CGFloat angel;
-        if (itemX>self.circleCenter.x) {
+        if (itemX>self.circleCenter.x&&itemX<self.circleCenter.x+M_PI*self.radius) {
             angel=(itemX-self.circleCenter.x)/self.radius;
-            if (angel<M_PI*2) {
-                itemX=relativeCenter.x+sin(angel)*self.radius;
-                itemY=relativeCenter.y-cos(angel)*self.radius;
-            }else{
-                itemX=relativeCenter.x+self.itemHeight*indexPath.row-viewOffsetY;
-                itemY=relativeCenter.y+self.radius;
-            
-            }
+            itemX=relativeCenter.x+sin(angel)*self.radius;
+            itemY=relativeCenter.y-cos(angel)*self.radius;
+        }else if (itemX>self.circleCenter.x+M_PI*self.radius){
+            itemX=-itemX+self.circleCenter.x*2+self.radius*M_PI;
+            itemY=relativeCenter.y+self.radius;
         }
         attriCenter=CGPointMake(itemX, itemY);
         
@@ -137,15 +134,13 @@
         CGFloat itemY=relativeCenter.y-self.radius;
         //半圆上的item与y轴负方向的夹角,(0,180)
         CGFloat angel;
-        if (itemX<self.circleCenter.x) {
+        if (itemX<self.circleCenter.x&&itemX>self.circleCenter.x-self.radius*M_PI) {
             angel=(self.circleCenter.x-itemX)/self.radius;
-            if (angel<M_PI*2) {
-                itemX=relativeCenter.x-sin(angel)*self.radius;
-                itemY=relativeCenter.y-cos(angel)*self.radius;
-            }else{
-                itemX=relativeCenter.x+self.itemHeight*indexPath.row-viewOffsetY;
-                itemY=relativeCenter.y+self.radius;
-            }
+            itemX=relativeCenter.x-sin(angel)*self.radius;
+            itemY=relativeCenter.y-cos(angel)*self.radius;
+        }else if(itemX<self.circleCenter.x-self.radius*M_PI){
+            itemX=-itemX+self.circleCenter.x*2-self.radius*M_PI;
+            itemY=relativeCenter.y+self.radius;
         }
         attriCenter=CGPointMake(itemX, itemY);
     }
