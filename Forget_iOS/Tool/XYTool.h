@@ -62,12 +62,6 @@
 +(void)showPromptView:(NSString*)mes holdView:(UIView*)holdView;
 
 
-
-/**
- *  返回浅色 暗色两种字体颜色
- */
-+(NSAttributedString*)lightStr:(NSString*)str darkStr:(NSString*)darkStr;
-
 /**
  *  json字符串转字典
  *
@@ -100,10 +94,6 @@
  */
 + (NSString *)removeSpaceAndNewline:(NSString *)str;
 
-/**
- *  绑定百度推送
- */
-+(void)bindBpush;
 
 /**
  *  通过颜色获取图片
@@ -141,7 +131,10 @@
  *  @return <#return value description#>
  */
 +( UIViewController *) currentViewController;
-
-
+/**
+ *  水波转场动画
+ *
+ */
++(void)transitionAnimationWhater;
 
 @end

@@ -123,6 +123,7 @@
         
     }
 
+    [XYTool transitionAnimationWhater];
 }
 //点击展开视图
 -(void)spreadOutCell:(UIButton* )sender{

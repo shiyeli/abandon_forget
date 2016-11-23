@@ -462,5 +462,14 @@
     return [XYTool findBestViewController:viewController];
 }
 
-
++(void)transitionAnimationWhater{
+    //转场动画
+    CATransition* anim=[CATransition animation];
+    
+    anim.type=@"rippleEffect";
+    anim.duration=0.3;
+    //anim.subtype=kCATransitionFromLeft;
+    
+    [[UIApplication sharedApplication].keyWindow.layer addAnimation:anim forKey:nil];
+}
 @end
