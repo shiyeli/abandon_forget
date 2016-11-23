@@ -16,14 +16,18 @@
 #define POSITION_LOW 58.0
 #define REMARK_LOCATION_HEIGHT 100
 
-@interface XYAddAddressViewController ()<MAMapViewDelegate, AMapSearchDelegate, UITableViewDataSource, UITableViewDelegate,UISearchBarDelegate,XYHgithtOfKeyboardDelegate>
+@interface XYAddAddressViewController ()<MAMapViewDelegate, AMapSearchDelegate, UITableViewDataSource, UITableViewDelegate,XYHgithtOfKeyboardDelegate>
 
 @property (nonatomic, strong) MAMapView *mapView;
 @property (nonatomic, strong) AMapSearchAPI *search;
 @property (nonatomic, strong) NSMutableArray *tips;
 
 @property (weak, nonatomic) IBOutlet UIView *myView;
-@property (weak, nonatomic) IBOutlet UISearchBar *mySearchBar;
+
+@property (weak, nonatomic) IBOutlet UIImageView *sliderImgView;
+
+@property (weak, nonatomic) IBOutlet UITextField *searchTextField;
+
 @property (weak, nonatomic) IBOutlet UITableView *myTableView;
 
 
@@ -32,11 +36,6 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *searchHoldViewH;
 
 
-@property (weak, nonatomic) IBOutlet UIView *remarkHoldView;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *remarkHoldViewBottomD;
-@property (weak, nonatomic) IBOutlet UILabel *addressDetail;
-@property (weak, nonatomic) IBOutlet UITextField *remarkImput;
-
 @property(nonatomic,strong)XYHgithtOfKeyboard* keyboardMgr;
 
 
@@ -44,19 +43,6 @@
 @end
 
 @implementation XYAddAddressViewController
-
-- (IBAction)cancelRemarkClick:(id)sender {
-    self.remarkHoldViewBottomD.constant=-REMARK_LOCATION_HEIGHT;
-    [UIView animateWithDuration:0.1 animations:^{
-        [self.view layoutIfNeeded];
-    }];
-}
-
-//点击标记
-- (IBAction)remarkClick:(id)sender {
-    
-    [self cancelRemarkClick:nil];
-}
 
 
 - (IBAction)accomplish:(id)sender {
@@ -90,20 +76,23 @@
     [self.mapView setCenterCoordinate:[XYUserInfo userInfo].userLocation.coordinate animated:NO];
     [self.myView addSubview:self.mapView];
     
-    //收缩
+    //搜索地址
     self.search = [[AMapSearchAPI alloc] init];
     self.search.delegate = self;
-    self.mySearchBar.delegate=self;
-    self.mySearchBar.placeholder=@"请输入内容检索";
+//    self.searchTextField.delegate=self;
+    self.searchTextField.placeholder=@"搜索地点...";
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(searchContentChange:) name:UITextFieldTextDidChangeNotification object:nil];
+    
     
     
     //下方输入框滑动
     UIPanGestureRecognizer *panGestureRecognizer = [[UIPanGestureRecognizer alloc] init];
     [panGestureRecognizer addTarget:self action:@selector(panGestureAction:)];
-    [self.searchHoldView addGestureRecognizer:panGestureRecognizer];
+    self.sliderImgView.userInteractionEnabled=YES;
+    [self.sliderImgView addGestureRecognizer:panGestureRecognizer];
     self.keyboardMgr=[[XYHgithtOfKeyboard alloc]init];
     self.keyboardMgr.delegate=self;
-    self.remarkHoldViewBottomD.constant=-REMARK_LOCATION_HEIGHT;
+    
     
     //返回确定按钮
     UIButton* backBtn=[[UIButton alloc]init];
@@ -129,6 +118,8 @@
     
     
 }
+
+
 -(void)navigationBtnAction:(UIButton*)sender{
     if (sender.tag==kTag+1) {
         
@@ -138,9 +129,10 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 #pragma mark - searchBarDelegate
-- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText{
-    [self searchTipsWithKey:searchText];
+-(void)searchContentChange:(NSNotification*)notify{
+   [self searchTipsWithKey:[notify.userInfo objectForKey:@"text"]];
 }
+
 - (BOOL)searchBarShouldBeginEditing:(UISearchBar *)searchBar{
     self.searchHoldViewH.constant=POSITION_HEIGH;
     [UIView animateWithDuration:0.2 animations:^{
@@ -272,39 +264,35 @@
     
     
 }
-//移动地图
-- (void)mapView:(MAMapView *)mapView mapWillMoveByUser:(BOOL)wasUserAction{
-    if (wasUserAction) {
-        
-        
-        
-        CGPoint p;
-        if (mapView.selectedAnnotations.count>0) {
-            mapView.scrollEnabled=NO;
-            AMapTipAnnotation* tipAnno =[mapView.selectedAnnotations firstObject];
-            p=[mapView convertCoordinate:tipAnno.coordinate toPointToView:mapView];
-            NSLog(@"%f,%f",p.x,p.y);
-            
-            
-            
-        }else{
-            mapView.scrollEnabled=YES;
-        }
-        
-        for (AMapTipAnnotation* anno in mapView.selectedAnnotations) {
-            
-        }
-        
-        
-        
-        
-        
-        
-        
-        
-    }
 
-}
+
+//移动地图
+//- (void)mapView:(MAMapView *)mapView mapWillMoveByUser:(BOOL)wasUserAction{
+//    if (wasUserAction) {
+//        
+//        
+//        
+//        CGPoint p;
+//        if (mapView.selectedAnnotations.count>0) {
+//            mapView.scrollEnabled=NO;
+//            AMapTipAnnotation* tipAnno =[mapView.selectedAnnotations firstObject];
+//            p=[mapView convertCoordinate:tipAnno.coordinate toPointToView:mapView];
+//            NSLog(@"%f,%f",p.x,p.y);
+//            
+//            
+//            
+//        }else{
+//            mapView.scrollEnabled=YES;
+//        }
+//        
+//        for (AMapTipAnnotation* anno in mapView.selectedAnnotations) {
+//            
+//        }
+//        
+//    
+//    }
+//
+//}
 
 #pragma mark - tableView
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -341,10 +329,8 @@
 }
 
 -(void)showRemarkView:(AMapTip*)tip{
-    self.addressDetail.text=tip.name;
     
     self.searchHoldViewH.constant=POSITION_LOW;
-    self.remarkHoldViewBottomD.constant=0;
     [UIView animateWithDuration:0.3 animations:^{
         [self.view layoutIfNeeded];
     }];
@@ -377,12 +363,10 @@
 
 #pragma mark - heithtOfKeyboard
 -(void)heithtOfKeyboard:(CGFloat)height isShow:(BOOL)isShow{
-    if (self.remarkHoldViewBottomD.constant>=0) {
-        self.remarkHoldViewBottomD.constant=height;
-        [UIView animateWithDuration:0.1 animations:^{
-            [self.view layoutIfNeeded];
-        }];
-    };
+    
+
+
+
 }
 
 /*

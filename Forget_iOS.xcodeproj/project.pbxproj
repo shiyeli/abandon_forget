@@ -44,7 +44,6 @@
 		6E3063BD1DC08FE3000DBB7D /* XYNotifyPropertyChangeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E3063BC1DC08FE3000DBB7D /* XYNotifyPropertyChangeView.m */; };
 		6E3063C01DC0A250000DBB7D /* XYUserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E3063BF1DC0A250000DBB7D /* XYUserInfo.m */; };
 		6E3063C41DC0B390000DBB7D /* AMapTipAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E3063C31DC0B390000DBB7D /* AMapTipAnnotation.m */; };
-		6E3066CC1DC1F4E2000DBB7D /* locate@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6E3066CB1DC1F4E2000DBB7D /* locate@2x.png */; };
 		6E3066CE1DC1F516000DBB7D /* AMap.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 6E3066CD1DC1F516000DBB7D /* AMap.bundle */; };
 		6E3066D11DC200AF000DBB7D /* XYHgithtOfKeyboard.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E3066D01DC200AF000DBB7D /* XYHgithtOfKeyboard.m */; };
 		6E3522431DC9DEB90000BEF0 /* XYTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E3522421DC9DEB90000BEF0 /* XYTool.m */; };
@@ -69,6 +68,9 @@
 		6E3D4F571DC723090079D8FD /* XYRearViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6E3D4F551DC723090079D8FD /* XYRearViewController.xib */; };
 		6E5F25341DE566460003BA0D /* XYLocationButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E5F25331DE566460003BA0D /* XYLocationButton.m */; };
 		6E5F25351DE56BF90003BA0D /* XYAnimationViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 6ED632911DDC0F9200C8167D /* XYAnimationViewModel.m */; };
+		6E5F25391DE5915C0003BA0D /* locate.png in Resources */ = {isa = PBXBuildFile; fileRef = 6E5F25361DE5915C0003BA0D /* locate.png */; };
+		6E5F253A1DE5915C0003BA0D /* locate@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6E5F25371DE5915C0003BA0D /* locate@2x.png */; };
+		6E5F253B1DE5915C0003BA0D /* locate@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6E5F25381DE5915C0003BA0D /* locate@3x.png */; };
 		6ED632841DD5707F00C8167D /* XYTimeSectionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 6ED632831DD5707F00C8167D /* XYTimeSectionModel.m */; };
 		6ED632881DD95E9F00C8167D /* FyCalendarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6ED632871DD95E9F00C8167D /* FyCalendarView.m */; };
 		6ED6328C1DDAA6CF00C8167D /* ALDClock.m in Sources */ = {isa = PBXBuildFile; fileRef = 6ED6328B1DDAA6CF00C8167D /* ALDClock.m */; };
@@ -218,7 +220,6 @@
 		6E3063BF1DC0A250000DBB7D /* XYUserInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYUserInfo.m; sourceTree = "<group>"; };
 		6E3063C21DC0B390000DBB7D /* AMapTipAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMapTipAnnotation.h; sourceTree = "<group>"; };
 		6E3063C31DC0B390000DBB7D /* AMapTipAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMapTipAnnotation.m; sourceTree = "<group>"; };
-		6E3066CB1DC1F4E2000DBB7D /* locate@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "locate@2x.png"; sourceTree = "<group>"; };
 		6E3066CD1DC1F516000DBB7D /* AMap.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = AMap.bundle; sourceTree = "<group>"; };
 		6E3066CF1DC200AF000DBB7D /* XYHgithtOfKeyboard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XYHgithtOfKeyboard.h; path = ../ParentClass/XYHgithtOfKeyboard.h; sourceTree = "<group>"; };
 		6E3066D01DC200AF000DBB7D /* XYHgithtOfKeyboard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XYHgithtOfKeyboard.m; path = ../ParentClass/XYHgithtOfKeyboard.m; sourceTree = "<group>"; };
@@ -264,6 +265,9 @@
 		6E3D4F551DC723090079D8FD /* XYRearViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XYRearViewController.xib; sourceTree = "<group>"; };
 		6E5F25321DE566460003BA0D /* XYLocationButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYLocationButton.h; sourceTree = "<group>"; };
 		6E5F25331DE566460003BA0D /* XYLocationButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYLocationButton.m; sourceTree = "<group>"; };
+		6E5F25361DE5915C0003BA0D /* locate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = locate.png; sourceTree = "<group>"; };
+		6E5F25371DE5915C0003BA0D /* locate@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "locate@2x.png"; sourceTree = "<group>"; };
+		6E5F25381DE5915C0003BA0D /* locate@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "locate@3x.png"; sourceTree = "<group>"; };
 		6ED632821DD5707F00C8167D /* XYTimeSectionModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYTimeSectionModel.h; sourceTree = "<group>"; };
 		6ED632831DD5707F00C8167D /* XYTimeSectionModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYTimeSectionModel.m; sourceTree = "<group>"; };
 		6ED632861DD95E9F00C8167D /* FyCalendarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FyCalendarView.h; sourceTree = "<group>"; };
@@ -625,7 +629,9 @@
 		6E3066CA1DC1F4CC000DBB7D /* img */ = {
 			isa = PBXGroup;
 			children = (
-				6E3066CB1DC1F4E2000DBB7D /* locate@2x.png */,
+				6E5F25361DE5915C0003BA0D /* locate.png */,
+				6E5F25371DE5915C0003BA0D /* locate@2x.png */,
+				6E5F25381DE5915C0003BA0D /* locate@3x.png */,
 			);
 			name = img;
 			sourceTree = "<group>";
@@ -959,14 +965,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6E5F25391DE5915C0003BA0D /* locate.png in Resources */,
 				6E3066CE1DC1F516000DBB7D /* AMap.bundle in Resources */,
 				82A42F8A1DC1F8DA00A29058 /*  AppIntentVocabulary.plist in Resources */,
 				6E3522611DC9DFC10000BEF0 /* LICENSE in Resources */,
 				6E3D4F571DC723090079D8FD /* XYRearViewController.xib in Resources */,
 				6E3522731DCB0D040000BEF0 /* XYSetTimeView.xib in Resources */,
+				6E5F253A1DE5915C0003BA0D /* locate@2x.png in Resources */,
 				6E3063521DC05171000DBB7D /* LaunchScreen.storyboard in Resources */,
+				6E5F253B1DE5915C0003BA0D /* locate@3x.png in Resources */,
 				6E30634F1DC05171000DBB7D /* Assets.xcassets in Resources */,
-				6E3066CC1DC1F4E2000DBB7D /* locate@2x.png in Resources */,
 				6E1CD0C81DD19B1800E1FD9D /* NotifyList.storyboard in Resources */,
 				6E30634D1DC05171000DBB7D /* AddEvent.storyboard in Resources */,
 				6E3522781DCB0DB40000BEF0 /* XYSetLoctionView.xib in Resources */,
