@@ -77,6 +77,15 @@
 }
 -(void)closeAction{
     [self removeFromSuperview];
+    
+    //转场动画
+    CATransition* anim=[CATransition animation];
+    
+    anim.type=@"rippleEffect";
+    anim.duration=0.3;
+    //anim.subtype=kCATransitionFromLeft;
+    
+    [[UIApplication sharedApplication].keyWindow.layer addAnimation:anim forKey:nil];
 }
 -(void)setIsCommomAddress:(BOOL)isCommomAddress{
     _isCommomAddress=isCommomAddress;
