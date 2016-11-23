@@ -69,8 +69,14 @@
 {
     [super viewDidLoad];
     
-    self.navigationController.navigationBar.barStyle=UIBarStyleDefault;
+    //状态栏
+    self.navigationController.navigationBar.barStyle=UIBarStyleDefault;//颜色
+    UIVisualEffectView *effectView = [[UIVisualEffectView alloc] initWithEffect:[UIBlurEffect effectWithStyle:UIBlurEffectStyleLight]];//模糊
+    effectView.frame = CGRectMake(0, 0, Main_Screen_Width, 20);
+    effectView.alpha=0.9;
+    [self.view addSubview:effectView];
     
+    //地图类别
     self.tips = [NSMutableArray array];
     [AMapServices sharedServices].apiKey=AMapApiKey;
     
@@ -84,23 +90,53 @@
     [self.mapView setCenterCoordinate:[XYUserInfo userInfo].userLocation.coordinate animated:NO];
     [self.myView addSubview:self.mapView];
     
-    
+    //收缩
     self.search = [[AMapSearchAPI alloc] init];
     self.search.delegate = self;
-    
     self.mySearchBar.delegate=self;
     self.mySearchBar.placeholder=@"请输入内容检索";
     
+    
+    //下方输入框滑动
     UIPanGestureRecognizer *panGestureRecognizer = [[UIPanGestureRecognizer alloc] init];
     [panGestureRecognizer addTarget:self action:@selector(panGestureAction:)];
     [self.searchHoldView addGestureRecognizer:panGestureRecognizer];
-    
     self.keyboardMgr=[[XYHgithtOfKeyboard alloc]init];
     self.keyboardMgr.delegate=self;
     self.remarkHoldViewBottomD.constant=-REMARK_LOCATION_HEIGHT;
     
+    //返回确定按钮
+    UIButton* backBtn=[[UIButton alloc]init];
+    [backBtn setBackgroundImage:[UIImage imageNamed:@"map_back"] forState:UIControlStateNormal];
+    [backBtn addTarget:self action:@selector(navigationBtnAction:) forControlEvents:UIControlEventTouchUpInside];
+    backBtn.tag=kTag+1;
+    [self.myView addSubview:backBtn];
+    [backBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.leading.equalTo(self.myView).with.offset(16);
+        make.top.equalTo(self.myView).with.offset(25);
+        
+    }];
+    
+    UIButton* sureBtn=[[UIButton alloc]init];
+    [sureBtn setBackgroundImage:[UIImage imageNamed:@"map_sure"] forState:UIControlStateNormal];
+    [sureBtn addTarget:self action:@selector(navigationBtnAction:) forControlEvents:UIControlEventTouchUpInside];
+    sureBtn.tag=kTag+2;
+    [self.myView addSubview:sureBtn];
+    [sureBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.trailing.equalTo(self.myView).with.offset(-16);
+        make.centerY.equalTo(backBtn);
+    }];
+    
+    
 }
-
+-(void)navigationBtnAction:(UIButton*)sender{
+    if (sender.tag==kTag+1) {
+        
+    }else{
+    
+    }
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
 #pragma mark - searchBarDelegate
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText{
     [self searchTipsWithKey:searchText];
