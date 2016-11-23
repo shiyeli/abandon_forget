@@ -384,6 +384,7 @@
 				6E3063AF1DC07F58000DBB7D /* XYAddEventViewController.m */,
 				6E1CD0CC1DD1C52100E1FD9D /* 设置时间 */,
 				6E1CD0CD1DD1C53400E1FD9D /* 设置地点 */,
+				6E1CD0CB1DD1A18200E1FD9D /* 搜索其他地址 */,
 			);
 			name = "设置时间地点";
 			sourceTree = "<group>";
@@ -596,7 +597,6 @@
 		6E3063991DC05F0D000DBB7D /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				6E1CD0CB1DD1A18200E1FD9D /* 搜索其他地址 */,
 				6E35226E1DCB04740000BEF0 /* 主界面(提醒列表) */,
 				6E35226D1DCB03B40000BEF0 /* 新建提醒 */,
 				6E3D4F521DC722A30079D8FD /* 侧滑底视图 */,

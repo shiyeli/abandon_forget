@@ -69,6 +69,8 @@
 {
     [super viewDidLoad];
     
+    self.navigationController.navigationBar.barStyle=UIBarStyleDefault;
+    
     self.tips = [NSMutableArray array];
     [AMapServices sharedServices].apiKey=AMapApiKey;
     
@@ -76,6 +78,8 @@
     self.mapView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     self.mapView.delegate = self;
     self.mapView.showsUserLocation=YES;
+    self.mapView.showsCompass=NO;
+    self.mapView.showsScale=NO;
     self.mapView.userTrackingMode=MAUserTrackingModeFollowWithHeading;
     [self.mapView setCenterCoordinate:[XYUserInfo userInfo].userLocation.coordinate animated:NO];
     [self.myView addSubview:self.mapView];

@@ -28,6 +28,9 @@
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]}];
     self.navigationController.navigationBar.tintColor=[UIColor whiteColor];
     
+    //状态栏
+    self.navigationController.navigationBar.barStyle=UIBarStyleBlack;
+    
     //去除返回按钮文字
 
     UIBarButtonItem *backBtn = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
@@ -53,9 +56,6 @@
     // Dispose of any resources that can be recreated.
 }
 
--(UIStatusBarStyle)preferredStatusBarStyle{
-    return UIStatusBarStyleLightContent;
-}
 /*
 #pragma mark - Navigation
 
