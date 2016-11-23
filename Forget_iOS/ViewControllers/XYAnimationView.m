@@ -141,8 +141,10 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    //XYCollectionViewCell *cell = (XYCollectionViewCell *)[self.myCollectionView cellForItemAtIndexPath:indexPath];
-    
+    XYAnimationViewModel* model = [self.dataArray objectAtIndex:indexPath.row];
+    if (self.sendBlock) {
+        self.sendBlock(model);
+    }
     
     [self closeAction];
 }

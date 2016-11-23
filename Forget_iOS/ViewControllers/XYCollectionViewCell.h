@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "XYAnimationViewModel.h"
+@class XYAnimationViewModel;
 @interface XYCollectionViewCell : UICollectionViewCell
 
 

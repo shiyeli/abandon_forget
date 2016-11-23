@@ -7,7 +7,7 @@
 //
 
 #import "XYCollectionViewCell.h"
-
+#import "XYAnimationViewModel.h"
 @interface XYCollectionViewCell()
 
 @property(nonatomic,strong)UIImageView * imgView;

@@ -14,4 +14,5 @@
 @property(nonatomic,copy)NSString* name;
 @property(nonatomic,assign)NSInteger row;
 @property(nonatomic,assign) BOOL isNameLeft;
+
 @end

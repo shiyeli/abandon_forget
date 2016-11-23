@@ -8,6 +8,7 @@
 
 #import "XYSetLoctionView.h"
 #import "XYAnimationView.h"
+#import "XYLocationButton.h"
 
 @interface XYSetLoctionView ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -16,9 +17,10 @@
 
 @property (weak, nonatomic) IBOutlet UIStackView *holdStackView;
 
+@property (weak, nonatomic) IBOutlet XYLocationButton *commonBtn;
+@property (weak, nonatomic) IBOutlet XYLocationButton *personBtn;
 
 @property (weak, nonatomic) IBOutlet UITableView *myTableView;
-
 
 @property (weak, nonatomic) IBOutlet UIButton *arriveAddressBtn;
 @property (weak, nonatomic) IBOutlet UIButton *leaveAddressBtn;
@@ -33,6 +35,18 @@
     if (!_animationView) {
         _animationView=[[XYAnimationView alloc]initWithFrame:CGRectMake(0, 0, Main_Screen_Width, Main_Screen_Height)];
         _animationView.backgroundColor=THIEM_COLOR_LIGHTER;
+        
+        WS(weakSelf);
+        _animationView.sendBlock=^(XYAnimationViewModel* model){
+            
+            if (model.isNameLeft) {
+                weakSelf.commonBtn.selectModel=model;
+            }else{
+                weakSelf.personBtn.selectModel=model;
+            }
+        
+        };
+        
     }
     return _animationView;
 }
@@ -121,6 +135,16 @@
     self.myTableView.dataSource=self;
     self.myTableView.backgroundColor=[UIColor clearColor];
     self.myTableView.scrollEnabled=NO;
+    
+    XYAnimationViewModel* commonBtnModel=[[XYAnimationViewModel alloc]init];
+    commonBtnModel.name=@"常见地点";
+    commonBtnModel.img=@"common_location";
+    self.commonBtn.unselectModel=commonBtnModel;
+    
+    XYAnimationViewModel* personBtnModel=[[XYAnimationViewModel alloc]init];
+    personBtnModel.name=@"个人地点";
+    personBtnModel.img=@"personal_location";
+    self.commonBtn.unselectModel=personBtnModel;
     
     [self.arriveAddressBtn setTitleColor:BLACK_FONT_COLOR forState:UIControlStateNormal];
     [self.arriveAddressBtn setTitleColor:THIEM_COLOR forState:UIControlStateSelected];

@@ -53,47 +53,44 @@
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2he-x5-BKp">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="120"/>
                                             <subviews>
-                                                <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kBb-8h-4pg">
+                                                <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kBb-8h-4pg" customClass="XYLocationButton">
                                                     <rect key="frame" x="25" y="10" width="87" height="87"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="87" id="286-wG-Ggw"/>
+                                                        <constraint firstAttribute="width" constant="87" id="8um-YQ-StX"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <inset key="titleEdgeInsets" minX="0.0" minY="85" maxX="0.0" maxY="0.0"/>
                                                     <inset key="imageEdgeInsets" minX="50" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                                    <state key="normal" backgroundImage="common_location"/>
+                                                    <state key="normal" title="常见地点" backgroundImage="common_location">
+                                                        <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
                                                     <connections>
                                                         <action selector="clickEvent:" destination="iN0-l3-epB" eventType="touchUpInside" id="2ys-NO-GuG"/>
                                                     </connections>
                                                 </button>
-                                                <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IFr-tn-zmU">
+                                                <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IFr-tn-zmU" customClass="XYLocationButton">
                                                     <rect key="frame" x="263" y="10" width="87" height="87"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="87" id="Ooo-Le-2wj"/>
+                                                        <constraint firstAttribute="width" constant="87" id="pAq-tL-XGs"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                    <state key="normal" backgroundImage="personal_location"/>
+                                                    <inset key="titleEdgeInsets" minX="0.0" minY="85" maxX="0.0" maxY="0.0"/>
+                                                    <state key="normal" title="个人地点" backgroundImage="personal_location">
+                                                        <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    </state>
                                                     <connections>
                                                         <action selector="clickEvent:" destination="iN0-l3-epB" eventType="touchUpInside" id="eyP-fh-TXA"/>
                                                     </connections>
                                                 </button>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="常见地点" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GeJ-nO-9cw">
-                                                    <rect key="frame" x="42" y="87" width="53.5" height="16"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="个人地点" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Yb-mk-oPW">
-                                                    <rect key="frame" x="280" y="87" width="53.5" height="16"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <constraints>
-                                                <constraint firstItem="8Yb-mk-oPW" firstAttribute="top" secondItem="IFr-tn-zmU" secondAttribute="bottom" constant="-10" id="KGw-VW-cTl"/>
                                                 <constraint firstAttribute="height" constant="120" id="Qns-Z5-05T"/>
                                                 <constraint firstItem="kBb-8h-4pg" firstAttribute="top" secondItem="2he-x5-BKp" secondAttribute="top" constant="10" id="Y0V-LG-3m7"/>
                                                 <constraint firstAttribute="trailing" secondItem="IFr-tn-zmU" secondAttribute="trailing" constant="25" id="Y8G-va-FE9"/>
-                                                <constraint firstItem="8Yb-mk-oPW" firstAttribute="centerX" secondItem="IFr-tn-zmU" secondAttribute="centerX" id="Zaa-Ea-LVt"/>
                                                 <constraint firstItem="IFr-tn-zmU" firstAttribute="top" secondItem="2he-x5-BKp" secondAttribute="top" constant="10" id="hm6-0M-OfO"/>
-                                                <constraint firstItem="GeJ-nO-9cw" firstAttribute="centerX" secondItem="kBb-8h-4pg" secondAttribute="centerX" id="hxg-Ua-DSu"/>
-                                                <constraint firstItem="GeJ-nO-9cw" firstAttribute="top" secondItem="kBb-8h-4pg" secondAttribute="bottom" constant="-10" id="ia8-Xo-ZRh"/>
                                                 <constraint firstItem="kBb-8h-4pg" firstAttribute="leading" secondItem="2he-x5-BKp" secondAttribute="leading" constant="25" id="yP0-D7-p7v"/>
                                             </constraints>
                                         </view>
@@ -202,10 +199,12 @@
             </constraints>
             <connections>
                 <outlet property="arriveAddressBtn" destination="fcb-22-Jhx" id="qpq-xz-kBI"/>
+                <outlet property="commonBtn" destination="kBb-8h-4pg" id="Kr8-7S-2Zg"/>
                 <outlet property="holdStackView" destination="3RR-Mi-Vbx" id="0sM-Jg-ol9"/>
                 <outlet property="leaveAddressBtn" destination="kpw-RG-mqf" id="zK2-TO-yeI"/>
                 <outlet property="mySwith" destination="7DX-Zx-JIC" id="pY1-Dn-I9f"/>
                 <outlet property="myTableView" destination="BBH-Gl-oI9" id="nXJ-B3-Koa"/>
+                <outlet property="personBtn" destination="IFr-tn-zmU" id="md8-Lo-MOj"/>
             </connections>
             <point key="canvasLocation" x="5" y="73"/>
         </view>
