@@ -152,7 +152,6 @@
     
     XYTimeCellModel* model=[sectionModel.arrM objectAtIndex:indexPath.row];
     
-    NSLog(@"+++++%f",model.cellH);
     
     return model.cellH;
 }

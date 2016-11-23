@@ -55,7 +55,7 @@
                     @{@"img":@"parents_home",@"name":@"父母家"},
                     @{@"img":@"parents_home",@"name":@"第六个"}];
         
-       XYCircleViewLayout* layout=[[XYCircleViewLayout alloc]initWithRadius:Main_Screen_Width*0.5 aliginType:WHEEL_ALIGNMEN_LEFT cellSize:CGSizeMake(70, 70) spacing:30];
+       XYCircleViewLayout* layout=[[XYCircleViewLayout alloc]initWithRadius:Main_Screen_Width*0.4 aliginType:WHEEL_ALIGNMEN_LEFT cellSize:CGSizeMake(70, 70) spacing:Main_Screen_Width*0.1];
         
         self.myCollectionView=[[UICollectionView alloc]initWithFrame:CGRectMake(0, 0, Main_Screen_Width, Main_Screen_Height) collectionViewLayout:layout];
         self.myCollectionView.backgroundColor=[UIColor clearColor];
@@ -64,7 +64,6 @@
         [self.myCollectionView registerClass:[XYCollectionViewCell class] forCellWithReuseIdentifier:cellId];
         self.myCollectionView.delegate=self;
         self.myCollectionView.dataSource=self;
-        self.myCollectionView.bounces=NO;
         
         
         closeBtn=[[UIButton alloc]init];
@@ -95,11 +94,11 @@
     
     XYCircleViewLayout* layout;
     if (_isCommomAddress) {
-        layout=[[XYCircleViewLayout alloc]initWithRadius:Main_Screen_Width*0.4 aliginType:WHEEL_ALIGNMEN_LEFT cellSize:CGSizeMake(70,70) spacing:30];
+        layout=[[XYCircleViewLayout alloc]initWithRadius:Main_Screen_Width*0.4 aliginType:WHEEL_ALIGNMEN_LEFT cellSize:CGSizeMake(70,70) spacing:Main_Screen_Width*0.1];
         [closeBtn setImage:[UIImage imageNamed:@"close_common"] forState:UIControlStateNormal];
         
     }else{
-        layout=[[XYCircleViewLayout alloc]initWithRadius:Main_Screen_Width*0.4 aliginType:WHEEL_ALIGNMEN_RIGHT cellSize:CGSizeMake(70, 70) spacing:30];
+        layout=[[XYCircleViewLayout alloc]initWithRadius:Main_Screen_Width*0.4 aliginType:WHEEL_ALIGNMEN_RIGHT cellSize:CGSizeMake(70, 70) spacing:Main_Screen_Width*0.1];
         [closeBtn setImage:[UIImage imageNamed:@"close_personal"] forState:UIControlStateNormal];
         
     }
