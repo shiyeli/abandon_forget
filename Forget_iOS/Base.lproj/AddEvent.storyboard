@@ -44,24 +44,11 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xGb-kC-rLh">
                                 <rect key="frame" x="0.0" y="467" width="375" height="200"/>
                                 <subviews>
-                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="QNB-3h-Cop">
-                                        <rect key="frame" x="0.0" y="120" width="375" height="80"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <view key="tableFooterView" contentMode="scaleToFill" id="hES-hG-Jl5">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        </view>
-                                        <connections>
-                                            <outlet property="dataSource" destination="iyK-Gw-0EN" id="gv3-Jp-H0G"/>
-                                            <outlet property="delegate" destination="iyK-Gw-0EN" id="aUp-un-9Ql"/>
-                                        </connections>
-                                    </tableView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zhe-9N-3z1">
                                         <rect key="frame" x="0.0" y="50" width="375" height="70"/>
                                         <subviews>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请搜索地点..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Q4M-bE-Y6x">
-                                                <rect key="frame" x="16" y="31" width="343" height="30"/>
+                                                <rect key="frame" x="16" y="31" width="315" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="kvw-iO-C3U"/>
                                                 </constraints>
@@ -76,18 +63,44 @@
                                                     <constraint firstAttribute="height" constant="2" id="hv2-nd-YSb"/>
                                                 </constraints>
                                             </view>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fQ6-bW-k6n">
+                                                <rect key="frame" x="341" y="37" width="18" height="18"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="18" id="FRD-LX-aRL"/>
+                                                    <constraint firstAttribute="width" constant="18" id="sS9-To-BL0"/>
+                                                </constraints>
+                                                <state key="normal" backgroundImage="search_clear"/>
+                                                <connections>
+                                                    <action selector="clearTextField:" destination="iyK-Gw-0EN" eventType="touchUpInside" id="kYr-R2-PEK"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstItem="UfS-kh-p00" firstAttribute="trailing" secondItem="Q4M-bE-Y6x" secondAttribute="trailing" id="0Da-vJ-KRz"/>
+                                            <constraint firstItem="fQ6-bW-k6n" firstAttribute="centerY" secondItem="Q4M-bE-Y6x" secondAttribute="centerY" id="7fm-Uo-AfO"/>
+                                            <constraint firstItem="fQ6-bW-k6n" firstAttribute="leading" secondItem="Q4M-bE-Y6x" secondAttribute="trailing" constant="10" id="8Vq-YN-a2D"/>
                                             <constraint firstAttribute="height" constant="70" id="A7l-ZI-Bs8"/>
-                                            <constraint firstAttribute="trailing" secondItem="Q4M-bE-Y6x" secondAttribute="trailing" constant="16" id="Nce-Sd-upu"/>
                                             <constraint firstItem="UfS-kh-p00" firstAttribute="leading" secondItem="Q4M-bE-Y6x" secondAttribute="leading" id="Tw0-g5-Uy6"/>
+                                            <constraint firstItem="UfS-kh-p00" firstAttribute="trailing" secondItem="fQ6-bW-k6n" secondAttribute="trailing" id="Vgt-3P-PMT"/>
+                                            <constraint firstAttribute="trailing" secondItem="fQ6-bW-k6n" secondAttribute="trailing" constant="16" id="Za0-Mk-hWC"/>
                                             <constraint firstItem="UfS-kh-p00" firstAttribute="top" secondItem="Q4M-bE-Y6x" secondAttribute="bottom" id="a6O-ck-yTI"/>
                                             <constraint firstItem="Q4M-bE-Y6x" firstAttribute="top" secondItem="zhe-9N-3z1" secondAttribute="top" constant="31" id="nhe-ZL-7BX"/>
                                             <constraint firstItem="Q4M-bE-Y6x" firstAttribute="leading" secondItem="zhe-9N-3z1" secondAttribute="leading" constant="16" id="q1g-A6-wlE"/>
                                         </constraints>
                                     </view>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="QNB-3h-Cop">
+                                        <rect key="frame" x="0.0" y="113" width="375" height="87"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <view key="tableFooterView" contentMode="scaleToFill" id="hES-hG-Jl5">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <connections>
+                                            <outlet property="dataSource" destination="iyK-Gw-0EN" id="gv3-Jp-H0G"/>
+                                            <outlet property="delegate" destination="iyK-Gw-0EN" id="aUp-un-9Ql"/>
+                                        </connections>
+                                    </tableView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="search_slider" translatesAutoresizingMaskIntoConstraints="NO" id="iaJ-JB-iJj">
                                         <rect key="frame" x="269" y="0.0" width="87" height="87"/>
                                         <constraints>
@@ -101,12 +114,12 @@
                                     <constraint firstItem="iaJ-JB-iJj" firstAttribute="top" secondItem="xGb-kC-rLh" secondAttribute="top" id="1EY-bd-KcF"/>
                                     <constraint firstAttribute="height" constant="200" id="1qn-PI-I7U"/>
                                     <constraint firstItem="QNB-3h-Cop" firstAttribute="leading" secondItem="xGb-kC-rLh" secondAttribute="leading" id="89k-aQ-OFg"/>
-                                    <constraint firstItem="QNB-3h-Cop" firstAttribute="top" secondItem="zhe-9N-3z1" secondAttribute="bottom" id="VTx-FC-Sr8"/>
                                     <constraint firstItem="zhe-9N-3z1" firstAttribute="leading" secondItem="xGb-kC-rLh" secondAttribute="leading" id="Wzs-GV-z3l"/>
                                     <constraint firstAttribute="trailing" secondItem="QNB-3h-Cop" secondAttribute="trailing" id="eRy-Vb-k23"/>
                                     <constraint firstAttribute="trailing" secondItem="zhe-9N-3z1" secondAttribute="trailing" id="gUW-yK-BXM"/>
                                     <constraint firstAttribute="trailing" secondItem="iaJ-JB-iJj" secondAttribute="trailing" constant="19" id="i7d-a7-ADl"/>
                                     <constraint firstItem="zhe-9N-3z1" firstAttribute="top" secondItem="xGb-kC-rLh" secondAttribute="top" constant="50" id="rJo-pW-zQA"/>
+                                    <constraint firstItem="QNB-3h-Cop" firstAttribute="top" secondItem="UfS-kh-p00" secondAttribute="bottom" id="vj7-4x-wJ1"/>
                                     <constraint firstAttribute="bottom" secondItem="QNB-3h-Cop" secondAttribute="bottom" id="wM3-Xb-56M"/>
                                 </constraints>
                             </view>
@@ -132,10 +145,12 @@
                     <connections>
                         <outlet property="myTableView" destination="QNB-3h-Cop" id="8m0-qg-zB0"/>
                         <outlet property="myView" destination="20C-3U-TZF" id="en8-TG-sal"/>
+                        <outlet property="searchClearBtn" destination="fQ6-bW-k6n" id="vSo-HI-Oy0"/>
                         <outlet property="searchHoldView" destination="xGb-kC-rLh" id="N2n-fH-Aup"/>
                         <outlet property="searchHoldViewH" destination="1qn-PI-I7U" id="ow2-b0-Qs7"/>
                         <outlet property="searchTextField" destination="Q4M-bE-Y6x" id="9aY-EN-Ioe"/>
                         <outlet property="sliderImgView" destination="iaJ-JB-iJj" id="zZT-RZ-w6a"/>
+                        <outlet property="textFieldHoldView" destination="zhe-9N-3z1" id="bJ6-jL-NEU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vol-SL-ZVG" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -432,6 +447,7 @@
         <image name="cancel_item" width="26" height="26"/>
         <image name="determine_item" width="27" height="26"/>
         <image name="next_item" width="27" height="26"/>
+        <image name="search_clear" width="15" height="15"/>
         <image name="search_slider" width="86" height="86"/>
         <image name="set_location_unselect" width="21" height="28"/>
         <image name="set_time_select" width="25" height="25"/>

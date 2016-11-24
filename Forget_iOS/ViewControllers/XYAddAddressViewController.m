@@ -12,11 +12,12 @@
 #import <AMapSearchKit/AMapSearchKit.h>
 #import "AMapTipAnnotation.h"
 #import "XYHgithtOfKeyboard.h"
-#define POSITION_HEIGH Main_Screen_Height-100.0
-#define POSITION_LOW 58.0
-#define REMARK_LOCATION_HEIGHT 100
+#define SEARCH_POSITION_HEIGH (Main_Screen_Height-100.0)
+#define SEARCH_POSITION_MIDDLE (Main_Screen_Height * 0.4)
+#define SEARCH_POSITION_LOW 80
 
-@interface XYAddAddressViewController ()<MAMapViewDelegate, AMapSearchDelegate, UITableViewDataSource, UITableViewDelegate,XYHgithtOfKeyboardDelegate>
+
+@interface XYAddAddressViewController ()<MAMapViewDelegate, AMapSearchDelegate, UITableViewDataSource, UITableViewDelegate,XYHgithtOfKeyboardDelegate,UITextFieldDelegate>
 
 @property (nonatomic, strong) MAMapView *mapView;
 @property (nonatomic, strong) AMapSearchAPI *search;
@@ -24,9 +25,17 @@
 
 @property (weak, nonatomic) IBOutlet UIView *myView;
 
+
 @property (weak, nonatomic) IBOutlet UIImageView *sliderImgView;
 
+
+
+
+@property (weak, nonatomic) IBOutlet UIView *textFieldHoldView;
 @property (weak, nonatomic) IBOutlet UITextField *searchTextField;
+@property (weak, nonatomic) IBOutlet UIButton *searchClearBtn;
+
+
 
 @property (weak, nonatomic) IBOutlet UITableView *myTableView;
 
@@ -44,6 +53,10 @@
 
 @implementation XYAddAddressViewController
 
+- (IBAction)clearTextField:(UIButton *)sender {
+    self.searchTextField.text=nil;
+    [sender setHidden:YES];
+}
 
 - (IBAction)accomplish:(id)sender {
     
@@ -79,11 +92,19 @@
     //搜索地址
     self.search = [[AMapSearchAPI alloc] init];
     self.search.delegate = self;
-//    self.searchTextField.delegate=self;
+    self.searchTextField.delegate=self;
     self.searchTextField.placeholder=@"搜索地点...";
+    self.searchTextField.tintColor=THIEM_COLOR;
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(searchContentChange:) name:UITextFieldTextDidChangeNotification object:nil];
+    [self.searchClearBtn setHidden:YES];
     
-    
+    //输入框上方阴影
+    self.textFieldHoldView.layer.cornerRadius=5;
+    self.textFieldHoldView.layer.shadowColor=[UIColor blackColor].CGColor;
+    self.textFieldHoldView.layer.shadowRadius=5;
+    self.textFieldHoldView.layer.shadowOffset=CGSizeMake(0, 0);
+    self.textFieldHoldView.layer.shadowOpacity=0.5;
+    self.textFieldHoldView.backgroundColor=[UIColor whiteColor];
     
     //下方输入框滑动
     UIPanGestureRecognizer *panGestureRecognizer = [[UIPanGestureRecognizer alloc] init];
@@ -119,7 +140,7 @@
     
 }
 
-
+//确定 or 取消
 -(void)navigationBtnAction:(UIButton*)sender{
     if (sender.tag==kTag+1) {
         
@@ -130,17 +151,17 @@
 }
 #pragma mark - searchBarDelegate
 -(void)searchContentChange:(NSNotification*)notify{
-   [self searchTipsWithKey:[notify.userInfo objectForKey:@"text"]];
+    NSString* contentStr=[notify.object valueForKey:@"text"];
+    [self searchTipsWithKey:contentStr];
+    [self.searchClearBtn setHidden:contentStr.length==0];
 }
-
-- (BOOL)searchBarShouldBeginEditing:(UISearchBar *)searchBar{
-    self.searchHoldViewH.constant=POSITION_HEIGH;
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField{
+    self.searchHoldViewH.constant=SEARCH_POSITION_HEIGH;
     [UIView animateWithDuration:0.2 animations:^{
         [self.view layoutIfNeeded];
     }];
     return YES;
 }
-
 
 /** 发起搜索*/
 - (void)searchTipsWithKey:(NSString *)key
@@ -330,7 +351,7 @@
 
 -(void)showRemarkView:(AMapTip*)tip{
     
-    self.searchHoldViewH.constant=POSITION_LOW;
+    self.searchHoldViewH.constant=SEARCH_POSITION_LOW;
     [UIView animateWithDuration:0.3 animations:^{
         [self.view layoutIfNeeded];
     }];
@@ -344,13 +365,13 @@
         //参照坐标系是该对象的上层View的坐标。
         CGPoint offset = [sender translationInView:self.view];
     
-        self.searchHoldViewH.constant=(self.searchHoldViewH.constant-offset.y)<=POSITION_LOW? POSITION_LOW: (self.searchHoldViewH.constant-offset.y);
-        self.searchHoldViewH.constant=(self.searchHoldViewH.constant-offset.y)>=POSITION_HEIGH? POSITION_HEIGH: (self.searchHoldViewH.constant-offset.y);
+        self.searchHoldViewH.constant=(self.searchHoldViewH.constant-offset.y)<=SEARCH_POSITION_LOW? SEARCH_POSITION_LOW: (self.searchHoldViewH.constant-offset.y);
+        self.searchHoldViewH.constant=(self.searchHoldViewH.constant-offset.y)>=SEARCH_POSITION_HEIGH? SEARCH_POSITION_HEIGH: (self.searchHoldViewH.constant-offset.y);
         [self.view layoutIfNeeded];
         if (offset.y<0) {//向上拖动
-            self.searchHoldViewH.constant=POSITION_HEIGH;
+            self.searchHoldViewH.constant=SEARCH_POSITION_HEIGH;
         }else if(offset.y>0){
-            self.searchHoldViewH.constant=POSITION_LOW;
+            self.searchHoldViewH.constant=SEARCH_POSITION_LOW;
         }
         [UIView animateWithDuration:0.3 animations:^{
             [self.view layoutIfNeeded];
