@@ -12,12 +12,16 @@
 #import <AMapSearchKit/AMapSearchKit.h>
 #import "AMapTipAnnotation.h"
 #import "XYHgithtOfKeyboard.h"
-#define SEARCH_POSITION_HEIGH (Main_Screen_Height-100.0)
+#define SEARCH_POSITION_HEIGH (Main_Screen_Height-20.0)
 #define SEARCH_POSITION_MIDDLE (Main_Screen_Height * 0.4)
-#define SEARCH_POSITION_LOW 80
+#define SEARCH_POSITION_LOW 120.0
 
 
 @interface XYAddAddressViewController ()<MAMapViewDelegate, AMapSearchDelegate, UITableViewDataSource, UITableViewDelegate,XYHgithtOfKeyboardDelegate,UITextFieldDelegate>
+
+{
+    BOOL isSliderUp;
+}
 
 @property (nonatomic, strong) MAMapView *mapView;
 @property (nonatomic, strong) AMapSearchAPI *search;
@@ -114,6 +118,7 @@
     self.keyboardMgr=[[XYHgithtOfKeyboard alloc]init];
     self.keyboardMgr.delegate=self;
     
+    self.searchHoldViewH.constant=SEARCH_POSITION_LOW;
     
     //返回确定按钮
     UIButton* backBtn=[[UIButton alloc]init];
@@ -361,19 +366,31 @@
 #pragma mark - 实现托移手势的方法
 - (void)panGestureAction:(UIPanGestureRecognizer *) sender {
     
-    if (sender.state == UIGestureRecognizerStateChanged) {
+    if (sender.state == UIGestureRecognizerStateBegan) {
         //参照坐标系是该对象的上层View的坐标。
         CGPoint offset = [sender translationInView:self.view];
     
-        self.searchHoldViewH.constant=(self.searchHoldViewH.constant-offset.y)<=SEARCH_POSITION_LOW? SEARCH_POSITION_LOW: (self.searchHoldViewH.constant-offset.y);
-        self.searchHoldViewH.constant=(self.searchHoldViewH.constant-offset.y)>=SEARCH_POSITION_HEIGH? SEARCH_POSITION_HEIGH: (self.searchHoldViewH.constant-offset.y);
-        [self.view layoutIfNeeded];
+        self.searchHoldViewH.constant=self.searchHoldViewH.constant-offset.y;
+        CGFloat durationTime=0;
         if (offset.y<0) {//向上拖动
-            self.searchHoldViewH.constant=SEARCH_POSITION_HEIGH;
+            if (self.searchHoldViewH.constant>SEARCH_POSITION_LOW&&self.searchHoldViewH.constant<SEARCH_POSITION_MIDDLE) {
+                self.searchHoldViewH.constant=SEARCH_POSITION_MIDDLE;
+                durationTime=0.2;
+            }else if (self.searchHoldViewH.constant>SEARCH_POSITION_MIDDLE+1){
+                self.searchHoldViewH.constant=SEARCH_POSITION_HEIGH;
+                durationTime=0.3;
+            }
         }else if(offset.y>0){
-            self.searchHoldViewH.constant=SEARCH_POSITION_LOW;
+            isSliderUp=NO;
+            if (self.searchHoldViewH.constant>SEARCH_POSITION_MIDDLE&&self.searchHoldViewH.constant<SEARCH_POSITION_HEIGH) {
+                self.searchHoldViewH.constant=SEARCH_POSITION_MIDDLE;
+                durationTime=0.3;
+            }else if (self.searchHoldViewH.constant<SEARCH_POSITION_MIDDLE){
+                self.searchHoldViewH.constant=SEARCH_POSITION_LOW;
+                durationTime=0.2;
+            }
         }
-        [UIView animateWithDuration:0.3 animations:^{
+        [UIView animateWithDuration:durationTime animations:^{
             [self.view layoutIfNeeded];
         }];
         
@@ -381,6 +398,7 @@
         [sender setTranslation:CGPointMake(0, 0) inView:self.view];
     }
 }
+
 
 #pragma mark - heithtOfKeyboard
 -(void)heithtOfKeyboard:(CGFloat)height isShow:(BOOL)isShow{
