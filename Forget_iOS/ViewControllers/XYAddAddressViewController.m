@@ -15,12 +15,13 @@
 #define SEARCH_POSITION_HEIGH (Main_Screen_Height-20.0)
 #define SEARCH_POSITION_MIDDLE (Main_Screen_Height * 0.4)
 #define SEARCH_POSITION_LOW 120.0
-
+#define DURATION_TIME_LONG 0.3
+#define DURATION_TIME_SHOT 0.2
 
 @interface XYAddAddressViewController ()<MAMapViewDelegate, AMapSearchDelegate, UITableViewDataSource, UITableViewDelegate,XYHgithtOfKeyboardDelegate,UITextFieldDelegate>
 
 {
-    BOOL isSliderUp;
+    UIView * coverView;
 }
 
 @property (nonatomic, strong) MAMapView *mapView;
@@ -162,9 +163,10 @@
 }
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField{
     self.searchHoldViewH.constant=SEARCH_POSITION_HEIGH;
-    [UIView animateWithDuration:0.2 animations:^{
+    [UIView animateWithDuration:0.3 animations:^{
         [self.view layoutIfNeeded];
     }];
+    [self addGrayViewOnTop];
     return YES;
 }
 
@@ -375,19 +377,18 @@
         if (offset.y<0) {//向上拖动
             if (self.searchHoldViewH.constant>SEARCH_POSITION_LOW&&self.searchHoldViewH.constant<SEARCH_POSITION_MIDDLE) {
                 self.searchHoldViewH.constant=SEARCH_POSITION_MIDDLE;
-                durationTime=0.2;
+                durationTime=DURATION_TIME_SHOT;
             }else if (self.searchHoldViewH.constant>SEARCH_POSITION_MIDDLE+1){
                 self.searchHoldViewH.constant=SEARCH_POSITION_HEIGH;
-                durationTime=0.3;
+                durationTime=DURATION_TIME_LONG;
             }
         }else if(offset.y>0){
-            isSliderUp=NO;
             if (self.searchHoldViewH.constant>SEARCH_POSITION_MIDDLE&&self.searchHoldViewH.constant<SEARCH_POSITION_HEIGH) {
                 self.searchHoldViewH.constant=SEARCH_POSITION_MIDDLE;
-                durationTime=0.3;
+                durationTime=DURATION_TIME_LONG;
             }else if (self.searchHoldViewH.constant<SEARCH_POSITION_MIDDLE){
                 self.searchHoldViewH.constant=SEARCH_POSITION_LOW;
-                durationTime=0.2;
+                durationTime=DURATION_TIME_SHOT;
             }
         }
         [UIView animateWithDuration:durationTime animations:^{
@@ -396,9 +397,29 @@
         
         //初始化sender中的坐标位置。如果不初始化，移动坐标会一直积累起来。
         [sender setTranslation:CGPointMake(0, 0) inView:self.view];
+        [self addGrayViewOnTop];
     }
 }
 
+-(void)addGrayViewOnTop{
+    if (self.searchHoldViewH.constant==SEARCH_POSITION_HEIGH) {
+        if (!coverView) {
+            coverView=[[UIView alloc]initWithFrame:CGRectMake(0, 0, Main_Screen_Width, Main_Screen_Height)];
+            coverView.backgroundColor=[UIColor blackColor];
+            coverView.alpha=0.0;
+        }
+        [UIView animateWithDuration:DURATION_TIME_LONG animations:^{
+            coverView.alpha=0.4;
+        }];
+        [self.myView addSubview:coverView];
+        [self.myView bringSubviewToFront:self.searchHoldView];
+    }else{
+        [UIView animateWithDuration:DURATION_TIME_LONG animations:^{
+            coverView.alpha=0.0;
+        }];
+        [coverView removeFromSuperview];
+    }
+}
 
 #pragma mark - heithtOfKeyboard
 -(void)heithtOfKeyboard:(CGFloat)height isShow:(BOOL)isShow{
