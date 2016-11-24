@@ -162,11 +162,7 @@
     [self.searchClearBtn setHidden:contentStr.length==0];
 }
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField{
-    self.searchHoldViewH.constant=SEARCH_POSITION_HEIGH;
-    [UIView animateWithDuration:0.3 animations:^{
-        [self.view layoutIfNeeded];
-    }];
-    [self addGrayViewOnTop];
+    [self addGrayViewPostion:SEARCH_POSITION_HEIGH duration:DURATION_TIME_LONG];
     return YES;
 }
 
@@ -241,8 +237,8 @@
 //点击大头针详情
 - (void)mapView:(MAMapView *)mapView annotationView:(MAAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control{
     if ([view.annotation isKindOfClass:[AMapTipAnnotation class]]){
-        AMapTip* tip=[(AMapTipAnnotation *)view.annotation tip];
-        [self showRemarkView:tip];
+       // AMapTip* tip=[(AMapTipAnnotation *)view.annotation tip];
+       
     }
 }
 //点击大头针
@@ -352,18 +348,12 @@
     return self.tips.count;
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    AMapTip* tip=[self.tips objectAtIndex:indexPath.row];
-    [self showRemarkView:tip];
-}
-
--(void)showRemarkView:(AMapTip*)tip{
     
-    self.searchHoldViewH.constant=SEARCH_POSITION_LOW;
-    [UIView animateWithDuration:0.3 animations:^{
-        [self.view layoutIfNeeded];
-    }];
+    //AMapTip* tip=[self.tips objectAtIndex:indexPath.row];
 
+    [self addGrayViewPostion:SEARCH_POSITION_LOW duration:DURATION_TIME_LONG];
 }
+
 
 #pragma mark - 实现托移手势的方法
 - (void)panGestureAction:(UIPanGestureRecognizer *) sender {
@@ -397,11 +387,18 @@
         
         //初始化sender中的坐标位置。如果不初始化，移动坐标会一直积累起来。
         [sender setTranslation:CGPointMake(0, 0) inView:self.view];
-        [self addGrayViewOnTop];
+        [self addGrayViewPostion:self.searchHoldViewH.constant duration:DURATION_TIME_LONG];
     }
 }
 
--(void)addGrayViewOnTop{
+-(void)addGrayViewPostion:(CGFloat)postion duration:(CGFloat)duration{
+    
+    
+    self.searchHoldViewH.constant=postion;
+    [UIView animateWithDuration:DURATION_TIME_LONG animations:^{
+        [self.view layoutIfNeeded];
+    }];
+    
     if (self.searchHoldViewH.constant==SEARCH_POSITION_HEIGH) {
         if (!coverView) {
             coverView=[[UIView alloc]initWithFrame:CGRectMake(0, 0, Main_Screen_Width, Main_Screen_Height)];
