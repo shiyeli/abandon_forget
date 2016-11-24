@@ -71,6 +71,7 @@
 		6E5F25391DE5915C0003BA0D /* locate.png in Resources */ = {isa = PBXBuildFile; fileRef = 6E5F25361DE5915C0003BA0D /* locate.png */; };
 		6E5F253A1DE5915C0003BA0D /* locate@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6E5F25371DE5915C0003BA0D /* locate@2x.png */; };
 		6E5F253B1DE5915C0003BA0D /* locate@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6E5F25381DE5915C0003BA0D /* locate@3x.png */; };
+		6E5F253E1DE6D7D20003BA0D /* XYNotifyModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E5F253D1DE6D7D20003BA0D /* XYNotifyModel.m */; };
 		6ED632841DD5707F00C8167D /* XYTimeSectionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 6ED632831DD5707F00C8167D /* XYTimeSectionModel.m */; };
 		6ED632881DD95E9F00C8167D /* FyCalendarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6ED632871DD95E9F00C8167D /* FyCalendarView.m */; };
 		6ED6328C1DDAA6CF00C8167D /* ALDClock.m in Sources */ = {isa = PBXBuildFile; fileRef = 6ED6328B1DDAA6CF00C8167D /* ALDClock.m */; };
@@ -268,6 +269,8 @@
 		6E5F25361DE5915C0003BA0D /* locate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = locate.png; sourceTree = "<group>"; };
 		6E5F25371DE5915C0003BA0D /* locate@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "locate@2x.png"; sourceTree = "<group>"; };
 		6E5F25381DE5915C0003BA0D /* locate@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "locate@3x.png"; sourceTree = "<group>"; };
+		6E5F253C1DE6D7D20003BA0D /* XYNotifyModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYNotifyModel.h; sourceTree = "<group>"; };
+		6E5F253D1DE6D7D20003BA0D /* XYNotifyModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYNotifyModel.m; sourceTree = "<group>"; };
 		6ED632821DD5707F00C8167D /* XYTimeSectionModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYTimeSectionModel.h; sourceTree = "<group>"; };
 		6ED632831DD5707F00C8167D /* XYTimeSectionModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYTimeSectionModel.m; sourceTree = "<group>"; };
 		6ED632861DD95E9F00C8167D /* FyCalendarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FyCalendarView.h; sourceTree = "<group>"; };
@@ -694,6 +697,8 @@
 				6E1CD0C71DD19B1800E1FD9D /* NotifyList.storyboard */,
 				6E30639A1DC05F5C000DBB7D /* XYMainViewController.h */,
 				6E30639B1DC05F5C000DBB7D /* XYMainViewController.m */,
+				6E5F253C1DE6D7D20003BA0D /* XYNotifyModel.h */,
+				6E5F253D1DE6D7D20003BA0D /* XYNotifyModel.m */,
 			);
 			name = "主界面(提醒列表)";
 			sourceTree = "<group>";
@@ -1020,6 +1025,7 @@
 				6E3063A41DC060DD000DBB7D /* XYParentView.m in Sources */,
 				6E3063471DC05171000DBB7D /* AppDelegate.m in Sources */,
 				6E30639C1DC05F5C000DBB7D /* XYMainViewController.m in Sources */,
+				6E5F253E1DE6D7D20003BA0D /* XYNotifyModel.m in Sources */,
 				6E3522641DC9DFC10000BEF0 /* MASConstraintMaker.m in Sources */,
 				6E5F25351DE56BF90003BA0D /* XYAnimationViewModel.m in Sources */,
 				6E35226A1DC9DFC10000BEF0 /* View+MASAdditions.m in Sources */,
