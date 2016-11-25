@@ -13,8 +13,22 @@
     UIButton * removeBtn;
     UIButton * addBtn;
 }
+- (instancetype)initWithFrame:(CGRect)frame
+{
+    self = [super initWithFrame:frame];
+    if (self) {
+        [self setViews];
+    }
+    return self;
+}
 -(void)awakeFromNib{
     [super awakeFromNib];
+    
+    [self setViews];
+}
+-(void)setViews{
+    [self setContentMode:UIViewContentModeScaleAspectFill];
+    self.clipsToBounds=YES;
     
     removeBtn=[[UIButton alloc]init];
     [removeBtn setImage:[UIImage imageNamed:@"search_clear"] forState:UIControlStateNormal];
@@ -40,19 +54,29 @@
         make.height.equalTo(@87);
     }];
     
+    UITapGestureRecognizer* tap=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(addImg:)];
+    [self addGestureRecognizer:tap];
 }
+
 -(void)removeImg{
     [self setImage:nil];
     
 }
 -(void)addImg:(UIButton*)sender{
+    if (![sender isKindOfClass:[UIButton class]]) {
+        if (!self.image) {
+            return;
+        }
+    }
+    
     if (self.callBack) {
         self.callBack(sender);
     }
 }
+
+
 -(void)setImage:(UIImage *)image{
     [super setImage:image];
-    
     removeBtn.hidden=!(BOOL)image;
     addBtn.hidden=(BOOL)image;
 }

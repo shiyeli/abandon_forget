@@ -35,6 +35,9 @@
 
     UIBarButtonItem *backBtn = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
     self.navigationItem.backBarButtonItem = backBtn;
+    
+    //设置所有输入框光标颜色
+    [UITextField appearance].tintColor=THIEM_COLOR;
 }
 
 #pragma mark - UIGestureRecognizerDelegate

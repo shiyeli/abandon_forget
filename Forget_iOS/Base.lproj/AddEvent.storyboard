@@ -221,6 +221,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="notifyImgView" destination="lek-le-GPm" id="iAY-b8-Ve7"/>
+                        <outlet property="notifyImgViewH" destination="2Mn-wU-gGo" id="UJk-ck-4aq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Cfz-EM-3oX" userLabel="First Responder" sceneMemberID="firstResponder"/>

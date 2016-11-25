@@ -11,6 +11,7 @@
 @interface XYWillNotifyViewController ()<UINavigationControllerDelegate, UIImagePickerControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet XYNewNotifyImgView *notifyImgView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *notifyImgViewH;
 
 
 @end
@@ -25,7 +26,7 @@
         {
             UIImagePickerController *picker=[[UIImagePickerController alloc] init];
             picker.delegate = self;
-            picker.allowsEditing=YES;
+            //picker.allowsEditing=YES;
             picker.sourceType=UIImagePickerControllerSourceTypeCamera;
             picker.videoQuality = UIImagePickerControllerQualityType640x480;
             [self presentViewController:picker animated:YES completion:nil];
@@ -38,16 +39,18 @@
         {
             UIImagePickerController *picker=[[UIImagePickerController alloc] init];
             picker.delegate = self;
-            picker.allowsEditing=YES;
+            //picker.allowsEditing=YES;
             picker.sourceType=UIImagePickerControllerSourceTypePhotoLibrary;
             picker.videoQuality = UIImagePickerControllerQualityType640x480;
             [self presentViewController:picker animated:YES completion:nil];
             
         }
     }];
-    
+    UIAlertAction* action3=[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
+
     [alertCtl addAction:action1];
     [alertCtl addAction:action2];
+    [alertCtl addAction:action3];
     [self presentViewController:alertCtl animated:YES completion:nil];
 }
 
@@ -63,6 +66,7 @@
     self.notifyImgView.callBack=^(id sender){
         [weakSelf takePhoto:sender];
     };
+    self.notifyImgViewH.constant=Main_Screen_Width*2/3;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -73,10 +77,8 @@
 #pragma mark - Image Picker
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
-    UIImage *sizedImage= [self sizedImage:[info objectForKey:UIImagePickerControllerEditedImage] withMaxValue:2500];
-    
+    UIImage *sizedImage= [self sizedImage:[info objectForKey:UIImagePickerControllerOriginalImage] withMaxValue:2500];
     [picker dismissViewControllerAnimated:YES completion:^{
-        
         [self performSelectorOnMainThread:@selector(uploadUserIcon:) withObject:sizedImage waitUntilDone:NO];
     }];
 }
