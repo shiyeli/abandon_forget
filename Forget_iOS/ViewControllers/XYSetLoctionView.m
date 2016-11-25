@@ -161,8 +161,14 @@
     [self.leaveAddressBtn setTitleColor:BLACK_FONT_COLOR forState:UIControlStateNormal];
     [self.leaveAddressBtn setTitleColor:THIEM_COLOR forState:UIControlStateSelected];
     self.arriveAddressBtn.selected=YES;
+    
+    [self getHistoryAddressData];
+    
 }
-
+-(void)getHistoryAddressData{
+    
+    
+}
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     static NSString* identifer=@"identifer";
     UITableViewCell* cell= [self.myTableView dequeueReusableCellWithIdentifier:identifer];

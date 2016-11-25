@@ -41,7 +41,6 @@
 		6E3063AD1DC07650000DBB7D /* XYAddAddressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E3063AC1DC07650000DBB7D /* XYAddAddressViewController.m */; };
 		6E3063B01DC07F58000DBB7D /* XYAddEventViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E3063AF1DC07F58000DBB7D /* XYAddEventViewController.m */; };
 		6E3063B31DC0863D000DBB7D /* HWTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E3063B21DC0863D000DBB7D /* HWTextView.m */; };
-		6E3063BD1DC08FE3000DBB7D /* XYNotifyPropertyChangeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E3063BC1DC08FE3000DBB7D /* XYNotifyPropertyChangeView.m */; };
 		6E3063C01DC0A250000DBB7D /* XYUserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E3063BF1DC0A250000DBB7D /* XYUserInfo.m */; };
 		6E3063C41DC0B390000DBB7D /* AMapTipAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E3063C31DC0B390000DBB7D /* AMapTipAnnotation.m */; };
 		6E3066CE1DC1F516000DBB7D /* AMap.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 6E3066CD1DC1F516000DBB7D /* AMap.bundle */; };
@@ -217,8 +216,6 @@
 		6E3063AF1DC07F58000DBB7D /* XYAddEventViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYAddEventViewController.m; sourceTree = "<group>"; };
 		6E3063B11DC0863D000DBB7D /* HWTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HWTextView.h; sourceTree = "<group>"; };
 		6E3063B21DC0863D000DBB7D /* HWTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HWTextView.m; sourceTree = "<group>"; };
-		6E3063BB1DC08FE3000DBB7D /* XYNotifyPropertyChangeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYNotifyPropertyChangeView.h; sourceTree = "<group>"; };
-		6E3063BC1DC08FE3000DBB7D /* XYNotifyPropertyChangeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYNotifyPropertyChangeView.m; sourceTree = "<group>"; };
 		6E3063BE1DC0A250000DBB7D /* XYUserInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYUserInfo.h; sourceTree = "<group>"; };
 		6E3063BF1DC0A250000DBB7D /* XYUserInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYUserInfo.m; sourceTree = "<group>"; };
 		6E3063C21DC0B390000DBB7D /* AMapTipAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMapTipAnnotation.h; sourceTree = "<group>"; };
@@ -622,8 +619,6 @@
 		6E3063BA1DC08F91000DBB7D /* PublicViews */ = {
 			isa = PBXGroup;
 			children = (
-				6E3063BB1DC08FE3000DBB7D /* XYNotifyPropertyChangeView.h */,
-				6E3063BC1DC08FE3000DBB7D /* XYNotifyPropertyChangeView.m */,
 			);
 			path = PublicViews;
 			sourceTree = "<group>";
@@ -1071,7 +1066,6 @@
 				6E3063C01DC0A250000DBB7D /* XYUserInfo.m in Sources */,
 				6E3063B31DC0863D000DBB7D /* HWTextView.m in Sources */,
 				6E3066D11DC200AF000DBB7D /* XYHgithtOfKeyboard.m in Sources */,
-				6E3063BD1DC08FE3000DBB7D /* XYNotifyPropertyChangeView.m in Sources */,
 				6E3522661DC9DFC10000BEF0 /* MASViewAttribute.m in Sources */,
 				6E1CD0D31DD1C5D100E1FD9D /* XYTimeParentCell.m in Sources */,
 				6ED632881DD95E9F00C8167D /* FyCalendarView.m in Sources */,
