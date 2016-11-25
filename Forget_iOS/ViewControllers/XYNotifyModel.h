@@ -12,7 +12,9 @@
 
 @property(nonatomic,assign)BOOL haveSetTime;
 @property(nonatomic,assign)BOOL haveSetLocation;
+
 @property(nonatomic,copy)NSString* notifyRemark;
+@property(nonatomic,copy)NSString* notifyImgUrl;
 
 
 @end

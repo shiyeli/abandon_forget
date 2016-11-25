@@ -28,6 +28,9 @@
 
 
 - (IBAction)accomplish:(id)sender {
+    //此处判断存储数据
+    
+    
     
     [self dismissViewControllerAnimated:YES completion:nil];
 }
@@ -46,12 +49,7 @@
     //调整对应视图
     [self.myScrollView setContentOffset:CGPointMake(self.activeMarkViewCT.constant*2, 0) animated:YES];
     
-    
 }
-
-
-
-
 
 
 - (void)viewDidLoad {
@@ -75,9 +73,9 @@
     
     //视图加载
     self.locationView=[[[NSBundle mainBundle]loadNibNamed:@"XYSetLoctionView" owner:nil options:nil] lastObject];
-    __weak XYAddEventViewController* weakSelf=self;
+    WS(weakSelf)
     self.locationView.sendBlock=^(id sender){
-        [self handleEventOfLocationView:sender];
+        [weakSelf handleEventOfLocationView:sender];
     };
     
     self.timeView=[[[NSBundle mainBundle]loadNibNamed:@"XYSetTimeView" owner:nil options:nil] lastObject];
@@ -92,9 +90,6 @@
     [self.myScrollView setContentSize:CGSizeMake(Main_Screen_Width*2.0, 1)];
     self.myScrollView.scrollEnabled=NO;
     self.myScrollView.showsHorizontalScrollIndicator=NO;
-    
-    
-    
     
     
 }

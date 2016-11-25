@@ -8,15 +8,27 @@
 
 #import "XYWillNotifyViewController.h"
 #import "XYNewNotifyImgView.h"
+#import "XYAddEventViewController.h"
 @interface XYWillNotifyViewController ()<UINavigationControllerDelegate, UIImagePickerControllerDelegate>
 
+@property (weak, nonatomic) IBOutlet UITextField *notifyRemark;
 @property (weak, nonatomic) IBOutlet XYNewNotifyImgView *notifyImgView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *notifyImgViewH;
 
+@property(nonatomic,strong)XYNotifyModel* model;
 
 @end
 
 @implementation XYWillNotifyViewController
+
+- (IBAction)nextStepClick:(id)sender {
+    //此处存储传递数据
+    
+    
+    [self performSegueWithIdentifier:@"XYAddEventViewController" sender:nil];
+}
+
+
 
 - (IBAction)takePhoto:(id)sender {
     
@@ -67,6 +79,7 @@
         [weakSelf takePhoto:sender];
     };
     self.notifyImgViewH.constant=Main_Screen_Width*2/3;
+    self.model=[[XYNotifyModel alloc]init];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -128,14 +141,15 @@
     [picker dismissViewControllerAnimated:YES completion:nil];
 }
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    if ([segue.destinationViewController isKindOfClass:[XYAddEventViewController class]]) {
+        XYAddEventViewController* tempCtl=(XYAddEventViewController*)segue.destinationViewController;
+        tempCtl.model=self.model;
+    }
 }
-*/
 
 @end

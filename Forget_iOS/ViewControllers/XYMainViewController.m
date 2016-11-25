@@ -10,7 +10,7 @@
 /*************** XYNotifyListCell *****************/
 
 #import "XYParentTableViewCell.h"
-#import "XYNotifyModel.h"
+
 
 @interface XYNotifyListCell : XYParentTableViewCell
 

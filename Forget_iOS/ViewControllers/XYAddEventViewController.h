@@ -10,4 +10,6 @@
 
 @interface XYAddEventViewController : XYParentViewController
 
+@property(nonatomic,strong)XYNotifyModel* model;
+
 @end

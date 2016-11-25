@@ -18,7 +18,7 @@
 #import "Masonry.h"
 #import "XYTool.h"
 
-
+#import "XYNotifyModel.h"
 
 
 
