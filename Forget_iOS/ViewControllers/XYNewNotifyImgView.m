@@ -59,6 +59,13 @@
 }
 
 -(void)removeImg{
+    //转场动画
+    CATransition* anim=[CATransition animation];
+    
+    anim.type=@"kCATransitionFade";
+    anim.duration=0.3;
+    anim.subtype=kCATransitionFromLeft;
+    [self.layer addAnimation:anim forKey:nil];
     [self setImage:nil];
     
 }
@@ -79,6 +86,9 @@
     [super setImage:image];
     removeBtn.hidden=!(BOOL)image;
     addBtn.hidden=(BOOL)image;
+    if (image) {
+        [XYTool transitionAnimationWhater];
+    }
 }
 
 /*
