@@ -31,7 +31,7 @@
     self.clipsToBounds=YES;
     
     removeBtn=[[UIButton alloc]init];
-    [removeBtn setImage:[UIImage imageNamed:@"search_clear"] forState:UIControlStateNormal];
+    [removeBtn setImage:[UIImage imageNamed:@"delete_notify_img"] forState:UIControlStateNormal];
     [removeBtn addTarget:self action:@selector(removeImg) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:removeBtn];
     self.userInteractionEnabled=YES;
