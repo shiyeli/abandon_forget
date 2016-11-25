@@ -200,6 +200,12 @@
         [self.dataArray removeObjectAtIndex:3];
     }
     [self.myTableView reloadData];
+    //选中第一个cell
+    UITableViewCell* cell=[self.myTableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
+    cell.selected=YES;
+    self.personBtn.selectModel=nil;
+    self.commonBtn.selectModel=nil;
+
 }
 
 
