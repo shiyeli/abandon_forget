@@ -205,7 +205,6 @@
     cell.selected=YES;
     self.personBtn.selectModel=nil;
     self.commonBtn.selectModel=nil;
-
 }
 
 
