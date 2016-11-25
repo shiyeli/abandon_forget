@@ -9,7 +9,10 @@
 #import "XYAddEventViewController.h"
 #import "XYSetTimeView.h"
 #import "XYSetLoctionView.h"
-@interface XYAddEventViewController ()
+#import "XYAddAddressViewController.h"
+#import <MAMapKit/MAMapKit.h>
+
+@interface XYAddEventViewController ()<XYAddAddressViewControllerDelegate>
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *activeMarkViewCT;
 
 @property (weak, nonatomic) IBOutlet UIButton *setTimeBtn;
@@ -106,17 +109,20 @@
 }
 
 
+#pragma mark - XYAddAddressViewControllerDelegate
+-(void)getNewSearchAddress:(XYAddAddressViewController*)currentCtl content:(AMapTip*)tip{
+    [self.locationView addNewAddress:tip];
+}
 
-
-
-/*
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    if ([segue.destinationViewController isKindOfClass:[XYAddAddressViewController class]]) {
+        XYAddAddressViewController* addAddressCtl=(XYAddAddressViewController*)segue.destinationViewController;
+        addAddressCtl.delegate=self;
+    }
 }
-*/
+
 
 @end

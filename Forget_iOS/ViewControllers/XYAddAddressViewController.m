@@ -22,6 +22,7 @@
 
 {
     UIView * coverView;
+    AMapTip* selectTip;
 }
 
 @property (nonatomic, strong) MAMapView *mapView;
@@ -30,29 +31,18 @@
 
 @property (weak, nonatomic) IBOutlet UIView *myView;
 
-
 @property (weak, nonatomic) IBOutlet UIImageView *sliderImgView;
-
-
-
 
 @property (weak, nonatomic) IBOutlet UIView *textFieldHoldView;
 @property (weak, nonatomic) IBOutlet UITextField *searchTextField;
 @property (weak, nonatomic) IBOutlet UIButton *searchClearBtn;
 
-
-
 @property (weak, nonatomic) IBOutlet UITableView *myTableView;
-
-
 
 @property (weak, nonatomic) IBOutlet UIView *searchHoldView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *searchHoldViewH;
 
-
 @property(nonatomic,strong)XYHgithtOfKeyboard* keyboardMgr;
-
-
 
 @end
 
@@ -61,12 +51,6 @@
 - (IBAction)clearTextField:(UIButton *)sender {
     self.searchTextField.text=nil;
     [sender setHidden:YES];
-}
-
-- (IBAction)accomplish:(id)sender {
-    
-
-    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)viewDidLoad
@@ -90,8 +74,9 @@
     self.mapView.showsUserLocation=YES;
     self.mapView.showsCompass=NO;
     self.mapView.showsScale=NO;
+    self.mapView.zoomLevel=12;
     self.mapView.userTrackingMode=MAUserTrackingModeFollowWithHeading;
-    [self.mapView setCenterCoordinate:[XYUserInfo userInfo].userLocation.coordinate animated:NO];
+    [self.mapView setCenterCoordinate:[XYUserInfo userInfo].userLocation.coordinate animated:YES];
     [self.myView addSubview:self.mapView];
     
     //搜索地址
@@ -150,8 +135,12 @@
 -(void)navigationBtnAction:(UIButton*)sender{
     if (sender.tag==kTag+1) {
         
-    }else{
-    
+    }else{//确定
+        if (!(BOOL)selectTip) {
+            [XYTool showPromptView:@"请选择一个地点" holdView:self.view];
+            return;
+        }
+        [self.delegate getNewSearchAddress:self content:selectTip];
     }
     [self dismissViewControllerAnimated:YES completion:nil];
 }
@@ -193,11 +182,11 @@
 {
     [self.tips setArray:response.tips];
     [self.myTableView reloadData];
-    [self addTipsOnmap:self.tips];
 }
 
 
--(void)addTipsOnmap:(NSArray*)tips{
+//添加大头针到地图上面
+-(void)addTipsOnmap:(NSArray*)tips moveCenter:(BOOL)moveCenter{
     
     [self.mapView removeAnnotations:self.mapView.annotations];
     
@@ -216,19 +205,21 @@
     /* 将结果以annotation的形式加载到地图上. */
     [self.mapView addAnnotations:tipAnnotations];
     
-    /* 如果只有一个结果，设置其为中心点. */
-    if (tipAnnotations.count == 1)
-    {
-        [self.mapView setCenterCoordinate:[tipAnnotations[0] coordinate]];
+    if (moveCenter) {
+        /* 如果只有一个结果，设置其为中心点. */
+        if (tipAnnotations.count == 1)
+        {
+            [self.mapView setCenterCoordinate:[tipAnnotations[0] coordinate]];
+        }
+        /* 如果有多个结果, 设置地图使所有的annotation都可见. */
+        else
+        {
+            [self.mapView showAnnotations:tipAnnotations animated:NO];
+        }
     }
-    /* 如果有多个结果, 设置地图使所有的annotation都可见. */
-    else
-    {
-        [self.mapView showAnnotations:tipAnnotations animated:NO];
-    }
-    
     //将第一个tip 显示信息
     [self.mapView selectAnnotation:tipAnnotations[0] animated:YES];
+    
     
 }
 
@@ -277,12 +268,14 @@
         AMapTip* tip=[[AMapTip alloc]init];
         tip.name=place.name;
         tip.location=[AMapGeoPoint locationWithLatitude:coordinate.latitude longitude:coordinate.longitude];
-        AMapTipAnnotation * annotation = [[AMapTipAnnotation alloc] initWithMapTip:tip];
+//        AMapTipAnnotation * annotation = [[AMapTipAnnotation alloc] initWithMapTip:tip];
+//        
+//        [self.tips addObject:annotation];
+//        [self.mapView addAnnotation:annotation];
+//        [self.mapView selectAnnotation:annotation animated:YES];
         
-        [self.tips addObject:annotation];
-        [self.mapView addAnnotation:annotation];
-        [self.mapView selectAnnotation:annotation animated:YES];
-        
+        [self addTipsOnmap:@[tip] moveCenter:NO];
+        selectTip=tip;
     }];
     
     
@@ -349,8 +342,10 @@
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    //AMapTip* tip=[self.tips objectAtIndex:indexPath.row];
-
+    AMapTip* tip=[self.tips objectAtIndex:indexPath.row];
+    self.mapView.zoomLevel=17;
+    [self addTipsOnmap:@[tip] moveCenter:YES];
+    selectTip=tip;
     [self addGrayViewPostion:SEARCH_POSITION_LOW duration:DURATION_TIME_LONG];
 }
 

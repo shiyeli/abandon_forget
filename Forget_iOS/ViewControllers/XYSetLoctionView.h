@@ -7,9 +7,9 @@
 //
 
 #import "XYParentView.h"
-
+@class AMapTip;
 @interface XYSetLoctionView : XYParentView
 
-
+-(void)addNewAddress:(AMapTip*)tip;
 
 @end

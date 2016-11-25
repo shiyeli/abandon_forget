@@ -7,7 +7,18 @@
 //
 
 #import "XYParentViewController.h"
+@class XYAddAddressViewController;
+@class AMapTip;
+
+@protocol XYAddAddressViewControllerDelegate <NSObject>
+
+@required
+-(void)getNewSearchAddress:(XYAddAddressViewController*)currentCtl content:(AMapTip*)tip;
+
+@end
 
 @interface XYAddAddressViewController : XYParentViewController
+
+@property(nonatomic,weak)id<XYAddAddressViewControllerDelegate> delegate;
 
 @end

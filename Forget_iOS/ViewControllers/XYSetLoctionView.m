@@ -9,7 +9,7 @@
 #import "XYSetLoctionView.h"
 #import "XYAnimationView.h"
 #import "XYLocationButton.h"
-
+#import <AMapSearchKit/AMapSearchKit.h>
 @interface XYSetLoctionView ()<UITableViewDelegate,UITableViewDataSource>
 
 
@@ -27,10 +27,18 @@
 
 @property(strong,nonatomic) XYAnimationView* animationView;
 
+@property(strong,nonatomic)NSMutableArray* dataArray;
+
 @end
 
 @implementation XYSetLoctionView
 
+-(NSMutableArray*)dataArray{
+    if (!_dataArray) {
+        _dataArray=[NSMutableArray array];
+    }
+    return _dataArray;
+}
 -(XYAnimationView*)animationView{
     if (!_animationView) {
         _animationView=[[XYAnimationView alloc]initWithFrame:CGRectMake(0, 0, Main_Screen_Width, Main_Screen_Height)];
@@ -169,15 +177,15 @@
         backbg.backgroundColor=[XYTool stringToColor:@"#B2DFDB"];
         cell.selectedBackgroundView=backbg;
     }
-    cell.textLabel.text=@"宏达国际广场";
-    cell.detailTextLabel.text=@"青羊区下年大家汪家拐宏达国际广场1911室";
-    
+    AMapTip* tip=[self.dataArray objectAtIndex:indexPath.row];
+    cell.textLabel.text=tip.name;
+    cell.detailTextLabel.text=tip.address;
     
     return cell;
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 3;
+    return self.dataArray.count;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -185,6 +193,17 @@
     self.commonBtn.selectModel=nil;
 
 }
+
+-(void)addNewAddress:(AMapTip*)tip{
+    [self.dataArray insertObject:tip atIndex:0];
+    if (self.dataArray.count>3) {
+        [self.dataArray removeObjectAtIndex:3];
+    }
+    [self.myTableView reloadData];
+}
+
+
+
 /*
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.
