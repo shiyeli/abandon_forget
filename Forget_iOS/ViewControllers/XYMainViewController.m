@@ -46,12 +46,15 @@
 
 #import "XYMainViewController.h"
 #import "SWRevealViewController.h"
-
+#import "XYNotifyListHeaderView.h"
 
 @interface XYMainViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 @property(nonatomic,strong)NSMutableArray * dataArray;
 @property (weak, nonatomic) IBOutlet UITableView *myTableView;
+@property (weak, nonatomic) IBOutlet XYNotifyListHeaderView *notifyHeaderView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *notifyHeaderViewH;
+
 
 @end
 
@@ -70,7 +73,10 @@
     [self settingsOfSlide];
     
     [self getNotifyData];
+    
+    self.notifyHeaderViewH.constant=Main_Screen_Width*0.5;
 }
+
 -(void)getNotifyData{
     
     for (int i=0; i<10; i++) {
@@ -79,6 +85,9 @@
         model.haveSetLocation=YES;
         model.notifyRemark=@"提醒备注信息";
         [self.dataArray addObject:model];
+    }
+    if (self.dataArray.count>0) {
+        self.notifyHeaderView.model=[self.dataArray objectAtIndex:0];
     }
     [self.myTableView reloadData];
 }
