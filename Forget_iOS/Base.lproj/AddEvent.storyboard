@@ -190,22 +190,21 @@
                                     <constraint firstItem="R1L-Sk-tEm" firstAttribute="centerY" secondItem="HaE-yY-E32" secondAttribute="centerY" id="vVq-4W-MAY"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c5q-zr-Hvb">
-                                <rect key="frame" x="152.5" y="214" width="70" height="70"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="lek-le-GPm" customClass="XYNewNotifyImgView">
+                                <rect key="frame" x="0.0" y="124" width="375" height="222"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="70" id="Gf8-Vz-Vtb"/>
-                                    <constraint firstAttribute="width" constant="70" id="P2Z-IM-Y5U"/>
+                                    <constraint firstAttribute="height" constant="222" id="2Mn-wU-gGo"/>
                                 </constraints>
-                                <state key="normal" backgroundImage="take_photo"/>
-                            </button>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="c5q-zr-Hvb" firstAttribute="top" secondItem="9qU-gE-OyR" secondAttribute="bottom" constant="150" id="Cmf-0o-p4I"/>
+                            <constraint firstItem="lek-le-GPm" firstAttribute="leading" secondItem="nPZ-nK-0sh" secondAttribute="leading" id="1OD-ED-jOp"/>
                             <constraint firstItem="HaE-yY-E32" firstAttribute="top" secondItem="9qU-gE-OyR" secondAttribute="bottom" id="EZP-78-B43"/>
+                            <constraint firstItem="lek-le-GPm" firstAttribute="top" secondItem="HaE-yY-E32" secondAttribute="bottom" id="Ogf-Le-70t"/>
                             <constraint firstAttribute="trailing" secondItem="HaE-yY-E32" secondAttribute="trailing" id="Omb-fM-WKt"/>
                             <constraint firstItem="HaE-yY-E32" firstAttribute="leading" secondItem="nPZ-nK-0sh" secondAttribute="leading" id="RvX-R8-EM2"/>
-                            <constraint firstItem="c5q-zr-Hvb" firstAttribute="centerX" secondItem="nPZ-nK-0sh" secondAttribute="centerX" id="gAW-XW-gRC"/>
+                            <constraint firstAttribute="trailing" secondItem="lek-le-GPm" secondAttribute="trailing" id="jDl-Mk-mab"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="新提醒" id="jY1-sE-F8x">
@@ -220,6 +219,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="notifyImgView" destination="lek-le-GPm" id="iAY-b8-Ve7"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Cfz-EM-3oX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -451,6 +453,5 @@
         <image name="search_slider" width="86" height="86"/>
         <image name="set_location_unselect" width="21" height="28"/>
         <image name="set_time_select" width="25" height="25"/>
-        <image name="take_photo" width="69" height="69"/>
     </resources>
 </document>

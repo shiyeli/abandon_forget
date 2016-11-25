@@ -7,13 +7,49 @@
 //
 
 #import "XYWillNotifyViewController.h"
+#import "XYNewNotifyImgView.h"
+@interface XYWillNotifyViewController ()<UINavigationControllerDelegate, UIImagePickerControllerDelegate>
 
-@interface XYWillNotifyViewController ()
+@property (weak, nonatomic) IBOutlet XYNewNotifyImgView *notifyImgView;
+
 
 @end
 
 @implementation XYWillNotifyViewController
 
+- (IBAction)takePhoto:(id)sender {
+    
+    UIAlertController* alertCtl=[UIAlertController alertControllerWithTitle:@"设置提醒图片" message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+    UIAlertAction* action1=[UIAlertAction actionWithTitle:@"相机" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        if([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera])
+        {
+            UIImagePickerController *picker=[[UIImagePickerController alloc] init];
+            picker.delegate = self;
+            picker.allowsEditing=YES;
+            picker.sourceType=UIImagePickerControllerSourceTypeCamera;
+            picker.videoQuality = UIImagePickerControllerQualityType640x480;
+            [self presentViewController:picker animated:YES completion:nil];
+            
+        }
+    }];
+    UIAlertAction* action2=[UIAlertAction actionWithTitle:@"相册" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        //相册
+        if([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypePhotoLibrary])
+        {
+            UIImagePickerController *picker=[[UIImagePickerController alloc] init];
+            picker.delegate = self;
+            picker.allowsEditing=YES;
+            picker.sourceType=UIImagePickerControllerSourceTypePhotoLibrary;
+            picker.videoQuality = UIImagePickerControllerQualityType640x480;
+            [self presentViewController:picker animated:YES completion:nil];
+            
+        }
+    }];
+    
+    [alertCtl addAction:action1];
+    [alertCtl addAction:action2];
+    [self presentViewController:alertCtl animated:YES completion:nil];
+}
 
 - (IBAction)closePageClick:(UIBarButtonItem *)sender {
     
@@ -23,12 +59,71 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    WS(weakSelf)
+    self.notifyImgView.callBack=^(id sender){
+        [weakSelf takePhoto:sender];
+    };
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+#pragma mark - Image Picker
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
+{
+    UIImage *sizedImage= [self sizedImage:[info objectForKey:UIImagePickerControllerEditedImage] withMaxValue:2500];
+    
+    [picker dismissViewControllerAnimated:YES completion:^{
+        
+        [self performSelectorOnMainThread:@selector(uploadUserIcon:) withObject:sizedImage waitUntilDone:NO];
+    }];
+}
+//上传照片
+- (void)uploadUserIcon:(UIImage *)userIcon{
+    
+    [self.notifyImgView setImage:userIcon];
+    
+}
+
+- (UIImage *)sizedImage:(UIImage *)originalImage withMaxValue:(float)maxValue
+{
+    UIImage *image = originalImage;
+    CGFloat var1;
+    CGFloat var2;
+    
+    if (image.size.width > image.size.height){
+        // Landscape
+        CGFloat aspect = image.size.width / image.size.height;
+        CGFloat height = ceilf(maxValue/aspect);
+        var1 = maxValue;
+        var2 = height;
+    }
+    else if (image.size.height > image.size.width){
+        // Portrait
+        CGFloat aspect = image.size.height / image.size.width;
+        CGFloat width = ceilf(maxValue/aspect);
+        var1 = width;
+        var2 = maxValue;
+    }
+    else{
+        // Square
+        var1 = maxValue;
+        var2 = maxValue;
+    }
+    
+    UIGraphicsBeginImageContextWithOptions(CGSizeMake(var1, var2), NO, 1);
+    [image drawInRect:CGRectMake(0, 0, var1, var2)];
+    UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return newImage;
+}
+
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
+{
+    [picker dismissViewControllerAnimated:YES completion:nil];
 }
 
 /*
