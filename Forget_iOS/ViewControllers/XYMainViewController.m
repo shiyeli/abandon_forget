@@ -79,7 +79,7 @@
 
 -(void)getNotifyData{
     
-    for (int i=0; i<10; i++) {
+    for (int i=0; i<30; i++) {
         XYNotifyModel* model=[[XYNotifyModel alloc]init];
         model.haveSetTime=YES;
         model.haveSetLocation=YES;
@@ -142,6 +142,17 @@
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return self.dataArray.count;
+}
+
+-(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+//    //设置Cell的动画效果为3D效果
+//    //设置x和y的初始值为0.1；
+//    cell.layer.transform = CATransform3DMakeScale(1,0.1, 1);
+//    //x和y的最终值为1
+//    [UIView animateWithDuration:0.3 animations:^{
+//        cell.layer.transform = CATransform3DMakeScale(1, 1, 1);
+//    }];
 }
 /*
 #pragma mark - Navigation
