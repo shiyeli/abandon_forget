@@ -17,6 +17,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    
+    
+    
+    
 }
 
 - (IBAction)click:(id)sender {
@@ -74,6 +78,10 @@
     // Dispose of any resources that can be recreated.
 }
 
+-(UIStatusBarStyle)preferredStatusBarStyle
+{
+    return UIStatusBarStyleLightContent;
+}
 /*
 #pragma mark - Navigation
 

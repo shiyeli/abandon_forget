@@ -59,14 +59,16 @@
 }
 
 -(void)removeImg{
+    
+    [self setImage:nil];
     //转场动画
     CATransition* anim=[CATransition animation];
     
     anim.type=@"kCATransitionFade";
-    anim.duration=0.3;
-    anim.subtype=kCATransitionFromLeft;
+    anim.duration=0.2;
+    anim.subtype=kCATransitionFromRight;
     [self.layer addAnimation:anim forKey:nil];
-    [self setImage:nil];
+    
     
 }
 -(void)addImg:(UIButton*)sender{
