@@ -151,7 +151,7 @@
         dayButton.titleLabel.font = [UIFont systemFontOfSize:12];
         
         // this month
-        if ([self month:date] == [self month:[NSDate date]]) {
+        if ([self month:date] == [self month:[NSDate date]]&&[self year:date]==[self year:[NSDate date]]) {
             
             NSInteger todayIndex = [self day:date] + firstWeekday - 1;
             
@@ -200,6 +200,7 @@
     
     if (self.calendarBlock) {
         self.calendarBlock(_tempDate, comp.day, comp.month, comp.year);
+        self.selectDate=_tempDate;
     }
     
 }

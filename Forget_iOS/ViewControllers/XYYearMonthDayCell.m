@@ -11,6 +11,7 @@
 @implementation XYYearMonthDayCell
 {
     NSDate * tempDate;
+    NSMutableArray* yearArr;
 }
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
@@ -22,9 +23,29 @@
     }
     return self;
 }
+-(UIPickerView*)yearPicker{
+    if (!_yearPicker) {
+        _yearPicker=[[UIPickerView alloc]initWithFrame:CGRectMake(0, 0, Main_Screen_Width-DISTANCE_TO_EDGE*2, Main_Screen_Width-DISTANCE_TO_EDGE*2)];
+        _yearPicker.delegate=self;
+        _yearPicker.dataSource=self;
+        [self.centerView addSubview:_yearPicker];
+        _yearPicker.hidden=YES;
+        
+    }
+    return _yearPicker;
+}
 -(void)setData{
     tempDate=[NSDate date];
     [self setYearMonthDay:tempDate];
+    
+    
+    //年份列表
+    NSDateComponents *comp = [[NSCalendar currentCalendar] components:(NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay) fromDate:[NSDate date]];
+    yearArr=[NSMutableArray array];
+    for (NSInteger i=comp.year; i<comp.year+50; i++) {
+        [yearArr addObject:[NSString stringWithFormat:@"%zd",i]];
+    }
+    
 }
 -(void)setCustomView{
     UIColor* normalColor=RGBACOLOR(255, 255, 255, 0.7);
@@ -55,7 +76,7 @@
         make.leading.equalTo(_yearLab);
     }];
     
-    [self setupCalendarView];
+    [self setupCalendarView:[NSDate date]];
     
     
     
@@ -69,14 +90,20 @@
     sender.selected=YES;
     if (sender.tag==kTag+1) {//点击年份
         _monthDayLab.selected=NO;
+        self.yearPicker.hidden=NO;
+        self.calendarView.hidden=YES;
+        [self.yearPicker reloadAllComponents];
         
-        
-        
-        
-    }else{
+
+    }else{//点击日历
         _yearLab.selected=NO;
-    
-    
+        self.calendarView.hidden=NO;
+        self.yearPicker.hidden=YES;
+        
+        if (self.calendarView) {
+            [self.calendarView removeFromSuperview];
+        }
+        [self setupCalendarView:tempDate];
     }
     
 }
@@ -87,7 +114,7 @@
     }
 }
 
-- (void)setupCalendarView {
+- (void)setupCalendarView:(NSDate*)date {
     
  
     self.calendarView = [[FyCalendarView alloc] initWithFrame:CGRectMake(0, 0, Main_Screen_Width-DISTANCE_TO_EDGE*2, Main_Screen_Width-DISTANCE_TO_EDGE*2)];
@@ -95,11 +122,11 @@
     [self.centerView addSubview:self.calendarView];
     
 
-    self.calendarView.date = [NSDate date];
+    self.calendarView.date = date;
+    self.calendarView.cellColor=self.cellColor;
     WS(weakSelf)
     self.calendarView.calendarBlock =  ^(NSDate* selectDate,NSInteger day, NSInteger month, NSInteger year){
         NSLog(@"%@ %li-%li-%li",selectDate, (long)year,(long)month,(long)day);
-        
     };
     self.calendarView.nextMonthBlock = ^(){
         [weakSelf setupNextMonth];
@@ -114,7 +141,7 @@
     self.calendarView = [[FyCalendarView alloc] initWithFrame:CGRectMake(0, 0, Main_Screen_Width-DISTANCE_TO_EDGE*2, Main_Screen_Width-DISTANCE_TO_EDGE*2)];
     self.calendarView.cellColor=self.cellColor;
     [self.centerView addSubview:self.calendarView];
-   
+    
 
     tempDate = [self.calendarView nextMonth:tempDate];
     [self.calendarView createCalendarViewWith:tempDate];
@@ -157,20 +184,28 @@
     [super spreadOutCell:sender];
     _yearLab.selected=NO;
     _monthDayLab.selected=YES;
+    
+    _yearPicker.hidden=YES;
+    _calendarView.hidden=NO;
 }
 
 -(void)sureOrNot:(UIButton *)sender{
-    [super sureOrNot:sender];
+    
     _yearLab.selected=YES;
     _monthDayLab.selected=YES;
     
     if (sender.tag==1) {//关闭
-        self.model.setDate=[NSDate date];
+        //self.model.setDate=[NSDate date];
         
     }else{//确认
-        [self setYearMonthDay:self.calendarView.tempDate];
+        if (self.calendarView.selectDate==nil) {
+            [XYTool showPromptView:@"请选择日期" holdView:self.centerView];
+            return;
+        }
+        [self setYearMonthDay:self.calendarView.selectDate];
     }
-
+    
+    [super sureOrNot:sender];
 }
 
 -(void)setYearMonthDay:(NSDate*)date{
@@ -184,8 +219,33 @@
     //存储时间
     
     self.model.setDate=date;
+    
+    
 }
 
+#pragma mark - UIPickerView
+
+-(NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView{
+    return 1;
+}
+-(NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component{
+    return yearArr.count;
+}
+-(NSAttributedString*)pickerView:(UIPickerView *)pickerView attributedTitleForRow:(NSInteger)row forComponent:(NSInteger)component{
+    
+    NSAttributedString* attStr=[[NSAttributedString alloc]initWithString:yearArr[row] attributes:@{NSForegroundColorAttributeName:THIEM_COLOR_DARKER}];
+    
+    return attStr;
+}
+-(void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component{
+    [_yearLab setTitle:yearArr[row] forState:UIControlStateNormal];
+    
+    NSDateComponents *comp = [[NSCalendar currentCalendar] components:(NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay) fromDate:tempDate];
+    comp.year=[_yearLab.titleLabel.text integerValue];
+    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+    [calendar setTimeZone: [NSTimeZone systemTimeZone]];
+    tempDate = [calendar dateFromComponents:comp];
+}
 /*
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.

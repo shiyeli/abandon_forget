@@ -19,13 +19,14 @@
 
 @interface FyCalendarView : UIView
 
+@property(nonatomic,strong)NSDate* selectDate;
 
 @property(nonatomic,strong)UIColor * cellColor;
 
 //set 选择日期
 @property (nonatomic, strong) NSDate *date;
 
-//记录选择的日期
+//暂时记录日期
 @property(nonatomic,strong)NSDate* tempDate;
 
 @property (nonatomic, strong) UIColor *dateColor;

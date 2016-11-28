@@ -8,7 +8,7 @@
 
 #import "XYTimeParentCell.h"
 #import "FyCalendarView.h"
-@interface XYYearMonthDayCell : XYTimeParentCell
+@interface XYYearMonthDayCell : XYTimeParentCell<UIPickerViewDelegate,UIPickerViewDataSource>
 
 @property(nonatomic,strong)UIButton* yearLab;
 @property(nonatomic,strong)UIButton* monthDayLab;
