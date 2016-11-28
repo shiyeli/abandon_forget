@@ -40,6 +40,7 @@
     self.myTableView.delegate=self;
     self.myTableView.dataSource=self;
     self.myTableView.backgroundColor=[UIColor whiteColor];
+    self.myTableView.sectionFooterHeight=0.0f;
     [self setModel];
     
     [self initCellUI];
@@ -200,9 +201,7 @@
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     return SECTION_HEADER_HEIGHT;
 }
--(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
-    return 0;
-}
+
 -(void)switchActions:(UISwitch*)sender{
     
     for (int i=sender.tag; i<self.dataArr.count; i++) {
