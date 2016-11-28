@@ -29,6 +29,8 @@
 
 @interface ALDClock : UIControl
 
+//标记是否刚刚切换
+@property(nonatomic,assign)BOOL isChange;
 
 //设置小时/否则设置分钟
 @property(nonatomic,assign)BOOL isHour;

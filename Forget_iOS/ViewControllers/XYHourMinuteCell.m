@@ -28,20 +28,29 @@
     return self;
 }
 -(void)titleViewClick:(UIButton*)sender{
+    
+    if (self.model.isSpreadOut==NO) {
+        return;
+    }
+    
     sender.selected=YES;
     
     switch (sender.tag) {
         case 1:
         {
             minuteBtn.selected=NO;
-            [self setClockViewHour:YES];
+            self.clockView.isChange=YES;
+            self.clockView.isHour=YES;
+            [self.clockView setMinute:[hourBtn.titleLabel.text integerValue]*5];
             
         }
             break;
         case 2:
         {
             hourBtn.selected=NO;
-            [self setClockViewHour:NO];
+            self.clockView.isChange=YES;
+            self.clockView.isHour=NO;
+            [self.clockView setMinute:[minuteBtn.titleLabel.text integerValue]];
         }
             break;
         case 3:
@@ -100,6 +109,7 @@
     [minuteBtn setTitleColor:normalColor forState:UIControlStateNormal];
     minuteBtn.titleLabel.font=font;
     minuteBtn.tag=2;
+    minuteBtn.selected=YES;
     [minuteBtn addTarget:self action:@selector(titleViewClick:) forControlEvents:UIControlEventTouchUpInside];
     [self.titleView addSubview:minuteBtn];
     [minuteBtn mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -140,20 +150,27 @@
     [self applyClockCustomisations];
     self.clockView.isHour=YES;
     
-    
-}
-
--(void)setClockViewHour:(BOOL)isHour{
-    _clockView.isHour=isHour;
-    
-    
-    [self setHourMInWithDate:[NSDate date]];
-
+    NSDateComponents *comp = [[NSCalendar currentCalendar] components:(NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay|NSCalendarUnitHour|NSCalendarUnitMinute) fromDate:[NSDate date]];
+    [self.clockView setMinute:comp.hour*5];
 }
 
 
 -(void)setHourMInWithDate:(NSDate*)date{
     NSDateComponents *comp = [[NSCalendar currentCalendar] components:(NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay|NSCalendarUnitHour|NSCalendarUnitMinute) fromDate:date];
+    
+    if (!self.model.isSpreadOut) {
+        if (comp.hour>12) {
+            comp.hour-=12;
+            pmBtn.selected=YES;
+            amBtn.selected=NO;
+            amBtn.hidden=YES;
+            
+        }else{
+            pmBtn.selected=NO;
+            amBtn.selected=YES;
+            pmBtn.hidden=YES;
+        }
+    }
     [self setHour:comp.hour];
     [self setMinute:comp.minute];
     
@@ -196,6 +213,10 @@
 
 - (void)clockDidChangeTime:(ALDClock *)clock
 {
+    if (self.clockView.isChange) {
+        self.clockView.isChange=NO;
+        return;
+    }
     NSLog(@"The time is: %02d:%02d", clock.hour, clock.minute);
     if (clock.isHour) {
         [self setHour:clock.minute/5];
@@ -215,6 +236,26 @@
     clock.borderColor = [UIColor colorWithRed:0.22 green:0.78 blue:0.22 alpha:1.0];
 }
 
+-(void)spreadOutCell:(UIButton *)sender{
+    [super spreadOutCell:sender];
+    hourBtn.selected=YES;
+    minuteBtn.selected=NO;
+    amBtn.hidden=NO;
+    pmBtn.hidden=NO;
+}
+
+-(void)sureOrNot:(UIButton *)sender{
+    [super sureOrNot:sender];
+    
+    if (amBtn.selected==YES) {
+        pmBtn.hidden=YES;
+    }else{
+        amBtn.hidden=YES;
+    }
+    hourBtn.selected=YES;
+    minuteBtn.selected=YES;
+    
+}
 /*
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.
