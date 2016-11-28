@@ -27,32 +27,59 @@
     [self setYearMonthDay:tempDate];
 }
 -(void)setCustomView{
-    _yearLab=[[UILabel alloc]init];
-    _yearLab.textColor=[UIColor whiteColor];
+    UIColor* normalColor=RGBACOLOR(255, 255, 255, 0.7);
+    UIColor* selectColor=[UIColor whiteColor];
     
-    _yearLab.font=SYSTEMFONT(15);
+    _yearLab=[[UIButton alloc]init];
+    [_yearLab setTitleColor:selectColor forState:UIControlStateSelected];
+    [_yearLab setTitleColor:normalColor forState:UIControlStateNormal];
+    _yearLab.selected=YES;
+    [_yearLab.titleLabel setFont:SYSTEMFONT(15)];
+    [_yearLab addTarget:self action:@selector(titleViewClick:) forControlEvents:UIControlEventTouchUpInside];
+    _yearLab.tag=kTag+1;
     [self.titleView addSubview:_yearLab];
     [_yearLab mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.titleView).with.offset(DISTANCE_TO_EDGE*0.7);
+        make.top.equalTo(self.titleView).with.offset(DISTANCE_TO_EDGE*0.3);
         make.leading.equalTo(self.titleView).with.offset(DISTANCE_TO_EDGE);
     }];
 
-    _monthDayLab=[[UILabel alloc]init];
-    _monthDayLab.textColor=[UIColor whiteColor];
-    
-    _monthDayLab.font=SYSTEMFONT(22);
+    _monthDayLab=[[UIButton alloc]init];
+    [_monthDayLab setTitleColor:selectColor forState:UIControlStateSelected];
+    [_monthDayLab setTitleColor:normalColor forState:UIControlStateNormal];
+    _monthDayLab.selected=YES;
+    [_monthDayLab.titleLabel setFont:SYSTEMFONT(22)];
+    [_monthDayLab addTarget:self action:@selector(titleViewClick:) forControlEvents:UIControlEventTouchUpInside];
     [self.titleView addSubview:_monthDayLab];
     [_monthDayLab mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.bottom.equalTo(self.titleView).with.offset(-DISTANCE_TO_EDGE*0.7);
+        make.bottom.equalTo(self.titleView).with.offset(-DISTANCE_TO_EDGE*0.3);
         make.leading.equalTo(_yearLab);
     }];
     
     [self setupCalendarView];
-
+    
     
     
 }
-
+-(void)titleViewClick:(UIButton*)sender{
+    
+    if (!self.model.isSpreadOut) {
+        return;
+    }
+    
+    sender.selected=YES;
+    if (sender.tag==kTag+1) {//点击年份
+        _monthDayLab.selected=NO;
+        
+        
+        
+        
+    }else{
+        _yearLab.selected=NO;
+    
+    
+    }
+    
+}
 -(void)setCellColor:(UIColor *)cellColor{
     [super setCellColor:cellColor];
     if (self.calendarView) {
@@ -126,9 +153,16 @@
     };
 
 }
+-(void)spreadOutCell:(UIButton *)sender{
+    [super spreadOutCell:sender];
+    _yearLab.selected=NO;
+    _monthDayLab.selected=YES;
+}
 
 -(void)sureOrNot:(UIButton *)sender{
     [super sureOrNot:sender];
+    _yearLab.selected=YES;
+    _monthDayLab.selected=YES;
     
     if (sender.tag==1) {//关闭
         self.model.setDate=[NSDate date];
@@ -144,8 +178,8 @@
     NSDateComponents *comp = [[NSCalendar currentCalendar] components:(NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay) fromDate:date];
     //更新界面
     
-    _yearLab.text=[NSString stringWithFormat:@"%zd",comp.year];
-    _monthDayLab.text=[NSString stringWithFormat:@"%zd月%zd日,%@",comp.month,comp.day,[XYTool getWeekdayStringFromDate:date]];
+    [_yearLab setTitle:[NSString stringWithFormat:@"%zd",comp.year] forState:UIControlStateNormal];
+    [_monthDayLab setTitle:[NSString stringWithFormat:@"%zd月%zd日,%@",comp.month,comp.day,[XYTool getWeekdayStringFromDate:date]] forState:UIControlStateNormal];
     
     //存储时间
     
