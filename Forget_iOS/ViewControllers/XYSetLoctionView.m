@@ -195,6 +195,14 @@
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    for (int i=0; i<self.dataArray.count; i++) {
+        UITableViewCell* cell=[self.myTableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:i inSection:0]];
+        if (indexPath.row!=i ) {
+            cell.selected=NO;
+        }
+    }
+
     self.personBtn.selectModel=nil;
     self.commonBtn.selectModel=nil;
 
