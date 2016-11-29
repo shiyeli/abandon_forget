@@ -24,9 +24,22 @@
         [self setCustomView];
         [self setHourMInWithDate:[NSDate date]];
         
+        
     }
     return self;
 }
+
+
+
+
+-(void)changeHoutMintuteAnimation{
+    CATransition* transtiton=[CATransition animation];
+    transtiton.duration=0.3;
+    transtiton.type=@"kCATransitionFade";
+    [self.centerView.layer addAnimation:transtiton forKey:nil];
+
+}
+
 -(void)titleViewClick:(UIButton*)sender{
     
     if (self.model.isSpreadOut==NO) {
@@ -42,7 +55,7 @@
             self.clockView.isChange=YES;
             self.clockView.isHour=YES;
             [self.clockView setMinute:[hourBtn.titleLabel.text integerValue]*5];
-            
+            [self changeHoutMintuteAnimation];
         }
             break;
         case 2:
@@ -51,6 +64,7 @@
             self.clockView.isChange=YES;
             self.clockView.isHour=NO;
             [self.clockView setMinute:[minuteBtn.titleLabel.text integerValue]];
+            [self changeHoutMintuteAnimation];
         }
             break;
         case 3:

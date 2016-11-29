@@ -122,6 +122,10 @@ const CGFloat kALDClockAnimationIncrement = 30;
         _digitAttributesSelect=@{NSForegroundColorAttributeName : [UIColor colorWithWhite:1.0 alpha:1],
                                  NSParagraphStyleAttributeName: paragraphStyle,
                                  NSFontAttributeName : [UIFont systemFontOfSize:16.0f]};
+        
+        UITapGestureRecognizer* tap=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapAction:)];
+        [self addGestureRecognizer:tap];
+        
     }
     return self;
 }
@@ -273,29 +277,20 @@ const CGFloat kALDClockAnimationIncrement = 30;
 }
 
 #pragma mark - Tracking Methods
-
-//-(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
-//    [super touchesBegan:touches withEvent:event];
-//    //Get touch location
-//    CGPoint currentPoint = [[touches anyObject] locationInView:self];
-//    CGPoint center = CGPointMake(CGRectGetWidth(self.frame)/2.0, CGRectGetHeight(self.frame)/2.0);
-//   
-//    CGFloat r=sqrt(pow(currentPoint.x-center.x, 2)+pow(currentPoint.y-center.y,2));
-//    CGFloat basicAngle=asin((currentPoint.x-center.x)/r);
-//    
-//    if (currentPoint.y<center.y) {
-//        if (currentPoint.x>center.x) {
-//            self.totalRotation=basicAngle;
-//        }else{
-//            self.totalRotation=M_PI*2+basicAngle;
-//        }
-//        
-//    }else{
-//        self.totalRotation=M_PI-basicAngle;
-//    }
-//    
-//    [self updateDisplayAndListeners];
-//}
+//获取点击位置
+-(void)tapAction:(UITapGestureRecognizer * )sender{
+    
+    CGPoint previousPoint=CGPointMake(0, 0);
+    CGPoint center = CGPointMake(self.frame.size.width/2.0f, self.frame.size.height/2.0f);
+    CGFloat angle=2*M_PI* self.minute/60.0;
+    
+    previousPoint=CGPointMake(center.x+ sin(angle), center.y- cos(angle));
+    CGPoint currentPoint = [sender locationInView:self];
+    
+    //Use the location to design the Handle
+    [self moveHandFromPoint:previousPoint toPoint:currentPoint];
+    
+}
 
 -(BOOL)beginTrackingWithTouch:(UITouch *)touch withEvent:(UIEvent *)event{
     [super beginTrackingWithTouch:touch withEvent:event];
