@@ -279,19 +279,34 @@ const CGFloat kALDClockAnimationIncrement = 30;
 #pragma mark - Tracking Methods
 //获取点击位置
 -(void)tapAction:(UITapGestureRecognizer * )sender{
-    
-    CGPoint previousPoint=CGPointMake(0, 0);
     CGPoint center = CGPointMake(self.frame.size.width/2.0f, self.frame.size.height/2.0f);
-    CGFloat angle=2*M_PI* self.minute/60.0;
-    
-    previousPoint=CGPointMake(center.x+ sin(angle), center.y- cos(angle));
+    CGFloat previousAngle=2*M_PI* self.minute/60.0;
+    CGPoint previousPoint=CGPointMake(center.x+ sin(previousAngle), center.y- cos(previousAngle));
     CGPoint currentPoint = [sender locationInView:self];
-    
-    //Use the location to design the Handle
+//    CGFloat radius=sqrt(pow(currentPoint.x-center.x, 2)+pow(currentPoint.y-center.y,2));
+//    
+//    CGFloat currentAngle=0;
+//    if (currentPoint.y<center.y) {//在中点上面
+//        if (currentPoint.x>center.x) {
+//            currentAngle=asin((currentPoint.x-center.x)/radius);
+//        }else{
+//            currentAngle=asin((currentPoint.x-center.x)/radius)+2*M_PI;
+//        }
+//    }else{
+//        currentAngle=M_PI-asin((currentPoint.x-center.x)/radius);
+//    }
+
     [self moveHandFromPoint:previousPoint toPoint:currentPoint];
+    [self changeHoutMintuteAnimation];
     
 }
-
+-(void)changeHoutMintuteAnimation{
+    CATransition* transtiton=[CATransition animation];
+    transtiton.duration=0.3;
+    transtiton.type=@"kCATransitionFade";
+    [self.layer addAnimation:transtiton forKey:nil];
+    
+}
 -(BOOL)beginTrackingWithTouch:(UITouch *)touch withEvent:(UIEvent *)event{
     [super beginTrackingWithTouch:touch withEvent:event];
     
