@@ -43,6 +43,7 @@ typedef struct{
 
 //指针
 @property (nonatomic,strong) UIView * indcatorView;
+@property (nonatomic,strong) UILabel * digitalHold;
 
 @end
 
@@ -90,8 +91,8 @@ const CGFloat kALDClockAnimationIncrement = 30;
         _clockFaceBackgroundColor = [UIColor colorWithWhite:0.97 alpha:1.0];
         _majorMarkingColor = [UIColor colorWithWhite:0.3 alpha:1.0];
         _minorMarkingColor = [UIColor colorWithWhite:0.4 alpha:1.0];
-        _minuteHandColor = TIMECELL_COLOR_CYAN;
-        _hourHandColor = TIMECELL_COLOR_CYAN;
+        _minuteHandColor = [UIColor clearColor];
+        _hourHandColor = [UIColor clearColor];
         
         // Set default thicknesses
         _majorMarkingsThickness = 1.0f;
@@ -130,11 +131,27 @@ const CGFloat kALDClockAnimationIncrement = 30;
         UITapGestureRecognizer* tap=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapAction:)];
         [self addGestureRecognizer:tap];
         
-        _indcatorView=[[UIView alloc]initWithFrame:CGRectMake(0,0, 5, self.frame.size.width*0.5)];
+        _indcatorView=[[UIView alloc]initWithFrame:CGRectMake(0,0, 5, self.frame.size.width*0.41)];
         _indcatorView.layer.anchorPoint=CGPointMake(0.5, 1);
         _indcatorView.center=CGPointMake(self.frame.size.width*0.5, self.frame.size.width*0.5);
-        _indcatorView.backgroundColor=[UIColor redColor];
+        _indcatorView.backgroundColor=TIMECELL_COLOR_CYAN;
         [self addSubview:_indcatorView];
+        
+        UIView * centerCircle=[[UIView alloc]initWithFrame:CGRectMake(0, 0, 10, 10)];
+        centerCircle.backgroundColor=TIMECELL_COLOR_CYAN;
+        centerCircle.center=CGPointMake(self.frame.size.width*0.5, self.frame.size.width*0.5);
+        centerCircle.layer.cornerRadius=centerCircle.frame.size.width*0.5;
+        centerCircle.clipsToBounds=YES;
+        [self addSubview:centerCircle];
+        
+        _digitalHold=[[UILabel alloc]initWithFrame:CGRectMake(0, 0, 35, 35)];
+        _digitalHold.center=CGPointMake(_indcatorView.bounds.size.width*0.5, 0);
+        _digitalHold.backgroundColor=TIMECELL_COLOR_CYAN;
+        _digitalHold.layer.cornerRadius=_digitalHold.frame.size.width*0.5;
+        _digitalHold.clipsToBounds=YES;
+        _digitalHold.textColor=[UIColor whiteColor];
+        _digitalHold.textAlignment=NSTextAlignmentCenter;
+        [_indcatorView addSubview:_digitalHold];
         
     }
     return self;
@@ -171,6 +188,11 @@ const CGFloat kALDClockAnimationIncrement = 30;
     CGAffineTransform currentTransform = self.indcatorView.transform;
     CGAffineTransform newTransform = CGAffineTransformRotate(currentTransform, angel);
     self.indcatorView.transform=newTransform;
+    
+    self.digitalHold.transform=CGAffineTransformMakeRotation(0);
+    currentTransform=self.digitalHold.transform;
+    newTransform=CGAffineTransformRotate(currentTransform, -angel);
+    self.digitalHold.transform=newTransform;
 }
 
 - (void)setHour:(NSInteger)hour minute:(NSInteger)minute animated:(BOOL)animated
@@ -329,6 +351,10 @@ const CGFloat kALDClockAnimationIncrement = 30;
         CGAffineTransform currentTransform = self.indcatorView.transform;
         CGAffineTransform newTransform = CGAffineTransformRotate(currentTransform, currentAngle-previousAngle); // 在现在的基础上旋转指定角度
         self.indcatorView.transform = newTransform;
+        
+        currentTransform=self.digitalHold.transform;
+        newTransform=CGAffineTransformRotate(currentTransform, previousAngle-currentAngle);
+        self.digitalHold.transform=newTransform;
     }];
     
 }
@@ -612,7 +638,7 @@ const CGFloat kALDClockAnimationIncrement = 30;
     CGContextDrawPath(context, kCGPathStroke);
     
     //填充圆，无边框
-    CGContextSetFillColorWithColor(context,TIMECELL_COLOR_CYAN.CGColor);
+    CGContextSetFillColorWithColor(context,[UIColor clearColor].CGColor);
     CGContextAddArc(context, minuteHandX, minuteHandY, DISTANCE_TO_EDGE, 0, M_PI*2, 0); //添加一个圆
     CGContextDrawPath(context, kCGPathFill);
     
@@ -620,7 +646,7 @@ const CGFloat kALDClockAnimationIncrement = 30;
     
     
     NSInteger tempminuteHandAngle=(int)minuteHandAngle;
-    NSLog(@"%d",360-(tempminuteHandAngle-90)%360);
+   // NSLog(@"%d",360-(tempminuteHandAngle-90)%360);
     int resuleAgnle=360-(tempminuteHandAngle-90)%360;
     
     
@@ -634,9 +660,10 @@ const CGFloat kALDClockAnimationIncrement = 30;
         }
     }
     
+    _digitalHold.text=tempStr;
     
     
-    [tempStr drawInRect:CGRectMake(minuteHandX-DISTANCE_TO_EDGE*0.65, minuteHandY-DISTANCE_TO_EDGE*0.65, DISTANCE_TO_EDGE*1.3, DISTANCE_TO_EDGE*1.3) withAttributes:_digitAttributesSelect];
+   // [tempStr drawInRect:CGRectMake(minuteHandX-DISTANCE_TO_EDGE*0.65, minuteHandY-DISTANCE_TO_EDGE*0.65, DISTANCE_TO_EDGE*1.3, DISTANCE_TO_EDGE*1.3) withAttributes:_digitAttributesSelect];
     //[tempStr drawAtPoint:CGPointMake(minuteHandX, minuteHandY) withAttributes:_digitAttributesSelect];
     
     
