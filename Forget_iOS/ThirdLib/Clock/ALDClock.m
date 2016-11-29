@@ -40,6 +40,10 @@ typedef struct{
 @property (nonatomic, assign) BOOL isAnimating;
 @property (nonatomic, strong) NSTimer *timer;
 @property (nonatomic, assign) CGFloat targetRotation;
+
+//指针
+@property (nonatomic,strong) UIView * indcatorView;
+
 @end
 
 const CGFloat kALDClockAnimationIncrement = 30;
@@ -126,6 +130,12 @@ const CGFloat kALDClockAnimationIncrement = 30;
         UITapGestureRecognizer* tap=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapAction:)];
         [self addGestureRecognizer:tap];
         
+        _indcatorView=[[UIView alloc]initWithFrame:CGRectMake(0,0, 5, self.frame.size.width*0.5)];
+        _indcatorView.layer.anchorPoint=CGPointMake(0.5, 1);
+        _indcatorView.center=CGPointMake(self.frame.size.width*0.5, self.frame.size.width*0.5);
+        _indcatorView.backgroundColor=[UIColor redColor];
+        [self addSubview:_indcatorView];
+        
     }
     return self;
 }
@@ -151,6 +161,16 @@ const CGFloat kALDClockAnimationIncrement = 30;
 - (void)setMinute:(NSInteger)minute animated:(BOOL)animated
 {
     [self setHour:_hour minute:minute animated:animated];
+    
+    
+    
+#pragma mark - 偏移indecator
+    self.indcatorView.transform=CGAffineTransformMakeRotation(0);
+    
+    CGFloat angel=2*M_PI* self.minute/60.0;
+    CGAffineTransform currentTransform = self.indcatorView.transform;
+    CGAffineTransform newTransform = CGAffineTransformRotate(currentTransform, angel);
+    self.indcatorView.transform=newTransform;
 }
 
 - (void)setHour:(NSInteger)hour minute:(NSInteger)minute animated:(BOOL)animated
@@ -173,6 +193,8 @@ const CGFloat kALDClockAnimationIncrement = 30;
         self.totalRotation = rotation;
         [self setNeedsDisplay];
     }
+    
+    
 }
 
 - (void)setBorderColor:(UIColor *)borderColor
@@ -279,63 +301,67 @@ const CGFloat kALDClockAnimationIncrement = 30;
 #pragma mark - Tracking Methods
 //获取点击位置
 -(void)tapAction:(UITapGestureRecognizer * )sender{
+    
     CGPoint center = CGPointMake(self.frame.size.width/2.0f, self.frame.size.height/2.0f);
     CGFloat previousAngle=2*M_PI* self.minute/60.0;
     CGPoint previousPoint=CGPointMake(center.x+ sin(previousAngle), center.y- cos(previousAngle));
     CGPoint currentPoint = [sender locationInView:self];
-//    CGFloat radius=sqrt(pow(currentPoint.x-center.x, 2)+pow(currentPoint.y-center.y,2));
+    CGFloat radius=sqrt(pow(currentPoint.x-center.x, 2)+pow(currentPoint.y-center.y,2));
+    
+    CGFloat currentAngle=0;
+    if (currentPoint.y<center.y) {//在中点上面
+        if (currentPoint.x>center.x) {
+            currentAngle=asin((currentPoint.x-center.x)/radius);
+        }else{
+            currentAngle=asin((currentPoint.x-center.x)/radius)+2*M_PI;
+        }
+    }else{
+        currentAngle=M_PI-asin((currentPoint.x-center.x)/radius);
+    }
+    
+    [self moveHandFromPoint:previousPoint toPoint:currentPoint];
+    
+#pragma mark - 指针旋转
+    
+    currentAngle=2*M_PI* self.minute/60.0; //与drawrect的指针保持一致
+    
+    [UIView animateWithDuration:0.3 animations:^{
+        CGAffineTransform currentTransform = self.indcatorView.transform;
+        CGAffineTransform newTransform = CGAffineTransformRotate(currentTransform, currentAngle-previousAngle); // 在现在的基础上旋转指定角度
+        self.indcatorView.transform = newTransform;
+    }];
+    
+}
+
+//-(BOOL)beginTrackingWithTouch:(UITouch *)touch withEvent:(UIEvent *)event{
+//    [super beginTrackingWithTouch:touch withEvent:event];
 //    
-//    CGFloat currentAngle=0;
-//    if (currentPoint.y<center.y) {//在中点上面
-//        if (currentPoint.x>center.x) {
-//            currentAngle=asin((currentPoint.x-center.x)/radius);
-//        }else{
-//            currentAngle=asin((currentPoint.x-center.x)/radius)+2*M_PI;
-//        }
-//    }else{
-//        currentAngle=M_PI-asin((currentPoint.x-center.x)/radius);
-//    }
-
-    [self moveHandFromPoint:previousPoint toPoint:currentPoint];
-    [self changeHoutMintuteAnimation];
-    
-}
--(void)changeHoutMintuteAnimation{
-    CATransition* transtiton=[CATransition animation];
-    transtiton.duration=0.3;
-    transtiton.type=@"kCATransitionFade";
-    [self.layer addAnimation:transtiton forKey:nil];
-    
-}
--(BOOL)beginTrackingWithTouch:(UITouch *)touch withEvent:(UIEvent *)event{
-    [super beginTrackingWithTouch:touch withEvent:event];
-    
-    [self sendActionsForControlEvents:UIControlEventTouchDragEnter];
-    
-    //We need to track continuously
-    return YES;
-}
-
--(BOOL)continueTrackingWithTouch:(UITouch *)touch withEvent:(UIEvent *)event{
-    [super continueTrackingWithTouch:touch withEvent:event];
-    
-    if(self.isAnimating)
-        return NO;
-    
-    //Get touch location
-    CGPoint currentPoint = [touch locationInView:self];
-    CGPoint previousPoint = [touch previousLocationInView:self];
-    
-    //Use the location to design the Handle
-    [self moveHandFromPoint:previousPoint toPoint:currentPoint];
-    
-    return YES;
-}
-
-- (void)endTrackingWithTouch:(UITouch *)touch withEvent:(UIEvent *)event
-{
-    [self sendActionsForControlEvents:UIControlEventTouchDragExit];
-}
+//    [self sendActionsForControlEvents:UIControlEventTouchDragEnter];
+//    
+//    //We need to track continuously
+//    return YES;
+//}
+//
+//-(BOOL)continueTrackingWithTouch:(UITouch *)touch withEvent:(UIEvent *)event{
+//    [super continueTrackingWithTouch:touch withEvent:event];
+//    
+//    if(self.isAnimating)
+//        return NO;
+//    
+//    //Get touch location
+//    CGPoint currentPoint = [touch locationInView:self];
+//    CGPoint previousPoint = [touch previousLocationInView:self];
+//    
+//    //Use the location to design the Handle
+//    [self moveHandFromPoint:previousPoint toPoint:currentPoint];
+//    
+//    return YES;
+//}
+//
+//- (void)endTrackingWithTouch:(UITouch *)touch withEvent:(UIEvent *)event
+//{
+//    [self sendActionsForControlEvents:UIControlEventTouchDragExit];
+//}
 
 #pragma mark - Handle Tracking
 
