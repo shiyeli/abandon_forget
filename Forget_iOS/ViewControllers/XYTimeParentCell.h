@@ -24,6 +24,7 @@
 @property(nonatomic,weak)XYTimeCellModel * model;
 
 
+
 -(void)spreadOutCell:(UIButton* )sender;
 -(void)sureOrNot:(UIButton* )sender;
 

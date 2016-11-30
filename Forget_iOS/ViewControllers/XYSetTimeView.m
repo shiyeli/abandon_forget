@@ -92,7 +92,9 @@
             XYTimeCellModel* cellM=[[XYTimeCellModel alloc]init];
             cellM.isSwitchOn=sectionM.switchIsOpen;
             cellM.isSpreadOut=NO;
+            cellM.frequenceArr=model.frequencyArr;
             cellM.setRepeatCount=model.frequency;
+            cellM.reciptCircleUnitArr=model.repeatUnitArr;
             cellM.setRepeatCircle=model.repeatUnit;
             [sectionM.arrM addObject:cellM];
             

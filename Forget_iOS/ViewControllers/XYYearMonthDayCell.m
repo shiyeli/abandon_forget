@@ -19,7 +19,7 @@
     if (self) {
         
         [self setCustomView];
-        [self setData];
+        
     }
     return self;
 }
@@ -34,8 +34,12 @@
     }
     return _yearPicker;
 }
+-(void)setModel:(XYTimeCellModel *)model{
+    [super setModel:model];
+    [self setData];
+}
 -(void)setData{
-    tempDate=[NSDate date];
+    tempDate=self.model.setDate;
     [self setYearMonthDay:tempDate];
     
     

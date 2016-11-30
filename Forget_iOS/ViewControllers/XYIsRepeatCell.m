@@ -10,39 +10,33 @@
 
 @implementation XYIsRepeatCell
 {
-    NSMutableArray* arrCount;
-    NSMutableArray* arrCircle;
+    NSArray* arrCount;
+    NSArray* arrCircle;
 }
 
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-        [self setDataArray];
         [self setCustomView];
+        
     }
     return self;
 }
--(void)setDataArray{
-    
-    arrCount=[NSMutableArray array];
-    for (int i=0; i<5; i++) {
-        NSString* temStr=[NSString stringWithFormat:@"%d",i+1];
-        [arrCount addObject:temStr];
-    }
-    arrCircle=[NSMutableArray arrayWithArray:TimeSetRepeatCircleArr];
-    
-    
-    
-}
+-(void)setModel:(XYTimeCellModel *)model{
+    [super setModel:model];
 
+    arrCount=model.frequenceArr;
+    arrCircle=model.reciptCircleUnitArr;
+    _repeatLab.text=[NSString stringWithFormat:@"每%@%@",arrCount[0],arrCircle[0]];
+}
 
 -(void)setCustomView{
     _repeatLab=[[UILabel alloc]init];
     _repeatLab.textColor=[UIColor whiteColor];
     _repeatLab.font=SYSTEMFONT(45);
     _repeatLab.textAlignment=NSTextAlignmentCenter;
-    _repeatLab.text=[NSString stringWithFormat:@"每%@%@",arrCount[0],arrCircle[0]];
+    
     [self.titleView addSubview:_repeatLab];
     [_repeatLab mas_makeConstraints:^(MASConstraintMaker *make) {
         make.center.equalTo(self.titleView);
@@ -110,7 +104,7 @@
         
         
     }else{//确认
-        NSString* resultStr=[NSString stringWithFormat:@"每%@%@",self.model.setRepeatCount,arrCircle[self.model.setRepeatCircle]];
+        NSString* resultStr=[NSString stringWithFormat:@"每%@%@",[NSString stringWithFormat:@"%zd",self.model.setRepeatCount],arrCircle[self.model.setRepeatCircle]];
         _repeatLab.text=resultStr;
     }
     

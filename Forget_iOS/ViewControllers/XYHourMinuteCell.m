@@ -22,14 +22,18 @@
         
         
         [self setCustomView];
-        [self setHourMInWithDate:[NSDate date]];
+        
         
         
     }
     return self;
 }
 
-
+-(void)setModel:(XYTimeCellModel *)model{
+    [super setModel:model];
+    
+    [self setHourMInWithDate:model.setDate];
+}
 
 
 -(void)changeHoutMintuteAnimation{

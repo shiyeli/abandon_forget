@@ -9,7 +9,7 @@
 #import "XYParentModel.h"
 #define TIME_CELL_HEIGHT 70.0
 #define TIME_CELL_HEIGHT_SPREADOUT (TIME_CELL_HEIGHT+Main_Screen_Width+40)
-#define TimeSetRepeatCircleArr @[@"天",@"周",@"月"]
+
 
 @interface XYTimeCellModel : XYParentModel
 
@@ -36,7 +36,9 @@
 
 
 //重复
+@property(nonatomic,strong)NSArray * frequenceArr;
 @property(nonatomic,assign)NSInteger setRepeatCount;
+@property(nonatomic,strong)NSArray * reciptCircleUnitArr;
 @property(nonatomic,assign) TimeSetRepeatCircle setRepeatCircle;//天周月
 
 

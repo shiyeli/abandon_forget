@@ -10,4 +10,21 @@
 
 @implementation XYNotifyModel
 
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        
+        NSMutableArray* arrM=[NSMutableArray array];
+        for (int i=0; i<5; i++) {
+            NSString* temStr=[NSString stringWithFormat:@"%d",i+1];
+            [arrM addObject:temStr];
+        }
+        _frequencyArr=[NSArray arrayWithArray:arrM];
+        _repeatUnitArr=TimeSetRepeatCircleArr;
+        
+    }
+    return self;
+}
+
 @end

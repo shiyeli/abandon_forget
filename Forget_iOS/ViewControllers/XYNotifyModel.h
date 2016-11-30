@@ -9,11 +9,14 @@
 #import "XYParentModel.h"
 #import <AMapSearchKit/AMapSearchKit.h>
 
+
+#define TimeSetRepeatCircleArr @[@"天",@"周",@"月"]
 typedef enum: NSInteger {
     TimeSetRepeatDay=0,
     TimeSetRepeatWeek,
     TimeSetRepeatMonth,
 }TimeSetRepeatCircle;
+
 
 @interface XYNotifyModel : XYParentModel
 
@@ -30,7 +33,10 @@ typedef enum: NSInteger {
 @property(nonatomic,strong)NSDate* notifyTime;
 //设置重复
 @property(nonatomic,assign)BOOL haveSetRepeat;
+
+@property(nonatomic,strong)NSArray *frequencyArr;
 @property(nonatomic,assign)NSInteger frequency;
+@property(nonatomic,strong)NSArray *repeatUnitArr;
 @property(nonatomic)TimeSetRepeatCircle repeatUnit;
 //设置结束重复日期
 @property(nonatomic,assign)BOOL haveSetClosingDate;
