@@ -31,7 +31,11 @@
 
 @implementation XYSetTimeView
 
-
+-(void)setModel:(XYNotifyModel *)model{
+    _model=model;
+    
+    [self setModelData:_model];
+}
 
 
 -(void)awakeFromNib{
@@ -41,7 +45,7 @@
     self.myTableView.dataSource=self;
     self.myTableView.backgroundColor=[UIColor whiteColor];
     self.myTableView.sectionFooterHeight=0.0f;
-    [self setModel];
+    
     
     [self initCellUI];
 }
@@ -52,33 +56,55 @@
     yearCell_2=[[XYYearMonthDayCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
 
 }
--(void)setModel{
+-(void)setModelData:(XYNotifyModel*)model{
+    
     self.dataArr=[NSMutableArray array];
     for (int i=0; i<3; i++) {
         XYTimeSectionModel* sectionM=[[XYTimeSectionModel alloc]init];
-        sectionM.switchIsOpen=YES;
         
-        XYTimeCellModel* cellM=[[XYTimeCellModel alloc]init];
-        cellM.isSwitchOn=sectionM.switchIsOpen;
-        cellM.isSpreadOut=NO;
-        [sectionM.arrM addObject:cellM];
+        
+        
+        
         if (i==0) {
+            sectionM.switchIsOpen=model.haveSetTime;
             sectionM.sectionTitle=@"提醒时间";
             
-            //第一组有两个cell
+            
             XYTimeCellModel* cellM=[[XYTimeCellModel alloc]init];
             cellM.isSwitchOn=sectionM.switchIsOpen;
             cellM.isSpreadOut=NO;
+            cellM.setDate=model.notifyTime;
             [sectionM.arrM addObject:cellM];
             
             
+            //第一组有两个cell
+            XYTimeCellModel* cellM2=[[XYTimeCellModel alloc]init];
+            cellM2.isSwitchOn=sectionM.switchIsOpen;
+            cellM2.isSpreadOut=NO;
+            cellM2.setDate=model.notifyTime;
+            [sectionM.arrM addObject:cellM2];
+            
+            
         }else if (i==1){
+            sectionM.switchIsOpen=model.haveSetRepeat;
             sectionM.sectionTitle=@"重复";
             
+            XYTimeCellModel* cellM=[[XYTimeCellModel alloc]init];
+            cellM.isSwitchOn=sectionM.switchIsOpen;
+            cellM.isSpreadOut=NO;
+            cellM.setRepeatCount=model.frequency;
+            cellM.setRepeatCircle=model.repeatUnit;
+            [sectionM.arrM addObject:cellM];
+            
         }else if (i==2){
+            sectionM.switchIsOpen=model.haveSetClosingDate;
             sectionM.sectionTitle=@"结束重复日期";
             
-            
+            XYTimeCellModel* cellM=[[XYTimeCellModel alloc]init];
+            cellM.isSwitchOn=sectionM.switchIsOpen;
+            cellM.isSpreadOut=NO;
+            cellM.setDate=model.closingDate;
+            [sectionM.arrM addObject:cellM];
         }
         
         [self.dataArr addObject:sectionM];

@@ -36,7 +36,7 @@
 
 
 //重复
-@property(nonatomic,copy)NSString * setRepeatCount;
+@property(nonatomic,assign)NSInteger setRepeatCount;
 @property(nonatomic,assign) TimeSetRepeatCircle setRepeatCircle;//天周月
 
 

@@ -10,6 +10,8 @@
 @class AMapTip;
 @interface XYSetLoctionView : XYParentView
 
+@property(nonatomic,weak)XYNotifyModel* model;
+
 -(void)addNewAddress:(AMapTip*)tip;
 
 @end

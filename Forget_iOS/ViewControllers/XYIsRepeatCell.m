@@ -95,7 +95,7 @@
     
     
     if (component==0) {
-        self.model.setRepeatCount=arrCount[row];
+        self.model.setRepeatCount=[arrCount[row] integerValue];
     }else{
         self.model.setRepeatCircle=row;
     }

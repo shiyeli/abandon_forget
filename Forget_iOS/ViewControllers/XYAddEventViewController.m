@@ -96,6 +96,26 @@
     self.myScrollView.scrollEnabled=NO;
     self.myScrollView.showsHorizontalScrollIndicator=NO;
     
+    //配置视图默认显示数据
+    //提醒时间
+    self.model.haveSetTime=YES;
+    self.model.notifyTime=[NSDate date];
+    //重复
+    self.model.haveSetRepeat=YES;
+    self.model.frequency=1;
+    self.model.repeatUnit=TimeSetRepeatDay;
+    //关闭提醒时间
+    self.model.haveSetClosingDate=NO;
+    self.model.closingDate=[NSDate date];
+    
+    
+    //提醒地点
+    self.model.haveSetLocation=YES;
+    self.model.isArrvialNotify=YES;
+    
+    
+    self.timeView.model=self.model;
+    self.locationView.model=self.model;
     
     self.timeView.sendBlock=^(id sender){
     
