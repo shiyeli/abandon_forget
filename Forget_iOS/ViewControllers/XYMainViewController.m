@@ -47,7 +47,7 @@
 #import "XYMainViewController.h"
 #import "SWRevealViewController.h"
 #import "XYNotifyListHeaderView.h"
-
+#define NOTIFYLIST_CELL_HEIGHT 44.0f
 @interface XYMainViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 @property(nonatomic,strong)NSMutableArray * dataArray;
@@ -72,9 +72,12 @@
     
     [self settingsOfSlide];
     
+    self.notifyHeaderViewH.constant=Main_Screen_Width*0.5;
+    
     [self getNotifyData];
     
-    self.notifyHeaderViewH.constant=Main_Screen_Width*0.5;
+    UIView* footerView=[[UIView alloc]initWithFrame:CGRectMake(0, 0, Main_Screen_Width, Main_Screen_Height-64-self.notifyHeaderViewH.constant-NOTIFYLIST_CELL_HEIGHT)];
+    self.myTableView.tableFooterView=footerView;
 }
 
 -(void)getNotifyData{
