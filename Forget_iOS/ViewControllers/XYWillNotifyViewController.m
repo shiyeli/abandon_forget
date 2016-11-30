@@ -23,9 +23,18 @@
 
 - (IBAction)nextStepClick:(id)sender {
     //此处存储传递数据
+    if ([XYTool removeSpaceAndNewline:self.notifyRemark.text].length==0) {
+        [XYTool showPromptView:@"请填写提醒信息" holdView:nil];
+        return;
+    }else{
+        self.model.notifyRemark=self.notifyRemark.text;
+    }
+    if (self.model.notifyImgUrl==nil||self.model.notifyImgUrl.length==0) {
+        [XYTool showPromptView:@"请设置图片" holdView:nil];
+        return;
+    }
     
-    
-    [self performSegueWithIdentifier:@"XYAddEventViewController" sender:nil];
+    [self performSegueWithIdentifier:@"XYAddEventViewController" sender:self.model];
 }
 
 
@@ -99,7 +108,7 @@
 - (void)uploadUserIcon:(UIImage *)userIcon{
     
     [self.notifyImgView setImage:userIcon];
-    
+    self.model.notifyImgUrl=@"http://img5q.duitang.com/uploads/item/201503/07/20150307203721_nnS2E.png";
 }
 
 - (UIImage *)sizedImage:(UIImage *)originalImage withMaxValue:(float)maxValue
