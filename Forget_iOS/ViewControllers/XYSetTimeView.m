@@ -206,7 +206,7 @@
     
     sectionModel.mySwitch.tintColor=THIEM_COLOR;
      sectionModel.mySwitch.onTintColor=THIEM_COLOR;
-     sectionModel.mySwitch.tag=section;
+     sectionModel.mySwitch.tag=kTag+section;
     [ sectionModel.mySwitch setOn:sectionModel.switchIsOpen];
     [ sectionModel.mySwitch addTarget:self action:@selector(switchActions:) forControlEvents:UIControlEventValueChanged];
     [header addSubview: sectionModel.mySwitch];
@@ -232,7 +232,7 @@
 
 -(void)switchActions:(UISwitch*)sender{
     
-    for (int i=sender.tag; i<self.dataArr.count; i++) {
+    for (int i=sender.tag-kTag; i<self.dataArr.count; i++) {
         XYTimeSectionModel* sectionModel=[self.dataArr objectAtIndex:i];
         sectionModel.switchIsOpen=sender.isOn;
         if (i>sender.tag) {
@@ -241,6 +241,17 @@
         for (XYTimeCellModel* model in sectionModel.arrM) {
             model.isSwitchOn=sender.isOn;
         }
+        
+        //修改Model
+        if (i==0) {
+            self.model.haveSetTime=sectionModel.switchIsOpen;
+        
+        }else if (i==1){
+            self.model.haveSetRepeat=sectionModel.switchIsOpen;
+        }else if (i==2){
+            self.model.haveSetClosingDate=sectionModel.switchIsOpen;
+        }
+  
     }
     [self.myTableView reloadData];
 }
