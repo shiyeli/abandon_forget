@@ -32,7 +32,10 @@
 
 - (IBAction)accomplish:(id)sender {
     //此处判断存储数据
-    
+    if (!self.model.haveSetLocation&&!self.model.haveSetTime) {
+        [XYTool showPromptView:@"时间或地点请至少设置一项" holdView:nil];
+        return;
+    }
     
     
     [self dismissViewControllerAnimated:YES completion:nil];
@@ -82,18 +85,28 @@
     };
     
     self.timeView=[[[NSBundle mainBundle]loadNibNamed:@"XYSetTimeView" owner:nil options:nil] lastObject];
-    
     [self.view layoutIfNeeded];
     CGFloat scrollViewH=self.myScrollView.frame.size.height;
     [self.timeView setFrame:CGRectMake(0, 0, Main_Screen_Width, scrollViewH)];
     [self.locationView setFrame:CGRectMake(Main_Screen_Width, 0, Main_Screen_Width, scrollViewH)];
     [self.myScrollView addSubview:self.timeView];
     [self.myScrollView addSubview:self.locationView];
-    
+
     [self.myScrollView setContentSize:CGSizeMake(Main_Screen_Width*2.0, 1)];
     self.myScrollView.scrollEnabled=NO;
     self.myScrollView.showsHorizontalScrollIndicator=NO;
     
+    
+    self.timeView.sendBlock=^(id sender){
+    
+    
+    
+    };
+    self.locationView.sendBlock=^(id sender){
+        
+        
+        
+    };
     
 }
 -(void)handleEventOfLocationView:(id)sender{

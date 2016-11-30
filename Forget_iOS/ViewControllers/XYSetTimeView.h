@@ -10,6 +10,7 @@
 
 @interface XYSetTimeView : XYParentView
 
+@property(nonatomic,weak)XYNotifyModel* model;
 
 @property (weak, nonatomic) IBOutlet UITableView *myTableView;
 

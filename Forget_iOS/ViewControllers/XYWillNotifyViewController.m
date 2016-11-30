@@ -22,6 +22,9 @@
 @implementation XYWillNotifyViewController
 
 - (IBAction)nextStepClick:(id)sender {
+    
+    [self.view endEditing:YES];
+    
     //此处存储传递数据
     if ([XYTool removeSpaceAndNewline:self.notifyRemark.text].length==0) {
         [XYTool showPromptView:@"请填写提醒信息" holdView:nil];

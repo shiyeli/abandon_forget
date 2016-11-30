@@ -9,14 +9,7 @@
 #import "XYParentModel.h"
 #define TIME_CELL_HEIGHT 70.0
 #define TIME_CELL_HEIGHT_SPREADOUT (TIME_CELL_HEIGHT+Main_Screen_Width+40)
-
-typedef enum: NSInteger {
-    TimeSetRepeatDay=0,
-    TimeSetRepeatWeek,
-    TimeSetRepeatMonth,
-}TimeSetRepeatCircle;
 #define TimeSetRepeatCircleArr @[@"天",@"周",@"月"]
-
 
 @interface XYTimeCellModel : XYParentModel
 
