@@ -207,6 +207,12 @@
             return;
         }
         [self setYearMonthDay:self.calendarView.selectDate];
+        
+        //存储时间
+        self.model.setDate=self.calendarView.selectDate;
+        if (self.sendBlock) {
+            self.sendBlock(self.model);
+        }
     }
     
     [super sureOrNot:sender];
@@ -219,10 +225,6 @@
     
     [_yearLab setTitle:[NSString stringWithFormat:@"%zd",comp.year] forState:UIControlStateNormal];
     [_monthDayLab setTitle:[NSString stringWithFormat:@"%zd月%zd日,%@",comp.month,comp.day,[XYTool getWeekdayStringFromDate:date]] forState:UIControlStateNormal];
-    
-    //存储时间
-    
-    self.model.setDate=date;
     
     
 }

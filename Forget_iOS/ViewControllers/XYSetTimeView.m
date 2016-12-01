@@ -17,13 +17,10 @@
 
 
 @interface XYSetTimeView ()<UITableViewDelegate,UITableViewDataSource>
-
-{
-    XYYearMonthDayCell* yearCell_1;
-    XYHourMinuteCell* hourMinCell;
-    XYIsRepeatCell* repeatCell;
-    XYYearMonthDayCell* yearCell_2;
-}
+@property(nonatomic,strong)XYYearMonthDayCell* yearCell_1;
+@property(nonatomic,strong)XYHourMinuteCell* hourMinCell;
+@property(nonatomic,strong)XYIsRepeatCell* repeatCell;
+@property(nonatomic,strong)XYYearMonthDayCell* yearCell_2;
 
 @property(nonatomic,strong)NSMutableArray * dataArr;
 
@@ -50,10 +47,46 @@
     [self initCellUI];
 }
 -(void)initCellUI{
-    yearCell_1=[[XYYearMonthDayCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
-    hourMinCell=[[XYHourMinuteCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
-    repeatCell=[[XYIsRepeatCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
-    yearCell_2=[[XYYearMonthDayCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
+    WS(weakSelf)
+    _yearCell_1=[[XYYearMonthDayCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
+    _yearCell_1.sendBlock=^(XYTimeCellModel* model){
+        weakSelf.model.notifyTime=model.setDate;
+        [weakSelf.myTableView reloadData];
+        NSLog(@"提醒年月日:%@",model.setDate);
+    };
+    _hourMinCell=[[XYHourMinuteCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
+    _hourMinCell.sendBlock=^(XYTimeCellModel* model){
+        weakSelf.model.isAM=model.isAM;
+        weakSelf.model.hour=model.hour;
+        weakSelf.model.minitue=model.minitue;
+        
+        NSDateComponents *comp = [[NSCalendar currentCalendar] components:(NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay|NSCalendarUnitHour|NSCalendarUnitMinute) fromDate:weakSelf.model.notifyTime];
+        
+        comp.hour=model.isAM?model.hour:model.hour+12;
+        comp.minute=model.minitue;
+        
+        NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+        [calendar setTimeZone: [NSTimeZone systemTimeZone]];
+        weakSelf.model.notifyTime = [calendar dateFromComponents:comp];
+        weakSelf.hourMinCell.model.setDate=[calendar dateFromComponents:comp];
+        [weakSelf.myTableView reloadData];
+        NSLog(@"提醒时分:%@",weakSelf.model.notifyTime);
+    };
+    _repeatCell=[[XYIsRepeatCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
+    _repeatCell.sendBlock=^(XYTimeCellModel* model){
+        weakSelf.model.frequency=model.setRepeatCount;
+        weakSelf.model.repeatUnit=model.setRepeatCircle;
+        [weakSelf.myTableView reloadData];
+        NSLog(@"重复:%d %d",model.setRepeatCount,model.setRepeatCircle);
+    };
+    _yearCell_2=[[XYYearMonthDayCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
+    _yearCell_2.sendBlock=^(XYTimeCellModel* model){
+        weakSelf.model.closingDate=model.setDate;
+        [weakSelf.myTableView reloadData];
+        NSLog(@"结束提醒时间:%@",model.setDate);
+    };
+    
+    
 
 }
 -(void)setModelData:(XYNotifyModel*)model{
@@ -119,13 +152,13 @@
     
     if (indexPath.section==0) {
         if (indexPath.row==0) {
-            cell=yearCell_1;
+            cell=_yearCell_1;
             
             
             
         }else{
             
-            cell=hourMinCell;
+            cell=_hourMinCell;
             
             
         }
@@ -137,7 +170,7 @@
         
         if (indexPath.row==0) {
             
-            cell=repeatCell;
+            cell=_repeatCell;
             cell.cellColor=TIMECELL_COLOR_BLUE;
             [cell.closeBtn setImage:[UIImage imageNamed:@"settime_blue_close"] forState:UIControlStateNormal];
             [cell.sureBtn setImage:[UIImage imageNamed:@"settime_blue_sure"] forState:UIControlStateNormal];
@@ -150,7 +183,7 @@
         
         if (indexPath.row==0) {
             
-            cell=yearCell_2;
+            cell=_yearCell_2;
             cell.cellColor=TIMECELL_COLOR_YELLOW;
             [cell.closeBtn setImage:[UIImage imageNamed:@"settime_yellow_close"] forState:UIControlStateNormal];
             [cell.sureBtn setImage:[UIImage imageNamed:@"settime_yellow_sure"] forState:UIControlStateNormal];
@@ -164,12 +197,6 @@
     XYTimeCellModel* cellModel=[sectionModel.arrM objectAtIndex:indexPath.row];
     cellModel.indexPath=indexPath;
 
-    WS(weakSelf)
-    cell.sendBlock=^(XYTimeCellModel*  model){
-        
-        [weakSelf.myTableView reloadData];
-        
-    };
     cell.selectionStyle=UITableViewCellSelectionStyleNone;
     cell.model=cellModel;
     

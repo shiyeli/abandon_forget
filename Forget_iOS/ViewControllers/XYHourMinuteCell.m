@@ -14,6 +14,11 @@
     UIButton* minuteBtn;
     UIButton* amBtn;
     UIButton* pmBtn;
+    
+    BOOL _isAM;
+    NSInteger _hour;
+    NSInteger _minute;
+    
 }
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
@@ -33,16 +38,17 @@
     [super setModel:model];
     
     [self setHourMInWithDate:model.setDate];
+   
 }
 
 
--(void)changeHoutMintuteAnimation{
-    CATransition* transtiton=[CATransition animation];
-    transtiton.duration=0.3;
-    transtiton.type=@"kCATransitionFade";
-    [self.centerView.layer addAnimation:transtiton forKey:nil];
-
-}
+//-(void)changeHoutMintuteAnimation{
+//    CATransition* transtiton=[CATransition animation];
+//    transtiton.duration=0.3;
+//    transtiton.type=@"kCATransitionFade";
+//    [self.centerView.layer addAnimation:transtiton forKey:nil];
+//
+//}
 
 -(void)titleViewClick:(UIButton*)sender{
     
@@ -59,7 +65,7 @@
             self.clockView.isChange=YES;
             self.clockView.isHour=YES;
             [self.clockView setMinute:[hourBtn.titleLabel.text integerValue]*5];
-            [self changeHoutMintuteAnimation];
+            
         }
             break;
         case 2:
@@ -68,17 +74,19 @@
             self.clockView.isChange=YES;
             self.clockView.isHour=NO;
             [self.clockView setMinute:[minuteBtn.titleLabel.text integerValue]];
-            [self changeHoutMintuteAnimation];
+            
         }
             break;
         case 3:
         {
             pmBtn.selected=NO;
+            _isAM=YES;
         }
             break;
         case 4:
         {
             amBtn.selected=NO;
+            _isAM=NO;
         }
             break;
             
@@ -182,21 +190,50 @@
             pmBtn.selected=YES;
             amBtn.selected=NO;
             amBtn.hidden=YES;
+            pmBtn.hidden=NO;
+            _isAM=NO;
+            
             
         }else{
             pmBtn.selected=NO;
             amBtn.selected=YES;
             pmBtn.hidden=YES;
+            amBtn.hidden=NO;
+            _isAM=YES;
         }
+    }else{//展开视图
+        if (comp.hour>12) {
+            comp.hour-=12;
+            pmBtn.selected=YES;
+            amBtn.selected=NO;
+            amBtn.hidden=NO;
+            pmBtn.hidden=NO;
+            _isAM=NO;
+            
+            
+        }else{
+            pmBtn.selected=NO;
+            amBtn.selected=YES;
+            pmBtn.hidden=NO;
+            amBtn.hidden=NO;
+            _isAM=YES;
+        }
+    
     }
+    
+    _hour=comp.hour;
+    _minute=comp.minute;
+    
+    self.model.isAM=_isAM;
+    self.model.hour=_hour;
+    self.model.minitue=_minute;
     [self setHour:comp.hour];
     [self setMinute:comp.minute];
-    
+   
 }
 
 -(void)setHour:(NSInteger)hour{
     [hourBtn setTitle:[NSString stringWithFormat:@"%02d",hour] forState:UIControlStateNormal];
-    
 }
 -(void)setMinute:(NSInteger)minute{
     [minuteBtn setTitle:[NSString stringWithFormat:@"%02d",minute] forState:UIControlStateNormal];
@@ -237,9 +274,12 @@
     }
     NSLog(@"The time is: %02d:%02d", clock.hour, clock.minute);
     if (clock.isHour) {
-        [self setHour:clock.minute/5];
+        _hour=clock.minute/5;
+        [self setHour:_hour];
+        
     }else{
-        [self setMinute:clock.minute];
+        _minute=clock.minute;
+        [self setMinute:_minute];
     }
     
 }
@@ -258,6 +298,8 @@
     [super spreadOutCell:sender];
     hourBtn.selected=YES;
     minuteBtn.selected=NO;
+    [self titleViewClick:hourBtn];
+    
     amBtn.hidden=NO;
     pmBtn.hidden=NO;
 }
@@ -267,12 +309,26 @@
     
     if (amBtn.selected==YES) {
         pmBtn.hidden=YES;
+        amBtn.hidden=NO;
     }else{
         amBtn.hidden=YES;
+        pmBtn.hidden=NO;
     }
     hourBtn.selected=YES;
     minuteBtn.selected=YES;
     
+    if (sender.tag==1) {//关闭
+    }else{//确认
+        self.model.isAM=_isAM;
+        self.model.hour=_hour;
+        self.model.minitue=_minute;
+    }
+    
+    [self setMinute:self.model.minitue];
+    [self setHour:self.model.hour];
+    if (self.sendBlock) {
+        self.sendBlock(self.model);
+    }
 }
 /*
 // Only override drawRect: if you perform custom drawing.

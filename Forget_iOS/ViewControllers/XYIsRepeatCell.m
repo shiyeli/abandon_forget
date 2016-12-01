@@ -12,6 +12,9 @@
 {
     NSArray* arrCount;
     NSArray* arrCircle;
+    
+    NSInteger frquency;
+    TimeSetRepeatCircle repeatUnit;
 }
 
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
@@ -28,7 +31,13 @@
 
     arrCount=model.frequenceArr;
     arrCircle=model.reciptCircleUnitArr;
-    _repeatLab.text=[NSString stringWithFormat:@"每%@%@",arrCount[0],arrCircle[0]];
+    
+    frquency=self.model.setRepeatCount;
+    repeatUnit=self.model.setRepeatCircle;
+    _repeatLab.text=[NSString stringWithFormat:@"每%d%@",frquency,arrCircle[repeatUnit]];
+    
+    [self.myPickerView selectRow:frquency-1 inComponent:0 animated:NO];
+    [self.myPickerView selectRow:repeatUnit inComponent:1 animated:NO];
 }
 
 -(void)setCustomView{
@@ -89,9 +98,9 @@
     
     
     if (component==0) {
-        self.model.setRepeatCount=[arrCount[row] integerValue];
+        frquency=[arrCount[row] integerValue];
     }else{
-        self.model.setRepeatCircle=row;
+        repeatUnit=row;
     }
     
 }
@@ -106,8 +115,12 @@
     }else{//确认
         NSString* resultStr=[NSString stringWithFormat:@"每%@%@",[NSString stringWithFormat:@"%zd",self.model.setRepeatCount],arrCircle[self.model.setRepeatCircle]];
         _repeatLab.text=resultStr;
+        self.model.setRepeatCount=frquency;
+        self.model.setRepeatCircle=repeatUnit;
     }
-    
+    if (self.sendBlock) {
+        self.sendBlock(self.model);
+    }
 }
 
 /*

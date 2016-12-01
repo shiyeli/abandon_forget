@@ -27,12 +27,12 @@
 @property(nonatomic,assign)BOOL isSpreadOut;
 
 
-
-
-
-
 //提醒时间/结束日期
 @property(nonatomic,strong) NSDate* setDate;
+
+@property(nonatomic,assign)BOOL isAM;
+@property(nonatomic,assign)NSInteger hour;
+@property(nonatomic,assign)NSInteger minitue;
 
 
 //重复

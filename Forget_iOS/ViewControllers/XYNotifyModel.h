@@ -31,6 +31,10 @@ typedef enum: NSInteger {
 /****************提醒时间***************/
 @property(nonatomic,assign)BOOL haveSetTime;
 @property(nonatomic,strong)NSDate* notifyTime;
+@property(nonatomic,assign)BOOL isAM;
+@property(nonatomic,assign)NSInteger hour;
+@property(nonatomic,assign)NSInteger minitue;
+
 //设置重复
 @property(nonatomic,assign)BOOL haveSetRepeat;
 
@@ -41,7 +45,9 @@ typedef enum: NSInteger {
 //设置结束重复日期
 @property(nonatomic,assign)BOOL haveSetClosingDate;
 @property(nonatomic,strong)NSDate* closingDate;
-
+@property(nonatomic,assign)BOOL isAM_close;
+@property(nonatomic,assign)NSInteger hour_close;
+@property(nonatomic,assign)NSInteger minitue_close;
 
 
 
