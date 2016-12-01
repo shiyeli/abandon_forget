@@ -235,7 +235,7 @@
     for (int i=sender.tag-kTag; i<self.dataArr.count; i++) {
         XYTimeSectionModel* sectionModel=[self.dataArr objectAtIndex:i];
         sectionModel.switchIsOpen=sender.isOn;
-        if (i>sender.tag) {
+        if (i>sender.tag-kTag) {
             [sectionModel.mySwitch setEnabled:sender.isOn];
         }
         for (XYTimeCellModel* model in sectionModel.arrM) {
@@ -254,6 +254,8 @@
   
     }
     [self.myTableView reloadData];
+    
+    NSLog(@"haveSetTime:%d  haveSetRepeat:%d  haveSetClosingDate:%d",self.model.haveSetTime,self.model.haveSetRepeat,self.model.haveSetClosingDate);
 }
 
 
