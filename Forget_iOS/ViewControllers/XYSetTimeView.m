@@ -46,29 +46,36 @@
     
     [self initCellUI];
 }
+
+-(NSDate*)mergeYearMonty:(XYTimeCellModel*)yearModel day:(XYTimeCellModel*)dayModel{
+    self.model.isAM=dayModel.isAM;
+    self.model.hour=dayModel.hour;
+    self.model.minitue=dayModel.minitue;
+    
+    NSDateComponents *comp = [[NSCalendar currentCalendar] components:(NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay|NSCalendarUnitHour|NSCalendarUnitMinute) fromDate:yearModel.setDate];
+    
+    comp.hour=dayModel.isAM?dayModel.hour:dayModel.hour+12;
+    comp.minute=dayModel.minitue;
+    
+    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+    [calendar setTimeZone: [NSTimeZone localTimeZone]];
+    self.hourMinCell.model.setDate=[calendar dateFromComponents:comp];
+    return [calendar dateFromComponents:comp];
+}
+
 -(void)initCellUI{
     WS(weakSelf)
     _yearCell_1=[[XYYearMonthDayCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
     _yearCell_1.sendBlock=^(XYTimeCellModel* model){
-        weakSelf.model.notifyTime=model.setDate;
+        
+        weakSelf.model.notifyTime=[weakSelf mergeYearMonty:model day:weakSelf.hourMinCell.model];
         [weakSelf.myTableView reloadData];
         NSLog(@"提醒年月日:%@",[NSString stringWithFormat:@"%@",weakSelf.model.notifyTime]);
     };
     _hourMinCell=[[XYHourMinuteCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
     _hourMinCell.sendBlock=^(XYTimeCellModel* model){
-        weakSelf.model.isAM=model.isAM;
-        weakSelf.model.hour=model.hour;
-        weakSelf.model.minitue=model.minitue;
         
-        NSDateComponents *comp = [[NSCalendar currentCalendar] components:(NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay|NSCalendarUnitHour|NSCalendarUnitMinute) fromDate:weakSelf.model.notifyTime];
-        
-        comp.hour=model.isAM?model.hour:model.hour+12;
-        comp.minute=model.minitue;
-        
-        NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
-        [calendar setTimeZone: [NSTimeZone localTimeZone]];
-        weakSelf.model.notifyTime = [calendar dateFromComponents:comp];
-        weakSelf.hourMinCell.model.setDate=[calendar dateFromComponents:comp];
+        weakSelf.model.notifyTime=[weakSelf mergeYearMonty:weakSelf.yearCell_1.model day:model];
         [weakSelf.myTableView reloadData];
         NSLog(@"提醒时分:%@",[NSString stringWithFormat:@"%@",weakSelf.model.notifyTime]);
         

@@ -55,6 +55,9 @@
         make.height.equalTo(@(TIME_CELL_HEIGHT));
     }];
     
+    UITapGestureRecognizer* tap=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(spreadOutCell:)];
+    [_titleView addGestureRecognizer:tap];
+    
     _spreadOutBtn =[[UIButton alloc]init];
     [_spreadOutBtn setImage:[UIImage imageNamed:@"down_view_btn"] forState:UIControlStateNormal];
     [_spreadOutBtn addTarget:self action:@selector(spreadOutCell:) forControlEvents:UIControlEventTouchUpInside];

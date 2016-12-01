@@ -94,6 +94,8 @@
 -(void)titleViewClick:(UIButton*)sender{
     
     if (!self.model.isSpreadOut) {
+        [self spreadOutCell:nil];
+        
         return;
     }
     
