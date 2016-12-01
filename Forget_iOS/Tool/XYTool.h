@@ -137,4 +137,10 @@
  */
 +(void)transitionAnimationWhater;
 
+/**
+ *  比较两个日期,精确到天,否则精确到分
+ *
+ */
++(int)compareDate:(BOOL)precisionDay OneDay:(NSDate *)oneDay withAnotherDay:(NSDate *)anotherDay;
+
 @end

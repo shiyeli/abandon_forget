@@ -235,16 +235,47 @@
             [XYTool showPromptView:@"请选择日期" holdView:self.centerView];
             return;
         }
-        [self setYearMonthDay:self.calendarView.selectDate];
         
-        //存储时间
-        self.model.setDate=self.calendarView.selectDate;
-        if (self.sendBlock) {
-            self.sendBlock(self.model);
+        //如果是设置结束重复日期,是否比设置的时间前面;
+        
+        if (self.isSetNotifyTime) {
+            if ([XYTool compareDate:YES OneDay:self.calendarView.selectDate withAnotherDay:[NSDate date]]<0) {
+                [XYTool showPromptView:@"请选择一个未来的时间" holdView:nil];
+                return;
+            }
+            
+            [self setYearMonthDay:self.calendarView.selectDate];
+            
+            //存储时间
+            self.model.setDate=self.calendarView.selectDate;
+            if (self.sendBlock) {
+                self.sendBlock(self.model);
+            }
+            
+            [super sureOrNot:sender];
+
+        }else{//设置结束时间
+            
+            __strong XYTimeCellModel* tempModel=self.model;
+            tempModel.setDate=self.calendarView.selectDate;
+            if (self.sendBlock) {
+                if (self.sendBOOLBack(tempModel)) {
+                    //大于设置的提醒时间
+                    self.model.setDate=self.calendarView.selectDate;
+                    [super sureOrNot:sender];
+                }else{
+                    [XYTool showPromptView:@"请选择一个大于提醒时间的时间" holdView:nil];
+                }
+            }
+            
+        
+        
         }
+
+        
     }
     
-    [super sureOrNot:sender];
+    
 }
 
 -(void)setYearMonthDay:(NSDate*)date{

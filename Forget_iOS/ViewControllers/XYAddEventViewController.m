@@ -79,11 +79,6 @@
     
     //视图加载
     self.locationView=[[[NSBundle mainBundle]loadNibNamed:@"XYSetLoctionView" owner:nil options:nil] lastObject];
-    WS(weakSelf)
-    self.locationView.sendBlock=^(id sender){
-        [weakSelf handleEventOfLocationView:sender];
-    };
-    
     self.timeView=[[[NSBundle mainBundle]loadNibNamed:@"XYSetTimeView" owner:nil options:nil] lastObject];
     [self.view layoutIfNeeded];
     CGFloat scrollViewH=self.myScrollView.frame.size.height;
@@ -105,9 +100,12 @@
     self.model.frequency=1;
     self.model.repeatUnit=TimeSetRepeatDay;
     //关闭提醒时间
-    self.model.haveSetClosingDate=NO;
-    self.model.closingDate=[NSDate date];
     
+    self.model.haveSetClosingDate=YES;
+    NSDateComponents *dateComponents = [[NSDateComponents alloc] init];
+    dateComponents.day = +1;
+    NSDate *newDate = [[NSCalendar currentCalendar] dateByAddingComponents:dateComponents toDate:[NSDate date] options:0];
+    self.model.closingDate=newDate;
     
     //提醒地点
     self.model.haveSetLocation=YES;
@@ -117,15 +115,15 @@
     self.timeView.model=self.model;
     self.locationView.model=self.model;
     
+    WS(weakSelf)
     self.timeView.sendBlock=^(id sender){
     
     
     
     };
+    
     self.locationView.sendBlock=^(id sender){
-        
-        
-        
+        [weakSelf handleEventOfLocationView:sender];
     };
     
 }
@@ -134,7 +132,6 @@
         //搜索
         [self performSegueWithIdentifier:@"XYAddAddressViewController" sender:nil];
     }
-    
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

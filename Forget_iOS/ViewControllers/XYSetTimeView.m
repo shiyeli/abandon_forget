@@ -43,7 +43,6 @@
     self.myTableView.backgroundColor=[UIColor whiteColor];
     self.myTableView.sectionFooterHeight=0.0f;
     
-    
     [self initCellUI];
 }
 
@@ -66,6 +65,7 @@
 -(void)initCellUI{
     WS(weakSelf)
     _yearCell_1=[[XYYearMonthDayCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
+    _yearCell_1.isSetNotifyTime=YES;
     _yearCell_1.sendBlock=^(XYTimeCellModel* model){
         
         weakSelf.model.notifyTime=[weakSelf mergeYearMonty:model day:weakSelf.hourMinCell.model];
@@ -88,10 +88,21 @@
         NSLog(@"重复:%d %d",model.setRepeatCount,model.setRepeatCircle);
     };
     _yearCell_2=[[XYYearMonthDayCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
+    _yearCell_2.isSetNotifyTime=NO;
     _yearCell_2.sendBlock=^(XYTimeCellModel* model){
         weakSelf.model.closingDate=model.setDate;
         [weakSelf.myTableView reloadData];
         NSLog(@"结束提醒时间:%@",[NSString stringWithFormat:@"%@",weakSelf.model.closingDate]);
+    };
+    _yearCell_2.sendBOOLBack=^(XYTimeCellModel* model){
+        
+        if ([XYTool compareDate:NO OneDay:model.setDate withAnotherDay:weakSelf.model.notifyTime]==1) {
+            weakSelf.model.closingDate=model.setDate;
+            [weakSelf.myTableView reloadData];
+            return YES;
+        }else {
+            return NO;
+        }
     };
     
     
