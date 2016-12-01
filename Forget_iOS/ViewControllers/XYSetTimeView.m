@@ -52,7 +52,7 @@
     _yearCell_1.sendBlock=^(XYTimeCellModel* model){
         weakSelf.model.notifyTime=model.setDate;
         [weakSelf.myTableView reloadData];
-        NSLog(@"提醒年月日:%@",model.setDate);
+        NSLog(@"提醒年月日:%@",[NSString stringWithFormat:@"%@",weakSelf.model.notifyTime]);
     };
     _hourMinCell=[[XYHourMinuteCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
     _hourMinCell.sendBlock=^(XYTimeCellModel* model){
@@ -66,11 +66,12 @@
         comp.minute=model.minitue;
         
         NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
-        [calendar setTimeZone: [NSTimeZone systemTimeZone]];
+        [calendar setTimeZone: [NSTimeZone localTimeZone]];
         weakSelf.model.notifyTime = [calendar dateFromComponents:comp];
         weakSelf.hourMinCell.model.setDate=[calendar dateFromComponents:comp];
         [weakSelf.myTableView reloadData];
-        NSLog(@"提醒时分:%@",weakSelf.model.notifyTime);
+        NSLog(@"提醒时分:%@",[NSString stringWithFormat:@"%@",weakSelf.model.notifyTime]);
+        
     };
     _repeatCell=[[XYIsRepeatCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
     _repeatCell.sendBlock=^(XYTimeCellModel* model){
@@ -83,11 +84,10 @@
     _yearCell_2.sendBlock=^(XYTimeCellModel* model){
         weakSelf.model.closingDate=model.setDate;
         [weakSelf.myTableView reloadData];
-        NSLog(@"结束提醒时间:%@",model.setDate);
+        NSLog(@"结束提醒时间:%@",[NSString stringWithFormat:@"%@",weakSelf.model.closingDate]);
     };
     
     
-
 }
 -(void)setModelData:(XYNotifyModel*)model{
     

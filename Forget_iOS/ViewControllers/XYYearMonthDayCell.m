@@ -37,6 +37,10 @@
 -(void)setModel:(XYTimeCellModel *)model{
     [super setModel:model];
     [self setData];
+    if (self.calendarView) {
+        [self.calendarView removeFromSuperview];
+    }
+    [self setupCalendarView:model.setDate];
 }
 -(void)setData{
     tempDate=self.model.setDate;
@@ -80,11 +84,13 @@
         make.leading.equalTo(_yearLab);
     }];
     
-    [self setupCalendarView:[NSDate date]];
+    
     
     
     
 }
+
+
 -(void)titleViewClick:(UIButton*)sender{
     
     if (!self.model.isSpreadOut) {
@@ -97,6 +103,13 @@
         self.yearPicker.hidden=NO;
         self.calendarView.hidden=YES;
         [self.yearPicker reloadAllComponents];
+        
+        for (int i=0;i<yearArr.count ; i++) {
+            if ([_yearLab.titleLabel.text isEqualToString:yearArr[i]]) {
+                [self.yearPicker selectRow:i inComponent:0 animated:NO];
+                break;
+            }
+        }
         
 
     }else{//点击日历
@@ -138,6 +151,7 @@
     self.calendarView.lastMonthBlock = ^(){
         [weakSelf setupLastMonth];
     };
+    
 }
 
 - (void)setupNextMonth {
@@ -160,10 +174,22 @@
     self.calendarView.lastMonthBlock = ^(){
         [weakSelf setupLastMonth];
     };
-
+    
+    [self setYearTextWithDate:tempDate];
 }
 
+-(void)setYearTextWithDate:(NSDate*)date{
+    NSDateComponents *comp = [[NSCalendar currentCalendar] components:(NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay) fromDate:date];
+    [_yearLab setTitle:[NSString stringWithFormat:@"%d",comp.year] forState:UIControlStateNormal];
+
+}
 - (void)setupLastMonth {
+    
+    NSDateComponents *comp = [[NSCalendar currentCalendar] components:(NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay) fromDate:[self.calendarView lastMonth:tempDate]];
+    if ( comp.year<[yearArr[0] integerValue]) {
+        return;
+    }
+    
     [self.calendarView removeFromSuperview];
     self.calendarView = [[FyCalendarView alloc] initWithFrame:CGRectMake(0, 0, Main_Screen_Width-DISTANCE_TO_EDGE*2, Main_Screen_Width-DISTANCE_TO_EDGE*2)];
     self.calendarView.cellColor=self.cellColor;
@@ -182,7 +208,8 @@
     self.calendarView.nextMonthBlock = ^(){
         [weakSelf setupNextMonth];
     };
-
+    [self setYearTextWithDate:tempDate];
+    
 }
 -(void)spreadOutCell:(UIButton *)sender{
     [super spreadOutCell:sender];
@@ -251,6 +278,8 @@
     NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
     [calendar setTimeZone: [NSTimeZone systemTimeZone]];
     tempDate = [calendar dateFromComponents:comp];
+    
+    self.calendarView.selectDate=nil;
 }
 /*
 // Only override drawRect: if you perform custom drawing.
