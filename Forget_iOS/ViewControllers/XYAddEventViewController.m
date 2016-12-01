@@ -170,6 +170,11 @@
             }
             
         }
+        
+        if ([sender isKindOfClass:[AMapTip class]]) {
+            weakSelf.model.tip=sender;
+            weakSelf.model.isPersonalLocation=YES;
+        }
     };
     
 }
