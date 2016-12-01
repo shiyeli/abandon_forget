@@ -24,7 +24,7 @@
                                 <view contentMode="center" translatesAutoresizingMaskIntoConstraints="NO" id="vQk-Zo-sdF">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                     <subviews>
-                                        <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7DX-Zx-JIC">
+                                        <switch opaque="NO" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7DX-Zx-JIC">
                                             <rect key="frame" x="16" y="7" width="51" height="31"/>
                                             <connections>
                                                 <action selector="switchChange:" destination="iN0-l3-epB" eventType="valueChanged" id="JOf-E3-V2i"/>

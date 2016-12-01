@@ -10,4 +10,13 @@
 
 @implementation XYAnimationViewModel
 
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        _tip=[[AMapTip alloc]init];
+    }
+    return self;
+}
+
 @end

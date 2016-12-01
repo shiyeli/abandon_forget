@@ -140,7 +140,6 @@
     
     [self.centerView addSubview:self.calendarView];
     
-
     self.calendarView.date = date;
     self.calendarView.cellColor=self.cellColor;
     WS(weakSelf)

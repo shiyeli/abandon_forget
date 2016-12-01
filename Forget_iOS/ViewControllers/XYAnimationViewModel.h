@@ -7,12 +7,15 @@
 //
 
 #import "XYParentModel.h"
-
+#import <AMapSearchKit/AMapSearchKit.h>
 @interface XYAnimationViewModel : XYParentModel
 
 @property(nonatomic,copy)NSString* img;
 @property(nonatomic,copy)NSString* name;
 @property(nonatomic,assign)NSInteger row;
+
 @property(nonatomic,assign) BOOL isNameLeft;
+
+@property(nonatomic,strong)AMapTip* tip;
 
 @end

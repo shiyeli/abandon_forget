@@ -50,10 +50,16 @@
             if (model.isNameLeft) {
                 weakSelf.commonBtn.selectModel=model;
                 weakSelf.personBtn.selectModel=nil;
+                
             }else{
                 weakSelf.personBtn.selectModel=model;
                 weakSelf.commonBtn.selectModel=nil;
             }
+            
+            if (weakSelf.sendBlock) {
+                weakSelf.sendBlock(model);
+            }
+            
             [weakSelf.myTableView reloadData];
         };
         
@@ -63,6 +69,11 @@
 
 - (IBAction)switchChange:(UISwitch *)sender {
     [self.holdStackView setHidden:!sender.isOn];
+    
+    if (self.sendBlock) {
+        self.sendBlock(sender);
+    }
+    
     
 }
 
@@ -115,13 +126,18 @@
             self.leaveAddressBtn.selected=NO;
             self.arriveAddressBtn.selected=YES;
             
+            if (self.sendBlock) {
+                self.sendBlock(sender);
+            }
         }
             break;
         case 5:{
             //离开地点
             self.leaveAddressBtn.selected=YES;
             self.arriveAddressBtn.selected=NO;
-            
+            if (self.sendBlock) {
+                self.sendBlock(sender);
+            }
         }
             break;
             
@@ -205,7 +221,13 @@
 
     self.personBtn.selectModel=nil;
     self.commonBtn.selectModel=nil;
-
+    
+    AMapTip* tip=[self.dataArray objectAtIndex:indexPath.row];
+    
+    if (self.sendBlock) {
+        self.sendBlock(tip);
+    }
+    
 }
 
 -(void)addNewAddress:(AMapTip*)tip{
@@ -219,6 +241,10 @@
     cell.selected=YES;
     self.personBtn.selectModel=nil;
     self.commonBtn.selectModel=nil;
+    
+    if (self.sendBlock) {
+        self.sendBlock(tip);
+    }
 }
 
 

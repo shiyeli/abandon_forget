@@ -11,6 +11,7 @@
 #import "XYSetLoctionView.h"
 #import "XYAddAddressViewController.h"
 #import <MAMapKit/MAMapKit.h>
+#import "XYAnimationViewModel.h"
 
 @interface XYAddEventViewController ()<XYAddAddressViewControllerDelegate>
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *activeMarkViewCT;
@@ -37,6 +38,22 @@
         return;
     }
     
+    if (self.model.haveSetLocation) {
+        //是个人地点
+        
+        if (self.model.isPersonalLocation) {
+            if (self.model.tip==nil) {
+                [XYTool showPromptView:@"请设置tip" holdView:nil];
+                 return;
+            }
+        }else{
+            if (self.model.locationClassifition.length==0) {
+                [XYTool showPromptView:@"请设置一类地点" holdView:nil];
+                return;
+            }
+        }
+    }
+ 
     
     [self dismissViewControllerAnimated:YES completion:nil];
 }
@@ -123,16 +140,40 @@
     };
     
     self.locationView.sendBlock=^(id sender){
-        [weakSelf handleEventOfLocationView:sender];
+        
+        if ([sender respondsToSelector:@selector(tag)]) {
+            if ([sender tag]==3) {
+                //搜索
+                [weakSelf performSegueWithIdentifier:@"XYAddAddressViewController" sender:nil];
+            }else if ([sender tag]==1){
+                //提醒地点开关
+                UISwitch* tempSwitch=(UISwitch*)sender;
+                weakSelf.model.haveSetLocation=tempSwitch.isOn;
+            }else if ([sender tag]==4){
+                //到达地点
+                weakSelf.model.isArrvialNotify=YES;
+                
+            }else if ([sender tag]==5){
+                //离开地点
+                weakSelf.model.isArrvialNotify=NO;
+            }
+        }
+        
+        if ([sender isKindOfClass:[XYAnimationViewModel class]]) {
+            XYAnimationViewModel* model=(XYAnimationViewModel *)sender;
+            if (model.isNameLeft) {
+                weakSelf.model.isPersonalLocation=NO;
+                weakSelf.model.locationClassifition=model.name;
+            }else{
+                weakSelf.model.isPersonalLocation=YES;
+                weakSelf.model.tip=model.tip;
+            }
+            
+        }
     };
     
 }
--(void)handleEventOfLocationView:(id)sender{
-    if ([sender tag]==3) {
-        //搜索
-        [self performSegueWithIdentifier:@"XYAddAddressViewController" sender:nil];
-    }
-}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
