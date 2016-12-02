@@ -52,13 +52,14 @@
 
 ////////////通知//////////////////////
 //用户当前位置通知
-#define kUSER_CURRENT_LOCATION @"kUSER_CURRENT_LOCATION"
+#define kUSER_CURRENT_LOCATION_NOTIFY @"kUSER_CURRENT_LOCATION_NOTIFY"
 
 
 
 
 
-
+//固定字符串
+#define kUSER_CURRENT_LOCATION_STRING @"当前位置"
 
 
 

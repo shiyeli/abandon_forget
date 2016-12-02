@@ -15,6 +15,10 @@
 
 @interface XYSetLoctionView ()<UITableViewDelegate,UITableViewDataSource>
 
+{
+    //记录选择的哪一行
+    NSInteger selectRow;
+}
 
 @property (weak, nonatomic) IBOutlet UISwitch *mySwith;
 
@@ -160,6 +164,9 @@
 -(void)awakeFromNib{
     [super awakeFromNib];
     
+    
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(updateCurrentPlace:) name:kUSER_CURRENT_LOCATION_NOTIFY object:nil];
+    
     [self.mySwith setTintColor:THIEM_COLOR];
     [self.mySwith setOnTintColor:THIEM_COLOR];
     
@@ -187,17 +194,47 @@
     [self getHistoryAddressData];
     
 }
+-(void)updateCurrentPlace:(NSNotification*)notify{
+    
+    AMapTip* userTip=(AMapTip*)[notify.userInfo objectForKey:@"userTip"];
+    
+    if (self.dataArray.count==0) {
+        [self.dataArray addObject:userTip];
+    }else{
+        AMapTip* tip_0=[self.dataArray objectAtIndex:0];
+        if ([tip_0.name isEqualToString:kUSER_CURRENT_LOCATION_STRING]) {
+            tip_0.name=userTip.name;
+            tip_0.location=userTip.location;
+        }else{
+            [self.dataArray insertObject:userTip atIndex:0];
+        }
+    }
+}
+
 -(void)getHistoryAddressData{
-    
     [self.dataArray removeAllObjects];
+    if ([XYUserInfo userInfo].userTip.name.length>1) {
+        [self.dataArray addObject:[XYUserInfo userInfo].userTip];
+    }
     
-    AMapTip* tip=[[AMapTip alloc] init];
-    tip.name=@"当前位置";
-    tip.address=@"下南大街宏达国际广场";
-    [self.dataArray addObject:tip];
     
+    
+    selectRow=0;//默认选中当前位置
+    [self updateMytableHeightSelectRow:selectRow];
+}
+
+-(void)updateMytableHeightSelectRow:(NSInteger)selectR{
     //调整表格高度
     self.myTableViewH.constant=self.dataArray.count * SEARCH_HISTORY_CELL_HEIGHT;
+    [self.myTableView reloadData];
+    
+    if (selectR>=0&&selectR<self.dataArray.count) {
+        //选中第二个cell
+        UITableViewCell* cell=[self.myTableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:selectR inSection:0]];
+        cell.selected=YES;
+        self.personBtn.selectModel=nil;
+        self.commonBtn.selectModel=nil;
+    }
     
 }
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -261,13 +298,8 @@
         [self.dataArray removeObjectAtIndex:SEARCH_HISTORY_COUNT];
     }
     
-    self.myTableViewH.constant=self.dataArray.count*SEARCH_HISTORY_CELL_HEIGHT;
-    [self.myTableView reloadData];
-    //选中第二个cell
-    UITableViewCell* cell=[self.myTableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:0]];
-    cell.selected=YES;
-    self.personBtn.selectModel=nil;
-    self.commonBtn.selectModel=nil;
+    
+    [self updateMytableHeightSelectRow:1];
     
     if (self.sendBlock) {
         self.sendBlock(tip);

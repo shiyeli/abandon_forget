@@ -8,10 +8,12 @@
 
 #import <Foundation/Foundation.h>
 #import <MapKit/MapKit.h>
+#import <AMapSearchKit/AMapSearchKit.h>
 @interface XYUserInfo : NSObject<CLLocationManagerDelegate>
 
 @property (nonatomic,strong) CLLocationManager *mLocationManager;
 
+@property(nonatomic,strong)AMapTip* userTip;
 @property(nonatomic,strong)CLLocation* userLocation;
 
 @property(nonatomic,strong)NSString* userCurrentCity;

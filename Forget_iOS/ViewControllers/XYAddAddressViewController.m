@@ -136,11 +136,12 @@
     if (sender.tag==kTag+1) {
         
     }else{//确定
-        if (!(BOOL)selectTip) {
+        if (selectTip) {
+            [self.delegate getNewSearchAddress:self content:selectTip];
+        }else{
             [XYTool showPromptView:@"请选择一个地点" holdView:self.view];
             return;
         }
-        [self.delegate getNewSearchAddress:self content:selectTip];
     }
     [self dismissViewControllerAnimated:YES completion:nil];
 }

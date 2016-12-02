@@ -35,9 +35,12 @@ static XYUserInfo * _userInfo;
         if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0 ) {
             [_mLocationManager requestAlwaysAuthorization];  //调用了这句,就会弹出允许框了.
         }
+        
     }else{
         NSLog(@"定位服务未打开");
     }
+    
+    _userTip=[[AMapTip alloc]init];
     
     //定时器
     [NSTimer scheduledTimerWithTimeInterval:10.0 target:self selector:@selector(timerAction:) userInfo:nil repeats:YES];
@@ -47,27 +50,6 @@ static XYUserInfo * _userInfo;
     [_mLocationManager startUpdatingLocation];
 }
 
-#pragma mark 跟踪定位代理方法，每次位置发生变化即会执行（只要定位到相应位置）
-/**
- *  加载地理位置定位框架
- */
-- (void) loadLocationManager
-{
-    
-    //定位管理器
-    if (CLLocationManager.locationServicesEnabled) {
-        _mLocationManager = [[CLLocationManager alloc] init];
-        _mLocationManager.delegate = self;
-        if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0 ) {
-            
-            [_mLocationManager requestWhenInUseAuthorization];  //调用了这句,就会弹出允许框了.
-        }
-        
-    }else{
-        NSLog(@"定位服务未打开");
-    }
-    
-}
 #pragma mark - CLLocationManagerDelegate
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error
 {
@@ -79,11 +61,21 @@ static XYUserInfo * _userInfo;
     CLGeocoder * geocoder = [[CLGeocoder alloc] init];
     [geocoder  reverseGeocodeLocation:location completionHandler:^(NSArray *placemarks, NSError *error) {
         CLPlacemark * place = placemarks[0];
-        //NSLog(@"当前位置: %@ %@",place.name,place.locality );
+        //NSLog(@"当前位置:%@%@%@",place.subLocality,place.thoroughfare,place.name);
         _userCurrentCity=place.locality;
+        _userLocation=location;
+        
+        _userTip.name=kUSER_CURRENT_LOCATION_STRING;
+        _userTip.address=[NSString stringWithFormat:@"%@%@%@",place.subLocality,place.thoroughfare,place.name];
+        _userTip.location.latitude=location.coordinate.latitude;
+        _userTip.location.longitude=location.coordinate.longitude;
+        
+        if (_userTip) {
+            [[NSNotificationCenter defaultCenter]postNotificationName:kUSER_CURRENT_LOCATION_NOTIFY object:nil userInfo:@{@"userTip":_userTip}];
+        }
+
     }];
-    _userLocation=location;
-    [[NSNotificationCenter defaultCenter]postNotificationName:kUSER_CURRENT_LOCATION object:location];
+    
     [_mLocationManager stopUpdatingLocation];
 }
 
