@@ -16,8 +16,7 @@
 @interface XYSetLoctionView ()<UITableViewDelegate,UITableViewDataSource>
 
 {
-    //记录选择的哪一行
-    NSInteger selectRow;
+    NSInteger tempSelectRow;
 }
 
 @property (weak, nonatomic) IBOutlet UISwitch *mySwith;
@@ -70,6 +69,7 @@
                 weakSelf.sendBlock(model);
             }
             
+            tempSelectRow=-100;
             [weakSelf.myTableView reloadData];
         };
         
@@ -164,6 +164,7 @@
 -(void)awakeFromNib{
     [super awakeFromNib];
     
+    tempSelectRow=0;
     
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(updateCurrentPlace:) name:kUSER_CURRENT_LOCATION_NOTIFY object:nil];
     
@@ -218,25 +219,21 @@
     }
     
     
-    
-    selectRow=0;//默认选中当前位置
-    [self updateMytableHeightSelectRow:selectRow];
+
+    [self updateMytableHeightSelectRow:0];
 }
 
 -(void)updateMytableHeightSelectRow:(NSInteger)selectR{
     //调整表格高度
     self.myTableViewH.constant=self.dataArray.count * SEARCH_HISTORY_CELL_HEIGHT;
+    
+    self.personBtn.selectModel=nil;
+    self.commonBtn.selectModel=nil;
+    tempSelectRow=selectR;
     [self.myTableView reloadData];
     
-    if (selectR>=0&&selectR<self.dataArray.count) {
-        //选中第二个cell
-        UITableViewCell* cell=[self.myTableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:selectR inSection:0]];
-        cell.selected=YES;
-        self.personBtn.selectModel=nil;
-        self.commonBtn.selectModel=nil;
-    }
-    
 }
+
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     static NSString* identifer=@"identifer";
     UITableViewCell* cell= [self.myTableView dequeueReusableCellWithIdentifier:identifer];
@@ -255,9 +252,14 @@
     cell.textLabel.text=tip.name;
     cell.detailTextLabel.text=tip.address;
     
+    
     return cell;
 }
-
+-(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (indexPath.row==tempSelectRow) {
+        [cell setSelected:YES];
+    }
+}
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return self.dataArray.count;
 }
