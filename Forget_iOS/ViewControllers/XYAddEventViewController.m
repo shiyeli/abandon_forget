@@ -118,7 +118,7 @@
     self.model.repeatUnit=TimeSetRepeatDay;
     //关闭提醒时间
     
-    self.model.haveSetClosingDate=YES;
+    self.model.haveSetClosingDate=NO;
     NSDateComponents *dateComponents = [[NSDateComponents alloc] init];
     dateComponents.day = +1;
     NSDate *newDate = [[NSCalendar currentCalendar] dateByAddingComponents:dateComponents toDate:[NSDate date] options:0];
