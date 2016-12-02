@@ -186,7 +186,7 @@
     NSDateComponents *comp = [[NSCalendar currentCalendar] components:(NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay|NSCalendarUnitHour|NSCalendarUnitMinute) fromDate:date];
     
     if (!self.model.isSpreadOut) {
-        if (comp.hour>12) {
+        if (comp.hour>=12) {
             comp.hour-=12;
             pmBtn.selected=YES;
             amBtn.selected=NO;
