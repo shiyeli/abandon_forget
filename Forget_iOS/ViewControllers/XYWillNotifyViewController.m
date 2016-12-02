@@ -70,6 +70,16 @@
             
         }
     }];
+    
+    if ([sender isKindOfClass:[UITapGestureRecognizer class]]) {
+        UIAlertAction* actionDeleteImg=[UIAlertAction actionWithTitle:@"移除" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            //删除图片
+            [self.notifyImgView setImage:nil];
+            self.model.notifyImgUrl=nil;
+        }];
+        [alertCtl addAction:actionDeleteImg];
+    }
+    
     UIAlertAction* action3=[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
 
     [alertCtl addAction:action1];

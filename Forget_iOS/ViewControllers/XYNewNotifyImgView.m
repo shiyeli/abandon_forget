@@ -86,7 +86,7 @@
 
 -(void)setImage:(UIImage *)image{
     [super setImage:image];
-    removeBtn.hidden=!(BOOL)image;
+    //removeBtn.hidden=!(BOOL)image;
     addBtn.hidden=(BOOL)image;
     if (image) {
         [XYTool transitionAnimationWhater];
