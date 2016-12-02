@@ -204,6 +204,7 @@
                 <outlet property="leaveAddressBtn" destination="kpw-RG-mqf" id="zK2-TO-yeI"/>
                 <outlet property="mySwith" destination="7DX-Zx-JIC" id="pY1-Dn-I9f"/>
                 <outlet property="myTableView" destination="BBH-Gl-oI9" id="nXJ-B3-Koa"/>
+                <outlet property="myTableViewH" destination="zer-g7-Dem" id="N8x-KH-kh2"/>
                 <outlet property="personBtn" destination="IFr-tn-zmU" id="md8-Lo-MOj"/>
             </connections>
             <point key="canvasLocation" x="5" y="73"/>

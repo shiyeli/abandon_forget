@@ -10,6 +10,9 @@
 #import "XYAnimationView.h"
 #import "XYLocationButton.h"
 #import <AMapSearchKit/AMapSearchKit.h>
+#define SEARCH_HISTORY_CELL_HEIGHT 44.0f
+#define SEARCH_HISTORY_COUNT 4
+
 @interface XYSetLoctionView ()<UITableViewDelegate,UITableViewDataSource>
 
 
@@ -21,6 +24,9 @@
 @property (weak, nonatomic) IBOutlet XYLocationButton *personBtn;
 
 @property (weak, nonatomic) IBOutlet UITableView *myTableView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *myTableViewH;
+
+
 
 @property (weak, nonatomic) IBOutlet UIButton *arriveAddressBtn;
 @property (weak, nonatomic) IBOutlet UIButton *leaveAddressBtn;
@@ -183,6 +189,15 @@
 }
 -(void)getHistoryAddressData{
     
+    [self.dataArray removeAllObjects];
+    
+    AMapTip* tip=[[AMapTip alloc] init];
+    tip.name=@"当前位置";
+    tip.address=@"下南大街宏达国际广场";
+    [self.dataArray addObject:tip];
+    
+    //调整表格高度
+    self.myTableViewH.constant=self.dataArray.count * SEARCH_HISTORY_CELL_HEIGHT;
     
 }
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -209,7 +224,9 @@
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return self.dataArray.count;
 }
-
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return SEARCH_HISTORY_CELL_HEIGHT;
+}
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
     for (int i=0; i<self.dataArray.count; i++) {
@@ -231,13 +248,23 @@
 }
 
 -(void)addNewAddress:(AMapTip*)tip{
-    [self.dataArray insertObject:tip atIndex:0];
-    if (self.dataArray.count>3) {
-        [self.dataArray removeObjectAtIndex:3];
+    
+    //第一个位置放置当前位置
+    if (self.dataArray.count==1) {
+        [self.dataArray addObject:tip];
+    }else{
+        [self.dataArray insertObject:tip atIndex:1];
     }
+    
+    
+    if (self.dataArray.count>SEARCH_HISTORY_COUNT) {
+        [self.dataArray removeObjectAtIndex:SEARCH_HISTORY_COUNT];
+    }
+    
+    self.myTableViewH.constant=self.dataArray.count*SEARCH_HISTORY_CELL_HEIGHT;
     [self.myTableView reloadData];
-    //选中第一个cell
-    UITableViewCell* cell=[self.myTableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
+    //选中第二个cell
+    UITableViewCell* cell=[self.myTableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:0]];
     cell.selected=YES;
     self.personBtn.selectModel=nil;
     self.commonBtn.selectModel=nil;
