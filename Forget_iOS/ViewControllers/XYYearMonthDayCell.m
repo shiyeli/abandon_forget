@@ -137,11 +137,11 @@
     
  
     self.calendarView = [[FyCalendarView alloc] initWithFrame:CGRectMake(0, 0, Main_Screen_Width-DISTANCE_TO_EDGE*2, Main_Screen_Width-DISTANCE_TO_EDGE*2)];
-    
-    [self.centerView addSubview:self.calendarView];
-    
-    self.calendarView.date = date;
     self.calendarView.cellColor=self.cellColor;
+    [self.centerView addSubview:self.calendarView];
+    self.calendarView.selectDate=self.model.setDate;
+    self.calendarView.date = date;
+    
     WS(weakSelf)
     self.calendarView.calendarBlock =  ^(NSDate* selectDate,NSInteger day, NSInteger month, NSInteger year){
         NSLog(@"%@ %li-%li-%li",selectDate, (long)year,(long)month,(long)day);
@@ -161,7 +161,7 @@
     self.calendarView.cellColor=self.cellColor;
     [self.centerView addSubview:self.calendarView];
     
-
+    self.calendarView.selectDate=self.model.setDate;
     tempDate = [self.calendarView nextMonth:tempDate];
     [self.calendarView createCalendarViewWith:tempDate];
     WS(weakSelf)
@@ -196,6 +196,7 @@
     self.calendarView.cellColor=self.cellColor;
     [self.centerView addSubview:self.calendarView];
 
+    self.calendarView.selectDate=self.model.setDate;
     tempDate = [self.calendarView lastMonth:tempDate];
     [self.calendarView createCalendarViewWith:tempDate];
     WS(weakSelf)
@@ -228,6 +229,7 @@
     
     if (sender.tag==1) {//关闭
         //self.model.setDate=[NSDate date];
+        [super sureOrNot:sender];
         
     }else{//确认
         if (self.calendarView.selectDate==nil) {

@@ -120,9 +120,12 @@
         dayButton.frame = CGRectMake(x, y, itemW, itemH);
         
         dayButton.titleLabel.textAlignment = NSTextAlignmentCenter;
-        dayButton.layer.cornerRadius = 5.0f;
+        dayButton.layer.cornerRadius = itemW*0.5;
+        dayButton.clipsToBounds=YES;
         [dayButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
         [dayButton setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected];
+        
+        
         
         [dayButton addTarget:self action:@selector(logDate:) forControlEvents:UIControlEventTouchUpInside];
         
@@ -150,10 +153,10 @@
         [dayButton setTitle:[NSString stringWithFormat:@"%li", (long)day] forState:UIControlStateNormal];
         dayButton.titleLabel.font = [UIFont systemFontOfSize:12];
         
-        // this month
+        // this month 标记当前日期
         if ([self month:date] == [self month:[NSDate date]]&&[self year:date]==[self year:[NSDate date]]) {
             
-            NSInteger todayIndex = [self day:date] + firstWeekday - 1;
+            NSInteger todayIndex = [self day:[NSDate date]] + firstWeekday - 1;
             
             if (i < todayIndex && i >= firstWeekday) {
                 //                [self setStyle_BeforeToday:dayButton];
@@ -162,6 +165,24 @@
 //                self.selectBtn=dayButton;
             }
             
+        }
+        
+        // 标记选中日期
+        if (self.selectDate) {
+            if ([self month:date] == [self month:self.selectDate]&&[self year:date]==[self year:self.selectDate]) {
+                
+                NSInteger todayIndex = [self day:self.selectDate] + firstWeekday - 1;
+                
+                if (i < todayIndex && i >= firstWeekday) {
+                    //                [self setStyle_BeforeToday:dayButton];
+                }else if(i ==  todayIndex){
+                    
+                    self.selectBtn=dayButton;
+                    self.selectBtn.selected=YES;
+                    self.selectBtn.backgroundColor=self.cellColor;
+                }
+                
+            }
         }
     }
 }
