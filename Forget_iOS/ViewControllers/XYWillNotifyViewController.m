@@ -76,6 +76,7 @@
             //删除图片
             [self.notifyImgView setImage:nil];
             self.model.notifyImgUrl=nil;
+            self.model.notifyImg=nil;
         }];
         [alertCtl addAction:actionDeleteImg];
     }
@@ -122,6 +123,7 @@
     
     [self.notifyImgView setImage:userIcon];
     self.model.notifyImgUrl=@"http://img5q.duitang.com/uploads/item/201503/07/20150307203721_nnS2E.png";
+    self.model.notifyImg=userIcon;
 }
 
 - (UIImage *)sizedImage:(UIImage *)originalImage withMaxValue:(float)maxValue

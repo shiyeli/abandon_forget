@@ -24,7 +24,7 @@ typedef enum: NSInteger {
 /****************提醒信息与图片***************/
 @property(nonatomic,copy)NSString* notifyRemark;
 @property(nonatomic,copy)NSString* notifyImgUrl;
-
+@property(nonatomic,strong)UIImage* notifyImg;
 
 
 
