@@ -211,15 +211,22 @@
         }
     }
 }
+-(void)setSendBlock:(SendViewBlock)sendBlock{
+    [super setSendBlock:sendBlock];
+    
+    [self getHistoryAddressData];
 
+}
 -(void)getHistoryAddressData{
     [self.dataArray removeAllObjects];
     if ([XYUserInfo userInfo].userTip.name.length>1) {
         [self.dataArray addObject:[XYUserInfo userInfo].userTip];
+        
+        if (self.sendBlock) {
+            self.sendBlock([XYUserInfo userInfo].userTip);
+        }
     }
     
-    
-
     [self updateMytableHeightSelectRow:0];
 }
 
