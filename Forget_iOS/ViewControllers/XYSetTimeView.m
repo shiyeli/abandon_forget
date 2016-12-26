@@ -85,7 +85,7 @@
         weakSelf.model.frequency=model.setRepeatCount;
         weakSelf.model.repeatUnit=model.setRepeatCircle;
         [weakSelf.myTableView reloadData];
-        NSLog(@"重复:%d %d",model.setRepeatCount,model.setRepeatCircle);
+        NSLog(@"重复:%zd %zd",model.setRepeatCount,model.setRepeatCircle);
     };
     _yearCell_2=[[XYYearMonthDayCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
     _yearCell_2.isSetNotifyTime=NO;

@@ -13,6 +13,10 @@
 
 @interface XYNotifyListHeaderView ()
 
+{
+    UIView * shadowView;
+}
+
 @property(nonatomic,strong)UIView* timeHold;
 @property(nonatomic,strong)UILabel* year;
 @property(nonatomic,strong)UILabel* month_day;
@@ -34,6 +38,22 @@
 
 @implementation XYNotifyListHeaderView
 
+-(void)awakeFromNib{
+    [super awakeFromNib];
+    
+    //设置视图顶部阴影
+    shadowView=[[UIView alloc]initWithFrame:CGRectMake(-10, -10, Main_Screen_Width+20, 10)];
+    shadowView.backgroundColor=[UIColor blackColor];
+    
+    shadowView.layer.shadowColor=[UIColor blackColor].CGColor;
+    shadowView.layer.shadowOffset= CGSizeMake(0, 3);
+    shadowView.layer.shadowRadius=5;
+    shadowView.layer.shadowOpacity=0.5;
+    [self addSubview:shadowView];
+    
+}
+
+
 -(void)setModel:(XYNotifyModel *)model{
     _model=model;
     
@@ -51,7 +71,7 @@
         self.month_day.text=[NSString stringWithFormat:@"%@月%@日,%@",monthStr,dayStr,weekdayStr];
         
         self.hour.attributedText=[self setAttriHour:comp.hour minute:comp.minute];
-        
+        shadowView.layer.shadowOpacity=0.3;
         
     }else if (_model.haveSetLocation&&_model.isPersonalLocation){
         [self bringSubviewToFront:self.locationHold];
@@ -62,7 +82,7 @@
         [self.myMap addAnnotation:tipAnno];
         [self.myMap setCenterCoordinate:tipAnno.coordinate];
         _myMap.zoomLevel=15;
-
+        shadowView.layer.shadowOpacity=0.7;
     }else{
          [self bringSubviewToFront:self.imgHold];
         [self.imgView sd_setImageWithURL:[NSURL URLWithString:_model.notifyImgUrl]];
@@ -72,6 +92,7 @@
         
     }
     
+    [self bringSubviewToFront:shadowView];
 }
 -(UIView*)timeHold{
     if (!_timeHold) {
