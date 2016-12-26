@@ -80,6 +80,8 @@
 @property (nonatomic, copy) NSString     *address; //!< 地址
 @property (nonatomic, copy) AMapGeoPoint *location; //!< 位置
 
+
+
 @end
 
 #pragma mark - POI

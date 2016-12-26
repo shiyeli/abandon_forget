@@ -18,7 +18,7 @@
 #define DURATION_TIME_LONG 0.3
 #define DURATION_TIME_SHOT 0.2
 #import "LBSQLManager.h"
-
+#import "XYAMapTip.h"
 @interface XYAddAddressViewController ()<MAMapViewDelegate, AMapSearchDelegate, UITableViewDataSource, UITableViewDelegate,XYHgithtOfKeyboardDelegate,UITextFieldDelegate>
 
 {
@@ -140,9 +140,21 @@
         if (selectTip) {
             [self.delegate getNewSearchAddress:self content:selectTip];
             
+         
+            XYAMapTip* myTip=[[XYAMapTip alloc]init];
+            myTip.uid=selectTip.uid;
+            myTip.name=selectTip.name;
+            myTip.adcode=selectTip.adcode;
+            myTip.district=selectTip.district;
+            myTip.address=selectTip.address;
+            myTip.location=selectTip.location;
+            myTip.latitude=selectTip.location.latitude;
+            myTip.longitude=selectTip.location.longitude;
+            
+            
             //存储搜索记录
-            [[LBSQLManager sharedInstace] creatTable:selectTip];
-            [[LBSQLManager sharedInstace] insertAndUpdateModelToDatabase:selectTip];
+            [[LBSQLManager sharedInstace] creatTable:myTip];
+            [[LBSQLManager sharedInstace] insertAndUpdateModelToDatabase:myTip];
             
             
         }else{

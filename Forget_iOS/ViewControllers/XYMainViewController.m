@@ -97,6 +97,31 @@
     NSArray * historyArr=[[LBSQLManager sharedInstace]selectModelArrayInDatabase:@"XYNotifyModel"];
     [self.dataArray addObjectsFromArray:historyArr];
     
+    /*@property (nonatomic, copy) NSString     *uid; //!< poi的id
+     @property (nonatomic, copy) NSString     *name; //!< 名称
+     @property (nonatomic, copy) NSString     *adcode; //!< 区域编码
+     @property (nonatomic, copy) NSString     *district; //!< 所属区域
+     @property (nonatomic, copy) NSString     *address; //!< 地址
+     @property (nonatomic, copy) AMapGeoPoint *location; //!< 位置*/
+    for (XYNotifyModel* model in self.dataArray) {
+        if (model.isPersonalLocation) {
+            AMapTip * tip=[[AMapTip alloc]init];
+            tip.uid=model.uid;
+            tip.name=model.name;
+            tip.adcode=model.adcode;
+            tip.district=model.district;
+            tip.address=model.address;
+            
+            AMapGeoPoint * point=[[AMapGeoPoint alloc]init];
+            point.latitude=model.latitude;
+            point.longitude=model.longitude;
+            tip.location=point;
+
+            model.tip=tip;
+        }
+    }
+    
+
     for (XYNotifyModel* mode in historyArr) {
         NSLog(@"%@",mode.notifyRemark);
     }

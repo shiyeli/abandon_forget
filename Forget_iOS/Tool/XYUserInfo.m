@@ -67,9 +67,12 @@ static XYUserInfo * _userInfo;
         
         _userTip.name=kUSER_CURRENT_LOCATION_STRING;
         _userTip.address=[NSString stringWithFormat:@"%@%@%@",place.subLocality,place.thoroughfare,place.name];
-        _userTip.location.latitude=location.coordinate.latitude;
-        _userTip.location.longitude=location.coordinate.longitude;
         
+        AMapGeoPoint* point=[[AMapGeoPoint alloc]init];
+        point.latitude=location.coordinate.latitude;
+        point.longitude=location.coordinate.longitude;
+        _userTip.location=point;
+
         if (_userTip) {
             [[NSNotificationCenter defaultCenter]postNotificationName:kUSER_CURRENT_LOCATION_NOTIFY object:nil userInfo:@{@"userTip":_userTip}];
         }

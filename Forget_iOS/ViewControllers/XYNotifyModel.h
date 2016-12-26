@@ -59,6 +59,23 @@ typedef enum: NSInteger {
 @property(nonatomic,assign)BOOL isPersonalLocation;
 //个人地点
 @property(nonatomic,strong)AMapTip* tip;
+//数据库存入模型变成字符串了,所以把他的属性都拿出来存,取出时将他们赋值给tip就好
+@property (nonatomic, copy) NSString     *uid; //!< poi的id
+@property (nonatomic, copy) NSString     *name; //!< 名称
+@property (nonatomic, copy) NSString     *adcode; //!< 区域编码
+@property (nonatomic, copy) NSString     *district; //!< 所属区域
+@property (nonatomic, copy) NSString     *address; //!< 地址
+
+@property (nonatomic, copy) AMapGeoPoint *location; //!< 位置
+@property (nonatomic, assign) CGFloat latitude; //!< 纬度（垂直方向）
+@property (nonatomic, assign) CGFloat longitude; //!< 经度（水平方向）
+
+
+
+
+
+
+
 //常见地点:一类地方
 @property(nonatomic,copy)NSString* locationClassifition;
 //到达地点提醒

@@ -13,6 +13,7 @@
 #define SEARCH_HISTORY_CELL_HEIGHT 44.0f
 #define SEARCH_HISTORY_COUNT 4
 #import "LBSQLManager.h"
+#import "XYAMapTip.h"
 @interface XYSetLoctionView ()<UITableViewDelegate,UITableViewDataSource>
 
 {
@@ -229,11 +230,31 @@
         }
     }
     //历史搜索记录
-    NSArray* historyArr = [[LBSQLManager sharedInstace] selectModelArrayInDatabase:@"AMapTip"];
+    NSArray * historyArr = [[LBSQLManager sharedInstace] selectModelArrayInDatabase:@"XYAMapTip"];
+    
+    NSMutableArray * tempArrM=[NSMutableArray array];
+    for (XYAMapTip* myTip in historyArr) {
+        
+        AMapTip* tip=[[AMapTip alloc]init];
+        tip.uid=myTip.uid;
+        tip.name=myTip.name;
+        tip.address=myTip.address;
+        tip.adcode=myTip.adcode;
+        tip.district=myTip.district;
+        
+        AMapGeoPoint* point=[[AMapGeoPoint alloc]init];
+        point.latitude=myTip.latitude;
+        point.longitude=myTip.longitude;
+        tip.location=point;
+        
+        [tempArrM addObject:tip];
+        
+    }
+    
     if (historyArr.count<SEARCH_HISTORY_COUNT) {
-        [self.dataArray addObjectsFromArray:historyArr];
+        [self.dataArray addObjectsFromArray:tempArrM];
     }else{
-        [self.dataArray addObjectsFromArray:[historyArr objectsAtIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, SEARCH_HISTORY_COUNT)]]];
+        [self.dataArray addObjectsFromArray:[tempArrM objectsAtIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, SEARCH_HISTORY_COUNT)]]];
     }
     
 //    for (AMapTip* tip in historyArr) {
