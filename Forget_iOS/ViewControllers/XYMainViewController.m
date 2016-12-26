@@ -169,6 +169,16 @@
 //        cell.layer.transform = CATransform3DMakeScale(1, 1, 1);
 //    }];
 }
+
+-(void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    NSArray* visibleCells=self.myTableView.visibleCells;
+    if (visibleCells.count>0) {
+       XYNotifyListCell* cell= [visibleCells objectAtIndex:0];
+        self.notifyHeaderView.model=cell.model;
+    }
+}
+
+
 /*
 #pragma mark - Navigation
 

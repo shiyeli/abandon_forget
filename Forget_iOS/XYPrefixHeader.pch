@@ -17,6 +17,10 @@
 #import "XYUserInfo.h"
 #import "Masonry.h"
 #import "XYTool.h"
+//sdwebImg
+#import "UIImageView+WebCache.h"
+
+
 
 //提醒模型
 #import "XYNotifyModel.h"
