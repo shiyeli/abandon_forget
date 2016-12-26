@@ -22,7 +22,7 @@
         }
         _frequencyArr=[NSArray arrayWithArray:arrM];
         _repeatUnitArr=TimeSetRepeatCircleArr;
-        
+        _currentTime=[XYTool getTimeLabelFromDate:[NSDate date]];
     }
     return self;
 }

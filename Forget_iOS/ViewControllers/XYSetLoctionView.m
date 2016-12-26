@@ -236,10 +236,10 @@
         [self.dataArray addObjectsFromArray:[historyArr objectsAtIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, SEARCH_HISTORY_COUNT)]]];
     }
     
-    for (AMapTip* tip in historyArr) {
-        NSLog(@"%@",tip.name);
-    }
-    
+//    for (AMapTip* tip in historyArr) {
+//        NSLog(@"%@",tip.name);
+//    }
+//    
     
     [self updateMytableHeightSelectRow:0];
 }

@@ -20,6 +20,9 @@ typedef enum: NSInteger {
 
 @interface XYNotifyModel : XYParentModel
 
+//时间戳
+@property(nonatomic,copy)NSString* currentTime;
+
 
 /****************提醒信息与图片***************/
 @property(nonatomic,copy)NSString* notifyRemark;

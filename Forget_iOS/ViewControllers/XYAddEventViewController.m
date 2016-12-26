@@ -12,6 +12,7 @@
 #import "XYAddAddressViewController.h"
 #import <MAMapKit/MAMapKit.h>
 #import "XYAnimationViewModel.h"
+#import "LBSQLManager.h"
 
 @interface XYAddEventViewController ()<XYAddAddressViewControllerDelegate>
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *activeMarkViewCT;
@@ -53,6 +54,10 @@
             }
         }
     }
+    
+    //存储提醒model
+    [[LBSQLManager sharedInstace]creatTable:self.model];
+    [[LBSQLManager sharedInstace]insertAndUpdateModelToDatabase:self.model];
  
     
     [self dismissViewControllerAnimated:YES completion:nil];

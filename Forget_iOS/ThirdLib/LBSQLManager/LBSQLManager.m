@@ -164,6 +164,13 @@ static LBSQLManager * manager = nil;
 
             NSMutableArray *propertyValue = [NSMutableArray array];
             for (NSString *property in KMODEL_PROPERTYS) {
+                
+                if ([model valueForKey:property]==nil) {
+                    if ([property isEqualToString:@"locationClassifition"]) {
+                        [model setValue:@"nil" forKey:property];
+                    }
+                }
+                
                 [propertyValue addObject:[model valueForKey:property]];
             }
 
@@ -199,6 +206,13 @@ static LBSQLManager * manager = nil;
 
             NSMutableArray *propertyValue = [NSMutableArray array];
             for (NSString *property in KMODEL_PROPERTYS) {
+                
+                if ([model valueForKey:property]==nil) {
+                    if ([property isEqualToString:@"locationClassifition"]) {
+                        [model setValue:@"nil" forKey:property];
+                    }
+                }
+
                 [propertyValue addObject:[model valueForKey:property]];
             }
 

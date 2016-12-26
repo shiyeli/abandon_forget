@@ -48,6 +48,9 @@
 #import "SWRevealViewController.h"
 #import "XYNotifyListHeaderView.h"
 #define NOTIFYLIST_CELL_HEIGHT 44.0f
+#import "LBSQLManager.h"
+
+
 @interface XYMainViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 @property(nonatomic,strong)NSMutableArray * dataArray;
@@ -82,13 +85,22 @@
 
 -(void)getNotifyData{
     
-    for (int i=0; i<30; i++) {
-        XYNotifyModel* model=[[XYNotifyModel alloc]init];
-        model.haveSetTime=YES;
-        model.haveSetLocation=YES;
-        model.notifyRemark=@"提醒备注信息";
-        [self.dataArray addObject:model];
+//    for (int i=0; i<30; i++) {
+//        XYNotifyModel* model=[[XYNotifyModel alloc]init];
+//        model.haveSetTime=YES;
+//        model.haveSetLocation=YES;
+//        model.notifyRemark=@"提醒备注信息";
+//        [self.dataArray addObject:model];
+//    }
+    
+    
+    NSArray * historyArr=[[LBSQLManager sharedInstace]selectModelArrayInDatabase:@"XYNotifyModel"];
+    [self.dataArray addObjectsFromArray:historyArr];
+    
+    for (XYNotifyModel* mode in historyArr) {
+        NSLog(@"%@",mode.notifyRemark);
     }
+    
     if (self.dataArray.count>0) {
         self.notifyHeaderView.model=[self.dataArray objectAtIndex:0];
     }
