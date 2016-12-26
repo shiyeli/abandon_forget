@@ -84,6 +84,9 @@
     
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(addNewRemind:) name:kADD_NEW_REMIND_NOTIFY object:nil];
 }
+
+
+
 -(void)addNewRemind:(NSNotification*)notify{
     XYNotifyModel* model=[notify.userInfo objectForKey:NSStringFromClass([XYNotifyModel class])];
     if (self.dataArray.count>0) {
