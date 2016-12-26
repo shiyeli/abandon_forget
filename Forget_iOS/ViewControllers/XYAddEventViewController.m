@@ -69,7 +69,8 @@
     //存储提醒model
     [[LBSQLManager sharedInstace]creatTable:self.model];
     [[LBSQLManager sharedInstace]insertAndUpdateModelToDatabase:self.model];
- 
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:kADD_NEW_REMIND_NOTIFY object:nil userInfo:@{NSStringFromClass([XYNotifyModel class]):self.model}];
     
     [self dismissViewControllerAnimated:YES completion:nil];
 }

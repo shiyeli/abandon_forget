@@ -143,4 +143,16 @@
  */
 +(int)compareDate:(BOOL)precisionDay OneDay:(NSDate *)oneDay withAnotherDay:(NSDate *)anotherDay;
 
+/**
+ *  将阿拉伯数字转换为中文数字
+ */
++(NSString *)translationArabicNum:(NSInteger)arabicNum;
+
+/**
+ *  获取星期几
+ */
++ (NSString*)weekdayStringFromDate:(NSString*)inputDate;
+
+
+
 @end

@@ -81,28 +81,29 @@
     
     UIView* footerView=[[UIView alloc]initWithFrame:CGRectMake(0, 0, Main_Screen_Width, Main_Screen_Height-64-self.notifyHeaderViewH.constant-NOTIFYLIST_CELL_HEIGHT)];
     self.myTableView.tableFooterView=footerView;
+    
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(addNewRemind:) name:kADD_NEW_REMIND_NOTIFY object:nil];
 }
-
+-(void)addNewRemind:(NSNotification*)notify{
+    XYNotifyModel* model=[notify.userInfo objectForKey:NSStringFromClass([XYNotifyModel class])];
+    if (self.dataArray.count>0) {
+        [self.dataArray insertObject:model atIndex:0];
+    }else{
+        [self.dataArray addObject:model];
+    }
+    if (self.dataArray.count>0) {
+        self.notifyHeaderView.model=[self.dataArray objectAtIndex:0];
+    }
+    [self.myTableView reloadData];
+    
+    self.myTableView.scrollsToTop=YES;
+    
+}
 -(void)getNotifyData{
-    
-//    for (int i=0; i<30; i++) {
-//        XYNotifyModel* model=[[XYNotifyModel alloc]init];
-//        model.haveSetTime=YES;
-//        model.haveSetLocation=YES;
-//        model.notifyRemark=@"提醒备注信息";
-//        [self.dataArray addObject:model];
-//    }
-    
-    
+
     NSArray * historyArr=[[LBSQLManager sharedInstace]selectModelArrayInDatabase:@"XYNotifyModel"];
     [self.dataArray addObjectsFromArray:historyArr];
-    
-    /*@property (nonatomic, copy) NSString     *uid; //!< poi的id
-     @property (nonatomic, copy) NSString     *name; //!< 名称
-     @property (nonatomic, copy) NSString     *adcode; //!< 区域编码
-     @property (nonatomic, copy) NSString     *district; //!< 所属区域
-     @property (nonatomic, copy) NSString     *address; //!< 地址
-     @property (nonatomic, copy) AMapGeoPoint *location; //!< 位置*/
+
     for (XYNotifyModel* model in self.dataArray) {
         if (model.isPersonalLocation) {
             AMapTip * tip=[[AMapTip alloc]init];
@@ -119,6 +120,13 @@
 
             model.tip=tip;
         }
+        
+        if (model.haveSetTime) {
+            if ([model.notifyTime isKindOfClass:[NSString class]]) {
+                NSDate* notifyDate = [NSDate dateWithTimeIntervalSince1970:[(NSString*)model.notifyTime doubleValue]];
+                model.notifyTime=notifyDate;
+            }
+        }
     }
     
 
@@ -128,6 +136,7 @@
     
     if (self.dataArray.count>0) {
         self.notifyHeaderView.model=[self.dataArray objectAtIndex:0];
+        [self.view layoutIfNeeded];
     }
     [self.myTableView reloadData];
 }

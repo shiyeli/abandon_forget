@@ -41,18 +41,27 @@
         [self bringSubviewToFront:self.timeHold];
         
         
+        NSDateComponents *comp = [[NSCalendar currentCalendar] components:(NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay |kCFCalendarUnitHour|kCFCalendarUnitMinute) fromDate:_model.notifyTime];
         
+        self.year.text=[NSString stringWithFormat:@"%zd",comp.year];
+        
+        NSString* monthStr=[XYTool translationArabicNum:comp.month];
+        NSString* dayStr=[XYTool translationArabicNum:comp.day];
+        NSString* weekdayStr=[XYTool getWeekdayStringFromDate:_model.notifyTime];
+        self.month_day.text=[NSString stringWithFormat:@"%@月%@日,%@",monthStr,dayStr,weekdayStr];
+        
+        self.hour.attributedText=[self setAttriHour:comp.hour minute:comp.minute];
         
         
     }else if (_model.haveSetLocation&&_model.isPersonalLocation){
         [self bringSubviewToFront:self.locationHold];
         
         [self.myMap removeAnnotations:self.myMap.annotations];
-
+        
         AMapTipAnnotation* tipAnno = [[AMapTipAnnotation alloc] initWithMapTip:_model.tip];
         [self.myMap addAnnotation:tipAnno];
         [self.myMap setCenterCoordinate:tipAnno.coordinate];
-
+        _myMap.zoomLevel=15;
 
     }else{
          [self bringSubviewToFront:self.imgHold];
@@ -66,6 +75,8 @@
 }
 -(UIView*)timeHold{
     if (!_timeHold) {
+        
+
         _timeHold=[[UIView alloc]initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
         _timeHold.backgroundColor=THIEM_COLOR_DARKER;
         [self addSubview:_timeHold];
@@ -77,7 +88,7 @@
         [_timeHold addSubview:_year];
         [_year mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.equalTo(_timeHold).with.offset(DISTANCE_TO_EDGE*1.5);
-            make.leading.equalTo(_timeHold).with.offset(DISTANCE_TO_EDGE*2.5);
+            make.leading.equalTo(_timeHold).with.offset(DISTANCE_TO_EDGE*2);
         }];
         
         _month_day=[[UILabel alloc]init];
@@ -94,11 +105,7 @@
         _hour=[[UILabel alloc]init];
         _hour.textColor=[UIColor whiteColor];
         _hour.font=SYSTEMFONT(50);
-        
-        NSMutableAttributedString* attrStr=[[NSMutableAttributedString alloc]initWithString:@"00:00 AM" attributes:@{NSFontAttributeName: SYSTEMFONT(50)}];
-        [attrStr setAttributes:@{NSFontAttributeName : SYSTEMFONT(20)
-                                          , NSBaselineOffsetAttributeName : @25} range:NSMakeRange(attrStr.length-2, 2)];
-        _hour.attributedText=attrStr;
+        _hour.attributedText=[self setAttriHour:23 minute:11];
         
         
         [_timeHold addSubview:_hour];
@@ -111,6 +118,23 @@
     }
     return _timeHold;
 }
+
+-(NSMutableAttributedString*) setAttriHour:(NSInteger)hour minute:(NSInteger)nminute{
+    
+    NSString* hourMinute;
+    if (hour<12) {
+        hourMinute=[NSString stringWithFormat:@"%02zd:%02zd AM",hour,nminute];
+    }else{
+        hourMinute=[NSString stringWithFormat:@"%02zd:%02zd PM",hour-12,nminute];
+    }
+
+    NSMutableAttributedString* attrStr=[[NSMutableAttributedString alloc]initWithString:hourMinute attributes:@{NSFontAttributeName: SYSTEMFONT(50)}];
+    [attrStr setAttributes:@{NSFontAttributeName : SYSTEMFONT(20), NSBaselineOffsetAttributeName : @25} range:NSMakeRange(attrStr.length-2, 2)];
+    
+    return  attrStr;
+
+}
+
 -(UIView*)locationHold{
     if (!_locationHold) {
         _locationHold=[[UIView alloc]initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
@@ -118,7 +142,7 @@
         [self addSubview:_locationHold];
         
         _myMap=[[MAMapView alloc]initWithFrame:_locationHold.frame];
-        _myMap.zoomLevel=12;
+        [_myMap setZoomLevel:15 animated:YES];
         _myMap.scrollEnabled=NO;
         _myMap.showsCompass=NO;
         _myMap.showsScale=NO;

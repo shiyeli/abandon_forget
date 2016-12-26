@@ -57,7 +57,7 @@
 ////////////通知//////////////////////
 //用户当前位置通知
 #define kUSER_CURRENT_LOCATION_NOTIFY @"kUSER_CURRENT_LOCATION_NOTIFY"
-
+#define kADD_NEW_REMIND_NOTIFY @"kADD_NEW_REMIND_NOTIFY"
 
 
 
