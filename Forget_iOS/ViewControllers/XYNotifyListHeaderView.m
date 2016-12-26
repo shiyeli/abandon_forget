@@ -85,9 +85,9 @@
         shadowView.layer.shadowOpacity=0.7;
     }else{
          [self bringSubviewToFront:self.imgHold];
-        [self.imgView sd_setImageWithURL:[NSURL URLWithString:_model.notifyImgUrl]];
+//        [self.imgView sd_setImageWithURL:[NSURL URLWithString:_model.notifyImgUrl]];
         
-        
+        [self.imgView setImage:_model.notifyImg];
         
         
     }

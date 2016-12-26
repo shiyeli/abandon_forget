@@ -54,6 +54,10 @@
             }
         }
     }
+    
+    if (self.model.notifyImg) {
+        self.model.notifyImg64Str = [UIImageJPEGRepresentation(self.model.notifyImg, 0.2) base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
+    }
    
     if (self.model.tip) {
         self.model.uid=self.model.tip.uid;
@@ -61,6 +65,7 @@
         self.model.adcode=self.model.tip.adcode;
         self.model.district=self.model.tip.district;
         self.model.address=self.model.tip.address;
+        
         self.model.location=self.model.tip.location;
         self.model.latitude=self.model.tip.location.latitude;
         self.model.longitude=self.model.tip.location.longitude;

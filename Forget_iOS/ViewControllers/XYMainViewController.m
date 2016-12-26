@@ -108,6 +108,14 @@
     [self.dataArray addObjectsFromArray:historyArr];
 
     for (XYNotifyModel* model in self.dataArray) {
+        
+        //读取图片
+        if (model.notifyImg64Str) {
+            NSData *_decodedImageData  = [[NSData alloc] initWithBase64Encoding:model.notifyImg64Str];
+            model.notifyImg = [UIImage imageWithData:_decodedImageData];
+        }
+        
+        
         if (model.isPersonalLocation) {
             AMapTip * tip=[[AMapTip alloc]init];
             tip.uid=model.uid;
