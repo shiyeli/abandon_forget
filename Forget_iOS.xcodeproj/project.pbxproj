@@ -45,6 +45,13 @@
 		6E3063C41DC0B390000DBB7D /* AMapTipAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E3063C31DC0B390000DBB7D /* AMapTipAnnotation.m */; };
 		6E3066CE1DC1F516000DBB7D /* AMap.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 6E3066CD1DC1F516000DBB7D /* AMap.bundle */; };
 		6E3066D11DC200AF000DBB7D /* XYHgithtOfKeyboard.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E3066D01DC200AF000DBB7D /* XYHgithtOfKeyboard.m */; };
+		6E310D381E10AEAD0075031D /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E310D2C1E10AEAD0075031D /* FMDatabase.m */; };
+		6E310D391E10AEAD0075031D /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E310D2E1E10AEAD0075031D /* FMDatabaseAdditions.m */; };
+		6E310D3A1E10AEAD0075031D /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E310D301E10AEAD0075031D /* FMDatabasePool.m */; };
+		6E310D3B1E10AEAD0075031D /* FMDatabaseQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E310D321E10AEAD0075031D /* FMDatabaseQueue.m */; };
+		6E310D3C1E10AEAD0075031D /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E310D351E10AEAD0075031D /* FMResultSet.m */; };
+		6E310D3D1E10AEAD0075031D /* LBSQLManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E310D371E10AEAD0075031D /* LBSQLManager.m */; };
+		6E310D3F1E10AEBC0075031D /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E310D3E1E10AEBC0075031D /* libsqlite3.tbd */; };
 		6E3522431DC9DEB90000BEF0 /* XYTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E3522421DC9DEB90000BEF0 /* XYTool.m */; };
 		6E3522611DC9DFC10000BEF0 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 6E3522451DC9DFC10000BEF0 /* LICENSE */; };
 		6E3522621DC9DFC10000BEF0 /* MASCompositeConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E3522481DC9DFC10000BEF0 /* MASCompositeConstraint.m */; };
@@ -223,6 +230,20 @@
 		6E3066CD1DC1F516000DBB7D /* AMap.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = AMap.bundle; sourceTree = "<group>"; };
 		6E3066CF1DC200AF000DBB7D /* XYHgithtOfKeyboard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XYHgithtOfKeyboard.h; path = ../ParentClass/XYHgithtOfKeyboard.h; sourceTree = "<group>"; };
 		6E3066D01DC200AF000DBB7D /* XYHgithtOfKeyboard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XYHgithtOfKeyboard.m; path = ../ParentClass/XYHgithtOfKeyboard.m; sourceTree = "<group>"; };
+		6E310D2B1E10AEAD0075031D /* FMDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabase.h; sourceTree = "<group>"; };
+		6E310D2C1E10AEAD0075031D /* FMDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabase.m; sourceTree = "<group>"; };
+		6E310D2D1E10AEAD0075031D /* FMDatabaseAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabaseAdditions.h; sourceTree = "<group>"; };
+		6E310D2E1E10AEAD0075031D /* FMDatabaseAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabaseAdditions.m; sourceTree = "<group>"; };
+		6E310D2F1E10AEAD0075031D /* FMDatabasePool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabasePool.h; sourceTree = "<group>"; };
+		6E310D301E10AEAD0075031D /* FMDatabasePool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabasePool.m; sourceTree = "<group>"; };
+		6E310D311E10AEAD0075031D /* FMDatabaseQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabaseQueue.h; sourceTree = "<group>"; };
+		6E310D321E10AEAD0075031D /* FMDatabaseQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabaseQueue.m; sourceTree = "<group>"; };
+		6E310D331E10AEAD0075031D /* FMDB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDB.h; sourceTree = "<group>"; };
+		6E310D341E10AEAD0075031D /* FMResultSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMResultSet.h; sourceTree = "<group>"; };
+		6E310D351E10AEAD0075031D /* FMResultSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMResultSet.m; sourceTree = "<group>"; };
+		6E310D361E10AEAD0075031D /* LBSQLManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBSQLManager.h; sourceTree = "<group>"; };
+		6E310D371E10AEAD0075031D /* LBSQLManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBSQLManager.m; sourceTree = "<group>"; };
+		6E310D3E1E10AEBC0075031D /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		6E3522411DC9DEB90000BEF0 /* XYTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYTool.h; sourceTree = "<group>"; };
 		6E3522421DC9DEB90000BEF0 /* XYTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYTool.m; sourceTree = "<group>"; };
 		6E3522451DC9DFC10000BEF0 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
@@ -330,6 +351,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6E310D3F1E10AEBC0075031D /* libsqlite3.tbd in Frameworks */,
 				8256E03C1DC6EA860006939C /* EventKit.framework in Frameworks */,
 				8256E0361DC6E1ED0006939C /* CloudKit.framework in Frameworks */,
 				82A42F8C1DC1FE8600A29058 /* Intents.framework in Frameworks */,
@@ -531,6 +553,7 @@
 		6E3063751DC05AD9000DBB7D /* ThirdLib */ = {
 			isa = PBXGroup;
 			children = (
+				6E310D291E10AEAD0075031D /* LBSQLManager */,
 				6ED632891DDAA6CF00C8167D /* Clock */,
 				6ED632851DD95E9F00C8167D /* CalendarView */,
 				6E3522441DC9DFC10000BEF0 /* Masonry */,
@@ -555,6 +578,7 @@
 		6E3063801DC05B23000DBB7D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				6E310D3E1E10AEBC0075031D /* libsqlite3.tbd */,
 				8256E0411DC6EBD60006939C /* Contacts.framework */,
 				8256E03B1DC6EA860006939C /* EventKit.framework */,
 				8256E0351DC6E1ED0006939C /* CloudKit.framework */,
@@ -640,6 +664,34 @@
 				6E5F25381DE5915C0003BA0D /* locate@3x.png */,
 			);
 			name = img;
+			sourceTree = "<group>";
+		};
+		6E310D291E10AEAD0075031D /* LBSQLManager */ = {
+			isa = PBXGroup;
+			children = (
+				6E310D2A1E10AEAD0075031D /* FMDB */,
+				6E310D361E10AEAD0075031D /* LBSQLManager.h */,
+				6E310D371E10AEAD0075031D /* LBSQLManager.m */,
+			);
+			path = LBSQLManager;
+			sourceTree = "<group>";
+		};
+		6E310D2A1E10AEAD0075031D /* FMDB */ = {
+			isa = PBXGroup;
+			children = (
+				6E310D2B1E10AEAD0075031D /* FMDatabase.h */,
+				6E310D2C1E10AEAD0075031D /* FMDatabase.m */,
+				6E310D2D1E10AEAD0075031D /* FMDatabaseAdditions.h */,
+				6E310D2E1E10AEAD0075031D /* FMDatabaseAdditions.m */,
+				6E310D2F1E10AEAD0075031D /* FMDatabasePool.h */,
+				6E310D301E10AEAD0075031D /* FMDatabasePool.m */,
+				6E310D311E10AEAD0075031D /* FMDatabaseQueue.h */,
+				6E310D321E10AEAD0075031D /* FMDatabaseQueue.m */,
+				6E310D331E10AEAD0075031D /* FMDB.h */,
+				6E310D341E10AEAD0075031D /* FMResultSet.h */,
+				6E310D351E10AEAD0075031D /* FMResultSet.m */,
+			);
+			path = FMDB;
 			sourceTree = "<group>";
 		};
 		6E3522441DC9DFC10000BEF0 /* Masonry */ = {
@@ -1031,11 +1083,15 @@
 				6E3063471DC05171000DBB7D /* AppDelegate.m in Sources */,
 				6E30639C1DC05F5C000DBB7D /* XYMainViewController.m in Sources */,
 				6E5F253E1DE6D7D20003BA0D /* XYNotifyModel.m in Sources */,
+				6E310D381E10AEAD0075031D /* FMDatabase.m in Sources */,
 				6E3522641DC9DFC10000BEF0 /* MASConstraintMaker.m in Sources */,
+				6E310D3C1E10AEAD0075031D /* FMResultSet.m in Sources */,
 				6E5F25351DE56BF90003BA0D /* XYAnimationViewModel.m in Sources */,
 				6E35226A1DC9DFC10000BEF0 /* View+MASAdditions.m in Sources */,
 				6E3063A11DC060C4000DBB7D /* XYParentViewController.m in Sources */,
 				6E3522631DC9DFC10000BEF0 /* MASConstraint.m in Sources */,
+				6E310D3A1E10AEAD0075031D /* FMDatabasePool.m in Sources */,
+				6E310D3B1E10AEAD0075031D /* FMDatabaseQueue.m in Sources */,
 				6ED632841DD5707F00C8167D /* XYTimeSectionModel.m in Sources */,
 				6E3522671DC9DFC10000BEF0 /* MASViewConstraint.m in Sources */,
 				6ED6329C1DDD965B00C8167D /* XYCircleViewLayout.m in Sources */,
@@ -1049,6 +1105,7 @@
 				6E3063B01DC07F58000DBB7D /* XYAddEventViewController.m in Sources */,
 				6ED6329F1DDD971B00C8167D /* XYCollectionViewCell.m in Sources */,
 				6E3D4F561DC723090079D8FD /* XYRearViewController.m in Sources */,
+				6E310D391E10AEAD0075031D /* FMDatabaseAdditions.m in Sources */,
 				6E35226B1DC9DFC10000BEF0 /* ViewController+MASAdditions.m in Sources */,
 				6E5F25411DE6E52D0003BA0D /* XYNotifyListHeaderView.m in Sources */,
 				6E3522761DCB0DAC0000BEF0 /* XYSetLoctionView.m in Sources */,
@@ -1066,6 +1123,7 @@
 				6E3063C01DC0A250000DBB7D /* XYUserInfo.m in Sources */,
 				6E3063B31DC0863D000DBB7D /* HWTextView.m in Sources */,
 				6E3066D11DC200AF000DBB7D /* XYHgithtOfKeyboard.m in Sources */,
+				6E310D3D1E10AEAD0075031D /* LBSQLManager.m in Sources */,
 				6E3522661DC9DFC10000BEF0 /* MASViewAttribute.m in Sources */,
 				6E1CD0D31DD1C5D100E1FD9D /* XYTimeParentCell.m in Sources */,
 				6ED632881DD95E9F00C8167D /* FyCalendarView.m in Sources */,

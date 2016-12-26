@@ -12,7 +12,7 @@
 #import <AMapSearchKit/AMapSearchKit.h>
 #define SEARCH_HISTORY_CELL_HEIGHT 44.0f
 #define SEARCH_HISTORY_COUNT 4
-
+#import "LBSQLManager.h"
 @interface XYSetLoctionView ()<UITableViewDelegate,UITableViewDataSource>
 
 {
@@ -219,6 +219,8 @@
 }
 -(void)getHistoryAddressData{
     [self.dataArray removeAllObjects];
+    
+    //用户当前位置
     if ([XYUserInfo userInfo].userTip.name.length>1) {
         [self.dataArray addObject:[XYUserInfo userInfo].userTip];
         
@@ -226,6 +228,18 @@
             self.sendBlock([XYUserInfo userInfo].userTip);
         }
     }
+    //历史搜索记录
+    NSArray* historyArr = [[LBSQLManager sharedInstace] selectModelArrayInDatabase:@"AMapTip"];
+    if (historyArr.count<SEARCH_HISTORY_COUNT) {
+        [self.dataArray addObjectsFromArray:historyArr];
+    }else{
+        [self.dataArray addObjectsFromArray:[historyArr objectsAtIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, SEARCH_HISTORY_COUNT)]]];
+    }
+    
+    for (AMapTip* tip in historyArr) {
+        NSLog(@"%@",tip.name);
+    }
+    
     
     [self updateMytableHeightSelectRow:0];
 }

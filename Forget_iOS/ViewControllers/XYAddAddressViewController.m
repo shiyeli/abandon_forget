@@ -17,6 +17,7 @@
 #define SEARCH_POSITION_LOW 120.0
 #define DURATION_TIME_LONG 0.3
 #define DURATION_TIME_SHOT 0.2
+#import "LBSQLManager.h"
 
 @interface XYAddAddressViewController ()<MAMapViewDelegate, AMapSearchDelegate, UITableViewDataSource, UITableViewDelegate,XYHgithtOfKeyboardDelegate,UITextFieldDelegate>
 
@@ -138,6 +139,12 @@
     }else{//确定
         if (selectTip) {
             [self.delegate getNewSearchAddress:self content:selectTip];
+            
+            //存储搜索记录
+            [[LBSQLManager sharedInstace] creatTable:selectTip];
+            [[LBSQLManager sharedInstace] insertAndUpdateModelToDatabase:selectTip];
+            
+            
         }else{
             [XYTool showPromptView:@"请选择一个地点" holdView:self.view];
             return;
