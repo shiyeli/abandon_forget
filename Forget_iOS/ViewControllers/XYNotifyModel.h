@@ -30,6 +30,7 @@ typedef enum: NSInteger {
 
 /****************提醒信息与图片***************/
 @property(nonatomic,copy)NSString* notifyRemark;
+
 @property(nonatomic,copy)NSString* notifyImgUrl;
 @property(nonatomic,strong)UIImage* notifyImg;
 @property(nonatomic,copy)NSString* notifyImg64Str;//图片传64字符串存数据库

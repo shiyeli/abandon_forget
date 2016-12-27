@@ -10,9 +10,13 @@
 /*************** XYNotifyListCell *****************/
 
 #import "XYParentTableViewCell.h"
-
+#import "XYNotifyListHeaderView.h"
 
 @interface XYNotifyListCell : XYParentTableViewCell
+
+
+@property (weak, nonatomic) IBOutlet XYNotifyListHeaderView *cellHeaderView;
+
 
 @property (weak, nonatomic) IBOutlet UILabel *notifyTitle;
 @property (weak, nonatomic) IBOutlet UIImageView *img1;
@@ -26,6 +30,12 @@
 
 -(void)setModel:(XYNotifyModel *)model{
     _model=model;
+    
+    [self layoutIfNeeded];
+    
+    _cellHeaderView.model=model;
+    
+    
     _notifyTitle.text=_model.notifyRemark;
     
     if (_model.haveSetLocation&&_model.haveSetTime) {
@@ -55,9 +65,6 @@
 
 @property(nonatomic,strong)NSMutableArray * dataArray;
 @property (weak, nonatomic) IBOutlet UITableView *myTableView;
-@property (weak, nonatomic) IBOutlet XYNotifyListHeaderView *notifyHeaderView;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *notifyHeaderViewH;
-
 
 @end
 
@@ -74,14 +81,9 @@
     [super viewDidLoad];
     
     [self settingsOfSlide];
-    
-    self.notifyHeaderViewH.constant=Main_Screen_Width*0.5;
-    
+
     [self getNotifyData];
-    
-    UIView* footerView=[[UIView alloc]initWithFrame:CGRectMake(0, 0, Main_Screen_Width, Main_Screen_Height-64-self.notifyHeaderViewH.constant-NOTIFYLIST_CELL_HEIGHT)];
-    self.myTableView.tableFooterView=footerView;
-    
+
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(addNewRemind:) name:kADD_NEW_REMIND_NOTIFY object:nil];
 }
 
@@ -95,9 +97,7 @@
     }else{
         [self.dataArray addObject:model];
     }
-    if (self.dataArray.count>0) {
-        self.notifyHeaderView.model=[self.dataArray objectAtIndex:0];
-    }
+   
     [self.myTableView reloadData];
     
     self.myTableView.scrollsToTop=YES;
@@ -114,6 +114,8 @@
         if (model.notifyImg64Str) {
             NSData *_decodedImageData  = [[NSData alloc] initWithBase64EncodedString:model.notifyImg64Str options:NSDataBase64DecodingIgnoreUnknownCharacters];
             model.notifyImg = [UIImage imageWithData:_decodedImageData];
+        }else{
+            model.notifyImg=nil;
         }
         
         
@@ -159,10 +161,7 @@
         NSLog(@"%@",mode.notifyRemark);
     }
     
-    if (self.dataArray.count>0) {
-        self.notifyHeaderView.model=[self.dataArray objectAtIndex:0];
-        [self.view layoutIfNeeded];
-    }
+    
     [self.myTableView reloadData];
 }
 
@@ -217,17 +216,17 @@
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return self.dataArray.count;
 }
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    
-    NSArray* visibleCells=self.myTableView.visibleCells;
-    if (visibleCells.count>1) {
-        XYNotifyListCell* cell=[visibleCells objectAtIndex:0];
-        cell.selected=NO;
-    }
-    
-    XYNotifyListCell* cell=[self.myTableView cellForRowAtIndexPath:indexPath];
-    self.notifyHeaderView.model=cell.model;
-}
+//-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+//    
+//    NSArray* visibleCells=self.myTableView.visibleCells;
+//    if (visibleCells.count>1) {
+//        XYNotifyListCell* cell=[visibleCells objectAtIndex:0];
+//        cell.selected=NO;
+//    }
+//    
+//    XYNotifyListCell* cell=[self.myTableView cellForRowAtIndexPath:indexPath];
+//    self.notifyHeaderView.model=cell.model;
+//}
 
 -(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -241,17 +240,17 @@
 }
 
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView{
-    NSArray* visibleCells=self.myTableView.visibleCells;
-    for (int i=0; i<visibleCells.count; i++) {
-        
-        XYNotifyListCell* cell= [visibleCells objectAtIndex:i];
-        if (i==0) {
-            self.notifyHeaderView.model=cell.model;
-            cell.selected=YES;
-        }else{
-            cell.selected=NO;
-        }
-    }
+//    NSArray* visibleCells=self.myTableView.visibleCells;
+//    for (int i=0; i<visibleCells.count; i++) {
+//        
+//        XYNotifyListCell* cell= [visibleCells objectAtIndex:i];
+//        if (i==0) {
+//            self.notifyHeaderView.model=cell.model;
+//            cell.selected=YES;
+//        }else{
+//            cell.selected=NO;
+//        }
+//    }
 }
 
 

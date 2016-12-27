@@ -41,15 +41,15 @@
 -(void)awakeFromNib{
     [super awakeFromNib];
     
-    //设置视图顶部阴影
-    shadowView=[[UIView alloc]initWithFrame:CGRectMake(-10, -10, Main_Screen_Width+20, 10)];
-    shadowView.backgroundColor=[UIColor blackColor];
-    
-    shadowView.layer.shadowColor=[UIColor blackColor].CGColor;
-    shadowView.layer.shadowOffset= CGSizeMake(0, 3);
-    shadowView.layer.shadowRadius=5;
-    shadowView.layer.shadowOpacity=0.5;
-    [self addSubview:shadowView];
+//    //设置视图顶部阴影
+//    shadowView=[[UIView alloc]initWithFrame:CGRectMake(-10, -10, Main_Screen_Width+20, 10)];
+//    shadowView.backgroundColor=[UIColor blackColor];
+//    
+//    shadowView.layer.shadowColor=[UIColor blackColor].CGColor;
+//    shadowView.layer.shadowOffset= CGSizeMake(0, 3);
+//    shadowView.layer.shadowRadius=5;
+//    shadowView.layer.shadowOpacity=0.5;
+//    [self addSubview:shadowView];
     
 }
 
@@ -57,10 +57,14 @@
 -(void)setModel:(XYNotifyModel *)model{
     _model=model;
     
-    if (_model.haveSetTime) {
+    if (_model.notifyImg&&[_model.notifyImg isKindOfClass:[UIImage class]]) {
+        
+        [self bringSubviewToFront:self.imgHold];
+        [self.imgView setImage:_model.notifyImg];
+        
+    }else if(_model.haveSetTime) {
+        
         [self bringSubviewToFront:self.timeHold];
-        
-        
         NSDateComponents *comp = [[NSCalendar currentCalendar] components:(NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay |kCFCalendarUnitHour|kCFCalendarUnitMinute) fromDate:_model.notifyTime];
         
         self.year.text=[NSString stringWithFormat:@"%zd",comp.year];
@@ -73,9 +77,8 @@
         self.hour.attributedText=[self setAttriHour:comp.hour minute:comp.minute];
         shadowView.layer.shadowOpacity=0.3;
         
-    }else if (_model.haveSetLocation&&_model.isPersonalLocation){
+    }else {
         [self bringSubviewToFront:self.locationHold];
-        
         [self.myMap removeAnnotations:self.myMap.annotations];
         
         AMapTipAnnotation* tipAnno = [[AMapTipAnnotation alloc] initWithMapTip:_model.tip];
@@ -83,16 +86,9 @@
         [self.myMap setCenterCoordinate:tipAnno.coordinate];
         _myMap.zoomLevel=15;
         shadowView.layer.shadowOpacity=0.7;
-    }else{
-         [self bringSubviewToFront:self.imgHold];
-//        [self.imgView sd_setImageWithURL:[NSURL URLWithString:_model.notifyImgUrl]];
-        
-        [self.imgView setImage:_model.notifyImg];
-        
-        
     }
     
-    [self bringSubviewToFront:shadowView];
+//    [self bringSubviewToFront:shadowView];
 }
 -(UIView*)timeHold{
     if (!_timeHold) {

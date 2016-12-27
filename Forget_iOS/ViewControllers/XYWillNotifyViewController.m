@@ -32,9 +32,10 @@
     }else{
         self.model.notifyRemark=self.notifyRemark.text;
     }
+    //图片可选填
     if (self.model.notifyImgUrl==nil||self.model.notifyImgUrl.length==0) {
-        [XYTool showPromptView:@"请设置图片" holdView:nil];
-        return;
+//        [XYTool showPromptView:@"请设置图片" holdView:nil];
+//        return;
     }
     
     [self performSegueWithIdentifier:@"XYAddEventViewController" sender:self.model];
