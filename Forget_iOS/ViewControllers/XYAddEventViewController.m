@@ -70,6 +70,10 @@
         self.model.latitude=self.model.tip.location.latitude;
         self.model.longitude=self.model.tip.location.longitude;
     }
+    
+    if (self.model.haveSetRepeat) {
+        self.model.repeatUnitSave=self.model.repeatUnit;
+    }
 
     //存储提醒model
     [[LBSQLManager sharedInstace]creatTable:self.model];

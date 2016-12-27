@@ -44,7 +44,13 @@ typedef enum: NSInteger {
 @property(nonatomic,strong)NSArray *frequencyArr;
 @property(nonatomic,assign)NSInteger frequency;
 @property(nonatomic,strong)NSArray *repeatUnitArr;
+
 @property(nonatomic)TimeSetRepeatCircle repeatUnit;
+@property(nonatomic,assign)NSInteger repeatUnitSave;
+
+
+
+
 //设置结束重复日期
 @property(nonatomic,assign)BOOL haveSetClosingDate;
 @property(nonatomic,strong)NSDate* closingDate;

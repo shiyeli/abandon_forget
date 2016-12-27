@@ -138,6 +138,17 @@
                 model.notifyTime=notifyDate;
             }
         }
+        
+        if (model.haveSetRepeat) {
+            model.repeatUnit=model.repeatUnitSave;
+        }
+        
+        if (model.haveSetClosingDate) {
+            if ([model.closingDate isKindOfClass:[NSString class]]) {
+                NSDate* closeTime = [NSDate dateWithTimeIntervalSince1970:[(NSString*)model.closingDate doubleValue]];
+                model.notifyTime=closeTime;
+            }
+        } 
     }
     
 
