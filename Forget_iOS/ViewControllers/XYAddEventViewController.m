@@ -135,6 +135,7 @@
     self.myScrollView.showsHorizontalScrollIndicator=NO;
     
     //配置视图默认显示数据
+    self.model.isComplished=NO;
     //提醒时间
     self.model.haveSetTime=YES;
     self.model.notifyTime=[NSDate date];

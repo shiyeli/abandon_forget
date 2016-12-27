@@ -88,6 +88,7 @@
 
 
 -(void)addNewRemind:(NSNotification*)notify{
+    
     XYNotifyModel* model=[notify.userInfo objectForKey:NSStringFromClass([XYNotifyModel class])];
     if (self.dataArray.count>0) {
         [self.dataArray insertObject:model atIndex:0];
