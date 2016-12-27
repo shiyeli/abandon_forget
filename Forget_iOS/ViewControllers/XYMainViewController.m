@@ -141,6 +141,8 @@
         
         if (model.haveSetRepeat) {
             model.repeatUnit=model.repeatUnitSave;
+            model.repeatUnitArr=TimeSetRepeatCircleArr;
+            
         }
         
         if (model.haveSetClosingDate) {
@@ -217,7 +219,7 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
     NSArray* visibleCells=self.myTableView.visibleCells;
-    if (visibleCells.count>0) {
+    if (visibleCells.count>1) {
         XYNotifyListCell* cell=[visibleCells objectAtIndex:0];
         cell.selected=NO;
     }
