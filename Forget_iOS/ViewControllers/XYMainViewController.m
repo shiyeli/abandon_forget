@@ -79,6 +79,17 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+        //设置视图顶部阴影
+        UIView* shadowView=[[UIView alloc]initWithFrame:CGRectMake(-10, -10, Main_Screen_Width+20, 10)];
+        shadowView.backgroundColor=[UIColor blackColor];
+    
+        shadowView.layer.shadowColor=[UIColor blackColor].CGColor;
+        shadowView.layer.shadowOffset= CGSizeMake(0, 3);
+        shadowView.layer.shadowRadius=5;
+        shadowView.layer.shadowOpacity=0.5;
+        [self.view addSubview:shadowView];
+    
+    
     [self settingsOfSlide];
 
     [self getNotifyData];
