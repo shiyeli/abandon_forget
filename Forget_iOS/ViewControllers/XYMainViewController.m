@@ -111,7 +111,7 @@
         
         //读取图片
         if (model.notifyImg64Str) {
-            NSData *_decodedImageData  = [[NSData alloc] initWithBase64Encoding:model.notifyImg64Str];
+            NSData *_decodedImageData  = [[NSData alloc] initWithBase64EncodedString:model.notifyImg64Str options:NSDataBase64DecodingIgnoreUnknownCharacters];
             model.notifyImg = [UIImage imageWithData:_decodedImageData];
         }
         
