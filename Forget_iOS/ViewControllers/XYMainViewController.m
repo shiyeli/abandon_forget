@@ -28,14 +28,13 @@
 
 @implementation XYNotifyListCell
 
+
+
 -(void)setModel:(XYNotifyModel *)model{
     _model=model;
-    
-    [self layoutIfNeeded];
-    
+
     _cellHeaderView.model=model;
-    
-    
+
     _notifyTitle.text=_model.notifyRemark;
     
     if (_model.haveSetLocation&&_model.haveSetTime) {
@@ -100,7 +99,7 @@
    
     [self.myTableView reloadData];
     
-    self.myTableView.scrollsToTop=YES;
+    [self.myTableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:YES];
     
 }
 -(void)getNotifyData{
@@ -161,7 +160,7 @@
         NSLog(@"%@",mode.notifyRemark);
     }
     
-    
+    [self.view layoutIfNeeded];
     [self.myTableView reloadData];
 }
 

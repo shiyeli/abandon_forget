@@ -50,12 +50,14 @@
 //    shadowView.layer.shadowRadius=5;
 //    shadowView.layer.shadowOpacity=0.5;
 //    [self addSubview:shadowView];
+
     
 }
 
 
 -(void)setModel:(XYNotifyModel *)model{
     _model=model;
+    
     
     if (_model.notifyImg&&[_model.notifyImg isKindOfClass:[UIImage class]]) {
         
@@ -92,9 +94,8 @@
 }
 -(UIView*)timeHold{
     if (!_timeHold) {
-        
-        [self layoutIfNeeded];
-        _timeHold=[[UIView alloc]initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
+
+        _timeHold=[[UIView alloc]initWithFrame:CGRectMake(0, 0, Main_Screen_Width, self.frame.size.height)];
         _timeHold.backgroundColor=THIEM_COLOR_DARKER;
         [self addSubview:_timeHold];
         
@@ -155,8 +156,7 @@
 -(UIView*)locationHold{
     if (!_locationHold) {
         
-        [self layoutIfNeeded];
-        _locationHold=[[UIView alloc]initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
+        _locationHold=[[UIView alloc]initWithFrame:CGRectMake(0, 0, Main_Screen_Width, self.frame.size.height)];
         _locationHold.backgroundColor=[UIColor greenColor];
         [self addSubview:_locationHold];
         
@@ -174,8 +174,8 @@
 }
 -(UIView*)imgHold{
     if (!_imgHold) {
-        [self layoutIfNeeded];
-        _imgHold=[[UIView alloc]initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
+
+        _imgHold=[[UIView alloc]initWithFrame:CGRectMake(0, 0, Main_Screen_Width, self.frame.size.height)];
         _imgHold.backgroundColor=[UIColor blueColor];
         [self addSubview:_imgHold];
         
