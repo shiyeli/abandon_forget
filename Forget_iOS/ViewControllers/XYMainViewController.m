@@ -203,6 +203,17 @@
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return self.dataArray.count;
 }
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    NSArray* visibleCells=self.myTableView.visibleCells;
+    if (visibleCells.count>0) {
+        XYNotifyListCell* cell=[visibleCells objectAtIndex:0];
+        cell.selected=NO;
+    }
+    
+    XYNotifyListCell* cell=[self.myTableView cellForRowAtIndexPath:indexPath];
+    self.notifyHeaderView.model=cell.model;
+}
 
 -(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -217,9 +228,15 @@
 
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView{
     NSArray* visibleCells=self.myTableView.visibleCells;
-    if (visibleCells.count>0) {
-       XYNotifyListCell* cell= [visibleCells objectAtIndex:0];
-        self.notifyHeaderView.model=cell.model;
+    for (int i=0; i<visibleCells.count; i++) {
+        
+        XYNotifyListCell* cell= [visibleCells objectAtIndex:i];
+        if (i==0) {
+            self.notifyHeaderView.model=cell.model;
+            cell.selected=YES;
+        }else{
+            cell.selected=NO;
+        }
     }
 }
 
