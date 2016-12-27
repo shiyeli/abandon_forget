@@ -28,17 +28,6 @@
                        @{@"img":@"supermarket_btn",@"name":@"超市"},
                        @{@"img":@"hospital_btn",@"name":@"医院"},
                        @{@"img":@"park_btn",@"name":@"停车场"},
-                    @{@"img":@"bank_btn",@"name":@"银行"},
-                    
-                    @{@"img":@"restaurant_btn",@"name":@"餐饮"},
-                    @{@"img":@"supermarket_btn",@"name":@"超市"},
-                    @{@"img":@"hospital_btn",@"name":@"医院"},
-                    @{@"img":@"park_btn",@"name":@"停车场"},
-                    @{@"img":@"bank_btn",@"name":@"银行"},
-                    @{@"img":@"restaurant_btn",@"name":@"餐饮"},
-                    @{@"img":@"supermarket_btn",@"name":@"超市"},
-                    @{@"img":@"hospital_btn",@"name":@"医院"},
-                    @{@"img":@"park_btn",@"name":@"停车场"},
                     @{@"img":@"bank_btn",@"name":@"银行"}
                     
                     ];
