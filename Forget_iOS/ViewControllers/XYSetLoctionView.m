@@ -289,7 +289,7 @@
     }
     
     
-    if (historyArr.count<SEARCH_HISTORY_COUNT) {
+    if (tempArrM.count<SEARCH_HISTORY_COUNT) {
         [self.dataArray addObjectsFromArray:tempArrM];
     }else{
         [self.dataArray addObjectsFromArray:[tempArrM objectsAtIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, SEARCH_HISTORY_COUNT)]]];
@@ -436,7 +436,10 @@
 - (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
 
 {
-   
+    if (indexPath.row==tempSelectRow) {
+        UITableViewCell* cell=[tableView cellForRowAtIndexPath:indexPath];
+        [cell setSelected:YES];
+    }
     return UITableViewCellEditingStyleDelete;
     
 }
