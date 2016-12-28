@@ -67,8 +67,7 @@
     
     //地图类别
     self.tips = [NSMutableArray array];
-    [AMapServices sharedServices].apiKey=AMapApiKey;
-    
+
     self.mapView = [[MAMapView alloc] initWithFrame:self.myView.bounds];
     self.mapView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     self.mapView.delegate = self;

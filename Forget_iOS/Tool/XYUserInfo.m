@@ -7,6 +7,8 @@
 //
 
 #import "XYUserInfo.h"
+#import "XYPOINearbySearch.h"
+
 static XYUserInfo * _userInfo;
 @implementation XYUserInfo
 + (void)load
@@ -73,14 +75,32 @@ static XYUserInfo * _userInfo;
         point.longitude=location.coordinate.longitude;
         _userTip.location=point;
 
-        if (_userTip) {
+        if (_userTip&&place.name.length>0) {
             [[NSNotificationCenter defaultCenter]postNotificationName:kUSER_CURRENT_LOCATION_NOTIFY object:nil userInfo:@{@"userTip":_userTip}];
         }
+        
+        [self notifyUserLocationEvent:_userTip];
 
     }];
     
     [_mLocationManager stopUpdatingLocation];
 }
+
+/**
+ *   提醒用户地点事件
+ */
+-(void)notifyUserLocationEvent:(XYAMapTip*)tip{
+    //获取数据库
+    NSArray* notifyList=[[LBSQLManager sharedInstace]selectModelArrayInDatabase:@"XYNotifyModel"];
+    for (XYNotifyModel* model in notifyList) {
+        if (!model.isComplished&&model.haveSetLocation&&!model.isPersonalLocation) {
+            //一类地点
+            [[XYPOINearbySearch nearbySearch] searchPoiByUserLocation:tip keywords:model.locationClassifition];
+            
+        }
+    }
+}
+
 
 - (void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status
 {
@@ -92,9 +112,5 @@ static XYUserInfo * _userInfo;
         [_mLocationManager startUpdatingLocation];
     }
 }
-
-
-
-
 
 @end

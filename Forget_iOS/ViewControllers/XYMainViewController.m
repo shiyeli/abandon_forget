@@ -129,7 +129,7 @@
         }
         
         
-        if (model.isPersonalLocation) {
+        if (model.haveSetLocation) {
             XYAMapTip * tip=[[XYAMapTip alloc]init];
             tip.uid=model.uid;
             tip.name=model.name;

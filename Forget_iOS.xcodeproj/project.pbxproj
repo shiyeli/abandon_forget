@@ -69,6 +69,7 @@
 		6E310D6F1E10C5340075031D /* UIImageView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E310D5E1E10C5340075031D /* UIImageView+WebCache.m */; };
 		6E310D701E10C5340075031D /* UIView+WebCacheOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E310D601E10C5340075031D /* UIView+WebCacheOperation.m */; };
 		6E310D731E10F4130075031D /* XYAMapTip.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E310D721E10F4130075031D /* XYAMapTip.m */; };
+		6E310D821E13A9F20075031D /* XYPOINearbySearch.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E310D811E13A9F20075031D /* XYPOINearbySearch.m */; };
 		6E3522431DC9DEB90000BEF0 /* XYTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E3522421DC9DEB90000BEF0 /* XYTool.m */; };
 		6E3522611DC9DFC10000BEF0 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 6E3522451DC9DFC10000BEF0 /* LICENSE */; };
 		6E3522621DC9DFC10000BEF0 /* MASCompositeConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E3522481DC9DFC10000BEF0 /* MASCompositeConstraint.m */; };
@@ -294,6 +295,8 @@
 		6E310D601E10C5340075031D /* UIView+WebCacheOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+WebCacheOperation.m"; sourceTree = "<group>"; };
 		6E310D711E10F4130075031D /* XYAMapTip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYAMapTip.h; sourceTree = "<group>"; };
 		6E310D721E10F4130075031D /* XYAMapTip.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYAMapTip.m; sourceTree = "<group>"; };
+		6E310D801E13A9F20075031D /* XYPOINearbySearch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYPOINearbySearch.h; sourceTree = "<group>"; };
+		6E310D811E13A9F20075031D /* XYPOINearbySearch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYPOINearbySearch.m; sourceTree = "<group>"; };
 		6E3522411DC9DEB90000BEF0 /* XYTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYTool.h; sourceTree = "<group>"; };
 		6E3522421DC9DEB90000BEF0 /* XYTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYTool.m; sourceTree = "<group>"; };
 		6E3522451DC9DFC10000BEF0 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
@@ -679,6 +682,8 @@
 				6E3522421DC9DEB90000BEF0 /* XYTool.m */,
 				6E3063BE1DC0A250000DBB7D /* XYUserInfo.h */,
 				6E3063BF1DC0A250000DBB7D /* XYUserInfo.m */,
+				6E310D801E13A9F20075031D /* XYPOINearbySearch.h */,
+				6E310D811E13A9F20075031D /* XYPOINearbySearch.m */,
 			);
 			path = Tool;
 			sourceTree = "<group>";
@@ -1201,6 +1206,7 @@
 				6E310D631E10C5340075031D /* NSData+ImageContentType.m in Sources */,
 				6E310D3B1E10AEAD0075031D /* FMDatabaseQueue.m in Sources */,
 				6ED632841DD5707F00C8167D /* XYTimeSectionModel.m in Sources */,
+				6E310D821E13A9F20075031D /* XYPOINearbySearch.m in Sources */,
 				6E3522671DC9DFC10000BEF0 /* MASViewConstraint.m in Sources */,
 				6ED6329C1DDD965B00C8167D /* XYCircleViewLayout.m in Sources */,
 				6E1CD0D01DD1C58200E1FD9D /* XYParentTableViewCell.m in Sources */,

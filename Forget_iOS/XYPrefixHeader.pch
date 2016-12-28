@@ -31,7 +31,7 @@
 ///////////////固定值/////////////////
 #define kTag 100
 //高德Apikey
-#define AMapApiKey @"881a46c1030c7f0aaf1dbd1c59fea787"
+#define AMapApiKey @"0c00bcd4ccd2161605b3ab71d7a1efb5"
 //主题颜色
 #define THIEM_COLOR [XYTool stringToColor:@"#009688"]
 #define THIEM_COLOR_DARKER [XYTool stringToColor:@"#00796B"]
