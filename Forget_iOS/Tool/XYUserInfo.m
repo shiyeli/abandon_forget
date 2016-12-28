@@ -40,7 +40,7 @@ static XYUserInfo * _userInfo;
         NSLog(@"定位服务未打开");
     }
     
-    _userTip=[[AMapTip alloc]init];
+    _userTip=[[XYAMapTip alloc]init];
     
     //定时器
     [NSTimer scheduledTimerWithTimeInterval:10.0 target:self selector:@selector(timerAction:) userInfo:nil repeats:YES];

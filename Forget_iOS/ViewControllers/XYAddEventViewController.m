@@ -13,6 +13,7 @@
 #import <MAMapKit/MAMapKit.h>
 #import "XYAnimationViewModel.h"
 #import "LBSQLManager.h"
+#import "XYAMapTip.h"
 
 @interface XYAddEventViewController ()<XYAddAddressViewControllerDelegate>
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *activeMarkViewCT;
@@ -213,7 +214,7 @@
 
 
 #pragma mark - XYAddAddressViewControllerDelegate
--(void)getNewSearchAddress:(XYAddAddressViewController*)currentCtl content:(AMapTip*)tip{
+-(void)getNewSearchAddress:(XYAddAddressViewController*)currentCtl content:(XYAMapTip*)tip{
     [self.locationView addNewAddress:tip];
 }
 

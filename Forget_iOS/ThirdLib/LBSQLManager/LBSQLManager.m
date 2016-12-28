@@ -116,6 +116,8 @@ static LBSQLManager * manager = nil;
 -(void)insertAndUpdateModelToDatabase:(id)model
 {
 
+    __block BOOL success=NO;
+    
     if (!_dbQueue) {
 
         [self creatDatabase];
@@ -140,8 +142,10 @@ static LBSQLManager * manager = nil;
         //查询数据表之前，必须保证第一个字段是唯一标示
         
         NSString *selectStr = [NSString stringWithFormat:@"select *from %@ where %@ = ?",KCLASS_NAME(model),[KMODEL_PROPERTYS objectAtIndex:0]];
-
+        
         FMResultSet * resultSet = [db executeQuery:selectStr,[model valueForKey:[KMODEL_PROPERTYS objectAtIndex:0]]];
+        
+        NSLog(@" value:  %@",[model valueForKey:[KMODEL_PROPERTYS objectAtIndex:0]]);
         
         if ([resultSet next]) {
           
@@ -174,7 +178,8 @@ static LBSQLManager * manager = nil;
 
             if([db executeUpdate:updateStr withArgumentsInArray:propertyValue])
             {
-                NSLog(@"调用更新成功");
+                NSLog(@"更新成功");
+                success=YES;
             };
         }
         else
@@ -215,6 +220,7 @@ static LBSQLManager * manager = nil;
             if([db executeUpdate:insertStr withArgumentsInArray:propertyValue])
             {
                 NSLog(@"插入成功");
+                success=YES;
             }
             
 

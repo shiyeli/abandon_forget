@@ -232,29 +232,10 @@
     //历史搜索记录
     NSArray * historyArr = [[LBSQLManager sharedInstace] selectModelArrayInDatabase:@"XYAMapTip"];
     
-    NSMutableArray * tempArrM=[NSMutableArray array];
-    for (XYAMapTip* myTip in historyArr) {
-        
-        AMapTip* tip=[[AMapTip alloc]init];
-        tip.uid=myTip.uid;
-        tip.name=myTip.name;
-        tip.address=myTip.address;
-        tip.adcode=myTip.adcode;
-        tip.district=myTip.district;
-        
-        AMapGeoPoint* point=[[AMapGeoPoint alloc]init];
-        point.latitude=myTip.latitude;
-        point.longitude=myTip.longitude;
-        tip.location=point;
-        
-        [tempArrM addObject:tip];
-        
-    }
-    
     if (historyArr.count<SEARCH_HISTORY_COUNT) {
-        [self.dataArray addObjectsFromArray:tempArrM];
+        [self.dataArray addObjectsFromArray:historyArr];
     }else{
-        [self.dataArray addObjectsFromArray:[tempArrM objectsAtIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, SEARCH_HISTORY_COUNT)]]];
+        [self.dataArray addObjectsFromArray:[historyArr objectsAtIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, SEARCH_HISTORY_COUNT)]]];
     }
     
 //    for (AMapTip* tip in historyArr) {
@@ -320,7 +301,7 @@
     self.personBtn.selectModel=nil;
     self.commonBtn.selectModel=nil;
     
-    AMapTip* tip=[self.dataArray objectAtIndex:indexPath.row];
+    XYAMapTip * tip=[self.dataArray objectAtIndex:indexPath.row];
     
     if (self.sendBlock) {
         self.sendBlock(tip);
@@ -328,7 +309,7 @@
     
 }
 
--(void)addNewAddress:(AMapTip*)tip{
+-(void)addNewAddress:(XYAMapTip*)tip{
     
     //第一个位置放置当前位置
     if (self.dataArray.count==1) {
@@ -350,6 +331,56 @@
     }
 }
 
+
+
+#pragma mark - 设置编辑按钮
+
+- (NSArray<UITableViewRowAction *> *)tableView:(UITableView *)tableView editActionsForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewRowAction *likeAction = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleNormal title:@"收藏到个人地点" handler:^(UITableViewRowAction * _Nonnull action, NSIndexPath * _Nonnull indexPath) {
+        
+        XYAMapTip * tip=[self.dataArray objectAtIndex:indexPath.row];
+        tip.isPersonL=YES;
+        
+        UIAlertController* alertCtl=[UIAlertController alertControllerWithTitle:@"请备注名称" message:nil preferredStyle:UIAlertControllerStyleAlert];
+        
+        [alertCtl addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
+            
+            
+        }];
+
+        UIAlertAction* action1=[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            
+            UITextField * textF= [alertCtl.textFields lastObject];
+            if (textF.text==nil ||textF.text.length==0) {
+                return ;
+            }else{
+                tip.remarkName=textF.text;
+                [[LBSQLManager sharedInstace] creatTable:tip];
+                [[LBSQLManager sharedInstace]insertAndUpdateModelToDatabase:tip];
+                [XYTool showPromptView:@"添加成功" holdView:nil];
+            }
+            
+        }];
+
+        UIAlertAction* action3=[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
+        
+        [alertCtl addAction:action1];
+        [alertCtl addAction:action3];
+        [[XYTool currentViewController] presentViewController:alertCtl animated:YES completion:nil];
+        tableView.editing = NO;
+    }];
+
+    return @[likeAction];
+}
+
+- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
+
+{
+   
+    return UITableViewCellEditingStyleDelete;
+    
+}
 
 
 /*

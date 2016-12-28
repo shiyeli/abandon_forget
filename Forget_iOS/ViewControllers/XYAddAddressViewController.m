@@ -138,9 +138,8 @@
         
     }else{//确定
         if (selectTip) {
-            [self.delegate getNewSearchAddress:self content:selectTip];
             
-         
+
             XYAMapTip* myTip=[[XYAMapTip alloc]init];
             myTip.uid=selectTip.uid;
             myTip.name=selectTip.name;
@@ -156,6 +155,8 @@
             [[LBSQLManager sharedInstace] creatTable:myTip];
             [[LBSQLManager sharedInstace] insertAndUpdateModelToDatabase:myTip];
             
+            
+            [self.delegate getNewSearchAddress:self content:myTip];
             
         }else{
             [XYTool showPromptView:@"请选择一个地点" holdView:self.view];
