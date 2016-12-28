@@ -363,7 +363,7 @@
     if (self.sendBlock) {
         self.sendBlock(tip);
     }
-    
+    tempSelectRow=indexPath.row;
 }
 
 -(void)addNewAddress:(XYAMapTip*)tip{
