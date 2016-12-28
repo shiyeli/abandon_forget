@@ -16,6 +16,6 @@
 
 @property(nonatomic,assign) BOOL isNameLeft;
 
-@property(nonatomic,strong)AMapTip* tip;
+@property(nonatomic,strong)XYAMapTip* tip;
 
 @end

@@ -24,25 +24,7 @@
     self = [super initWithFrame:frame];
     if (self) {
         
-        commonArr=@[@{@"img":@"restaurant_btn",@"name":@"餐饮"},
-                       @{@"img":@"supermarket_btn",@"name":@"超市"},
-                       @{@"img":@"hospital_btn",@"name":@"医院"},
-                       @{@"img":@"park_btn",@"name":@"停车场"},
-                    @{@"img":@"bank_btn",@"name":@"银行"}
-                    
-                    ];
         
-        personArr=@[@{@"img":@"home_btn",@"name":@"家"},
-                       @{@"img":@"company_btn",@"name":@"公司"},
-                       @{@"img":@"exercise_btn",@"name":@"健身房"},
-                       @{@"img":@"girl_home",@"name":@"女朋友家"},
-                       @{@"img":@"parents_home",@"name":@"父母家"},
-                    @{@"img":@"parents_home",@"name":@"第六个"},
-                    @{@"img":@"company_btn",@"name":@"公司"},
-                    @{@"img":@"exercise_btn",@"name":@"健身房"},
-                    @{@"img":@"girl_home",@"name":@"女朋友家"},
-                    @{@"img":@"parents_home",@"name":@"父母家"},
-                    @{@"img":@"parents_home",@"name":@"第六个"}];
         
        XYCircleViewLayout* layout=[[XYCircleViewLayout alloc]initWithRadius:Main_Screen_Width*0.4 aliginType:WHEEL_ALIGNMEN_LEFT cellSize:CGSizeMake(70, 70) spacing:Main_Screen_Width*0.1];
         
@@ -71,16 +53,7 @@
 -(void)setIsCommomAddress:(BOOL)isCommomAddress{
     _isCommomAddress=isCommomAddress;
     
-    self.dataArray=[NSMutableArray array];
     [self.myCollectionView reloadData];
-    
-    for (NSDictionary* dic in (isCommomAddress?commonArr:personArr)) {
-        XYAnimationViewModel* model=[[XYAnimationViewModel alloc]init];
-        [model setValuesForKeysWithDictionary:dic];
-        model.isNameLeft=_isCommomAddress;
-        [self.dataArray addObject:model];
-    }
-    
     
     XYCircleViewLayout* layout;
     if (_isCommomAddress) {

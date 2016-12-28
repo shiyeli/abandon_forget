@@ -66,6 +66,8 @@
         self.model.adcode=self.model.tip.adcode;
         self.model.district=self.model.tip.district;
         self.model.address=self.model.tip.address;
+        self.model.isPersonL=self.model.tip.isPersonL;
+        self.model.remarkName=self.model.tip.remarkName;
         
         self.model.location=self.model.tip.location;
         self.model.latitude=self.model.tip.location.latitude;
@@ -199,7 +201,7 @@
             
         }
         
-        if ([sender isKindOfClass:[AMapTip class]]) {
+        if ([sender isKindOfClass:[XYAMapTip class]]) {
             weakSelf.model.tip=sender;
             weakSelf.model.isPersonalLocation=YES;
         }

@@ -88,9 +88,43 @@
     
 }
 
--(void)addAnimationViewisCommonAddress:(BOOL)isCommonAddress{
+-(void)addAnimationViewisCommonAddress:(BOOL)isCommonAddress personlocation:(NSArray*)locationArray{
     
+    NSArray*  commonArr=@[@{@"img":@"restaurant_btn",@"name":@"餐饮"},
+                @{@"img":@"supermarket_btn",@"name":@"超市"},
+                @{@"img":@"hospital_btn",@"name":@"医院"},
+                @{@"img":@"park_btn",@"name":@"停车场"},
+                @{@"img":@"bank_btn",@"name":@"银行"}];
+    
+//    NSArray*  personArr=@[@{@"img":@"home_btn",@"name":@"家"},
+//                @{@"img":@"company_btn",@"name":@"公司"},
+//                @{@"img":@"exercise_btn",@"name":@"健身房"},
+//                @{@"img":@"girl_home",@"name":@"女朋友家"},
+//                @{@"img":@"parents_home",@"name":@"父母家"}];
+    
+    NSMutableArray* tempArr=[NSMutableArray array];
+    
+    if (isCommonAddress) {
+        for (NSDictionary* dic in commonArr) {
+            XYAnimationViewModel* model=[[XYAnimationViewModel alloc]init];
+            [model setValuesForKeysWithDictionary:dic];
+            model.isNameLeft=isCommonAddress;
+            [tempArr addObject:model];
+        }
+    }else{
+        for (XYAMapTip * tip in locationArray) {
+            XYAnimationViewModel* model=[[XYAnimationViewModel alloc]init];
+            model.tip=tip;
+            model.img=@"parents_home";
+            model.name=tip.remarkName;
+            [tempArr addObject:model];
+        }
+    
+    
+    }
+
     [[UIApplication sharedApplication].keyWindow addSubview:self.animationView];
+    self.animationView.dataArray=tempArr;
     self.animationView.isCommomAddress=isCommonAddress;
     CATransition* anim=[CATransition animation];
     anim.type=@"kCATransitionFade";
@@ -114,13 +148,28 @@
     switch (sender.tag) {
         case 1:{
             //常见地点
-            [self addAnimationViewisCommonAddress:YES];
+            [self addAnimationViewisCommonAddress:YES personlocation:nil];
             [self buttonAnimationToCenter:sender];
         }
             break;
         case 2:{
             //个人地点
-            [self addAnimationViewisCommonAddress:NO];
+            
+            //历史搜索记录
+            NSArray * historyArr = [[LBSQLManager sharedInstace] selectModelArrayInDatabase:@"XYAMapTip"];
+            NSMutableArray* isPersonArrM=[NSMutableArray array];//手机个人地点
+            for (XYAMapTip* tip  in historyArr) {
+                if (tip.isPersonL==YES) {
+                    [isPersonArrM addObject:tip];
+                }
+            }
+            
+            if (isPersonArrM.count==0) {
+                [XYTool showPromptView:@"您还未添加个人地点" holdView:nil];
+                return;
+            }
+   
+            [self addAnimationViewisCommonAddress:NO personlocation:isPersonArrM];
             [self buttonAnimationToCenter:sender];
         }
             break;
@@ -231,11 +280,19 @@
     }
     //历史搜索记录
     NSArray * historyArr = [[LBSQLManager sharedInstace] selectModelArrayInDatabase:@"XYAMapTip"];
+    NSMutableArray* tempArrM=[NSMutableArray array];
+    for (XYAMapTip * tip in historyArr) {
+        if ([tip.name isEqualToString:kUSER_CURRENT_LOCATION_STRING]) {
+            continue;
+        }
+        [tempArrM addObject:tip];
+    }
+    
     
     if (historyArr.count<SEARCH_HISTORY_COUNT) {
-        [self.dataArray addObjectsFromArray:historyArr];
+        [self.dataArray addObjectsFromArray:tempArrM];
     }else{
-        [self.dataArray addObjectsFromArray:[historyArr objectsAtIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, SEARCH_HISTORY_COUNT)]]];
+        [self.dataArray addObjectsFromArray:[tempArrM objectsAtIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, SEARCH_HISTORY_COUNT)]]];
     }
     
 //    for (AMapTip* tip in historyArr) {
@@ -338,6 +395,8 @@
 - (NSArray<UITableViewRowAction *> *)tableView:(UITableView *)tableView editActionsForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewRowAction *likeAction = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleNormal title:@"收藏到个人地点" handler:^(UITableViewRowAction * _Nonnull action, NSIndexPath * _Nonnull indexPath) {
+        
+        
         
         XYAMapTip * tip=[self.dataArray objectAtIndex:indexPath.row];
         tip.isPersonL=YES;

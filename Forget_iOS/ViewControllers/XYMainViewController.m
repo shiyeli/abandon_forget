@@ -130,12 +130,14 @@
         
         
         if (model.isPersonalLocation) {
-            AMapTip * tip=[[AMapTip alloc]init];
+            XYAMapTip * tip=[[XYAMapTip alloc]init];
             tip.uid=model.uid;
             tip.name=model.name;
             tip.adcode=model.adcode;
             tip.district=model.district;
             tip.address=model.address;
+            tip.isPersonL=model.isPersonL;
+            tip.remarkName=model.remarkName;
             
             AMapGeoPoint * point=[[AMapGeoPoint alloc]init];
             point.latitude=model.latitude;

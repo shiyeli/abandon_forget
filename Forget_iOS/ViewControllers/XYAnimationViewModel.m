@@ -14,7 +14,7 @@
 {
     self = [super init];
     if (self) {
-        _tip=[[AMapTip alloc]init];
+        _tip=[[XYAMapTip alloc]init];
     }
     return self;
 }
