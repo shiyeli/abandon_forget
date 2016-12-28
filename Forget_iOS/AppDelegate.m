@@ -63,10 +63,12 @@
 }
 
 
+//程序进入后台,申请一个backgroundTask,持续获取用户位置
 - (void)applicationDidEnterBackground:(UIApplication *)application {
-    // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
-    // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
     
+    [[UIApplication sharedApplication] beginBackgroundTaskWithName:kUSER_CURRENT_LOCATION_NOTIFY expirationHandler:^{
+        [NSTimer scheduledTimerWithTimeInterval:5.0 target:[XYUserInfo userInfo] selector:@selector(timerAction:) userInfo:nil repeats:YES];
+    }];
 }
 
 

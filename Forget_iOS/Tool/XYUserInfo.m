@@ -43,7 +43,7 @@ static XYUserInfo * _userInfo;
     _userTip=[[XYAMapTip alloc]init];
     
     //定时器
-    [NSTimer scheduledTimerWithTimeInterval:10.0 target:self selector:@selector(timerAction:) userInfo:nil repeats:YES];
+    [NSTimer scheduledTimerWithTimeInterval:5.0 target:self selector:@selector(timerAction:) userInfo:nil repeats:YES];
 }
 
 -(void)timerAction:(NSTimer*)timer{
@@ -61,7 +61,7 @@ static XYUserInfo * _userInfo;
     CLGeocoder * geocoder = [[CLGeocoder alloc] init];
     [geocoder  reverseGeocodeLocation:location completionHandler:^(NSArray *placemarks, NSError *error) {
         CLPlacemark * place = placemarks[0];
-        //NSLog(@"当前位置:%@%@%@",place.subLocality,place.thoroughfare,place.name);
+        NSLog(@"当前位置:%@%@%@",place.subLocality,place.thoroughfare,place.name);
         _userCurrentCity=place.locality;
         _userLocation=location;
         
