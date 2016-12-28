@@ -29,6 +29,7 @@
        XYCircleViewLayout* layout=[[XYCircleViewLayout alloc]initWithRadius:Main_Screen_Width*0.4 aliginType:WHEEL_ALIGNMEN_LEFT cellSize:CGSizeMake(70, 70) spacing:Main_Screen_Width*0.1];
         
         self.myCollectionView=[[UICollectionView alloc]initWithFrame:CGRectMake(0, 0, Main_Screen_Width, Main_Screen_Height) collectionViewLayout:layout];
+        self.myCollectionView.showsVerticalScrollIndicator=NO;
         self.myCollectionView.backgroundColor=[UIColor clearColor];
         [self addSubview:self.myCollectionView];
         cellId=@"cellIdentifier";
