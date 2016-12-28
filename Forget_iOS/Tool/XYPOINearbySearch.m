@@ -14,6 +14,7 @@ static XYPOINearbySearch *  _nearbySearch;
 @implementation XYPOINearbySearch
 {
     XYAMapTip* _userTip;
+    XYNotifyModel* _model;
 }
 +(void)load{
     
@@ -40,15 +41,16 @@ static XYPOINearbySearch *  _nearbySearch;
 
 
 /* 根据中心点坐标来搜周边的POI. */
-- (void)searchPoiByUserLocation:(XYAMapTip*)tip keywords:(NSString*)keywords
+- (void)searchPoiByUserLocation:(XYAMapTip*)tip notifyModel:(XYNotifyModel *)model
 {
     
     _userTip=tip;
+    _model=model;
     
     AMapPOIAroundSearchRequest *request = [[AMapPOIAroundSearchRequest alloc] init];
     
     request.location            = [AMapGeoPoint locationWithLatitude:tip.location.latitude longitude:tip.location.longitude];
-    request.keywords            = keywords;
+    request.keywords            = model.locationClassifition;
     /* 按照距离排序. */
     request.sortrule            = 0;
     request.requireExtension    = YES;
@@ -75,6 +77,10 @@ static XYPOINearbySearch *  _nearbySearch;
         
         if (distance<200.0) {//500米范围内提醒
             NSLog(@"附近有 :  %@",obj.name);
+            NSString* broadcastStr=[[NSString alloc]initWithFormat:@"这附近有%@,可以%@",obj.name,_model.notifyRemark];
+            [XYTool broadcastNotify:broadcastStr];
+            
+            
         }
         
     }];

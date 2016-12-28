@@ -16,6 +16,6 @@
 +(instancetype)nearbySearch;
 
 
-- (void)searchPoiByUserLocation:(XYAMapTip*)tip keywords:(NSString*)keywords;
+- (void)searchPoiByUserLocation:(XYAMapTip*)tip notifyModel:(XYNotifyModel*)model;
 
 @end

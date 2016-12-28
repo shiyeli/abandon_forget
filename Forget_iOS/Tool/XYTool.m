@@ -7,11 +7,9 @@
 //
 
 #import "XYTool.h"
-
-
 //md5
 #import<CommonCrypto/CommonDigest.h>
-
+#import <AVFoundation/AVFoundation.h>
 
 @implementation XYTool
 
@@ -578,5 +576,25 @@
     return [weekdays objectAtIndex:theComponents.weekday];
     
 }
+
++(void)broadcastNotify:(NSString*)content{
+    AVSpeechUtterance *utterance = [AVSpeechUtterance speechUtteranceWithString:content];
+    utterance.rate *= 0.8;
+    AVSpeechSynthesizer *synth = [[AVSpeechSynthesizer alloc] init];
+    //获取当前系统语音
+    NSString *m_strLang=[[[NSUserDefaults standardUserDefaults] objectForKey:@"AppleLanguages"] objectAtIndex:0];
+    NSString *preferredLang = @"";
+    if ([m_strLang  isEqual: @"zh-Hans-CN"])
+    {
+        preferredLang = @"zh-CN";
+    }else{
+        preferredLang = @"en-US";
+    }
+    AVSpeechSynthesisVoice *voice = [AVSpeechSynthesisVoice voiceWithLanguage:[NSString stringWithFormat:@"%@",preferredLang]];
+    utterance.voice = voice;
+    [synth speakUtterance:utterance];
+    
+}
+
 
 @end

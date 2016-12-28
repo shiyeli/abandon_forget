@@ -95,7 +95,7 @@ static XYUserInfo * _userInfo;
     for (XYNotifyModel* model in notifyList) {
         if (!model.isComplished&&model.haveSetLocation&&!model.isPersonalLocation) {
             //一类地点
-            [[XYPOINearbySearch nearbySearch] searchPoiByUserLocation:tip keywords:model.locationClassifition];
+            [[XYPOINearbySearch nearbySearch] searchPoiByUserLocation:tip notifyModel:model];
             
         }
     }

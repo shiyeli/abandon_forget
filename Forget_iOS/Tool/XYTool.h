@@ -153,6 +153,9 @@
  */
 + (NSString*)weekdayStringFromDate:(NSString*)inputDate;
 
-
+/**
+ *  语音播报字符串
+ */
++(void)broadcastNotify:(NSString*)content;
 
 @end

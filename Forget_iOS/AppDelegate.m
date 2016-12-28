@@ -10,6 +10,8 @@
 #import <Intents/Intents.h>
 #import "SWRevealViewController.h"
 #import "XYRearViewController.h"
+#import <AVFoundation/AVFoundation.h>
+
 @interface AppDelegate ()<SWRevealViewControllerDelegate>
 
 @end
@@ -24,13 +26,25 @@
     
     [self initMainViews];
     
-    
+    [self broadcastSettings];
     
     
     
     return YES;
 }
+-(void)broadcastSettings{
 
+    NSError *error = NULL;
+    AVAudioSession *session = [AVAudioSession sharedInstance];
+    [session setCategory:AVAudioSessionCategoryPlayback error:&error];
+    if(error) {
+        // Do some error handling
+    }
+    [session setActive:YES error:&error];
+    if (error) {
+        // Do some error handling
+    }
+}
 - (void)setUpSiri{
     if([INPreferences siriAuthorizationStatus] == INSiriAuthorizationStatusNotDetermined){
         [INPreferences requestSiriAuthorization:^(INSiriAuthorizationStatus status) {
@@ -70,6 +84,7 @@
         [NSTimer scheduledTimerWithTimeInterval:5.0 target:[XYUserInfo userInfo] selector:@selector(timerAction:) userInfo:nil repeats:YES];
     }];
 }
+
 
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
