@@ -74,17 +74,34 @@
         self.model.longitude=self.model.tip.location.longitude;
     }
     
+    if (self.model.haveSetTime) {
+        NSTimeInterval interval=[self.model.notifyTime timeIntervalSinceDate:[NSDate date]];
+        if (interval<0) {
+            [XYTool showPromptView:@"请设置一个未来的时间" holdView:nil];
+            return;
+        }
+    }
+    
+    
     if (self.model.haveSetRepeat) {
         self.model.repeatUnitSave=self.model.repeatUnit;
     }
-
-    //存储提醒model
-    [[LBSQLManager sharedInstace]creatTable:self.model];
-    [[LBSQLManager sharedInstace]insertAndUpdateModelToDatabase:self.model];
     
-    [[NSNotificationCenter defaultCenter] postNotificationName:kADD_NEW_REMIND_NOTIFY object:nil userInfo:@{NSStringFromClass([XYNotifyModel class]):self.model}];
-    
-    [self dismissViewControllerAnimated:YES completion:nil];
+    //添加到系统通知
+    [XYTool sendLocalNotifycation:self.model success:^(BOOL success){
+        
+        if (success) {
+            //存储提醒model
+            [[LBSQLManager sharedInstace]creatTable:self.model];
+            [[LBSQLManager sharedInstace]insertAndUpdateModelToDatabase:self.model];
+            
+            [[NSNotificationCenter defaultCenter] postNotificationName:kADD_NEW_REMIND_NOTIFY object:nil userInfo:@{NSStringFromClass([XYNotifyModel class]):self.model}];
+            
+            [self dismissViewControllerAnimated:YES completion:nil];
+        }else{
+            [XYTool showPromptView:@"创建提醒失败,请重试" holdView:nil];
+        }
+    }];
 }
 
 - (IBAction)timeLocationClick:(UIButton *)sender {
@@ -141,7 +158,7 @@
     self.model.isComplished=NO;
     //提醒时间
     self.model.haveSetTime=YES;
-    self.model.notifyTime=[NSDate date];
+    self.model.notifyTime=[[NSDate date] dateByAddingTimeInterval:60*5];
     //重复
     self.model.haveSetRepeat=YES;
     self.model.frequency=1;

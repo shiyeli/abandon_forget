@@ -285,6 +285,11 @@
         if ([tip.name isEqualToString:kUSER_CURRENT_LOCATION_STRING]) {
             continue;
         }
+        AMapGeoPoint* point=[[AMapGeoPoint alloc]init];
+        point.longitude=tip.longitude;
+        point.latitude=tip.latitude;
+        tip.location=point;
+        
         [tempArrM addObject:tip];
     }
     

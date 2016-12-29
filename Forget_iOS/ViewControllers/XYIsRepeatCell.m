@@ -34,7 +34,7 @@
     
     frquency=self.model.setRepeatCount;
     repeatUnit=self.model.setRepeatCircle;
-    _repeatLab.text=[NSString stringWithFormat:@"每%d%@",frquency,arrCircle[repeatUnit]];
+    _repeatLab.text=[NSString stringWithFormat:@"每%zd%@",frquency,arrCircle[repeatUnit]];
     
     [self.myPickerView selectRow:frquency-1 inComponent:0 animated:NO];
     [self.myPickerView selectRow:repeatUnit inComponent:1 animated:NO];

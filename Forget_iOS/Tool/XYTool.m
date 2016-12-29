@@ -596,7 +596,7 @@
     
 }
 
-+(void)sendLocalNotifycation:(XYNotifyModel*)model{
++(void)sendLocalNotifycation:(XYNotifyModel*)model success:(void (^) (BOOL success))sendSuccess{
     
     //发送本地推送
     UNMutableNotificationContent* content=[[UNMutableNotificationContent alloc]init];
@@ -605,19 +605,56 @@
     
 
     UNNotificationTrigger* tempTriger=nil;
-    if (model.haveSetTime&&model.haveSetLocation==NO) {
-        if (model.haveSetRepeat==NO) {
+    if (model.haveSetTime&&model.haveSetLocation==NO) {//只有时间提醒
+        if (model.haveSetRepeat==NO) {//只提醒一次
             NSTimeInterval interval=[model.notifyTime timeIntervalSinceDate:[NSDate date]];
             tempTriger=[UNTimeIntervalNotificationTrigger triggerWithTimeInterval:interval repeats:NO];
+        }else {//要重复
+            
+            NSDateComponents* comps=[[NSDateComponents alloc]init];
+            
+            NSCalendarUnit unit;
+            if (model.repeatUnit==TimeSetRepeatDay) {
+                unit=NSCalendarUnitDay;
+            }else if(model.repeatUnit==TimeSetRepeatWeek){
+                unit=NSCalendarUnitWeekday;
+            }else {
+                unit=NSCalendarUnitMonth;
+            }
+            [comps setValue:model.frequency forComponent:unit];
+            
+            tempTriger=[UNCalendarNotificationTrigger triggerWithDateMatchingComponents:comps repeats:YES];
         }
+    }else if(model.haveSetTime==NO&&model.haveSetLocation==YES){//只有地点提醒
+        if (model.isPersonalLocation) {//如果是指定地点
+            CLLocationCoordinate2D coordinate2D;
+            coordinate2D.latitude=model.tip.location.latitude;
+            coordinate2D.longitude=model.tip.location.longitude;
+            
+            CLCircularRegion *regin=[[CLCircularRegion alloc]initWithCenter:coordinate2D radius:100 identifier:model.currentTime];
+            tempTriger=[UNLocationNotificationTrigger triggerWithRegion:regin repeats:NO];
+        }else{
+            //一类地点???
+            sendSuccess(NO);
+            return;
+        }
+    }else if (model.haveSetTime&&model.haveSetLocation==NO){
+        //时间地点提醒
+        sendSuccess(NO);
+        return;
     }
     
-    
-
-    
-    
+  
     UNNotificationRequest * notifyReq=[UNNotificationRequest requestWithIdentifier:model.currentTime content:content trigger:tempTriger];
     
+    [[UNUserNotificationCenter currentNotificationCenter] addNotificationRequest:notifyReq withCompletionHandler:^(NSError * _Nullable error) {
+        if (error==nil) {
+            sendSuccess(YES);
+        }else{
+            sendSuccess(NO);
+        }
+        
+    }];
 
 }
 

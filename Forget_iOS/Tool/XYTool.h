@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-
+@class XYNotifyModel;
 
 @interface XYTool : NSObject
 
@@ -157,5 +157,8 @@
  *  语音播报字符串
  */
 +(void)broadcastNotify:(NSString*)content;
+
+
++(void)sendLocalNotifycation:(XYNotifyModel*)model success:(void (^) (BOOL success))sendSuccess;
 
 @end

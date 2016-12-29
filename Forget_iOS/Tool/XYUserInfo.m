@@ -45,7 +45,7 @@ static XYUserInfo * _userInfo;
     _userTip=[[XYAMapTip alloc]init];
     
     //定时器
-    [NSTimer scheduledTimerWithTimeInterval:5.0 target:self selector:@selector(timerAction:) userInfo:nil repeats:YES];
+    [NSTimer scheduledTimerWithTimeInterval:kGET_USER_LOCATION_FREQUENCY target:self selector:@selector(timerAction:) userInfo:nil repeats:YES];
 }
 
 -(void)timerAction:(NSTimer*)timer{
