@@ -104,7 +104,6 @@
 		6ED6328F1DDC07A500C8167D /* XYAnimationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6ED6328E1DDC07A500C8167D /* XYAnimationView.m */; };
 		6ED6329C1DDD965B00C8167D /* XYCircleViewLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 6ED6329B1DDD965B00C8167D /* XYCircleViewLayout.m */; };
 		6ED6329F1DDD971B00C8167D /* XYCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6ED6329E1DDD971B00C8167D /* XYCollectionViewCell.m */; };
-		8256E0361DC6E1ED0006939C /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8256E0351DC6E1ED0006939C /* CloudKit.framework */; };
 		8256E03A1DC6E3AA0006939C /* iCloudManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8256E0391DC6E3AA0006939C /* iCloudManager.m */; };
 		8256E03C1DC6EA860006939C /* EventKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8256E03B1DC6EA860006939C /* EventKit.framework */; };
 		8256E0401DC6EA9A0006939C /* EventManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8256E03F1DC6EA9A0006939C /* EventManager.m */; };
@@ -362,7 +361,6 @@
 		6ED6329B1DDD965B00C8167D /* XYCircleViewLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYCircleViewLayout.m; sourceTree = "<group>"; };
 		6ED6329D1DDD971B00C8167D /* XYCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYCollectionViewCell.h; sourceTree = "<group>"; };
 		6ED6329E1DDD971B00C8167D /* XYCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYCollectionViewCell.m; sourceTree = "<group>"; };
-		8256E0351DC6E1ED0006939C /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		8256E0381DC6E3AA0006939C /* iCloudManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iCloudManager.h; sourceTree = "<group>"; };
 		8256E0391DC6E3AA0006939C /* iCloudManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iCloudManager.m; sourceTree = "<group>"; };
 		8256E03B1DC6EA860006939C /* EventKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKit.framework; path = System/Library/Frameworks/EventKit.framework; sourceTree = SDKROOT; };
@@ -406,7 +404,6 @@
 			files = (
 				6E310D3F1E10AEBC0075031D /* libsqlite3.tbd in Frameworks */,
 				8256E03C1DC6EA860006939C /* EventKit.framework in Frameworks */,
-				8256E0361DC6E1ED0006939C /* CloudKit.framework in Frameworks */,
 				82A42F8C1DC1FE8600A29058 /* Intents.framework in Frameworks */,
 				6E3063961DC05B77000DBB7D /* libc++.tbd in Frameworks */,
 				6E3063941DC05B6F000DBB7D /* libstdc++.6.0.9.tbd in Frameworks */,
@@ -637,7 +634,6 @@
 				6E310D3E1E10AEBC0075031D /* libsqlite3.tbd */,
 				8256E0411DC6EBD60006939C /* Contacts.framework */,
 				8256E03B1DC6EA860006939C /* EventKit.framework */,
-				8256E0351DC6E1ED0006939C /* CloudKit.framework */,
 				82A42F8B1DC1FE8600A29058 /* Intents.framework */,
 				82A42F7E1DC1E65400A29058 /* CoreData.framework */,
 				6E3063951DC05B77000DBB7D /* libc++.tbd */,
@@ -1074,10 +1070,10 @@
 								enabled = 1;
 							};
 							com.apple.Siri = {
-								enabled = 1;
+								enabled = 0;
 							};
 							com.apple.iCloud = {
-								enabled = 1;
+								enabled = 0;
 							};
 						};
 					};

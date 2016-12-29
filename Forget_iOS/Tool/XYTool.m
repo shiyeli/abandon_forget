@@ -627,7 +627,7 @@
             }else {
                 comps.month=tempComps.month;
             }
-            [comps setValue:model.frequency forComponent:unit];
+//            [comps setValue:model.frequency forComponent:unit];
   
             tempTriger=[UNCalendarNotificationTrigger triggerWithDateMatchingComponents:comps repeats:YES];
         }
