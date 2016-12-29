@@ -613,16 +613,22 @@
             
             NSDateComponents* comps=[[NSDateComponents alloc]init];
             
+            NSCalendar *defaultCalender = [[NSCalendar alloc]initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+            NSDateComponents *tempComps = [defaultCalender components:NSCalendarUnitMonth| NSCalendarUnitWeekday|NSCalendarUnitHour |NSCalendarUnitMinute | NSCalendarUnitSecond  fromDate:model.notifyTime];
+            comps.hour=tempComps.hour;
+            comps.minute=tempComps.minute;
+            comps.second=tempComps.second;
+            
             NSCalendarUnit unit;
             if (model.repeatUnit==TimeSetRepeatDay) {
-                unit=NSCalendarUnitDay;
+                
             }else if(model.repeatUnit==TimeSetRepeatWeek){
-                unit=NSCalendarUnitWeekday;
+                comps.weekday=tempComps.weekday;
             }else {
-                unit=NSCalendarUnitMonth;
+                comps.month=tempComps.month;
             }
             [comps setValue:model.frequency forComponent:unit];
-            
+  
             tempTriger=[UNCalendarNotificationTrigger triggerWithDateMatchingComponents:comps repeats:YES];
         }
     }else if(model.haveSetTime==NO&&model.haveSetLocation==YES){//只有地点提醒
@@ -632,6 +638,9 @@
             coordinate2D.longitude=model.tip.location.longitude;
             
             CLCircularRegion *regin=[[CLCircularRegion alloc]initWithCenter:coordinate2D radius:100 identifier:model.currentTime];
+            regin.notifyOnEntry=model.isArrvialNotify;
+            regin.notifyOnExit=!model.isArrvialNotify;
+            
             tempTriger=[UNLocationNotificationTrigger triggerWithRegion:regin repeats:NO];
         }else{
             //一类地点???
