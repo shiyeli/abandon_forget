@@ -119,8 +119,19 @@
             model.name=tip.remarkName;
             [tempArr addObject:model];
         }
-    
-    
+        
+        if (locationArray.count<5) {
+            //wait_add_location
+            for (int i=0; i< 5-locationArray.count; i++) {
+                XYAnimationViewModel* model=[[XYAnimationViewModel alloc]init];
+                XYAMapTip* tip=[[XYAMapTip alloc]init];
+                tip.remarkName=@"待收藏";
+                model.tip=tip;
+                model.img=@"wait_add_location";
+                model.name=tip.remarkName;
+                [tempArr addObject:model];
+            }
+        }
     }
 
     [[UIApplication sharedApplication].keyWindow addSubview:self.animationView];
@@ -157,9 +168,15 @@
             
             //历史搜索记录
             NSArray * historyArr = [[LBSQLManager sharedInstace] selectModelArrayInDatabase:@"XYAMapTip"];
-            NSMutableArray* isPersonArrM=[NSMutableArray array];//手机个人地点
+            NSMutableArray* isPersonArrM=[NSMutableArray array];//收集个人地点
             for (XYAMapTip* tip  in historyArr) {
                 if (tip.isPersonL==YES) {
+                    
+                    AMapGeoPoint * point=[[AMapGeoPoint alloc]init];
+                    point.latitude=tip.latitude;
+                    point.longitude=tip.longitude;
+                    tip.location=point;
+                    
                     [isPersonArrM addObject:tip];
                 }
             }
@@ -168,7 +185,7 @@
                 [XYTool showPromptView:@"您还未添加个人地点" holdView:nil];
                 return;
             }
-   
+            
             [self addAnimationViewisCommonAddress:NO personlocation:isPersonArrM];
             [self buttonAnimationToCenter:sender];
         }

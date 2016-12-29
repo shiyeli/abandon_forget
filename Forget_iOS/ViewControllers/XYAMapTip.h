@@ -24,7 +24,7 @@
 @property (nonatomic, assign) CGFloat latitude; //!< 纬度（垂直方向）
 @property (nonatomic, assign) CGFloat longitude; //!< 经度（水平方向）
 
-@property(nonatomic,assign) BOOL isPersonL; //是否是个人地点
+@property(nonatomic,assign) BOOL isPersonL; //是否是个人地点 ,因为个人地点跟历史记录存在一起的,以示区分!
 @property(nonatomic,copy) NSString* remarkName;//用户备注名字
 
 

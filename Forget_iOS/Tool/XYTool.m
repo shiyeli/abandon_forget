@@ -638,7 +638,7 @@
             sendSuccess(NO);
             return;
         }
-    }else if (model.haveSetTime&&model.haveSetLocation==NO){
+    }else if (model.haveSetTime&&model.haveSetLocation){
         //时间地点提醒
         sendSuccess(NO);
         return;

@@ -60,7 +60,7 @@
         self.model.notifyImg64Str = [UIImageJPEGRepresentation(self.model.notifyImg, 0.2) base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
     }
    
-    if (self.model.tip) {
+    if (self.model.isPersonalLocation) {
         self.model.uid=self.model.tip.uid;
         self.model.name=self.model.tip.name;
         self.model.adcode=self.model.tip.adcode;

@@ -97,6 +97,12 @@
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     XYAnimationViewModel* model = [self.dataArray objectAtIndex:indexPath.row];
+    
+    if ([model.tip.remarkName isEqualToString:@"待收藏"]) {
+        [XYTool showPromptView:@"地点不可用" holdView:nil];
+        return;
+    }
+    
     if (self.sendBlock) {
         self.sendBlock(model);
     }
