@@ -22,6 +22,7 @@ typedef enum: NSInteger {
 
 //时间戳
 @property(nonatomic,copy)NSString* currentTime;
+
 //是否完成
 @property(nonatomic,assign)BOOL isComplished;
 

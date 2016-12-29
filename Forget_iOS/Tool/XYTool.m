@@ -632,12 +632,12 @@
             tempTriger=[UNCalendarNotificationTrigger triggerWithDateMatchingComponents:comps repeats:YES];
         }
     }else if(model.haveSetTime==NO&&model.haveSetLocation==YES){//只有地点提醒
-        if (model.isPersonalLocation) {//如果是指定地点
+        if (model.isPersonalLocation){//如果是指定地点
             CLLocationCoordinate2D coordinate2D;
             coordinate2D.latitude=model.tip.location.latitude;
             coordinate2D.longitude=model.tip.location.longitude;
             
-            CLCircularRegion *regin=[[CLCircularRegion alloc]initWithCenter:coordinate2D radius:100 identifier:model.currentTime];
+            CLCircularRegion *regin=[[CLCircularRegion alloc]initWithCenter:coordinate2D radius:200 identifier:model.currentTime];
             regin.notifyOnEntry=model.isArrvialNotify;
             regin.notifyOnExit=!model.isArrvialNotify;
             
