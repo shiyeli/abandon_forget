@@ -20,7 +20,7 @@
 //sdwebImg
 #import "UIImageView+WebCache.h"
 #import "LBSQLManager.h"
-
+#import <UserNotifications/UserNotifications.h>
 
 //提醒模型
 #import "XYNotifyModel.h"

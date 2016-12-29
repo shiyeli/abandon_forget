@@ -75,10 +75,10 @@ static XYPOINearbySearch *  _nearbySearch;
         CLLocation* searchLocation=[[CLLocation alloc]initWithLatitude:obj.location.latitude longitude:obj.location.longitude];
         double distance=[userLocation distanceFromLocation:searchLocation];
         
-        if (distance<200.0) {//500米范围内提醒
+        if (distance<100.0) {//500米范围内提醒
             NSLog(@"附近有 :  %@",obj.name);
-            NSString* broadcastStr=[[NSString alloc]initWithFormat:@"这附近有%@,可以%@",obj.name,_model.notifyRemark];
-            [XYTool broadcastNotify:broadcastStr];
+            NSString* broadcastStr=[[NSString alloc]initWithFormat:@"这附近有%@,%@",obj.name,_model.notifyRemark];
+            
             
             
         }

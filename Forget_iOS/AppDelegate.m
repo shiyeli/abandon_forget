@@ -11,8 +11,11 @@
 #import "SWRevealViewController.h"
 #import "XYRearViewController.h"
 #import <AVFoundation/AVFoundation.h>
+#import <UserNotifications/UserNotifications.h>
 
-@interface AppDelegate ()<SWRevealViewControllerDelegate>
+
+
+@interface AppDelegate ()<SWRevealViewControllerDelegate,UNUserNotificationCenterDelegate>
 
 @end
 
@@ -26,12 +29,18 @@
     
     [self initMainViews];
     
-    [self broadcastSettings];
+    //[self broadcastSettings];
     
+    [self notifySettings];
     
     
     return YES;
 }
+
+
+
+
+
 -(void)broadcastSettings{
 
     NSError *error = NULL;
@@ -99,6 +108,38 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+#pragma mark -  通知相关
+-(void)notifySettings{
+    // 使用 UNUserNotificationCenter 来管理通知
+    UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
+    //监听回调事件
+    center.delegate = self;
+    
+    [center requestAuthorizationWithOptions:(UNAuthorizationOptionAlert + UNAuthorizationOptionSound) completionHandler:^(BOOL granted, NSError * _Nullable error) {
+        if (granted==NO) {
+            NSLog(@"用户禁止使用通知");
+        }
+    }]; 
+}
+
+// The method will be called on the delegate only if the application is in the foreground. If the method is not implemented or the handler is not called in a timely manner then the notification will not be presented. The application can choose to have the notification presented as a sound, badge, alert and/or in the notification list. This decision should be based on whether the information in the notification is otherwise visible to the user.
+- (void)userNotificationCenter:(UNUserNotificationCenter *)center willPresentNotification:(UNNotification *)notification withCompletionHandler:(void (^)(UNNotificationPresentationOptions options))completionHandler __IOS_AVAILABLE(10.0) __TVOS_AVAILABLE(10.0) __WATCHOS_AVAILABLE(3.0){
+    
+    NSLog(@"通知 1%@",notification.request.content.body);
+    
+}
+
+// The method will be called on the delegate when the user responded to the notification by opening the application, dismissing the notification or choosing a UNNotificationAction. The delegate must be set before the application returns from applicationDidFinishLaunching:.
+- (void)userNotificationCenter:(UNUserNotificationCenter *)center didReceiveNotificationResponse:(UNNotificationResponse *)response withCompletionHandler:(void(^)())completionHandler __IOS_AVAILABLE(10.0) __WATCHOS_AVAILABLE(3.0) __TVOS_PROHIBITED{
+    
+    
+    
+    
+    NSLog(@"通知 2%@",response.notification.request.content.body);
+    
+    
 }
 
 

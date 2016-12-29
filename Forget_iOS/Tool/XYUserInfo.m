@@ -91,14 +91,14 @@ static XYUserInfo * _userInfo;
  */
 -(void)notifyUserLocationEvent:(XYAMapTip*)tip{
     //获取数据库
-    NSArray* notifyList=[[LBSQLManager sharedInstace]selectModelArrayInDatabase:@"XYNotifyModel"];
-    for (XYNotifyModel* model in notifyList) {
-        if (!model.isComplished&&model.haveSetLocation&&!model.isPersonalLocation) {
-            //一类地点
-            [[XYPOINearbySearch nearbySearch] searchPoiByUserLocation:tip notifyModel:model];
-            
-        }
-    }
+ //   NSArray* notifyList=[[LBSQLManager sharedInstace]selectModelArrayInDatabase:@"XYNotifyModel"];
+//    for (XYNotifyModel* model in notifyList) {
+//        if (!model.isComplished&&model.haveSetLocation&&!model.isPersonalLocation) {
+//            //一类地点
+//            [[XYPOINearbySearch nearbySearch] searchPoiByUserLocation:tip notifyModel:model];
+//            
+//        }
+//    }
 }
 
 

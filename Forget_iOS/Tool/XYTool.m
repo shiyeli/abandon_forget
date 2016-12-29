@@ -596,5 +596,30 @@
     
 }
 
++(void)sendLocalNotifycation:(XYNotifyModel*)model{
+    
+    //发送本地推送
+    UNMutableNotificationContent* content=[[UNMutableNotificationContent alloc]init];
+    content.title=@"Imnesia 提醒您:";
+    content.body=model.notifyRemark;
+    
+
+    UNNotificationTrigger* tempTriger=nil;
+    if (model.haveSetTime&&model.haveSetLocation==NO) {
+        if (model.haveSetRepeat==NO) {
+            NSTimeInterval interval=[model.notifyTime timeIntervalSinceDate:[NSDate date]];
+            tempTriger=[UNTimeIntervalNotificationTrigger triggerWithTimeInterval:interval repeats:NO];
+        }
+    }
+    
+    
+
+    
+    
+    UNNotificationRequest * notifyReq=[UNNotificationRequest requestWithIdentifier:model.currentTime content:content trigger:tempTriger];
+    
+
+}
+
 
 @end
