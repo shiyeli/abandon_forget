@@ -646,7 +646,7 @@
             tempTriger=[UNLocationNotificationTrigger triggerWithRegion:regin repeats:NO];
         }else{
             //一类地点???
-            sendSuccess(NO);
+            sendSuccess(YES);
             return;
         }
     }else if (model.haveSetTime&&model.haveSetLocation){

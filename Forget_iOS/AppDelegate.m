@@ -90,8 +90,7 @@
 - (void)applicationDidEnterBackground:(UIApplication *)application {
     
     [[UIApplication sharedApplication] beginBackgroundTaskWithName:kUSER_CURRENT_LOCATION_NOTIFY expirationHandler:^{
-        //[NSTimer scheduledTimerWithTimeInterval:kGET_USER_LOCATION_FREQUENCY target:[XYUserInfo userInfo] selector:@selector(timerAction:) userInfo:nil repeats:YES];
-        [[XYUserInfo userInfo] timerAction:nil];
+        [[XYUserInfo userInfo] .mLocationManager startUpdatingLocation];
     }];
 }
 
@@ -142,7 +141,7 @@
     
     NSLog(@"通知 2%@",response.notification.request.content.body);
     
-    
+    completionHandler();
 }
 
 

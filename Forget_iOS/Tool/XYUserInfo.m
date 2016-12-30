@@ -34,7 +34,7 @@ static XYUserInfo * _userInfo;
     if (CLLocationManager.locationServicesEnabled) {
         _mLocationManager = [[CLLocationManager alloc] init];
         _mLocationManager.delegate = self;
-        _mLocationManager.distanceFilter=10;
+        _mLocationManager.distanceFilter=1;
         _mLocationManager.desiredAccuracy=kCLLocationAccuracyBest;
         if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0 ) {
             [_mLocationManager requestAlwaysAuthorization];  //调用了这句,就会弹出允许框了.
@@ -46,12 +46,6 @@ static XYUserInfo * _userInfo;
     
     _userTip=[[XYAMapTip alloc]init];
     
-    //定时器
-//    [NSTimer scheduledTimerWithTimeInterval:kGET_USER_LOCATION_FREQUENCY target:self selector:@selector(timerAction:) userInfo:nil repeats:NO];
-    [self timerAction:nil];
-}
-
--(void)timerAction:(NSTimer*)timer{
     [_mLocationManager startUpdatingLocation];
 }
 
@@ -86,7 +80,6 @@ static XYUserInfo * _userInfo;
 
     }];
     
-    [_mLocationManager stopUpdatingLocation];
 }
 
 /**
@@ -94,14 +87,14 @@ static XYUserInfo * _userInfo;
  */
 -(void)notifyUserLocationEvent:(XYAMapTip*)tip{
     //获取数据库
- //   NSArray* notifyList=[[LBSQLManager sharedInstace]selectModelArrayInDatabase:@"XYNotifyModel"];
-//    for (XYNotifyModel* model in notifyList) {
-//        if (!model.isComplished&&model.haveSetLocation&&!model.isPersonalLocation) {
-//            //一类地点
-//            [[XYPOINearbySearch nearbySearch] searchPoiByUserLocation:tip notifyModel:model];
-//            
-//        }
-//    }
+    NSArray* notifyList=[[LBSQLManager sharedInstace]selectModelArrayInDatabase:@"XYNotifyModel"];
+    for (XYNotifyModel* model in notifyList) {
+        if (!model.isComplished&&model.haveSetLocation&&!model.isPersonalLocation) {
+            //一类地点
+            [[XYPOINearbySearch nearbySearch] searchPoiByUserLocation:tip notifyModel:model];
+            
+        }
+    }
 }
 
 
@@ -110,9 +103,9 @@ static XYUserInfo * _userInfo;
     if (status == kCLAuthorizationStatusDenied){
         NSLog(@"请开启定位服务");
     }else{
-        _mLocationManager.desiredAccuracy = kCLLocationAccuracyBest; //控制定位精度,越高耗电量越大。
-        _mLocationManager.distanceFilter =1; //控制定位服务更新频率。单位是“米”
-        [_mLocationManager startUpdatingLocation];
+//        _mLocationManager.desiredAccuracy = kCLLocationAccuracyBest; //控制定位精度,越高耗电量越大。
+//        _mLocationManager.distanceFilter =1; //控制定位服务更新频率。单位是“米”
+//        [_mLocationManager startUpdatingLocation];
     }
 }
 
