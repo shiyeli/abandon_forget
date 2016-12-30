@@ -27,12 +27,20 @@
 		<key>NSAllowsArbitraryLoads</key>
 		<true/>
 	</dict>
+	<key>NSCameraUsageDescription</key>
+	<string>从相册获取提醒照片</string>
 	<key>NSLocationAlwaysUsageDescription</key>
 	<string>抛弃健忘需要访问你的位置信息</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>从相册获取提醒照片</string>
 	<key>NSRemindersUsageDescription</key>
 	<string>This App want to access your reminder</string>
 	<key>NSSiriUsageDescription</key>
 	<string>The App want to access Siri</string>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>location</string>
+	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIRequiredDeviceCapabilities</key>
@@ -54,9 +62,5 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<true/>
-	<key>NSPhotoLibraryUsageDescription</key>
-	<string>从相册获取提醒照片</string>
-	<key>NSCameraUsageDescription</key>
-	<string>从相册获取提醒照片</string>
 </dict>
 </plist>
