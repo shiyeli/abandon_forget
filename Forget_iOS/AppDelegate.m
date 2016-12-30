@@ -128,9 +128,9 @@
 - (void)userNotificationCenter:(UNUserNotificationCenter *)center willPresentNotification:(UNNotification *)notification withCompletionHandler:(void (^)(UNNotificationPresentationOptions options))completionHandler __IOS_AVAILABLE(10.0) __TVOS_AVAILABLE(10.0) __WATCHOS_AVAILABLE(3.0){
     
     
-    [XYTool showAlertViewMessage:notification.request.content.body cancel:@"知道了"];
+//    [XYTool showAlertViewMessage:notification.request.content.body cancel:@"知道了"];
     NSLog(@"通知 1%@",notification.request.content.body);
-    
+    completionHandler(UNNotificationPresentationOptionSound|UNNotificationPresentationOptionAlert);
 }
 
 // The method will be called on the delegate when the user responded to the notification by opening the application, dismissing the notification or choosing a UNNotificationAction. The delegate must be set before the application returns from applicationDidFinishLaunching:.
