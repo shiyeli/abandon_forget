@@ -251,6 +251,28 @@
 //    }];
 }
 
+
+#pragma mark - 设置编辑按钮
+
+- (NSArray<UITableViewRowAction *> *)tableView:(UITableView *)tableView editActionsForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewRowAction *likeAction = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleNormal title:@"已完成" handler:^(UITableViewRowAction * _Nonnull action, NSIndexPath * _Nonnull indexPath) {
+
+        XYNotifyModel * model=[self.dataArray objectAtIndex:indexPath.row];
+        model.isComplished=YES;
+        [[LBSQLManager sharedInstace]insertAndUpdateModelToDatabase:model];
+        tableView.editing=NO;
+    }];
+
+    return @[likeAction];
+}
+
+- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return UITableViewCellEditingStyleDelete;
+}
+
+
+
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView{
 //    NSArray* visibleCells=self.myTableView.visibleCells;
 //    for (int i=0; i<visibleCells.count; i++) {
