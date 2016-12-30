@@ -602,6 +602,8 @@
     UNMutableNotificationContent* content=[[UNMutableNotificationContent alloc]init];
     content.title=@"Imnesia 提醒您:";
     content.body=model.notifyRemark;
+    content.sound=[UNNotificationSound defaultSound];
+    
     
 
     UNNotificationTrigger* tempTriger=nil;
@@ -666,6 +668,8 @@
     }];
 
 }
+
+
 
 
 @end
