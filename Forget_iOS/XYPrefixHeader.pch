@@ -43,7 +43,7 @@
 #define TIMECELL_COLOR_YELLOW [XYTool stringToColor:@"#FF9800"]
 
 //获取用户位置频率
-#define kGET_USER_LOCATION_FREQUENCY 20.0f
+#define kGET_USER_LOCATION_FREQUENCY 60.0f
 
 
 //黑色文字

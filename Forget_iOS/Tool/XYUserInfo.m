@@ -34,6 +34,8 @@ static XYUserInfo * _userInfo;
     if (CLLocationManager.locationServicesEnabled) {
         _mLocationManager = [[CLLocationManager alloc] init];
         _mLocationManager.delegate = self;
+        _mLocationManager.distanceFilter=10;
+        _mLocationManager.desiredAccuracy=kCLLocationAccuracyBest;
         if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0 ) {
             [_mLocationManager requestAlwaysAuthorization];  //调用了这句,就会弹出允许框了.
         }
@@ -45,7 +47,8 @@ static XYUserInfo * _userInfo;
     _userTip=[[XYAMapTip alloc]init];
     
     //定时器
-    [NSTimer scheduledTimerWithTimeInterval:kGET_USER_LOCATION_FREQUENCY target:self selector:@selector(timerAction:) userInfo:nil repeats:YES];
+//    [NSTimer scheduledTimerWithTimeInterval:kGET_USER_LOCATION_FREQUENCY target:self selector:@selector(timerAction:) userInfo:nil repeats:NO];
+    [self timerAction:nil];
 }
 
 -(void)timerAction:(NSTimer*)timer{
