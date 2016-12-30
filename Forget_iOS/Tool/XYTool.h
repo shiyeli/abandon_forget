@@ -161,4 +161,7 @@
 
 +(void)sendLocalNotifycation:(XYNotifyModel*)model success:(void (^) (BOOL success))sendSuccess;
 
++(void)sendLocalNotifycationRightNowLocation:(NSString*)location message:(NSString*)message;
+
+
 @end

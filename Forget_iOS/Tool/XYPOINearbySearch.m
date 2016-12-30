@@ -66,24 +66,19 @@ static XYPOINearbySearch *  _nearbySearch;
         return;
     }
     
-
-    
     [response.pois enumerateObjectsUsingBlock:^(AMapPOI *obj, NSUInteger idx, BOOL *stop) {
 
-        
         CLLocation* userLocation=[[CLLocation alloc]initWithLatitude:_userTip.location.latitude longitude:_userTip.location.longitude];
         CLLocation* searchLocation=[[CLLocation alloc]initWithLatitude:obj.location.latitude longitude:obj.location.longitude];
         double distance=[userLocation distanceFromLocation:searchLocation];
         
-        if (distance<200.0) {//500米范围内提醒
+        if (distance<100.0) {//500米范围内提醒
             NSLog(@"附近有 :  %@",obj.name);
-            NSString* broadcastStr=[[NSString alloc]initWithFormat:@"这附近有%@,%@",obj.name,_model.notifyRemark];
-            
-            
-            
+            [XYTool sendLocalNotifycationRightNowLocation:obj.name message:_model.notifyRemark];
+            *stop=YES;
         }
-        
     }];
+    
 }
 
 

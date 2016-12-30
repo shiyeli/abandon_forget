@@ -24,6 +24,6 @@
 
 + (instancetype)userInfo;
 
--(void)timerAction:(NSTimer*)timer;
+
 
 @end

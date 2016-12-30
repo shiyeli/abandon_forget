@@ -669,7 +669,33 @@
 
 }
 
++(void)sendLocalNotifycationRightNowLocation:(NSString*)location message:(NSString*)message{
 
+
+    //发送本地推送
+    UNMutableNotificationContent* content=[[UNMutableNotificationContent alloc]init];
+    content.title=@"Imnesia 提醒您:";
+    content.subtitle=[NSString stringWithFormat:@"附近有:%@",location];
+    content.body=message;
+    content.sound=[UNNotificationSound defaultSound];
+    
+    
+    UNTimeIntervalNotificationTrigger* triger=[UNTimeIntervalNotificationTrigger triggerWithTimeInterval:0.1 repeats:NO];
+    UNNotificationRequest * notifyReq=[UNNotificationRequest requestWithIdentifier:@"rightnow" content:content trigger:triger];
+    
+    [[UNUserNotificationCenter currentNotificationCenter] addNotificationRequest:notifyReq withCompletionHandler:^(NSError * _Nullable error) {
+        if (error==nil) {
+            
+        }else{
+            NSLog(@"right now notify 发送通知成功");
+        }
+        
+    }];
+
+
+
+
+}
 
 
 @end

@@ -34,7 +34,7 @@ static XYUserInfo * _userInfo;
     if (CLLocationManager.locationServicesEnabled) {
         _mLocationManager = [[CLLocationManager alloc] init];
         _mLocationManager.delegate = self;
-        _mLocationManager.distanceFilter=1;
+        _mLocationManager.distanceFilter=100;
         _mLocationManager.desiredAccuracy=kCLLocationAccuracyBest;
         if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0 ) {
             [_mLocationManager requestAlwaysAuthorization];  //调用了这句,就会弹出允许框了.
@@ -105,7 +105,7 @@ static XYUserInfo * _userInfo;
     }else{
 //        _mLocationManager.desiredAccuracy = kCLLocationAccuracyBest; //控制定位精度,越高耗电量越大。
 //        _mLocationManager.distanceFilter =1; //控制定位服务更新频率。单位是“米”
-//        [_mLocationManager startUpdatingLocation];
+        [_mLocationManager startUpdatingLocation];
     }
 }
 
