@@ -598,11 +598,13 @@
 
 +(void)sendLocalNotifycation:(XYNotifyModel*)model success:(void (^) (BOOL success))sendSuccess{
     
+ 
     //发送本地推送
     UNMutableNotificationContent* content=[[UNMutableNotificationContent alloc]init];
     content.title=@"Imnesia 提醒您:";
     content.body=model.notifyRemark;
     content.sound=[UNNotificationSound defaultSound];
+    
     
     
 
@@ -621,6 +623,7 @@
             comps.minute=tempComps.minute;
             comps.second=tempComps.second;
             
+        
             NSCalendarUnit unit;
             if (model.repeatUnit==TimeSetRepeatDay) {
                 
@@ -630,7 +633,7 @@
                 comps.month=tempComps.month;
             }
 //            [comps setValue:model.frequency forComponent:unit];
-  
+            
             tempTriger=[UNCalendarNotificationTrigger triggerWithDateMatchingComponents:comps repeats:YES];
         }
     }else if(model.haveSetTime==NO&&model.haveSetLocation==YES){//只有地点提醒

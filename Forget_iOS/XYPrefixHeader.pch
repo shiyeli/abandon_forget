@@ -21,7 +21,7 @@
 #import "UIImageView+WebCache.h"
 #import "LBSQLManager.h"
 #import <UserNotifications/UserNotifications.h>
-
+#import "EventManager.h"
 //提醒模型
 #import "XYNotifyModel.h"
 

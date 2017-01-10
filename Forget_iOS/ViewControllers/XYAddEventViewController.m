@@ -102,6 +102,27 @@
             [XYTool showPromptView:@"创建提醒失败,请重试" holdView:nil];
         }
     }];
+    
+    
+    //添加到系统提醒
+    [[EventManager shareinstence]addEventWithModel:self.model success:^(BOOL success) {
+        if (success) {
+            //存储提醒model
+            [[LBSQLManager sharedInstace]creatTable:self.model];
+            [[LBSQLManager sharedInstace]insertAndUpdateModelToDatabase:self.model];
+            
+            [[NSNotificationCenter defaultCenter] postNotificationName:kADD_NEW_REMIND_NOTIFY object:nil userInfo:@{NSStringFromClass([XYNotifyModel class]):self.model}];
+            
+            [self dismissViewControllerAnimated:YES completion:nil];
+        }else{
+            [XYTool showPromptView:@"创建提醒失败,请重试..." holdView:nil];
+        }
+        
+    }];
+    
+    
+    
+    
 }
 
 - (IBAction)timeLocationClick:(UIButton *)sender {
