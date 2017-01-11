@@ -609,7 +609,7 @@
     
 
     UNNotificationTrigger* tempTriger=nil;
-    if (model.haveSetTime) {时间提醒
+    if (model.haveSetTime) {//时间提醒
         if (model.haveSetRepeat==NO) {//只提醒一次
             NSTimeInterval interval=[model.notifyTime timeIntervalSinceDate:[NSDate date]];
             tempTriger=[UNTimeIntervalNotificationTrigger triggerWithTimeInterval:interval repeats:NO];
