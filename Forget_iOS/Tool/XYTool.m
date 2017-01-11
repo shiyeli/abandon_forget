@@ -625,6 +625,7 @@
             }
             
             NSDateComponents *tempComps = [[NSCalendar currentCalendar] components:unitFlags fromDate:model.notifyTime];
+  
             tempTriger=[UNCalendarNotificationTrigger triggerWithDateMatchingComponents:tempComps repeats:YES];
             
             NSLog(@"第一次提醒时间:%@ ",model.notifyTime);
