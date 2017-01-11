@@ -131,13 +131,16 @@
 //    [XYTool showAlertViewMessage:notification.request.content.body cancel:@"知道了"];
     NSLog(@"通知 1%@",notification.request.content.body);
     completionHandler(UNNotificationPresentationOptionSound|UNNotificationPresentationOptionAlert);
+    
+    NSLog(@"nextTriggerDate 1 : %@",[(UNCalendarNotificationTrigger*)notification.request.trigger nextTriggerDate]);
+    
 }
 
 // The method will be called on the delegate when the user responded to the notification by opening the application, dismissing the notification or choosing a UNNotificationAction. The delegate must be set before the application returns from applicationDidFinishLaunching:.
 - (void)userNotificationCenter:(UNUserNotificationCenter *)center didReceiveNotificationResponse:(UNNotificationResponse *)response withCompletionHandler:(void(^)())completionHandler __IOS_AVAILABLE(10.0) __WATCHOS_AVAILABLE(3.0) __TVOS_PROHIBITED{
     
     
-    
+    NSLog(@"nextTriggerDate 2 : %@",[(UNCalendarNotificationTrigger*)response.notification.request.trigger nextTriggerDate]);
     
     NSLog(@"通知 2%@",response.notification.request.content.body);
     

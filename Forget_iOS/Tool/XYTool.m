@@ -615,26 +615,20 @@
             tempTriger=[UNTimeIntervalNotificationTrigger triggerWithTimeInterval:interval repeats:NO];
         }else {//要重复
             
-            NSDateComponents* comps=[[NSDateComponents alloc]init];
-            
-            NSCalendar *defaultCalender = [[NSCalendar alloc]initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
-            NSDateComponents *tempComps = [defaultCalender components:NSCalendarUnitMonth| NSCalendarUnitWeekday|NSCalendarUnitHour |NSCalendarUnitMinute | NSCalendarUnitSecond  fromDate:model.notifyTime];
-            comps.hour=tempComps.hour;
-            comps.minute=tempComps.minute;
-            comps.second=tempComps.second;
-            
-        
-            NSCalendarUnit unit;
+            NSCalendarUnit unitFlags;
             if (model.repeatUnit==TimeSetRepeatDay) {
-                
+                unitFlags= NSCalendarUnitHour |NSCalendarUnitMinute | NSCalendarUnitSecond;
             }else if(model.repeatUnit==TimeSetRepeatWeek){
-                comps.weekday=tempComps.weekday;
+                unitFlags=  NSCalendarUnitWeekday|NSCalendarUnitHour |NSCalendarUnitMinute | NSCalendarUnitSecond;
             }else {
-                comps.month=tempComps.month;
+                unitFlags= NSCalendarUnitDay|NSCalendarUnitHour |NSCalendarUnitMinute | NSCalendarUnitSecond;
             }
-//            [comps setValue:model.frequency forComponent:unit];
             
-            tempTriger=[UNCalendarNotificationTrigger triggerWithDateMatchingComponents:comps repeats:YES];
+            NSDateComponents *tempComps = [[NSCalendar currentCalendar] components:unitFlags fromDate:model.notifyTime];
+            tempTriger=[UNCalendarNotificationTrigger triggerWithDateMatchingComponents:tempComps repeats:YES];
+            
+            NSLog(@"第一次提醒时间:%@ ",model.notifyTime);
+            
         }
     }else if(model.haveSetTime==NO&&model.haveSetLocation==YES){//只有地点提醒
         if (model.isPersonalLocation){//如果是指定地点
