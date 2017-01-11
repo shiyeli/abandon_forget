@@ -11,6 +11,8 @@
 @interface EventManager : NSObject
 
 @property(nonatomic,strong)EKEventStore *store;
+@property(nonatomic,strong)EKSource* localSource;
+@property(nonatomic,strong)EKCalendar *calendar;
 
 
 +(instancetype)shareinstence;
