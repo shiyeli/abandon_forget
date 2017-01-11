@@ -609,7 +609,7 @@
     
 
     UNNotificationTrigger* tempTriger=nil;
-    if (model.haveSetTime&&model.haveSetLocation==NO) {//只有时间提醒
+    if (model.haveSetTime) {时间提醒
         if (model.haveSetRepeat==NO) {//只提醒一次
             NSTimeInterval interval=[model.notifyTime timeIntervalSinceDate:[NSDate date]];
             tempTriger=[UNTimeIntervalNotificationTrigger triggerWithTimeInterval:interval repeats:NO];
@@ -619,7 +619,7 @@
             if (model.repeatUnit==TimeSetRepeatDay) {
                 unitFlags= NSCalendarUnitHour |NSCalendarUnitMinute | NSCalendarUnitSecond;
             }else if(model.repeatUnit==TimeSetRepeatWeek){
-                unitFlags=  NSCalendarUnitWeekday|NSCalendarUnitHour |NSCalendarUnitMinute | NSCalendarUnitSecond;
+                unitFlags= NSCalendarUnitWeekday|NSCalendarUnitHour |NSCalendarUnitMinute | NSCalendarUnitSecond;
             }else {
                 unitFlags= NSCalendarUnitDay|NSCalendarUnitHour |NSCalendarUnitMinute | NSCalendarUnitSecond;
             }
@@ -631,7 +631,9 @@
             NSLog(@"第一次提醒时间:%@ ",model.notifyTime);
             
         }
-    }else if(model.haveSetTime==NO&&model.haveSetLocation==YES){//只有地点提醒
+    }
+    
+    if(model.haveSetLocation==YES){//地点提醒
         if (model.isPersonalLocation){//如果是指定地点
             CLLocationCoordinate2D coordinate2D;
             coordinate2D.latitude=model.tip.location.latitude;
@@ -640,22 +642,16 @@
             CLCircularRegion *regin=[[CLCircularRegion alloc]initWithCenter:coordinate2D radius:200 identifier:model.currentTime];
             regin.notifyOnEntry=model.isArrvialNotify;
             regin.notifyOnExit=!model.isArrvialNotify;
-            
             tempTriger=[UNLocationNotificationTrigger triggerWithRegion:regin repeats:NO];
+            
         }else{
             //一类地点???
             sendSuccess(YES);
             return;
         }
-    }else if (model.haveSetTime&&model.haveSetLocation){
-        //时间地点提醒
-        sendSuccess(NO);
-        return;
     }
     
-  
     UNNotificationRequest * notifyReq=[UNNotificationRequest requestWithIdentifier:model.currentTime content:content trigger:tempTriger];
-    
     [[UNUserNotificationCenter currentNotificationCenter] addNotificationRequest:notifyReq withCompletionHandler:^(NSError * _Nullable error) {
         if (error==nil) {
             sendSuccess(YES);

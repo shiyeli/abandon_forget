@@ -133,11 +133,11 @@ static EventManager* _eventMgt;
     newReminder.title=model.notifyRemark;
 
     newReminder.calendar = [self.store defaultCalendarForNewReminders];
-    if (self.calendar) {
-        //self.calendar;
-    } else{
-        NSLog(@"self.calendar 为空");
-    } //[self.store defaultCalendarForNewReminders];
+//    if (self.calendar) {
+//        //self.calendar;
+//    } else{
+//        NSLog(@"self.calendar 为空");
+//    } //[self.store defaultCalendarForNewReminders];
     
     EKRecurrenceRule* rule;
     
