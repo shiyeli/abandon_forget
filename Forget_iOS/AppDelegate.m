@@ -34,6 +34,9 @@
     [self notifySettings];
     
     
+    
+    
+    //添加回车
     return YES;
 }
 
